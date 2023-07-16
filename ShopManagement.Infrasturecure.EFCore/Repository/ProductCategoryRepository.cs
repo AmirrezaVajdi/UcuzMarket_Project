@@ -31,7 +31,17 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
             }).FirstOrDefault();
         }
 
-        public List<ProductCategoryViewModel> Search(ProductCategorySerachModel serachModel)
+        public List<ProductCategoryViewModel> GetProductCategories()
+        {
+            return _context.ProductCategories.Select(x => new ProductCategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }
+            ).ToList();
+        }
+
+        public List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel)
         {
             var query = _context.ProductCategories.Select(x => new ProductCategoryViewModel
             {

@@ -1,21 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProdcutCategory;
+using System.Collections.Generic;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 {
-    public class IndexModel : PageModel
+       public class IndexModel : PageModel
     {
-        public ProductCategorySerachModel SearchModel { get; set; }
-        public List<ProductCategoryViewModel> ProductCategories { get; set; }
-        private IProductCategoryApplication _productCategoryApplication;
+        public ProductCategorySearchModel SearchModel;
+        public List<ProductCategoryViewModel> ProductCategories;
+
+        private readonly IProductCategoryApplication _productCategoryApplication;
 
         public IndexModel(IProductCategoryApplication productCategoryApplication)
         {
             _productCategoryApplication = productCategoryApplication;
         }
 
-        public void OnGet(ProductCategorySerachModel searchModel)
+        public void OnGet(ProductCategorySearchModel searchModel)
         {
             ProductCategories = _productCategoryApplication.Search(searchModel);
         }
@@ -34,12 +36,15 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         public IActionResult OnGetEdit(long id)
         {
             var productCategory = _productCategoryApplication.GetDetails(id);
-
-            return Partial("./Edit", productCategory);
+            return Partial("Edit", productCategory);
         }
 
         public JsonResult OnPostEdit(EditProductCategory command)
         {
+            if (ModelState.IsValid)
+            {
+            }
+
             var result = _productCategoryApplication.Edit(command);
             return new JsonResult(result);
         }

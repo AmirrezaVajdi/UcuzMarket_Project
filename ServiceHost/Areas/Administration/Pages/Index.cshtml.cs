@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdminServiceHost.Pages
+namespace ServiceHost.Areas.Administration.Pages
 {
     public class IndexModel : PageModel
     {

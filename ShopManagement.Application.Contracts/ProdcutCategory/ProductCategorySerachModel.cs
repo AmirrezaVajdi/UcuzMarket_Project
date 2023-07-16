@@ -1,6 +1,6 @@
 ﻿namespace ShopManagement.Application.Contracts.ProdcutCategory
 {
-    public class ProductCategorySerachModel
+    public class ProductCategorySearchModel
     {
         public string Name { get; set; }
     }

@@ -3,6 +3,10 @@
 @{
 }
 
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["title"] = "مدیریت گروه محصولات";
+}
 
 <div class="row">
     <div class="col-sm-12">
@@ -22,8 +26,8 @@
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
                     <div class="form-group">
-                        <label asp-for="SearchModel.Name" class="sr-only"></label>
-                        <input asp-for="SearchModel.Name" class="form-control" placeholder="نام گروه محصولی">
+                        <label class="sr-only" asp-for="SearchModel.Name"></label>
+                        <input class="form-control" asp-for="SearchModel.Name" placeholder="نام گروه محصولی">
                     </div>
                     <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                     <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
@@ -48,30 +52,28 @@
                                     <th>#</th>
                                     <th>عکس</th>
                                     <th>نام</th>
-                                    <th>تاریخ تولید </th>
+                                    <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var productCategory in Model.ProductCategories)
+                                @foreach (var item in Model.ProductCategories)
                                 {
                                     <tr>
-                                        <td>@productCategory.Id</td>
+                                        <td>@item.Id</td>
                                         <td>
-                                            <img src="@productCategory.Picture" style="width: 70px; height: 70px" />
+                                            <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
                                         </td>
-                                        <td>@productCategory.Name</td>
-                                        <td>@productCategory.CreationDate</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.CreationDate</td>
                                         <td>
-                                            <a class="btn btn-warning pull-right m-rl-5"
-                                           href="#showmodal=@Url.Page("./Index", "Edit" , new {id = productCategory.Id})">
+                                            <a class="btn btn-warning pull-right m-rl-5" 
+                                               href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                                 <i class="fa fa-edit"></i> ویرایش
                                             </a>
                                         </td>
                                     </tr>
                                 }
-
-
                             </tbody>
                         </table>
                     </div>
@@ -91,4 +93,3 @@
         });
     </script>
 }
-

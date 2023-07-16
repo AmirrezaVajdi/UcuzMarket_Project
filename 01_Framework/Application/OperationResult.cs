@@ -23,5 +23,10 @@ namespace _01_Framework.Application
             Message = message;
             return this;
         }
+
+        public OperationResult Failed(object applicationMessages)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

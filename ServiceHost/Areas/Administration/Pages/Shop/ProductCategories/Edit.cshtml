@@ -5,10 +5,10 @@
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">ویرایش گروه محصول | @Model.Name</h4>
+    <h4 class="modal-title">ویرایش گروه محصول: @Model.Name</h4>
 </div>
 
-<form asp-page="./Index" asp-page-handler="Create"
+<form asp-page="./Index" asp-page-handler="Edit"
       method="post"
       data-ajax="true"
       data-callback=""
@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Picture" class="control-label">عکس</label>
-                    <input type="file" class="form-control" asp-for="Picture" accept="image/*">
+                    <input type="text" class="form-control" asp-for="Picture">
                     <span asp-validation-for="Picture" class="error"></span>
                 </div>
             </div>
@@ -82,13 +82,12 @@
                               style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
                     <span asp-validation-for="MetaDescription" class="error"></span>
                 </div>
-                <input type="hidden" asp-for="Id" value="@Model.Id"/>
             </div>
         </div>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
-        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش
-        </button>
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
     </div>
 </form>

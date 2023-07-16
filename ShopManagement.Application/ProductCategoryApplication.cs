@@ -18,7 +18,7 @@ namespace ShopManagement.Application
         {
             OperationResult operation = new();
             if (_productCategoryRepository.Exsists(x => x.Name == command.Name))
-                return operation.Failed("امکان ثبت رکورد تکراری وجود ندارد لطفا مجددا تلاش بفرمایید");
+                return operation.Failed(ApplicationMessages.DuplicatedRecored);
 
             var slug = command.Slug.Slugiffy();
             var productCategory = new ProductCategory(command.Name, command.Description, command.Picture, command.PictureAlt
@@ -35,12 +35,12 @@ namespace ShopManagement.Application
             var prodcutCategory = _productCategoryRepository.Get(command.Id);
             if (prodcutCategory == null)
             {
-                return operation.Failed("رکورد با اطلاعات درخواست شده یافت نشد . لطفا مجدد تلاش فرمایید");
+                return operation.Failed(ApplicationMessages.RecordNotFound);
             }
 
             if (_productCategoryRepository.Exsists(x => x.Name == command.Name && x.Id != command.Id))
             {
-                return operation.Failed("امکان ثبت رکورد تکراری وجود ندارد لطفا مجددا تلاش بفرمایید");
+                return operation.Failed(ApplicationMessages.DuplicatedRecored);
             }
 
             var slug = command.Slug.Slugiffy();
@@ -49,12 +49,22 @@ namespace ShopManagement.Application
             return operation.Succeded();
         }
 
+        public EditProductCategory GetDatails(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         public EditProductCategory GetDetails(long id)
         {
             return _productCategoryRepository.GetDetails(id);
         }
 
-        public List<ProductCategoryViewModel> Search(ProductCategorySerachModel serachModel)
+        public List<ProductCategoryViewModel> GetProductCategories()
+        {
+            return _productCategoryRepository.GetProductCategories();
+        }
+
+        public List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel)
         {
             return _productCategoryRepository.Search(serachModel);
         }
