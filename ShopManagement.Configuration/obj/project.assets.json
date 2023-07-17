@@ -1041,6 +1041,19 @@
           "bin/placeholder/01_Framework.dll": {}
         }
       },
+      "01_LampShadeQuery/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ShopManagement.Infrasturecure.EFCore": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/01_LampShadeQuery.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/01_LampShadeQuery.dll": {}
+        }
+      },
       "ShopManagement.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3246,6 +3259,11 @@
       "path": "../01_Framework/01_Framework.csproj",
       "msbuildProject": "../01_Framework/01_Framework.csproj"
     },
+    "01_LampShadeQuery/1.0.0": {
+      "type": "project",
+      "path": "../01_Query/01_LampShadeQuery.csproj",
+      "msbuildProject": "../01_Query/01_LampShadeQuery.csproj"
+    },
     "ShopManagement.Application/1.0.0": {
       "type": "project",
       "path": "../ShopManagement.Application/ShopManagement.Application.csproj",
@@ -3269,6 +3287,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "01_LampShadeQuery >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 7.0.0",
       "ShopManagement.Application >= 1.0.0",
       "ShopManagement.Application.Contracts >= 1.0.0",
@@ -3308,6 +3327,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Query\\01_LampShadeQuery.csproj": {
+              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Query\\01_LampShadeQuery.csproj"
+            },
             "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
               "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
             },

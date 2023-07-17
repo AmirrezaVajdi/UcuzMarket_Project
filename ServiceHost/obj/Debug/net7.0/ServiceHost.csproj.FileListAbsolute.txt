@@ -86,3 +86,5 @@ C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\Microsoft.Extensi
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\scopedcss\Areas\Administration\Pages\Shared\_AdminLayout.cshtml.rz.scp.css
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\01_LampShadeQuery.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\01_LampShadeQuery.pdb

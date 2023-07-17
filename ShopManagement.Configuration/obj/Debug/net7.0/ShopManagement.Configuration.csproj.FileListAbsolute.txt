@@ -21,3 +21,5 @@ C:\Users\lenovo\Desktop\LampShade\ShopManagement.Configuration\obj\Debug\net7.0\
 C:\Users\lenovo\Desktop\LampShade\ShopManagement.Configuration\obj\Debug\net7.0\refint\ShopManagement.Configuration.dll
 C:\Users\lenovo\Desktop\LampShade\ShopManagement.Configuration\obj\Debug\net7.0\ShopManagement.Configuration.pdb
 C:\Users\lenovo\Desktop\LampShade\ShopManagement.Configuration\obj\Debug\net7.0\ref\ShopManagement.Configuration.dll
+C:\Users\lenovo\Desktop\LampShade\ShopManagement.Configuration\bin\Debug\net7.0\01_LampShadeQuery.dll
+C:\Users\lenovo\Desktop\LampShade\ShopManagement.Configuration\bin\Debug\net7.0\01_LampShadeQuery.pdb
