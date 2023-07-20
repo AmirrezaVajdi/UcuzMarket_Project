@@ -19,7 +19,7 @@ namespace DiscountManagement.Configuration
             services.AddTransient<ICustomerDiscountRepository, CustomerDiscountRepository>();
 
             services.AddTransient<IColleagueDiscountApplication, ColleagueDiscountApplication>();
-            services.AddTransient<IColleagueDiscountRepository, ColleagueDiscountRepository>();
+            services.AddTransient<IColleagueDiscountRepository,  ColleagueDiscountRepository>();
 
             services.AddDbContext<DiscountContext>(x => x.UseSqlServer(connctionString));
         }

@@ -16,6 +16,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\lenovo\Desktop\LampShade\ServiceHost
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/lenovo/Desktop/LampShade/ServiceHost/Areas/Administration/Pages/Discounts/ColleagueDiscount/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cUGFnZXNcRGlzY291bnRzXENvbGxlYWd1ZURpc2NvdW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/LampShade/ServiceHost/Areas/Administration/Pages/Discounts/ColleagueDiscount/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cUGFnZXNcRGlzY291bnRzXENvbGxlYWd1ZURpc2NvdW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/LampShade/ServiceHost/Areas/Administration/Pages/Discounts/ColleagueDiscount/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cUGFnZXNcRGlzY291bnRzXENvbGxlYWd1ZURpc2NvdW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lenovo/Desktop/LampShade/ServiceHost/Areas/Administration/Pages/Discounts/CustomerDiscount/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5pc3RyYXRpb25cUGFnZXNcRGlzY291bnRzXEN1c3RvbWVyRGlzY291bnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

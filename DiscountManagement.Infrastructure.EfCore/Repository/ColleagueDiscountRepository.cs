@@ -36,7 +36,8 @@ namespace DiscountManagement.Infrastructure.EfCore.Repository
                 Id = x.Id,
                 ProductId = x.ProductId,
                 CreationDate = x.CreationDate.ToFarsi(),
-                DiscountRate = x.DiscountRate
+                DiscountRate = x.DiscountRate,
+                IsRemoved = x.IsRemoved
             });
 
             if (searchModel.ProductId > 0)
