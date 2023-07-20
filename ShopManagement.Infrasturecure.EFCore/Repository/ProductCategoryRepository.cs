@@ -1,4 +1,5 @@
-﻿using _01_Framework.Infrastructure;
+﻿using _01_Framework.Application;
+using _01_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore.Internal;
 using ShopManagement.Application.Contracts.ProdcutCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -28,7 +29,7 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
                 KeyWords = x.KeyWords,
                 MetaDescription = x.MetaDescription,
                 Slug = x.Slug
-            }).FirstOrDefault();
+            }).FirstOrDefault(x => x.Id == id);
         }
 
         public List<ProductCategoryViewModel> GetProductCategories()
@@ -46,7 +47,7 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
             var query = _context.ProductCategories.Select(x => new ProductCategoryViewModel
             {
                 Id = x.Id,
-                CreationDate = x.CreationDate.ToString(),
+                CreationDate = x.CreationDate.ToFarsi(),
                 Name = x.Name,
                 Picture = x.Picture
             }).ToList();

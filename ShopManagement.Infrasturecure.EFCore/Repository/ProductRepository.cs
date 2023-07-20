@@ -1,4 +1,5 @@
-﻿using _01_Framework.Domain;
+﻿using _01_Framework.Application;
+using _01_Framework.Domain;
 using _01_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
@@ -53,7 +54,7 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
                 Name = x.Name,
                 Code = x.Code,
                 Category = x.Category.Name,
-                CreationDate = x.CreationDate.ToString(),
+                CreationDate = x.CreationDate.ToFarsi(),
                 Picture = x.Picture,
                 UnitPrice = x.UnitPrice,
                 CategoryId = x.CategoryId,

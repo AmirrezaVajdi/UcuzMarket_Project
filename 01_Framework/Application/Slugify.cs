@@ -17,7 +17,7 @@ namespace _01_Framework.Application
             s = Regex.Replace(s, @"\s+", " ").Trim();
             s = s.Substring(0, s.Length <= 100 ? s.Length : 45).Trim();
             s = Regex.Replace(s, @"\s", "-");
-            s = Regex.Replace(s, @"", "-");
+            s = Regex.Replace(s, @" ", "-");
             return s.ToLower();
         }
 

@@ -1,3 +1,4 @@
+using DiscountManagement.Configuration;
 using ShopManagement.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("LampShadeDb");
 
-ShopContextBootstrapper.Configure(builder.Services, builder.Configuration.GetConnectionString("LampShadeDb"));
+ShopContextBootstrapper.Configure(builder.Services, connectionString);
+DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
 
 builder.Services.AddRazorPages();
 

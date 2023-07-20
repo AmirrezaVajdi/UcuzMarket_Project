@@ -88,3 +88,13 @@ C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\System.CodeDom.dl
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\scopedcss\Areas\Administration\Pages\Shared\_AdminLayout.cshtml.rz.scp.css
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\01_LampShadeQuery.dll
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\01_LampShadeQuery.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Application.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Configuration.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Domain.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Infrastructure.EfCore.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagment.Application.Contract.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Configuration.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Application.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Domain.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Infrastructure.EfCore.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagment.Application.Contract.pdb

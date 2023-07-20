@@ -43,7 +43,8 @@ namespace ShopManagement.Infrasturecure.EFCore.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<bool>("IsInStock")
                         .HasColumnType("bit");
@@ -219,7 +220,8 @@ namespace ShopManagement.Infrasturecure.EFCore.Migrations
 
                     b.Property<string>("Link")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Picture")
                         .IsRequired()

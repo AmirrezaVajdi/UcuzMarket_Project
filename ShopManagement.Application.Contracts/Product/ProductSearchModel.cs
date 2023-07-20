@@ -6,6 +6,4 @@
         public string Code { get; set; }
         public long CategoryId { get; set; }
     }
-
-
 }

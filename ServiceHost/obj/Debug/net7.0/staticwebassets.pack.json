@@ -1253,6 +1253,30 @@
       "PackagePath": "staticwebassets\\AdminTheme\\images\\users\\avatar-9.jpg"
     },
     {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\A20-1.png",
+      "PackagePath": "staticwebassets\\Images\\A20-1.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\A20.png",
+      "PackagePath": "staticwebassets\\Images\\A20.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\IPhone14ProMax.png",
+      "PackagePath": "staticwebassets\\Images\\IPhone14ProMax.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\IPhone14ProMax2.png",
+      "PackagePath": "staticwebassets\\Images\\IPhone14ProMax2.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\lavazem.png",
+      "PackagePath": "staticwebassets\\Images\\lavazem.png"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\mobile.png",
+      "PackagePath": "staticwebassets\\Images\\mobile.png"
+    },
+    {
       "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\css\\Custom.css",
       "PackagePath": "staticwebassets\\Theme\\assets\\css\\Custom.css"
     },
@@ -1413,20 +1437,20 @@
       "PackagePath": "staticwebassets\\Theme\\assets\\img\\blog\\slider\\5-370x235.jpg"
     },
     {
-      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\img1-top-eposi1.jpg",
-      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\img1-top-eposi1.jpg"
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\category1.jpg",
+      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\category1.jpg"
     },
     {
-      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\img2-top-eposi1.jpg",
-      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\img2-top-eposi1.jpg"
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\category2.jpg",
+      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\category2.jpg"
     },
     {
-      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\img3-top-eposi1.jpg",
-      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\img3-top-eposi1.jpg"
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\category3.jpg",
+      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\category3.jpg"
     },
     {
-      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\img4-top-eposi1.jpg",
-      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\img4-top-eposi1.jpg"
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\category\\category4.jpg",
+      "PackagePath": "staticwebassets\\Theme\\assets\\img\\category\\category4.jpg"
     },
     {
       "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\img\\favicon.ico",

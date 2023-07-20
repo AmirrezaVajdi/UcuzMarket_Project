@@ -11,8 +11,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Product
         [TempData]
         public string Message { get; set; }
         public ProductSearchModel SearchModel { get; set; }
-        public List<ProductViewModel> Product { get; set; }
-        public SelectList ProductCategory { get; set; }
+        public List<ProductViewModel> Products { get; set; }
+        public SelectList ProductCategories { get; set; }
         private IProductApplication _productApplication;
         private readonly IProductCategoryApplication _productCategoryApplication;
 
@@ -25,8 +25,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Product
 
         public void OnGet(ProductSearchModel searchModel)
         {
-            ProductCategory = new(_productCategoryApplication.GetProductCategories(), "Id", "Name");
-            Product = _productApplication.Search(searchModel);
+            ProductCategories = new(_productCategoryApplication.GetProductCategories(), "Id", "Name");
+            Products = _productApplication.Search(searchModel);
         }
 
         public IActionResult OnGetCreate()
