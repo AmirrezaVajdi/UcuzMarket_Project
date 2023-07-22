@@ -43,7 +43,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DM.Infrastructure", "DM.Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountManagement.Infrastructure.EfCore", "DiscountManagement.Infrastructure.EfCore\DiscountManagement.Infrastructure.EfCore.csproj", "{78591152-A8A1-487A-A0E0-A519221C0AFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountManagement.Configuration", "DiscountManagement.Configuration\DiscountManagement.Configuration.csproj", "{3547E283-D780-4866-B5CE-059FA0716FCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountManagement.Configuration", "DiscountManagement.Configuration\DiscountManagement.Configuration.csproj", "{3547E283-D780-4866-B5CE-059FA0716FCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement", "InventoryManagement", "{7A95E4D6-588B-49A5-A56E-B25A5BEB9655}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Domain", "IM.Domain", "{66006F57-AA38-491F-AF8F-5E19B540E02C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{E947D492-4C54-4D00-B6F5-30FD3024D968}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Application", "IM.Application", "{9DB445AE-3774-410D-9B85-CC6629D403DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application.Contract", "InventoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj", "{B514A502-41B1-4B95-9D92-03C312E3395C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application", "InventoryManagement.Application\InventoryManagement.Application.csproj", "{92D3FC8D-F6CD-4509-8379-804021D2856F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +115,18 @@ Global
 		{3547E283-D780-4866-B5CE-059FA0716FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3547E283-D780-4866-B5CE-059FA0716FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3547E283-D780-4866-B5CE-059FA0716FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E947D492-4C54-4D00-B6F5-30FD3024D968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E947D492-4C54-4D00-B6F5-30FD3024D968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E947D492-4C54-4D00-B6F5-30FD3024D968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E947D492-4C54-4D00-B6F5-30FD3024D968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B514A502-41B1-4B95-9D92-03C312E3395C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B514A502-41B1-4B95-9D92-03C312E3395C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B514A502-41B1-4B95-9D92-03C312E3395C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B514A502-41B1-4B95-9D92-03C312E3395C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92D3FC8D-F6CD-4509-8379-804021D2856F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D3FC8D-F6CD-4509-8379-804021D2856F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D3FC8D-F6CD-4509-8379-804021D2856F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D3FC8D-F6CD-4509-8379-804021D2856F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +148,11 @@ Global
 		{85DAA1D1-B7EB-4ADB-A194-C63E9CA390B6} = {1311B0D1-9FD6-47E2-8221-365E38EDF315}
 		{78591152-A8A1-487A-A0E0-A519221C0AFF} = {85DAA1D1-B7EB-4ADB-A194-C63E9CA390B6}
 		{3547E283-D780-4866-B5CE-059FA0716FCF} = {85DAA1D1-B7EB-4ADB-A194-C63E9CA390B6}
+		{66006F57-AA38-491F-AF8F-5E19B540E02C} = {7A95E4D6-588B-49A5-A56E-B25A5BEB9655}
+		{E947D492-4C54-4D00-B6F5-30FD3024D968} = {66006F57-AA38-491F-AF8F-5E19B540E02C}
+		{9DB445AE-3774-410D-9B85-CC6629D403DF} = {7A95E4D6-588B-49A5-A56E-B25A5BEB9655}
+		{B514A502-41B1-4B95-9D92-03C312E3395C} = {9DB445AE-3774-410D-9B85-CC6629D403DF}
+		{92D3FC8D-F6CD-4509-8379-804021D2856F} = {9DB445AE-3774-410D-9B85-CC6629D403DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {697964D0-D8FD-4BF8-8399-9269FAB4FC49}

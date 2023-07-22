@@ -22,11 +22,6 @@ namespace _01_Framework.Application
             isSuccedded = false;
             Message = message;
             return this;
-        }
-
-        public OperationResult Failed(object applicationMessages)
-        {
-            throw new NotImplementedException();
-        }
+        }     
     }
 }
