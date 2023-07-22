@@ -10,7 +10,7 @@ namespace InventoryManagement.Application
             throw new NotImplementedException();
         }
 
-        public OperationResult Decrease(List<DecreaseInventory> command)
+        public OperationResult Decrease(List<ReduceInventory> command)
         {
             throw new NotImplementedException();
         }
