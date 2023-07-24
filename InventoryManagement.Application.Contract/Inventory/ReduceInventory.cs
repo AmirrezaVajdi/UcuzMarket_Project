@@ -2,6 +2,7 @@
 {
     public class ReduceInventory
     {
+        public long InventoryId { get; set; }
         public long PorudctId { get; set; }
         public int Count { get; set; }
         public string Description { get; set; }

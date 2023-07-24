@@ -223,6 +223,20 @@
         "runtime": {
           "bin/placeholder/InventoryManagement.Application.Contract.dll": {}
         }
+      },
+      "InventoryManagement.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "01_Framework": "1.0.0",
+          "InventoryManagement.Application.Contract": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/InventoryManagement.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InventoryManagement.Domain.dll": {}
+        }
       }
     }
   },
@@ -546,11 +560,17 @@
       "type": "project",
       "path": "../InventoryManagement.Application.Contract/InventoryManagement.Application.Contract.csproj",
       "msbuildProject": "../InventoryManagement.Application.Contract/InventoryManagement.Application.Contract.csproj"
+    },
+    "InventoryManagement.Domain/1.0.0": {
+      "type": "project",
+      "path": "../InventoryManagement.Domain/InventoryManagement.Domain.csproj",
+      "msbuildProject": "../InventoryManagement.Domain/InventoryManagement.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "InventoryManagement.Application.Contract >= 1.0.0"
+      "InventoryManagement.Application.Contract >= 1.0.0",
+      "InventoryManagement.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -588,6 +608,9 @@
           "projectReferences": {
             "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Application.Contract\\InventoryManagement.Application.Contract.csproj": {
               "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Application.Contract\\InventoryManagement.Application.Contract.csproj"
+            },
+            "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Domain\\InventoryManagement.Domain.csproj": {
+              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Domain\\InventoryManagement.Domain.csproj"
             }
           }
         }

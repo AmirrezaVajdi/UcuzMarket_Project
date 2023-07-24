@@ -98,3 +98,13 @@ C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagemen
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagement.Infrastructure.EfCore.pdb
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\DiscountManagment.Application.Contract.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Application.Contract.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Application.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Domain.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Infrastructure.EFCore.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Application.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Application.Contract.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Domain.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\InventoryManagement.Infrastructure.EFCore.pdb
