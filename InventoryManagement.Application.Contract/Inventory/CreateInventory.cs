@@ -1,12 +1,16 @@
-﻿namespace InventoryManagement.Application.Contract.Inventory
+﻿using _01_Framework.Application;
+using ShopManagement.Application.Contracts.Product;
+using System.ComponentModel.DataAnnotations;
+
+namespace InventoryManagement.Application.Contract.Inventory
 {
     public class CreateInventory
     {
-        public long ProudctId { get; set; }
+        [Range(1, 100000, ErrorMessage = ValidationMessages.IsRequired)]
+        public long ProductId { get; set; }
+
+        [Range(1, double.MaxValue, ErrorMessage = ValidationMessages.IsRequired)]
         public double UnitPrice { get; set; }
-    }
-    public class EditInventory : CreateInventory
-    {
-        public long Id { get; set; }
+        public List<ProductViewModel> Products { get; set; }
     }
 }

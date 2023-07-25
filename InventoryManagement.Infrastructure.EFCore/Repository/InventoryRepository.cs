@@ -1,4 +1,5 @@
-﻿using _01_Framework.Infrastructure;
+﻿using _01_Framework.Application;
+using _01_Framework.Infrastructure;
 using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
 using ShopManagement.Infrasturecure.EFCore;
@@ -27,8 +28,25 @@ namespace InventoryManagement.Infrastructure.EFCore.Repository
             {
                 Id = x.Id,
                 UnitPrice = x.UnitPrice,
-                ProudctId = x.ProductId
+                ProductId = x.ProductId
             }).FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            var inventory = _context.Inventory.FirstOrDefault(x => x.Id == inventoryId);
+            return inventory.Operations.Select(x => new InventoryOperationViewModel
+            {
+                Id = x.Id,
+                Count = x.Count,
+                CurrentCount = x.CurrentCount,
+                Description = x.Description,
+                OperationDate = x.OperationDate.ToFarsi(),
+                Operation = x.Operation,
+                Operator = "مدیر سیستم",
+                OperatorId = x.OperatorId,
+                OrderId = x.OrderId
+            }).OrderByDescending(x => x.Id).ToList();
         }
 
         public List<InventoryViewModel> Search(InventorySearchModel searchModel)
@@ -40,13 +58,14 @@ namespace InventoryManagement.Infrastructure.EFCore.Repository
                 ProductId = x.ProductId,
                 UnitPrice = x.UnitPrice,
                 InStock = x.InStock,
+                CreationDate = x.CreationDate.ToFarsi(),
                 CurrentCount = x.CalculateCurrentCount()
             });
 
             if (searchModel.ProductId > 0)
                 query = query.Where(x => x.ProductId == searchModel.ProductId);
 
-            if (!searchModel.InStock)
+            if (searchModel.InStock)
                 query = query.Where(x => !x.InStock);
 
             var inventory = query.OrderByDescending(x => x.Id).ToList();

@@ -101,6 +101,9 @@
             "projectReferences": {
               "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
                 "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              },
+              "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
               }
             }
           }

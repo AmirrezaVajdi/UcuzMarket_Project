@@ -22,6 +22,7 @@
             CurrentCount = currentCount;
             Description = description;
             OrderId = orderId;
+            OperationDate = DateTime.Now;
         }
     }
 }

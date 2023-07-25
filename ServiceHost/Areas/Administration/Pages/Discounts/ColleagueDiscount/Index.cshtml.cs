@@ -14,7 +14,7 @@ namespace ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscount
         [TempData]
         public string Message { get; set; }
         public ColleagueDiscountSearchModel SearchModel { get; set; }
-        public List<ColleagueDiscountViewModel> ColleagueDiscoutns
+        public List<ColleagueDiscountViewModel> Inventory
         { get; set; }
         public SelectList Products { get; set; }
         private IProductApplication _productApplication;
@@ -30,7 +30,7 @@ namespace ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscount
         public void OnGet(ColleagueDiscountSearchModel searchModel)
         {
             Products = new(_productApplication.GetProducts(), "Id", "Name");
-            ColleagueDiscoutns = _ColleagueDiscountApplication.Search(searchModel);
+            Inventory = _ColleagueDiscountApplication.Search(searchModel);
         }
 
         public IActionResult OnGetCreate()

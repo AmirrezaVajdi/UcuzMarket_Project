@@ -15,3 +15,5 @@ C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Domain\obj\Debug\net7.0\In
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Domain\obj\Debug\net7.0\refint\InventoryManagement.Domain.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Domain\obj\Debug\net7.0\InventoryManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Domain\obj\Debug\net7.0\ref\InventoryManagement.Domain.dll
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Domain\bin\Debug\net7.0\ShopManagement.Application.Contracts.dll
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Domain\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb

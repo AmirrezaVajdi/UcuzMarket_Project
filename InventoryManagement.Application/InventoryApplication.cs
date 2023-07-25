@@ -16,10 +16,10 @@ namespace InventoryManagement.Application
         public OperationResult Create(CreateInventory command)
         {
             OperationResult operation = new();
-            if (_inventoryRepository.Exsists(x => x.ProductId == command.ProudctId))
+            if (_inventoryRepository.Exsists(x => x.ProductId == command.ProductId))
                 return operation.Failed(ApplicationMessages.DuplicatedRecored);
 
-            Inventory inventory = new(command.ProudctId, command.UnitPrice);
+            Inventory inventory = new(command.ProductId, command.UnitPrice);
             _inventoryRepository.Create(inventory);
             _inventoryRepository.SaveChanges();
             return operation.Succeded();
@@ -33,13 +33,13 @@ namespace InventoryManagement.Application
         public OperationResult Edit(EditInventory command)
         {
             OperationResult operation = new();
-            var inventory = _inventoryRepository.Get(command.ProudctId);
+            var inventory = _inventoryRepository.Get(command.Id);
             if (inventory == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
-            if (_inventoryRepository.Exsists(x => x.ProductId == command.ProudctId && x.Id != command.Id))
+            if (_inventoryRepository.Exsists(x => x.ProductId == command.ProductId && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            inventory.Edit(command.ProudctId, command.UnitPrice);
+            inventory.Edit(command.ProductId, command.UnitPrice);
             _inventoryRepository.SaveChanges();
             return operation.Succeded();
         }
@@ -47,6 +47,11 @@ namespace InventoryManagement.Application
         public EditInventory GetDetails(long id)
         {
             return _inventoryRepository.GetDetails(id);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            return _inventoryRepository.GetOperationLog(inventoryId);
         }
 
         public OperationResult Increase(IncreaseInventory command)

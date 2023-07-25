@@ -677,7 +677,8 @@
       },
       "InventoryManagement.Application/1.0.0": {
         "dependencies": {
-          "InventoryManagement.Application.Contract": "1.0.0"
+          "InventoryManagement.Application.Contract": "1.0.0",
+          "InventoryManagement.Domain": "1.0.0"
         },
         "runtime": {
           "InventoryManagement.Application.dll": {}
@@ -685,7 +686,8 @@
       },
       "InventoryManagement.Application.Contract/1.0.0": {
         "dependencies": {
-          "01_Framework": "1.0.0"
+          "01_Framework": "1.0.0",
+          "ShopManagement.Application.Contracts": "1.0.0"
         },
         "runtime": {
           "InventoryManagement.Application.Contract.dll": {}
