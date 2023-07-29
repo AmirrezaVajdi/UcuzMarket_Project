@@ -24,5 +24,6 @@ namespace _01_Query.Query
                 Slug = x.Slug
             }).ToList();
         }
+                Products = MapProducts(x.Products)
     }
 }
