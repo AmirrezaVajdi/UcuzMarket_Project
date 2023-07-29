@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YFOCt0K6m42S+ZOxS0nk13hN7E0oRPI+T57zr1s8xck=",
+  "Hash": "KU2Zz7tGYCQOSUf4URSkYx5dC9up4zOfhXPlB8GR4DE=",
   "Source": "ServiceHost",
   "BasePath": "_content/ServiceHost",
   "Mode": "Default",
@@ -5455,6 +5455,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\IPhone14ProMax2.png"
+    },
+    {
+      "Identity": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\KalayDigital.png",
+      "SourceId": "ServiceHost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\",
+      "BasePath": "_content/ServiceHost",
+      "RelativePath": "Images/KalayDigital.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\KalayDigital.png"
     },
     {
       "Identity": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Images\\lavazem.png",
