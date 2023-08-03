@@ -1,4 +1,5 @@
-﻿using _01_Framework.Application;
+﻿
+using _01_Framework.Application;
 using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
 using DiscountManagement.Infrastructure.EfCore;
@@ -84,10 +85,11 @@ namespace _01_Query.Query
                 Id = x.Id,
                 Name = x.Name,
                 Category = x.Category.Name,
-                Picutre = x.Picture,
+                Picture = x.Picture,
                 PicutreTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
-                Slug = x.Slug
+                Slug = x.Slug ,
+                CategorySlug = x.Category.Slug
             }).ToList();
         }
 

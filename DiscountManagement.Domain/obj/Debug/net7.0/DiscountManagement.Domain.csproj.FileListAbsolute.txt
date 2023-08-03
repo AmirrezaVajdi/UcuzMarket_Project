@@ -3,8 +3,10 @@ C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\Dis
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\DiscountManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\01_Framework.dll
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\DiscountManagment.Application.Contract.dll
+C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\ShopManagement.Application.Contracts.dll
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\01_Framework.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\DiscountManagment.Application.Contract.pdb
+C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\DiscountManagement.Domain.csproj.AssemblyReference.cache
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\DiscountManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\DiscountManagement.Domain.AssemblyInfoInputs.cache
@@ -15,5 +17,3 @@ C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\Dis
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\refint\DiscountManagement.Domain.dll
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\DiscountManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\obj\Debug\net7.0\ref\DiscountManagement.Domain.dll
-C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\ShopManagement.Application.Contracts.dll
-C:\Users\lenovo\Desktop\LampShade\DiscountManagement.Domain\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb

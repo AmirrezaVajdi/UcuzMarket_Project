@@ -1,10 +1,6 @@
 ﻿using _01_Framework.Application;
-using System;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShopManagement.Application.Contracts.ProdcutCategory
 {
@@ -16,8 +12,9 @@ namespace ShopManagement.Application.Contracts.ProdcutCategory
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
-        public string Picture { get; set; }
+        [FileExtensionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+        [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string PictureAlt { get; set; }

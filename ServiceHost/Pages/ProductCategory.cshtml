@@ -79,7 +79,7 @@
                                                             </div>
                                                         }
                                                         <a href="single-product.html">
-                                                            <img src="@product.Picutre" class="img-fluid"
+                                                            <img src="@product.Picture" class="img-fluid"
                                                                  alt="@product.PictureAlt" title="@product.PicutreTitle">
                                                         </a>
 
@@ -88,7 +88,7 @@
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
                                                             <span class="category">
-                                                                <a href="shop-left-sidebar.html">Decor</a>
+                                                                <a asp-page="/ProductCategory" asp-route-id="@product.CategorySlug">@product.Category</a>
                                                             </span>
                                                             <span class="rating">
                                                                 <i class="ion-android-star active"></i>

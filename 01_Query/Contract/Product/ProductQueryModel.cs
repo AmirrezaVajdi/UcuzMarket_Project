@@ -4,7 +4,7 @@
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Picutre { get; set; }
+        public string Picture { get; set; }
         public string PicutreTitle { get; set; }
         public string PictureAlt { get; set; }
         public string Price { get; set; }

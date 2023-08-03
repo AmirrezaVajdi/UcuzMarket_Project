@@ -20,10 +20,7 @@ namespace _01_Query.Query
             _discountContext = discountContext;
         }
 
-        public ProductQueryModel GetDetails(string slug)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public List<ProductQueryModel> GetLatestArrivals()
         {
@@ -36,10 +33,11 @@ namespace _01_Query.Query
                 Id = x.Id,
                 Name = x.Name,
                 Category = x.Category.Name,
-                Picutre = x.Picture,
+                Picture = x.Picture,
                 PicutreTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
-                Slug = x.Slug
+                Slug = x.Slug,
+                CategorySlug = x.Category.Slug
             }).OrderByDescending(x => x.Id).Take(6).ToList();
 
 
@@ -70,6 +68,50 @@ namespace _01_Query.Query
             return products;
         }
 
+        public ProductQueryModel GetProductDetails(string slug)
+        {
+            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).ToList();
+
+            var product = _shopContext.Products.Include(x => x.Category).Select(x => new ProductQueryModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Category = x.Category.Name,
+                CategorySlug = x.Category.Slug,
+                Picture = x.Picture,
+                PicutreTitle = x.PictureTitle,
+                PictureAlt = x.PictureAlt,
+                Slug = x.Slug,
+                ShortDescription = x.ShortDescription,
+                
+            }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
+
+
+            var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+            if (productInventory != null)
+            {
+                var price = productInventory.UnitPrice;
+
+                product.Price = price.ToMoney();
+
+                var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                if (discount != null)
+                {
+                    var discountRate = discount.DiscountRate;
+                    product.DiscountRate = discountRate;
+                    product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                    product.HasDiscount = discountRate > 0;
+                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                }
+            }
+
+
+            return product;
+        }
+
         public List<ProductQueryModel> Search(string value)
         {
             var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
@@ -82,7 +124,7 @@ namespace _01_Query.Query
                 Name = x.Name,
                 Category = x.Category.Name,
                 CategorySlug = x.Category.Slug,
-                Picutre = x.Picture,
+                Picture = x.Picture,
                 PicutreTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
                 Slug = x.Slug,

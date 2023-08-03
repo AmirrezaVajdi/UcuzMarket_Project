@@ -2,7 +2,9 @@ C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Deb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\DiscountManagment.Application.Contract.dll
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\DiscountManagment.Application.Contract.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\01_Framework.dll
+C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\ShopManagement.Application.Contracts.dll
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\01_Framework.pdb
+C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Debug\net7.0\DiscountManagment.Application.Contract.csproj.AssemblyReference.cache
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Debug\net7.0\DiscountManagment.Application.Contract.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Debug\net7.0\DiscountManagment.Application.Contract.AssemblyInfoInputs.cache
@@ -13,5 +15,3 @@ C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Deb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Debug\net7.0\refint\DiscountManagment.Application.Contract.dll
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Debug\net7.0\DiscountManagment.Application.Contract.pdb
 C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\obj\Debug\net7.0\ref\DiscountManagment.Application.Contract.dll
-C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\ShopManagement.Application.Contracts.dll
-C:\Users\lenovo\Desktop\LampShade\DiscountManagment.Application.Contract\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb

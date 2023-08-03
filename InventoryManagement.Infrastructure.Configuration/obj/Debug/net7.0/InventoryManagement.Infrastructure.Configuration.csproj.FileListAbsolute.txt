@@ -1,8 +1,3 @@
-C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
-C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
-C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.AssemblyInfo.cs
-C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\bin\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.deps.json
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\bin\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\bin\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.pdb
@@ -22,6 +17,11 @@ C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configurati
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\bin\Debug\net7.0\ShopManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\bin\Debug\net7.0\ShopManagement.Infrasturecure.EFCore.pdb
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.csproj.AssemblyReference.cache
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.AssemblyInfoInputs.cache
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.AssemblyInfo.cs
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.csproj.CoreCompileInputs.cache
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.csproj.CopyComplete
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\InventoryManagement.Infrastructure.Configuration.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.Configuration\obj\Debug\net7.0\refint\InventoryManagement.Infrastructure.Configuration.dll

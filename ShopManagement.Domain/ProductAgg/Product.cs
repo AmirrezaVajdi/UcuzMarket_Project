@@ -19,7 +19,7 @@ namespace ShopManagement.Domain.ProductAgg
         public long CategoryId { get; private set; }
         public ProductCategory Category { get; private set; }
 
-        public List<ProductPicture> ProductPictures { get;private set; }
+        public List<ProductPicture> ProductPictures { get; private set; }
 
         public Product(string name, string code, string shortDescription, string description, string picture, string pictureAlt, string pictureTitle, string slug, string keyWords, string metaDescription, long categoryId)
         {
@@ -27,7 +27,10 @@ namespace ShopManagement.Domain.ProductAgg
             Code = code;
             ShortDescription = shortDescription;
             Description = description;
-            Picture = picture;
+
+            if (!string.IsNullOrWhiteSpace(picture))
+                Picture = picture;
+
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Slug = slug;
@@ -49,6 +52,6 @@ namespace ShopManagement.Domain.ProductAgg
             KeyWords = keyWords;
             MetaDescription = metaDescription;
             CategoryId = categoryId;
-        }   
+        }
     }
 }

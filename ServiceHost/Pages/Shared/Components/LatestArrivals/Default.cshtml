@@ -51,14 +51,16 @@
                                         </div>
 
 
-                                        <a href="single-product.html">
-                                            <img src="@item.Picutre" class="img-fluid" alt="@item.PictureAlt" title="@item.PicutreTitle" />
+                                        <a asp-page="Product" asp-route-id="@item.Slug">
+                                            <img src="~/ProductPictures/@item.Picture" class="img-fluid" alt="@item.PictureAlt" title="@item.PicutreTitle" />
 
                                         </a>
                                     </div>
                                     <div class="single-grid-product__content">
                                         <div class="single-grid-product__category-rating">
-                                            <span class="category"><a href="shop-left-sidebar.html">@item.Category</a></span>
+                                            <span class="category">
+                                                <a asp-page="/ProductCategory" asp-route-id="@item.CategorySlug">@item.Category</a>
+                                                </span>
                                             <span class="rating">
                                                 <i class="ion-android-star active"></i>
                                                 <i class="ion-android-star active"></i>
@@ -69,7 +71,7 @@
                                         </div>
 
                                         <h3 class="single-grid-product__title">
-                                            <a href="single-product.html">@item.Name</a>
+                                            <a asp-page="Product" asp-route-id="@item.Slug">@item.Name</a>
                                         </h3>
 
                                         <p class="single-grid-product__price">
@@ -81,7 +83,7 @@
                                             }
                                             else
                                             {
-                                                <span class="main-price discounted">@item.Price تومان</span>
+                                                <span class="main-price">@item.Price تومان</span>
 
                                             }
                                         </p>
