@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Picture" class="control-label">عکس</label>
-                    <input type="text" class="form-control" asp-for="Picture" accept="image/*">
+                    <input type="file" class="form-control" asp-for="Picture" accept="image/*">
                     <span asp-validation-for="Picture" class="error"></span>
                 </div>
             </div>
@@ -81,13 +81,13 @@
                 <div class="form-group">
                     <label asp-for="Link" class="control-label">لینک</label>
                     <input type="text" class="form-control" asp-for="Link">
-                   <span asp-validation-for="Link" class="error"></span>
+                    <span asp-validation-for="Link" class="error"></span>
                 </div>
             </div>
 
         </div>
         <input type="hidden" asp-for="Id" value="@Model.Id" />
-    </div> 
+    </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
         <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>

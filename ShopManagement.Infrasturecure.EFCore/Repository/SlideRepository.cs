@@ -20,7 +20,6 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
             {
                 Id = x.Id,
                 Title = x.Title,
-                Picture = x.Picture,
                 PictureTitle = x.PictureTitle,
                 BtnText = x.BtnText,
                 Heading = x.Heading,
