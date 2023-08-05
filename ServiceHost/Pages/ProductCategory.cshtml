@@ -78,9 +78,9 @@
                                                                 <span class="new">New</span>
                                                             </div>
                                                         }
-                                                        <a href="single-product.html">
-                                                            <img src="@product.Picture" class="img-fluid"
-                                                                 alt="@product.PictureAlt" title="@product.PicutreTitle">
+                                                        <a asp-page="./Product" asp-route-id="@product.Slug">
+                                                            <img src="~/Productpictures/@product.Picture" class="img-fluid"
+                                                                 alt="@product.PictureAlt" title="@product.PictureTitle">
                                                         </a>
 
 

@@ -8366,4 +8366,7 @@ from {
 }
 
 }
+.rtlDiscounted {
+	direction: rtl;
+}
 

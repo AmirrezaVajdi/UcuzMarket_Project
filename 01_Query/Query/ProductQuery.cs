@@ -4,6 +4,7 @@ using _01_Query.Contract.ProductCategory;
 using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrasturecure.EFCore;
 
 namespace _01_Query.Query
@@ -24,9 +25,9 @@ namespace _01_Query.Query
 
         public List<ProductQueryModel> GetLatestArrivals()
         {
-            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).ToList();
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).AsNoTracking().ToList();
 
             var products = _shopContext.Products.Include(x => x.Category).Select(x => new ProductQueryModel
             {
@@ -34,11 +35,11 @@ namespace _01_Query.Query
                 Name = x.Name,
                 Category = x.Category.Name,
                 Picture = x.Picture,
-                PicutreTitle = x.PictureTitle,
+                PictureTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
                 Slug = x.Slug,
                 CategorySlug = x.Category.Slug
-            }).OrderByDescending(x => x.Id).Take(6).ToList();
+            }).OrderByDescending(x => x.Id).Take(6).AsNoTracking().ToList();
 
 
 
@@ -70,28 +71,45 @@ namespace _01_Query.Query
 
         public ProductQueryModel GetProductDetails(string slug)
         {
-            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+            var inventory = _inventoryContext.Inventory
+                .Select(x => new { x.ProductId, x.UnitPrice, x.InStock })
+                .AsNoTracking()
+                .ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).ToList();
+            var discounts = _discountContext.CustomerDiscounts
+                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).
+                AsNoTracking()
+                .ToList();
 
-            var product = _shopContext.Products.Include(x => x.Category).Select(x => new ProductQueryModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Category = x.Category.Name,
-                CategorySlug = x.Category.Slug,
-                Picture = x.Picture,
-                PicutreTitle = x.PictureTitle,
-                PictureAlt = x.PictureAlt,
-                Slug = x.Slug,
-                ShortDescription = x.ShortDescription,
-                
-            }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
+            var product = _shopContext.Products.
+                Include(x => x.Category).
+                Include(x => x.ProductPictures).
+                Select(x => new ProductQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Category = x.Category.Name,
+                    CategorySlug = x.Category.Slug,
+                    Picture = x.Picture,
+                    PictureTitle = x.PictureTitle,
+                    PictureAlt = x.PictureAlt,
+                    Slug = x.Slug,
+                    ShortDescription = x.ShortDescription,
+                    Code = x.Code,
+                    Description = x.Description,
+                    Keywords = x.KeyWords,
+                    MetaDescription = x.MetaDescription,
+                    Pictures = MapProductPictures(x.ProductPictures)
+                }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
+            if (product == null)
+                return new ProductQueryModel();
 
             var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
             if (productInventory != null)
             {
+                product.IsInStock = productInventory.InStock;
                 var price = productInventory.UnitPrice;
 
                 product.Price = price.ToMoney();
@@ -112,11 +130,23 @@ namespace _01_Query.Query
             return product;
         }
 
+        private static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> productPictures)
+        {
+            return productPictures.Select(x => new ProductPictureQueryModel
+            {
+                IsRemoved = x.IsRemoved , 
+                Picture = x.Picture , 
+                PictureTitle = x.PictureTitle , 
+                PicutreAlt = x.PicutreAlt , 
+                ProductId = x.ProductId
+            }).Where(x => !x.IsRemoved).ToList();
+        }
+
         public List<ProductQueryModel> Search(string value)
         {
-            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).ToList();
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).AsNoTracking().ToList();
 
             var query = _shopContext.Products.Include(x => x.Category).Select(x => new ProductQueryModel
             {
@@ -125,7 +155,7 @@ namespace _01_Query.Query
                 Category = x.Category.Name,
                 CategorySlug = x.Category.Slug,
                 Picture = x.Picture,
-                PicutreTitle = x.PictureTitle,
+                PictureTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
                 Slug = x.Slug,
                 ShortDescription = x.ShortDescription

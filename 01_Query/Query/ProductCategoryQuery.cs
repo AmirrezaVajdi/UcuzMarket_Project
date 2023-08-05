@@ -1,5 +1,4 @@
-﻿
-using _01_Framework.Application;
+﻿using _01_Framework.Application;
 using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
 using DiscountManagement.Infrastructure.EfCore;
@@ -32,14 +31,14 @@ namespace _01_Query.Query
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 Slug = x.Slug
-            }).ToList();
+            }).AsNoTracking().ToList();
         }
 
         public List<ProdcutCategoryQueryModel> GetProductCategoriesWithProducts()
         {
-            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).ToList();
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).AsNoTracking().ToList();
 
             var categories = _shopContext.ProductCategories.Include(x => x.Products).ThenInclude(x => x.Category).Select(x => new ProdcutCategoryQueryModel
             {
@@ -50,7 +49,7 @@ namespace _01_Query.Query
                 PictureTitle = x.PictureTitle,
                 Slug = x.Slug,
                 Products = MapProducts(x.Products)
-            }).ToList();
+            }).AsNoTracking().ToList();
 
             foreach (var category in categories)
             {
@@ -86,18 +85,18 @@ namespace _01_Query.Query
                 Name = x.Name,
                 Category = x.Category.Name,
                 Picture = x.Picture,
-                PicutreTitle = x.PictureTitle,
+                PictureTitle = x.PictureTitle,
                 PictureAlt = x.PictureAlt,
-                Slug = x.Slug ,
+                Slug = x.Slug,
                 CategorySlug = x.Category.Slug
             }).ToList();
         }
 
         public ProdcutCategoryQueryModel GetProductCategoryWithProductsBy(string slug)
         {
-            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).ToList();
+            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).ToList();
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).AsNoTracking().ToList();
 
             var category = _shopContext.ProductCategories.Include(x => x.Products).ThenInclude(x => x.Category).Select(x => new ProdcutCategoryQueryModel
             {
@@ -111,7 +110,7 @@ namespace _01_Query.Query
                 MetaDescription = x.MetaDescription,
                 KeyWords = x.KeyWords,
                 Products = MapProducts(x.Products)
-            }).FirstOrDefault(x => x.Slug == slug);
+            }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
 
             foreach (var product in category.Products)

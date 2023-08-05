@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-wrapper breadcrumb-bg">
                     <div class="breadcrumb-content">
-                        <h2 class="breadcrumb-content__title">@Model.Product.Name</h2>
+                        <h1 class="breadcrumb-content__title">@Model.Product.Name</h1>
                         <ul class="breadcrumb-content__page-map">
                             <li>
                                 <a asp-page="./Index">صفحه اصلی</a>
@@ -58,15 +58,18 @@
             {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
         ]'>
                                                     <div class="single-image">
-                                                        <img src="@Model.Product.Picture" class="img-fluid"
-                                                             alt="@Model.Product.PictureAlt" title="">
+                                                        <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                             alt="@Model.Product.PictureAlt" title="@Model.Product.PictureTitle">
                                                     </div>
 
-                                                    @*foreach*@
-                                                    <div class="single-image">
-                                                        <img src="assets/img/products/big1-2.jpg" class="img-fluid"
-                                                             alt="">
-                                                    </div>
+                                                    @foreach(var picture in Model.Product.Pictures)
+                                                    {
+                                                        <div class="single-image">
+                                                            <img src="~/ProductPictures/@picture.Picture" alt="@picture.PicutreAlt" title="@picture.PictureTitle" class="img-fluid"
+                                                                 alt="">
+                                                        </div>
+                                                    }
+                                                   
                                                 </div>
                                             </div>
 
@@ -93,29 +96,26 @@
         {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
     ]'>
                                                 <div class="single-image">
-                                                    <img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="">
+                                                    <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                         alt="@Model.Product.PictureAlt" title="@Model.Product.PictureTitle">
                                                 </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-2.jpg" class="img-fluid" alt="">
-                                                </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-3.jpg" class="img-fluid" alt="">
-                                                </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-4.jpg" class="img-fluid" alt="">
-                                                </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-5.jpg" class="img-fluid" alt="">
-                                                </div>
+
+                                                @foreach (var picture in Model.Product.Pictures)
+                                                {
+                                                    <div class="single-image">
+                                                        <img src="~/ProductPictures/@picture.Picture" alt="@picture.PicutreAlt" title="@picture.PictureTitle" class="img-fluid"
+                                                             alt="">
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="single-product-content-description">
+                                        <div class="single-product-content-description rtlDiscounted">
                                             <p class="single-info">
-                                                Brands <a href="shop-left-sidebar.html">Dolor</a>
+                                                <a asp-page="ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
                                             </p>
-                                            <h4 class="product-title">Lorem ipsum dolor set amet decor</h4>
+                                            <h4 class="product-title">@Model.Product.Name</h4>
                                             <div class="product-rating">
                                                 <span class="rating">
                                                     <i class="ion-android-star active"></i>
@@ -126,46 +126,59 @@
                                                 </span>
 
                                                 <span class="review-count">
-                                                    <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a>
+                                                    <a href="#">(2 reviews)</a> | <a href="#">نظر دهید</a>
                                                 </span>
                                             </div>
 
                                             <p class="single-grid-product__price">
-                                                <span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span>
+                                                @if (Model.Product.HasDiscount)
+                                                {
+                                                    <span class="discounted-price">@Model.Product.Price تومان</span>
+                                                    <span class="main-price discounted">@Model.Product.PriceWithDiscount تومان</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="main-price">@Model.Product.Price تومان</span>
+                                                }
+
                                             </p>
 
-                                            <p class="single-info">Product Code: <span class="value">CODE123</span> </p>
-                                            <p class="single-info">Reward Points: <span class="value">200</span> </p>
+                                            <p class="single-info">کد محصول: <span class="value">@Model.Product.Code</span> </p>
                                             <p class="single-info">
-                                                Availability: <span class="value">In Stock</span>
+                                                @if (Model.Product.IsInStock)
+                                                {
+                                                    <span class="text-success">موجود در انبار</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-dagner">ناموجود</span>
+                                                }
                                             </p>
 
                                             <p class="product-description">
-                                                Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit. At, delectus. Voluptates omnis distinctio vitae quo
-                                                quia veniam minima dolorem hic necessitatibus pariatur, quae fuga
-                                                similique optio laboriosam assumenda voluptatum aperiam.
+                                                @Model.Product.ShortDescription
                                             </p>
-
-                                            <div class="product-countdown" data-countdown="2020/06/01"></div>
+                                            @if (Model.Product.HasDiscount)
+                                            {
+                                                <div class="product-countdown" data-countdown="@Model.Product.DiscountExpireDate"></div>
+                                            }
 
                                             <div class="product-actions">
                                                 <div class="quantity-selection">
-                                                    <label>Qty</label>
+                                                    <label>تعداد</label>
                                                     <input type="number" value="1" min="1">
                                                 </div>
 
                                                 <div class="product-buttons">
                                                     <a class="cart-btn" href="#">
-                                                        <i class="ion-bag"></i> ADD TO
-                                                        CART
+                                                        <i class="ion-bag"></i>افزودن به سبد خرید
                                                     </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="social-share-buttons mt-20">
-                                                <h5>share this product</h5>
+                                                <h5>این محصول را به اشتراک بگذارید</h5>
                                                 <ul>
                                                     <li>
                                                         <a class="twitter" href="#">
@@ -190,13 +203,11 @@
                                                 </ul>
                                             </div>
                                             <p class="single-info mb-0">
-                                                Tags: <a href="shop-left-sidebar.html">Dolor</a>
+                                                @Model.Product.Keywords
+                                                <a href="shop-left-sidebar.html">Dolor</a>
                                                 , <a href="shop-left-sidebar.html">Ipsum</a>, <a href="shop-left-sidebar.html">Lorem</a>
                                             </p>
-
-
                                         </div>
-                                        <!--=======  End of single product content description  =======-->
                                     </div>
                                 </div>
                             </div>
@@ -209,45 +220,21 @@
                                                      role="tablist">
                                                     <a class="nav-item nav-link active" id="description-tab"
                                                        data-toggle="tab" href="#product-description" role="tab"
-                                                       aria-selected="true">Description</a>
+                                                       aria-selected="true">توضیحات</a>
                                                     <a class="nav-item nav-link" id="review-tab" data-toggle="tab"
-                                                       href="#review" role="tab" aria-selected="false">Reviews (1)</a>
+                                                       href="#review" role="tab" aria-selected="false">نظرات (1)</a>
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
                                                 <div class="tab-pane fade show active" id="product-description"
                                                      role="tabpanel" aria-labelledby="description-tab">
-                                                    <!--=======  product description  =======-->
 
                                                     <div class="product-description">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            fringilla augue nec est tristique auctor. Donec non est at
-                                                            libero vulputate rutrum. Morbi ornare lectus quis justo
-                                                            gravida semper. Nulla tellus mi, vulputate adipiscing cursus
-                                                            eu, suscipit id nulla.
-                                                        </p>
-
-                                                        <p>
-                                                            Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus
-                                                            feugiat sem, quis fermentum turpis eros eget velit. Donec ac
-                                                            tempus ante. Fusce ultricies massa massa. Fusce aliquam,
-                                                            purus eget sagittis vulputate, sapien libero hendrerit est,
-                                                            sed commodo augue nisi non neque. Lorem ipsum dolor sit
-                                                            amet, consectetur adipiscing elit. Sed tempor, lorem et
-                                                            placerat vestibulum, metus nisi posuere nisl, in accumsan
-                                                            elit odio quis mi. Cras neque metus, consequat et blandit
-                                                            et, luctus a nunc. Etiam gravida vehicula tellus, in
-                                                            imperdiet ligula euismod eget.
-                                                        </p>
+                                                        @Model.Product.Description
                                                     </div>
-
-                                                    <!--=======  End of product description  =======-->
                                                 </div>
                                                 <div class="tab-pane fade" id="review" role="tabpanel"
                                                      aria-labelledby="review-tab">
-                                                    <!--=======  review content  =======-->
-
                                                     <div class="product-rating-wrap">
                                                         <div class="pro-avg-rating">
                                                             <h4>4.5 <span>(Overall)</span></h4>
@@ -396,13 +383,9 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
-                                                    <!--=======  End of review content  =======-->
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!--=======  End of product description review container  =======-->
                                     </div>
                                 </div>
                             </div>
