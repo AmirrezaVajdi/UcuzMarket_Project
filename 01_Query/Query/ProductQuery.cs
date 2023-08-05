@@ -4,6 +4,7 @@ using _01_Query.Contract.ProductCategory;
 using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.CommentAgg;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrasturecure.EFCore;
 
@@ -82,10 +83,11 @@ namespace _01_Query.Query
                 AsNoTracking()
                 .ToList();
 
-            var product = _shopContext.Products.
-                Include(x => x.Category).
-                Include(x => x.ProductPictures).
-                Select(x => new ProductQueryModel
+            var product = _shopContext.Products
+                .Include(x => x.Category)
+                .Include(x => x.ProductPictures)
+                .Include(x => x.Comments)
+                .Select(x => new ProductQueryModel
                 {
                     Id = x.Id,
                     Name = x.Name,
@@ -100,7 +102,8 @@ namespace _01_Query.Query
                     Description = x.Description,
                     Keywords = x.KeyWords,
                     MetaDescription = x.MetaDescription,
-                    Pictures = MapProductPictures(x.ProductPictures)
+                    Pictures = MapProductPictures(x.ProductPictures),
+                    Comments = MapComments(x.Comments)
                 }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
             if (product == null)
@@ -130,14 +133,29 @@ namespace _01_Query.Query
             return product;
         }
 
+        private static List<CommentQueryModel> MapComments(List<Comment> comments)
+        {
+            return comments
+                .Where(x => x.IsConfirmed)
+                .Where(x => !x.IsCanceled)
+                .Select(x => new CommentQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Message = x.Message
+                })
+                .OrderByDescending(x => x.Id)
+                .ToList();
+        }
+
         private static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> productPictures)
         {
             return productPictures.Select(x => new ProductPictureQueryModel
             {
-                IsRemoved = x.IsRemoved , 
-                Picture = x.Picture , 
-                PictureTitle = x.PictureTitle , 
-                PicutreAlt = x.PicutreAlt , 
+                IsRemoved = x.IsRemoved,
+                Picture = x.Picture,
+                PictureTitle = x.PictureTitle,
+                PicutreAlt = x.PicutreAlt,
                 ProductId = x.ProductId
             }).Where(x => !x.IsRemoved).ToList();
         }
