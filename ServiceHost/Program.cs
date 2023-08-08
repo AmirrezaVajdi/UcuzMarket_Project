@@ -1,4 +1,5 @@
 using _01_Framework.Application;
+using BlogManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using ServiceHost;
@@ -12,6 +13,7 @@ var connectionString = builder.Configuration.GetConnectionString("LampShadeDb");
 ShopContextBootstrapper.Configure(builder.Services, connectionString);
 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
 InventoryManagementBootstrapper.Configure(builder.Services, connectionString);
+BlogManagementBootstrapper.Configure(builder.Services, connectionString);
 
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 

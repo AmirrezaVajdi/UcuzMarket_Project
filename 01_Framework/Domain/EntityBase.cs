@@ -1,5 +1,4 @@
-﻿
-namespace _01_Framework.Domain
+﻿namespace _01_Framework.Domain
 {
     public class EntityBase
     {
@@ -9,6 +8,5 @@ namespace _01_Framework.Domain
         {
             CreationDate = DateTime.Now;
         }
-
     }
 }
