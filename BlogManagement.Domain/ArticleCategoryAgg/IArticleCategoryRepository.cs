@@ -5,8 +5,10 @@ namespace BlogManagement.Domain.ArticleCategoryAgg
 {
     public interface IArticleCategoryRepository : IRepository<long, ArticleCategory>
     {
-        EditArticleCategory GetDetails(long id);
         string GetSlugBy(long id);
+        EditArticleCategory GetDetails(long id);
+        List<ArticleCategoryViewModel> GetArticleCategories();
+
         List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel);
     }
 }
