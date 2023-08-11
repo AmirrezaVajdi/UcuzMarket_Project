@@ -31,7 +31,6 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 Keywords = x.Keywords,
                 MetaDescription = x.MetaDescription,
                 CategoryId = x.CategoryId
-
             }).FirstOrDefault(x => x.Id == id);
         }
 
@@ -50,16 +49,16 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                     Title = x.Title,
                     Category = x.Category.Name,
                     PublishDate = x.PublishDate.ToFarsi(),
-                    ShortDescription = x.ShortDescription,
+                    ShortDescription = x.ShortDescription.Substring(0 ,Math.Min(x.ShortDescription.Length , 50)) + " ...",
                 });
-
+            
             if (!string.IsNullOrWhiteSpace(searchModel.Title))
                 query = query.Where(x => x.Title == searchModel.Title);
 
             if (searchModel.CategoryId > 0)
                 query = query.Where(x => x.CategoryId == searchModel.CategoryId);
 
-            return query.OrderByDescending(x => x.Id).ToList();
+            return query.OrderByDescending(x => x.Id).ToList(); 
         }
     }
 }

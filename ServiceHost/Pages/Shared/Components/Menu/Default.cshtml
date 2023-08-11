@@ -1,4 +1,9 @@
-﻿
+﻿@using _01_Query;
+@model MenuModel
+@{
+
+}
+
 <div class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -17,32 +22,26 @@
                                     <a asp-page="/Index">صفحه اصلی</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="blog-left-sidebar.html">محصولات</a>
+                                    <a>محصولات</a>
                                     <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-right-sidebar.html">Blog Right Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-post-left-sidebar.html">Blog Post Left Sidebar</a>
-                                        </li>
+                                    @foreach (var category in Model.ProductCategories)
+                                    {
+                                            <li>
+                                                <a asp-page="/ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                            </li>
+                                    }
                                     </ul>
-                                </li
+                                </li>
 
-                                   <li class="menu-item-has-children">
-                                    <a href="blog-left-sidebar.html">وبلاگ</a>
+                                <li class="menu-item-has-children">
+                                    <a>مقالات</a>
                                     <ul class="sub-menu">
-                                        <li>
-                                            <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-right-sidebar.html">Blog Right Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-post-left-sidebar.html">Blog Post Left Sidebar</a>
-                                        </li>
+                                        @foreach (var category in Model.ArticleCategories)
+                                        {
+                                            <li>
+                                                <a asp-page="/ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
 
@@ -169,7 +168,7 @@
                                                     <a href="login-register.html">ورود</a>
                                                 </li>
                                             </ul>
-                                        </div>                                   
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -215,93 +214,93 @@
 </div>
 
 
-                                                   <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
-        <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
-            <i class="ion-android-close"></i>
-        </a>
+<div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
+    <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
+        <i class="ion-android-close"></i>
+    </a>
 
-        <div class="offcanvas-wrapper">
+    <div class="offcanvas-wrapper">
 
-            <div class="offcanvas-inner-content">
-                <div class="offcanvas-mobile-search-area">
-                    <form action="#">
-                        <input type="search" placeholder="جست و جو ...">
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
+        <div class="offcanvas-inner-content">
+            <div class="offcanvas-mobile-search-area">
+                <form action="#">
+                    <input type="search" placeholder="جست و جو ...">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <nav class="offcanvas-navigation">
+                <ul>
+                    <li class="">
+                        <a asp-page="/Index">خانه</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">محصولات</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="offcanvas-settings">
                 <nav class="offcanvas-navigation">
                     <ul>
-                        <li class="">
-                            <a asp-page="/Index">خانه</a>
-                        </li>
                         <li class="menu-item-has-children">
-                            <a href="#">محصولات</a>
+                            <a href="#">پروفایل من</a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
+                                    <a href="login-register.html">ثبت نام</a>
+                                </li>
+                                <li>
+                                    <a href="login-register.html">ورود</a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
+            </div>
 
-                <div class="offcanvas-settings">
-                    <nav class="offcanvas-navigation">
-                        <ul>
-                            <li class="menu-item-has-children">
-                                <a href="#">پروفایل من</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="login-register.html">ثبت نام</a>
-                                    </li>
-                                    <li>
-                                        <a href="login-register.html">ورود</a>
-                                    </li>
-                                </ul>
+            <div class="offcanvas-widget-area">
+                <div class="off-canvas-contact-widget">
+                    <div class="header-contact-info">
+                        <ul class="header-contact-info__list">
+                            <li>
+                                <i class="ion-android-phone-portrait"></i> <a href="tel://12452456012">
+                                    (1245) 2456
+                                    012
+                                </a>
+                            </li>
+                            <li>
+                                <i class="ion-android-mail"></i> <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
                             </li>
                         </ul>
-                    </nav>
-                </div>
-
-                <div class="offcanvas-widget-area">
-                    <div class="off-canvas-contact-widget">
-                        <div class="header-contact-info">
-                            <ul class="header-contact-info__list">
-                                <li>
-                                    <i class="ion-android-phone-portrait"></i> <a href="tel://12452456012">
-                                        (1245) 2456
-                                        012
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="ion-android-mail"></i> <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                    <!--Off Canvas Widget Social Start-->
-                    <div class="off-canvas-widget-social">
-                        <a href="#" title="Facebook">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="#" title="Twitter">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="#" title="LinkedIn">
-                            <i class="fa fa-linkedin"></i>
-                        </a>
-                        <a href="#" title="Youtube">
-                            <i class="fa fa-youtube-play"></i>
-                        </a>
-                        <a href="#" title="Vimeo">
-                            <i class="fa fa-vimeo-square"></i>
-                        </a>
-                    </div>
-                    <!--Off Canvas Widget Social End-->
                 </div>
+                <!--Off Canvas Widget Social Start-->
+                <div class="off-canvas-widget-social">
+                    <a href="#" title="Facebook">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" title="LinkedIn">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                    <a href="#" title="Youtube">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                    <a href="#" title="Vimeo">
+                        <i class="fa fa-vimeo-square"></i>
+                    </a>
+                </div>
+                <!--Off Canvas Widget Social End-->
             </div>
         </div>
-
     </div>
+
+</div>
