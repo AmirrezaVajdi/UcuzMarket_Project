@@ -1,5 +1,5 @@
 ﻿using _01_Query.Contract.Slide;
-using ShopManagement.Infrasturecure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_Query.Query
 {

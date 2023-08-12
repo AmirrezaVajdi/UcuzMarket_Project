@@ -37,3 +37,9 @@ C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\BlogManagement.Infra
 C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\BlogManagement.Infrastructure.EFCore.pdb
 C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\BlogManagement.Application.Contracts.pdb
 C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\BlogManagement.Domain.pdb
+C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\CommandManagement.Application.Contract.dll
+C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\CommandManagement.Domain.dll
+C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\CommentManagement.Infrastructure.EFCore.dll
+C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\CommentManagement.Infrastructure.EFCore.pdb
+C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\CommandManagement.Application.Contract.pdb
+C:\Users\lenovo\Desktop\LampShade\01_Query\bin\Debug\net7.0\CommandManagement.Domain.pdb

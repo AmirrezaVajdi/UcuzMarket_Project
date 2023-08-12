@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShopManagement.Domain.ProductPictureAgg;
 
-namespace ShopManagement.Infrasturecure.EFCore.Mapping
+namespace ShopManagement.Infrastructure.EFCore.Mapping
 {
     public class ProductPictureMapping : IEntityTypeConfiguration<ProductPicture>
     {

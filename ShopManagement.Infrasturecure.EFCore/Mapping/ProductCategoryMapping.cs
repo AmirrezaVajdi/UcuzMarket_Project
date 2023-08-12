@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopManagement.Infrasturecure.EFCore.Mapping
+namespace ShopManagement.Infrastructure.EFCore.Mapping
 {
     public class ProductCategoryMapping : IEntityTypeConfiguration<ProductCategory>
     {

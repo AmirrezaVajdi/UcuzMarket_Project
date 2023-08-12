@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ShopManagement.Infrasturecure.EFCore.Migrations
+namespace ShopManagement.Infrastructure.EFCore.Migrations
 {
     /// <inheritdoc />
     public partial class Comment : Migration

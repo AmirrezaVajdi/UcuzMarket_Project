@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShopManagement.Domain.ProductAgg;
 
-namespace ShopManagement.Infrasturecure.EFCore.Mapping
+namespace ShopManagement.Infrastructure.EFCore.Mapping
 {
     public class ProductMapping : IEntityTypeConfiguration<Product>
     {
@@ -29,7 +29,6 @@ namespace ShopManagement.Infrasturecure.EFCore.Mapping
 
             builder.HasMany(x => x.ProductPictures).WithOne(x => x.Product).HasForeignKey(x => x.ProductId);
 
-            builder.HasMany(x => x.Comments).WithOne(x => x.Product).HasForeignKey(x => x.ProductId);
         }
     }
 }

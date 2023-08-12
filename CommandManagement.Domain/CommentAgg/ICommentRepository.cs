@@ -1,7 +1,7 @@
 ﻿using _01_Framework.Domain;
-using ShopManagement.Application.Contracts.Comment;
+using CommandManagement.Application.Contract.Comment;
 
-namespace ShopManagement.Domain.CommentAgg
+namespace CommandManagement.Domain.CommentAgg
 {
     public interface ICommentRepository : IRepository<long, Comment>
     {

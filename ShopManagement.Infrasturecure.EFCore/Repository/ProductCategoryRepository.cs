@@ -5,7 +5,7 @@ using ShopManagement.Application.Contracts.ProdcutCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 using System.Linq.Expressions;
 
-namespace ShopManagement.Infrasturecure.EFCore.Repository
+namespace ShopManagement.Infrastructure.EFCore.Repository
 {
     public class ProductCategoryRepository : RepositoryBase<long, ProductCategory>, IProductCategoryRepository
     {

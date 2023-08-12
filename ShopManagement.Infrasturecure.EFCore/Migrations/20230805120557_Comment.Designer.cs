@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopManagement.Infrasturecure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 #nullable disable
 
-namespace ShopManagement.Infrasturecure.EFCore.Migrations
+namespace ShopManagement.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
     [Migration("20230805120557_Comment")]

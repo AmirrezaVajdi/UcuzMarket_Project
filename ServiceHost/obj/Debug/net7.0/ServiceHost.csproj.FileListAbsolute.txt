@@ -88,7 +88,6 @@ C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.Gener
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.AssemblyInfoInputs.cache
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.AssemblyInfo.cs
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.csproj.CoreCompileInputs.cache
-C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.RazorAssemblyInfo.cache
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.RazorAssemblyInfo.cs
@@ -119,3 +118,14 @@ C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\BlogManagement.In
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\BlogManagement.Application.pdb
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\BlogManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\BlogManagement.Infrastructure.EFCore.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommandManagement.Application.Contract.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommandManagement.Application.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommandManagement.Domain.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommentManagement.Infrastructure.Configuration.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommentManagement.Infrastructure.EFCore.dll
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommandManagement.Application.Contract.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommentManagement.Infrastructure.Configuration.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommandManagement.Application.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommandManagement.Domain.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\bin\Debug\net7.0\CommentManagement.Infrastructure.EFCore.pdb
+C:\Users\lenovo\Desktop\LampShade\ServiceHost\obj\Debug\net7.0\ServiceHost.MvcApplicationPartsAssemblyInfo.cs

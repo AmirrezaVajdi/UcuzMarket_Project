@@ -1,12 +1,12 @@
 ﻿using _01_Framework.Application;
 using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
+using CommentManagement.Infrastructure.EFCore;
 using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
-using ShopManagement.Domain.CommentAgg;
 using ShopManagement.Domain.ProductPictureAgg;
-using ShopManagement.Infrasturecure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_Query.Query
 {
@@ -15,11 +15,13 @@ namespace _01_Query.Query
         private readonly ShopContext _shopContext;
         private readonly InventoryContext _inventoryContext;
         private readonly DiscountContext _discountContext;
-        public ProductQuery(ShopContext shopContext, InventoryContext inventoryContext, DiscountContext discountContext)
+        private readonly CommentContext _commentContext;
+        public ProductQuery(ShopContext shopContext, InventoryContext inventoryContext, DiscountContext discountContext, CommentContext commentContext)
         {
             _shopContext = shopContext;
             _inventoryContext = inventoryContext;
             _discountContext = discountContext;
+            _commentContext = commentContext;
         }
 
 
@@ -83,10 +85,10 @@ namespace _01_Query.Query
                 AsNoTracking()
                 .ToList();
 
+
             var product = _shopContext.Products
                 .Include(x => x.Category)
                 .Include(x => x.ProductPictures)
-                .Include(x => x.Comments)
                 .Select(x => new ProductQueryModel
                 {
                     Id = x.Id,
@@ -103,7 +105,6 @@ namespace _01_Query.Query
                     Keywords = x.KeyWords,
                     MetaDescription = x.MetaDescription,
                     Pictures = MapProductPictures(x.ProductPictures),
-                    Comments = MapComments(x.Comments)
                 }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
             if (product == null)
@@ -129,13 +130,9 @@ namespace _01_Query.Query
                 }
             }
 
-
-            return product;
-        }
-
-        private static List<CommentQueryModel> MapComments(List<Comment> comments)
-        {
-            return comments
+            product.Comments = _commentContext.Comments
+                .Where(x => x.Type == CommentType.Product)
+                .Where(x => x.OwnerRecordId == product.Id)
                 .Where(x => x.IsConfirmed)
                 .Where(x => !x.IsCanceled)
                 .Select(x => new CommentQueryModel
@@ -146,6 +143,9 @@ namespace _01_Query.Query
                 })
                 .OrderByDescending(x => x.Id)
                 .ToList();
+
+
+            return product;
         }
 
         private static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> productPictures)

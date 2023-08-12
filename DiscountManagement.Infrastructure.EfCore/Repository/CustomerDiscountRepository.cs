@@ -2,7 +2,7 @@
 using _01_Framework.Infrastructure;
 using DiscountManagement.Domain.CustomerDiscountAgg;
 using DiscountManagment.Application.Contract.CustomerDiscount;
-using ShopManagement.Infrasturecure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 using System.Linq.Expressions;
 
 namespace DiscountManagement.Infrastructure.EfCore.Repository

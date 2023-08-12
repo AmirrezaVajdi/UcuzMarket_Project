@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShopManagement.Domain.SlideAgg;
 
-namespace ShopManagement.Infrasturecure.EFCore.Mapping
+namespace ShopManagement.Infrastructure.EFCore.Mapping
 {
     public class SlideMapping : IEntityTypeConfiguration<Slide>
     {

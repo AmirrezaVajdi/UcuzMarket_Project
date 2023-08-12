@@ -1,3 +1,4 @@
+using CommandManagement.Application.Contract.Comment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -6,7 +7,7 @@ using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductPicture;
 using ShopManagement.Application.Contracts.Slide;
 
-namespace ServiceHost.Areas.Administration.Pages.Shop.Comments
+namespace ServiceHost.Areas.Administration.Pages.Comments
 {
     public class IndexModel : PageModel
     {

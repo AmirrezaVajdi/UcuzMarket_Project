@@ -1274,6 +1274,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "BlogManagement.Infrastructure.EFCore": "1.0.0",
+          "CommentManagement.Infrastructure.EFCore": "1.0.0",
           "DiscountManagement.Infrastructure.EfCore": "1.0.0",
           "InventoryManagement.Infrastructure.EFCore": "1.0.0",
           "ShopManagement.Infrasturecure.EFCore": "1.0.0"
@@ -1354,6 +1355,79 @@
         },
         "runtime": {
           "bin/placeholder/BlogManagement.Infrastructure.EFCore.dll": {}
+        }
+      },
+      "CommandManagement.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "01_Framework": "1.0.0",
+          "CommandManagement.Application.Contract": "1.0.0",
+          "CommandManagement.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CommandManagement.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommandManagement.Application.dll": {}
+        }
+      },
+      "CommandManagement.Application.Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "01_Framework": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CommandManagement.Application.Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommandManagement.Application.Contract.dll": {}
+        }
+      },
+      "CommandManagement.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "01_Framework": "1.0.0",
+          "CommandManagement.Application.Contract": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CommandManagement.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommandManagement.Domain.dll": {}
+        }
+      },
+      "CommentManagement.Infrastructure.Configuration/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CommandManagement.Application": "1.0.0",
+          "CommandManagement.Domain": "1.0.0",
+          "CommentManagement.Infrastructure.EFCore": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CommentManagement.Infrastructure.Configuration.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommentManagement.Infrastructure.Configuration.dll": {}
+        }
+      },
+      "CommentManagement.Infrastructure.EFCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CommandManagement.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.8",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.8"
+        },
+        "compile": {
+          "bin/placeholder/CommentManagement.Infrastructure.EFCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommentManagement.Infrastructure.EFCore.dll": {}
         }
       },
       "DiscountManagement.Application/1.0.0": {
@@ -4013,6 +4087,31 @@
       "path": "../BlogManagement.Infrasturcture.EFCore/BlogManagement.Infrastructure.EFCore.csproj",
       "msbuildProject": "../BlogManagement.Infrasturcture.EFCore/BlogManagement.Infrastructure.EFCore.csproj"
     },
+    "CommandManagement.Application/1.0.0": {
+      "type": "project",
+      "path": "../CommandManagement.Application/CommandManagement.Application.csproj",
+      "msbuildProject": "../CommandManagement.Application/CommandManagement.Application.csproj"
+    },
+    "CommandManagement.Application.Contract/1.0.0": {
+      "type": "project",
+      "path": "../CommandManagement.Application.Infrastructure.EFCore/CommandManagement.Application.Contract.csproj",
+      "msbuildProject": "../CommandManagement.Application.Infrastructure.EFCore/CommandManagement.Application.Contract.csproj"
+    },
+    "CommandManagement.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CommandManagement.Domain/CommandManagement.Domain.csproj",
+      "msbuildProject": "../CommandManagement.Domain/CommandManagement.Domain.csproj"
+    },
+    "CommentManagement.Infrastructure.Configuration/1.0.0": {
+      "type": "project",
+      "path": "../CommentManagement.Infrastructure.Configuration/CommentManagement.Infrastructure.Configuration.csproj",
+      "msbuildProject": "../CommentManagement.Infrastructure.Configuration/CommentManagement.Infrastructure.Configuration.csproj"
+    },
+    "CommentManagement.Infrastructure.EFCore/1.0.0": {
+      "type": "project",
+      "path": "../CommentManagement.Infrastructure.EFCore/CommentManagement.Infrastructure.EFCore.csproj",
+      "msbuildProject": "../CommentManagement.Infrastructure.EFCore/CommentManagement.Infrastructure.EFCore.csproj"
+    },
     "DiscountManagement.Application/1.0.0": {
       "type": "project",
       "path": "../DiscountManagement.Application/DiscountManagement.Application.csproj",
@@ -4094,6 +4193,8 @@
       "01_LampShadeQuery >= 1.0.0",
       "BlogManagement.Application.Contracts >= 1.0.0",
       "BlogManagement.Infrastructure.Configuration >= 1.0.0",
+      "CommandManagement.Application.Contract >= 1.0.0",
+      "CommentManagement.Infrastructure.Configuration >= 1.0.0",
       "DiscountManagement.Configuration >= 1.0.0",
       "InventoryManagement.Infrastructure.Configuration >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.8",
@@ -4142,6 +4243,12 @@
             },
             "C:\\Users\\lenovo\\Desktop\\LampShade\\BlogManagement.Infrastructure.Configuration\\BlogManagement.Infrastructure.Configuration.csproj": {
               "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\BlogManagement.Infrastructure.Configuration\\BlogManagement.Infrastructure.Configuration.csproj"
+            },
+            "C:\\Users\\lenovo\\Desktop\\LampShade\\CommandManagement.Application.Infrastructure.EFCore\\CommandManagement.Application.Contract.csproj": {
+              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\CommandManagement.Application.Infrastructure.EFCore\\CommandManagement.Application.Contract.csproj"
+            },
+            "C:\\Users\\lenovo\\Desktop\\LampShade\\CommentManagement.Infrastructure.Configuration\\CommentManagement.Infrastructure.Configuration.csproj": {
+              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\CommentManagement.Infrastructure.Configuration\\CommentManagement.Infrastructure.Configuration.csproj"
             },
             "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Configuration\\DiscountManagement.Configuration.csproj": {
               "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Configuration\\DiscountManagement.Configuration.csproj"

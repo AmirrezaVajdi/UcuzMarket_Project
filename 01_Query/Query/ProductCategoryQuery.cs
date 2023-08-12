@@ -5,7 +5,7 @@ using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAgg;
-using ShopManagement.Infrasturecure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_Query.Query
 {

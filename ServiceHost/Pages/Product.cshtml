@@ -2,6 +2,8 @@
 @model ServiceHost.Pages.ProductModel
 @{
     ViewData["Title"] = Model.Product.Name;
+    ViewData["Keywords"] = Model.Product.Keywords;
+    ViewData["Description"] = Model.Product.MetaDescription;
 }
 
 <div class="breadcrumb-area section-space--half">
@@ -276,7 +278,7 @@
                                                                         <textarea name="message" id="message" name="message"
                                                                                   placeholder="نظر خود را بنویسید"></textarea>
                                                                     </div>
-                                                                    <input type="hidden" name="productId" value="@Model.Product.Id" />
+                                                                    <input type="hidden" name="OwnerRecordId" value="@Model.Product.Id" />
                                                                     <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
 
                                                                     <div class="col-12">

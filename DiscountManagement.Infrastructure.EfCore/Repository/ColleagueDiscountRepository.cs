@@ -2,7 +2,7 @@
 using DiscountManagement.Domain.ColleagueDiscountAgg;
 using DiscountManagment.Application.Contract.ColleagueDiscount;
 using _01_Framework.Application;
-using ShopManagement.Infrasturecure.EFCore;
+using ShopManagement.Infrastructure.EFCore;
 
 namespace DiscountManagement.Infrastructure.EfCore.Repository
 {

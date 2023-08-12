@@ -1218,6 +1218,48 @@
           "bin/placeholder/BlogManagement.Infrastructure.EFCore.dll": {}
         }
       },
+      "CommandManagement.Application.Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "01_Framework": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CommandManagement.Application.Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommandManagement.Application.Contract.dll": {}
+        }
+      },
+      "CommandManagement.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "01_Framework": "1.0.0",
+          "CommandManagement.Application.Contract": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CommandManagement.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommandManagement.Domain.dll": {}
+        }
+      },
+      "CommentManagement.Infrastructure.EFCore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CommandManagement.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.8",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.8"
+        },
+        "compile": {
+          "bin/placeholder/CommentManagement.Infrastructure.EFCore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommentManagement.Infrastructure.EFCore.dll": {}
+        }
+      },
       "DiscountManagement.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3617,6 +3659,21 @@
       "path": "../BlogManagement.Infrasturcture.EFCore/BlogManagement.Infrastructure.EFCore.csproj",
       "msbuildProject": "../BlogManagement.Infrasturcture.EFCore/BlogManagement.Infrastructure.EFCore.csproj"
     },
+    "CommandManagement.Application.Contract/1.0.0": {
+      "type": "project",
+      "path": "../CommandManagement.Application.Infrastructure.EFCore/CommandManagement.Application.Contract.csproj",
+      "msbuildProject": "../CommandManagement.Application.Infrastructure.EFCore/CommandManagement.Application.Contract.csproj"
+    },
+    "CommandManagement.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CommandManagement.Domain/CommandManagement.Domain.csproj",
+      "msbuildProject": "../CommandManagement.Domain/CommandManagement.Domain.csproj"
+    },
+    "CommentManagement.Infrastructure.EFCore/1.0.0": {
+      "type": "project",
+      "path": "../CommentManagement.Infrastructure.EFCore/CommentManagement.Infrastructure.EFCore.csproj",
+      "msbuildProject": "../CommentManagement.Infrastructure.EFCore/CommentManagement.Infrastructure.EFCore.csproj"
+    },
     "DiscountManagement.Domain/1.0.0": {
       "type": "project",
       "path": "../DiscountManagement.Domain/DiscountManagement.Domain.csproj",
@@ -3666,6 +3723,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "BlogManagement.Infrastructure.EFCore >= 1.0.0",
+      "CommentManagement.Infrastructure.EFCore >= 1.0.0",
       "DiscountManagement.Infrastructure.EfCore >= 1.0.0",
       "InventoryManagement.Infrastructure.EFCore >= 1.0.0",
       "ShopManagement.Infrasturecure.EFCore >= 1.0.0"
@@ -3706,6 +3764,9 @@
           "projectReferences": {
             "C:\\Users\\lenovo\\Desktop\\LampShade\\BlogManagement.Infrasturcture.EFCore\\BlogManagement.Infrastructure.EFCore.csproj": {
               "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\BlogManagement.Infrasturcture.EFCore\\BlogManagement.Infrastructure.EFCore.csproj"
+            },
+            "C:\\Users\\lenovo\\Desktop\\LampShade\\CommentManagement.Infrastructure.EFCore\\CommentManagement.Infrastructure.EFCore.csproj": {
+              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\CommentManagement.Infrastructure.EFCore\\CommentManagement.Infrastructure.EFCore.csproj"
             },
             "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj": {
               "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj"

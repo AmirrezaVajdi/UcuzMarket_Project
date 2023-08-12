@@ -1,15 +1,14 @@
 ﻿using _01_Framework.Application;
 using _01_Framework.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-using ShopManagement.Application.Contracts.Comment;
-using ShopManagement.Domain.CommentAgg;
+using CommandManagement.Application.Contract.Comment;
+using CommandManagement.Domain.CommentAgg;
 
-namespace ShopManagement.Infrasturecure.EFCore.Repository
+namespace CommentManagement.Infrastructure.EFCore.Repository
 {
     public class CommentRepository : RepositoryBase<long, Comment>, ICommentRepository
     {
-        private readonly ShopContext _context;
-        public CommentRepository(ShopContext context) : base(context)
+        private readonly CommentContext _context;
+        public CommentRepository(CommentContext context) : base(context)
         {
             _context = context;
         }
@@ -17,14 +16,15 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
         public List<CommentViewModel> Search(CommentSearchModel searchModel)
         {
             var query = _context.Comments
-                .Include(x => x.Product)
                 .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
                     Email = x.Email,
                     Name = x.Name,
+                    WebSite = x.WebSite,
                     Message = x.Message,
-                    ProductId = x.ProductId,
+                    OwnerRecordId = x.OwnerRecordId , 
+                    Type = x.Type , 
                     CommentDate = x.CreationDate.ToFarsi(),
                     IsCanceled = x.IsCanceled,
                     IsConfirmed = x.IsConfirmed
