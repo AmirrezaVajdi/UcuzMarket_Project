@@ -1,4 +1,6 @@
-﻿@using _01_Query;
+﻿@using _01_Framework.Application;
+@using _01_Query;
+@inject IAuthHelper authHelper;
 @model MenuModel
 @{
 
@@ -24,12 +26,12 @@
                                 <li class="menu-item-has-children">
                                     <a>محصولات</a>
                                     <ul class="sub-menu">
-                                    @foreach (var category in Model.ProductCategories)
-                                    {
+                                        @foreach (var category in Model.ProductCategories)
+                                        {
                                             <li>
                                                 <a asp-page="/ProductCategory" asp-route-id="@category.Slug">@category.Name</a>
                                             </li>
-                                    }
+                                        }
                                     </ul>
                                 </li>
 
@@ -48,6 +50,18 @@
                                 <li>
                                     <a href="contact.html">تماس با ما</a>
                                 </li>
+                                @if (!authHelper.IsAuthenticated())
+                                {
+                                    <li>
+                                        <a asp-page="./Account">ورود</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-page="./Account" asp-page-handler="Logout">خروج</a>
+                                    </li>
+                                }
                             </ul>
                         </nav>
                     </div>
@@ -162,7 +176,7 @@
                                             <h4 class="title">پروفایل من</h4>
                                             <ul>
                                                 <li>
-                                                    <a href="login-register.html">ثبت نام</a>
+                                                    <a asp-page="./Account">ثبت نام</a>
                                                 </li>
                                                 <li>
                                                     <a href="login-register.html">ورود</a>

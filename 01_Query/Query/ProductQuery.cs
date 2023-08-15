@@ -1,4 +1,5 @@
 ﻿using _01_Framework.Application;
+using _01_Query.Contract.Comment;
 using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
 using CommentManagement.Infrastructure.EFCore;

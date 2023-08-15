@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\01_Query\01_LampShadeQuery.csproj" />
+    <ProjectReference Include="..\AccountManagement.Configuration\AccountManagement.Configuration.csproj" />
     <ProjectReference Include="..\BlogManagement.Application.Contracts\BlogManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\BlogManagement.Infrastructure.Configuration\BlogManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\CommandManagement.Application.Infrastructure.EFCore\CommandManagement.Application.Contract.csproj" />
@@ -52,6 +53,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\ProductPictures\" />
+    <Folder Include="wwwroot\ProductPictures\ProfilePhotos\" />
   </ItemGroup>
 
 </Project>
