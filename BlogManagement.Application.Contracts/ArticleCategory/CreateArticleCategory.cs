@@ -8,6 +8,10 @@ namespace BlogManagement.Application.Contracts.ArticleCategory
     {
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Name { get; set; }
+
+        [FileExtentionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+        [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
@@ -24,11 +28,13 @@ namespace BlogManagement.Application.Contracts.ArticleCategory
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Slug { get; set; }
+
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Keywords { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Metadescription { get; set; }
-        public string CanonicalAddress { get; set; }
+        public string? CanonicalAddress { get; set; }
 
     }
 }

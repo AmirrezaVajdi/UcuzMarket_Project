@@ -16,7 +16,7 @@
       enctype="multipart/form-data">
     <div class="modal-body">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Name" class="control-label">نام نقش</label>
                     <input type="text" class="form-control" asp-for="Name">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" asp-for="Id" value="@Model.Name" />
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>

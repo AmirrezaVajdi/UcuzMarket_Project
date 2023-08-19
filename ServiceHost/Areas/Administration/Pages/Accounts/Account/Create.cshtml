@@ -1,5 +1,5 @@
 ﻿@using AccountManagement.Application.Contracts.Account;
-@model CreateAccount
+@model RegisterAccount
 @{
 }
 
@@ -19,14 +19,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Fullname" class="control-label">نام کامل</label>
-                    <input type="text" class="form-control" asp-for="Fullname">
+                    <input type="text" class="form-control" asp-for="Fullname" required />
                     <span asp-validation-for="Fullname" class="error"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Username" class="control-label">نام کاربری</label>
-                    <input type="text" class="form-control" asp-for="Username">
+                    <input type="text" class="form-control" asp-for="Username" required />
                     <span asp-validation-for="Username" class="error"></span>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Mobile" class="control-label">موبایل</label>
-                        <input type="text" class="form-control" asp-for="Mobile">
+                        <input type="text" class="form-control" asp-for="Mobile" required />
                         <span asp-validation-for="Mobile" class="error"></span>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Password" class="control-label">رمز عبور</label>
-                        <input type="text" class="form-control" asp-for="Password">
+                        <input type="text" class="form-control" asp-for="Password" required />
                         <span asp-validation-for="Password" class="error"></span>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="RoleId" class="control-label">نقش</label>
-                    <select class="form-control" asp-for="RoleId"
+                    <select class="form-control" asp-for="RoleId" required 
                             asp-items='new SelectList(Model.Roles, "Id", "Name")'>
                         <option value="0">نقشی را برای کاربر انتخاب کنید ...</option>
                     </select>
@@ -65,8 +65,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="ProfilePhoto" class="control-label">عکس</label>
-                    <input type="file" class="form-control" asp-for="ProfilePhoto" accept="image/*">
-                    <span asp-validation-for="ProfilePhoto" class="error"></span>
+                    <input type="file" class="form-control" asp-for="ProfilePhoto" accept="image/*" />
+
                 </div>
             </div>
         </div>

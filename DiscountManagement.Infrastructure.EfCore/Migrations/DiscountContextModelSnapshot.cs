@@ -68,7 +68,6 @@ namespace DiscountManagement.Infrastructure.EfCore.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Reason")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 

@@ -7,7 +7,8 @@ namespace ServiceHost.Pages
     public class AccountModel : PageModel
     {
 
-        public string Message;
+        [TempData] public string RegisterMessage { get; set; }
+        [TempData] public string LoginMessage { get; set; }
 
         private IAccountApplication _accountApplication;
 
@@ -18,6 +19,7 @@ namespace ServiceHost.Pages
 
         public void OnGet()
         {
+
         }
 
         public IActionResult OnPostLogin(Login command)
@@ -26,14 +28,27 @@ namespace ServiceHost.Pages
             if (result.isSuccedded)
                 return RedirectToPage("./Index");
 
-            Message = "نام کاربری یا رمز عبور اشتباه می باشد";
+            LoginMessage = "نام کاربری یا رمز عبور اشتباه می باشد";
             return RedirectToPage("./Account");
         }
 
         public IActionResult OnGetLogout()
         {
             _accountApplication.Logout();
-            return RedirectToPage("/.Index");
+            return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnPostRegister(RegisterAccount command)
+        {
+            var result = _accountApplication.Register(command);
+            if (result.isSuccedded)
+            {
+                RegisterMessage = "ثبت نام شما با موفقیت انجام شد . میتوانید وارد فروشگاه شوید";
+                return RedirectToPage("./Account");
+            }
+            RegisterMessage = result.Message;
+            return RedirectToPage("./Account");
+
         }
     }
 }

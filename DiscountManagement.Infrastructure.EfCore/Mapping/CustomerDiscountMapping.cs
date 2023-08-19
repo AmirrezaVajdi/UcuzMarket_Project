@@ -20,7 +20,7 @@ namespace DiscountManagement.Infrastructure.EfCore.Mapping
             builder.Property(x => x.DiscountRate).IsRequired();
             builder.Property(x => x.StartDate).IsRequired();
             builder.Property(x => x.EndDate).IsRequired();
-            builder.Property(x => x.Reason).HasMaxLength(500);
+            builder.Property(x => x.Reason).HasMaxLength(500).IsRequired(false);
         }
     }
 }

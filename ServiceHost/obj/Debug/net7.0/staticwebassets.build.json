@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5CRZ9QRbdaguUkRusfv777Zc2I/T6YwAKsaIBZ1mGgA=",
+  "Hash": "1dQPZvUO70t61jujqghhC5ZsbDdmJGc0CNsCL/2IgxQ=",
   "Source": "ServiceHost",
   "BasePath": "_content/ServiceHost",
   "Mode": "Default",
@@ -6356,6 +6356,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\ProductPictures\\ProfilePhotos\\2023-08-16-19-28-06-3.png",
+      "SourceId": "ServiceHost",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\",
+      "BasePath": "_content/ServiceHost",
+      "RelativePath": "ProductPictures/ProfilePhotos/2023-08-16-19-28-06-3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProductPictures\\ProfilePhotos\\2023-08-16-19-28-06-3.png"
     },
     {
       "Identity": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\ProductPictures\\Slides\\2023-08-04-12-54-23-slider1.jpg",

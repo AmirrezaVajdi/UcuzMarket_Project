@@ -31,9 +31,9 @@
                     <div class="page-content-wrapper">
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
-                                @if (Model.Message != null)
+                                @if (Model.LoginMessage != null)
                                 {
-                                    <div class="alert alert-danger">@Model.Message</div>
+                                    <div class="alert alert-danger">@Model.LoginMessage</div>
                                 }
 
                                 <form method="post" asp-page-handler="Login">
@@ -42,11 +42,11 @@
                                         <div class="row">
                                             <div class="col-md-12 col-12">
                                                 <label>نام کاربری*</label>
-                                                <input type="text" placeholder="نام کاربری">
+                                                <input name="username" type="text" placeholder="نام کاربری">
                                             </div>
                                             <div class="col-12">
                                                 <label>رمز عبور</label>
-                                                <input type="password" placeholder="رمز عبور">
+                                                <input name="password" type="password" placeholder="رمز عبور">
                                             </div>
                                             <div class="col-sm-6">
                                                 @*
@@ -71,31 +71,36 @@
                                 </form>
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                                <form action="#">
 
+                                @if (Model.RegisterMessage != null)
+                                {
+                                    <div class="alert alert-danger">@Model.RegisterMessage</div>
+                                }
+
+                                <form method="post" asp-page-handler="Register">
                                     <div class="login-form">
                                         <h4 class="login-title">ثبت نام</h4>
 
                                         <div class="row">
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>نام کامل</label>
-                                                <input type="text" placeholder="نام کامل">
+                                                <input name="fullname" type="text" placeholder="نام کامل">
                                             </div>
                                             <div class="col-md-6 col-12 mb-20">
                                                 <label>نام کاربری</label>
-                                                <input type="text" placeholder="نام کاربری">
+                                                <input name="username" type="text" placeholder="نام کاربری">
                                             </div>
                                             <div class="col-md-12 mb-20">
                                                 <label>موبایل</label>
-                                                <input type="number" placeholder="موبایل">
+                                                <input name="mobile" type="number" placeholder="موبایل">
                                             </div>
                                             <div class="col-md-6 mb-20">
                                                 <label>رمز عبور</label>
-                                                <input type="password" placeholder="رمز عبور">
+                                                <input name="password" type="password" placeholder="رمز عبور">
                                             </div>
                                             <div class="col-md-6 mb-20">
                                                 <label>تکرار رمز عبور</label>
-                                                <input type="password" placeholder="تکرار رمز عبور">
+                                                <input name="repassword" type="password" placeholder="تکرار رمز عبور">
                                             </div>
                                             <div class="col-12">
                                                 <button class="register-button mt-0">ثبت نام</button>

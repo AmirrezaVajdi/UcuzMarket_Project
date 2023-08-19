@@ -19,6 +19,9 @@ namespace _0_Framework.Application
 
         public string Hash(string password)
         {
+            if (password is null)
+                return null;
+
             using var algorithm = new Rfc2898DeriveBytes(password, SaltSize, Options.Iterations, HashAlgorithmName.SHA256);
             var key = Convert.ToBase64String(algorithm.GetBytes(KeySize));
             var salt = Convert.ToBase64String(algorithm.Salt);

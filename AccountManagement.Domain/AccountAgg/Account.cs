@@ -19,7 +19,7 @@ namespace AccountManagement.Domain.AccountAgg
             Username = username;
             Password = password;
             Mobile = mobile;
-            RoleId = roleId;
+            RoleId = (roleId == 0 ? 2 : roleId);
             ProfilePhoto = profilePhoto;
         }
 

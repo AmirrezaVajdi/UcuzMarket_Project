@@ -38,7 +38,7 @@ namespace AccountManagement.Application
             return operation.Succeded();
         }
 
-        public OperationResult Create(CreateAccount command)
+        public OperationResult Register(RegisterAccount command)
         {
             OperationResult operation = new();
             if (_accountRepository.Exsists(x => x.Username == command.Username || x.Mobile == command.Mobile))
@@ -61,7 +61,8 @@ namespace AccountManagement.Application
             if (account == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            if (_accountRepository.Exsists(x => (x.Username == command.Username) || x.Mobile == command.Mobile))
+            if (_accountRepository.Exsists(x =>
+                (x.Username == command.Username || x.Mobile == command.Mobile) && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicatedRecored);
 
 

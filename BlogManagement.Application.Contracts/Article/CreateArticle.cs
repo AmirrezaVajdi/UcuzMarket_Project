@@ -1,5 +1,6 @@
 ﻿using _01_Framework.Application;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogManagement.Application.Contracts.Article
@@ -11,7 +12,13 @@ namespace BlogManagement.Application.Contracts.Article
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string ShortDescription { get; set; }
+
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Description { get; set; }
+
+        [FileExtentionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+        [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
@@ -32,7 +39,7 @@ namespace BlogManagement.Application.Contracts.Article
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Keywords { get; set; }
 
-        public string CanonicalAddress { get; set; }
+        public string? CanonicalAddress { get; set; }
 
         [Range(1, long.MaxValue, ErrorMessage = ValidationMessages.IsRequired)]
         public long CategoryId { get; set; }

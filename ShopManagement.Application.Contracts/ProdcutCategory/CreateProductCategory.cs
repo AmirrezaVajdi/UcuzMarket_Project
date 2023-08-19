@@ -12,8 +12,9 @@ namespace ShopManagement.Application.Contracts.ProdcutCategory
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Description { get; set; }
 
-        [FileExtensionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+        [FileExtentionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
         [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]

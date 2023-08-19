@@ -7,7 +7,7 @@ namespace ShopManagement.Application.Contracts.ProductPicture
 {
     public class CreateProductPicture
     {
-        [MaxFileSize(1 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        [MaxFileSize(5 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]

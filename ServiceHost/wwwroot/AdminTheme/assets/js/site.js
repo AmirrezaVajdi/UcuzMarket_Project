@@ -195,3 +195,24 @@ jQuery.validator.addMethod("maxFileSize",
         }
     });
 jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
+
+jQuery.validator.addMethod("fileExtentionLimit",
+    function (value, element, params) {
+
+        var extensions = ["png", "jpg", "jpeg"];
+
+        var fileExtension = value.split('.').pop();
+
+        if (element != null) {
+
+            extensions.forEach((item) => {
+                if (item != fileExtension) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            });
+        }
+    });
+jQuery.validator.unobtrusive.adapters.addBool("fileExtentionLimit");

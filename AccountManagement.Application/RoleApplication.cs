@@ -39,7 +39,7 @@ namespace AccountManagement.Application
 
             role.Edit(command.Name);
 
-            _roleRepository.Create(role);
+            role.Edit(command.Name);
             _roleRepository.SaveChanges();
             return operation.Succeded();
         }
