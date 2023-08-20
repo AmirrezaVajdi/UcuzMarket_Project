@@ -19,7 +19,7 @@ namespace AccountManagement.Application
             if (_roleRepository.Exsists(x => x.Name == command.Name))
                 operation.Failed(ApplicationMessages.DuplicatedRecored);
 
-            var role = new Role(command.Name);
+            var role = new Role(command.Name, new());
 
             _roleRepository.Create(role);
             _roleRepository.SaveChanges();
@@ -37,9 +37,11 @@ namespace AccountManagement.Application
             if (_roleRepository.Exsists(x => x.Name == command.Name && x.Id != command.Id))
                 operation.Failed(ApplicationMessages.DuplicatedRecored);
 
-            role.Edit(command.Name);
+            List<Permission> permissions = new();
+            command.Permissions.ForEach(code => permissions.Add(new Permission(code)));
 
-            role.Edit(command.Name);
+            role.Edit(command.Name, permissions);
+
             _roleRepository.SaveChanges();
             return operation.Succeded();
         }

@@ -16,6 +16,14 @@ namespace AccountManagement.Infrastructure.EFCore.Mapping
             builder.ToTable("Roles");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
+            builder.Ignore(x => x.Name);
+
+            builder.OwnsMany(x => x.Permissions, builder =>
+            {
+                builder.HasKey(x => x.Id);
+                builder.ToTable("RolePermissions");
+                builder.WithOwner(x => x.Role);
+            });
         }
     }
 }
