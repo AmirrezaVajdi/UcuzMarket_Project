@@ -54,10 +54,10 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
             }
         }
 
-        public JsonResult OnPost(EditRole command)
+        public IActionResult OnPost(EditRole command)
         {
             var result = _roleApplication.Edit(command);
-            return new JsonResult(result);
+            return RedirectToPage("./Index");
         }
     }
 }

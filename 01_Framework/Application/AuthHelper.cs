@@ -43,22 +43,31 @@ namespace _0_Framework.Application
             return result;
         }
 
+        public List<int> GetPermissions()
+        {
+            if (IsAuthenticated())
+                return new();
+
+            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Permissions")?.Value;
+
+            return JsonSerializer.Deserialize<List<int>>(permissions);
+        }
+
         public bool IsAuthenticated()
         {
-            var cliams = _contextAccessor.HttpContext.User.Claims.ToList();
-            if (cliams.Count > 0)
-                return true;
-            return false;
+            return _contextAccessor.HttpContext.User.Identity.IsAuthenticated;
         }
 
         public void Signin(AuthViewModel account)
         {
+            var permissions = JsonSerializer.Serialize(account.Permissions);
             var claims = new List<Claim>
             {
                 new Claim("AccountId", account.Id.ToString()),
                 new Claim(ClaimTypes.Name, account.Fullname),
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("Username", account.Username), // Or Use ClaimTypes.NameIdentifier
+                new Claim("permissions" , permissions)
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

@@ -1,11 +1,13 @@
+using _01_Framework.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProdcutCategory;
+using ShopManagement.Configuration.Permissions;
 using System.Collections.Generic;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 {
-       public class IndexModel : PageModel
+    public class IndexModel : PageModel
     {
         public ProductCategorySearchModel SearchModel;
         public List<ProductCategoryViewModel> ProductCategories;
@@ -17,6 +19,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             _productCategoryApplication = productCategoryApplication;
         }
 
+        [NeedPermission(ShopPermissions.ListProductCategories)]
         public void OnGet(ProductCategorySearchModel searchModel)
         {
             ProductCategories = _productCategoryApplication.Search(searchModel);
@@ -27,6 +30,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             return Partial("./Create", new CreateProductCategory());
         }
 
+        [NeedPermission(ShopPermissions.CreateProduct)]
         public JsonResult OnPostCreate(CreateProductCategory command)
         {
             var result = _productCategoryApplication.Create(command);
@@ -39,6 +43,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             return Partial("Edit", productCategory);
         }
 
+        [NeedPermission(ShopPermissions.EditProduct)]
         public JsonResult OnPostEdit(EditProductCategory command)
         {
             if (ModelState.IsValid)

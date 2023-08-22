@@ -7,5 +7,6 @@
         void SignOut();
         string CurrenAccountRole();
         AuthViewModel CurrentAccountInfo();
+        List<int> GetPermissions();
     }
 }

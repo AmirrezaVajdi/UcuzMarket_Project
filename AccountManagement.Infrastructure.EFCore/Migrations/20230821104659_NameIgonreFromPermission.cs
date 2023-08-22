@@ -5,14 +5,14 @@
 namespace AccountManagement.Infrastructure.EFCore.Migrations
 {
     /// <inheritdoc />
-    public partial class NameIgnoreFromPermissions : Migration
+    public partial class NameIgonreFromPermission : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
                 name: "Name",
-                table: "Roles");
+                table: "RolePermissions");
         }
 
         /// <inheritdoc />
@@ -20,9 +20,8 @@ namespace AccountManagement.Infrastructure.EFCore.Migrations
         {
             migrationBuilder.AddColumn<string>(
                 name: "Name",
-                table: "Roles",
-                type: "nvarchar(100)",
-                maxLength: 100,
+                table: "RolePermissions",
+                type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
         }

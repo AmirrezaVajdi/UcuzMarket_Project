@@ -78,6 +78,11 @@ namespace AccountManagement.Infrastructure.EFCore.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Roles", (string)null);
@@ -106,10 +111,6 @@ namespace AccountManagement.Infrastructure.EFCore.Migrations
 
                             b1.Property<int>("Code")
                                 .HasColumnType("int");
-
-                            b1.Property<string>("Name")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<long>("RoleId")
                                 .HasColumnType("bigint");
