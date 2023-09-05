@@ -1056,6 +1056,19 @@
           }
         }
       },
+      "SmsIrRestfulNetCore/1.1.4": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/SmsIrRestfulNetCore.dll": {
+            "related": ".deps.json;.pdb"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/SmsIrRestfulNetCore.dll": {
+            "related": ".deps.json;.pdb"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -1570,7 +1583,8 @@
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.8",
           "Newtonsoft.Json": "13.0.3",
-          "RestSharp": "110.2.0"
+          "RestSharp": "110.2.0",
+          "SmsIrRestfulNetCore": "1.1.4"
         },
         "compile": {
           "bin/placeholder/01_Framework.dll": {}
@@ -2987,6 +3001,26 @@
         "restsharp.110.2.0.nupkg.sha512",
         "restsharp.nuspec",
         "restsharp.png"
+      ]
+    },
+    "SmsIrRestfulNetCore/1.1.4": {
+      "sha512": "yZVm87oKasXdVl1BYucfj66ZPtFDcMR7Wc7Kf9Zgbw7ylMR2bCBuKD1dEawYBVQLwTZmFjjnTZQCSEw+nZ5CNw==",
+      "type": "package",
+      "path": "smsirrestfulnetcore/1.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "SmsIrRestfulNetCore.deps.json",
+        "SmsIrRestfulNetCore.dll",
+        "SmsIrRestfulNetCore.pdb",
+        "content/SmsIrRestfulNetCore.deps.json",
+        "content/SmsIrRestfulNetCore.dll",
+        "content/SmsIrRestfulNetCore.pdb",
+        "lib/netcoreapp2.0/SmsIrRestfulNetCore.deps.json",
+        "lib/netcoreapp2.0/SmsIrRestfulNetCore.dll",
+        "lib/netcoreapp2.0/SmsIrRestfulNetCore.pdb",
+        "smsirrestfulnetcore.1.1.4.nupkg.sha512",
+        "smsirrestfulnetcore.nuspec"
       ]
     },
     "System.Buffers/4.5.1": {

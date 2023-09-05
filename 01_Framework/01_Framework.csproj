@@ -14,6 +14,7 @@
 			<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
 			<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 			<PackageReference Include="RestSharp" Version="110.2.0" />
+		<PackageReference Include="SmsIrRestfulNetCore" Version="1.1.4" />
 	</ItemGroup>
 
 </Project>

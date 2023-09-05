@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Application.Sms;
 using _01_Framework.Application;
 using Microsoft.Extensions.Configuration;
 using ShopManagement.Application.Contracts.Order;
@@ -13,13 +14,17 @@ namespace ShopManagement.Application
         private readonly IOrderRepository _orderRepository;
         private readonly IConfiguration _configuration;
         private readonly IShopInventoryAcl _shopInventoryAcl;
+        private readonly ISmsService _smsService;
+        private readonly IShopAccountAcl _shopAccountAcl;
 
-        public OrderApplication(IAuthHelper authHelper, IOrderRepository orderRepository, IConfiguration configuration, IShopInventoryAcl shopInventoryAcl)
+        public OrderApplication(IAuthHelper authHelper, IOrderRepository orderRepository, IConfiguration configuration, IShopInventoryAcl shopInventoryAcl, ISmsService smsService, IShopAccountAcl shopAccountAcl)
         {
             _authHelper = authHelper;
             _orderRepository = orderRepository;
             _configuration = configuration;
             _shopInventoryAcl = shopInventoryAcl;
+            _smsService = smsService;
+            _shopAccountAcl = shopAccountAcl;
         }
 
         public void Cancel(long Id)
@@ -49,6 +54,8 @@ namespace ShopManagement.Application
             if (_shopInventoryAcl.ReduceFromInventory(order.Items))
             {
                 _orderRepository.SaveChanges();
+                var account = _shopAccountAcl.GetAccountBy(order.AccountId);
+                _smsService.Send(account.mobile, $"{account.name} گرامی پرداخت شمما با شماره پیگیری {issueTrackingNo} با موفقیت پرداخت شد و به زودی برای شما ارسال خواهد شد");
                 return issueTrackingNo;
             }
             return "";

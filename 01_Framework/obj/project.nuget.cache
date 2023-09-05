@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CihJp4H9a4RNF3OQokGpaq0F5xjbkhT0DTuz3u2C53JgcfuHH4o24NljNd5k+DpQkPZU2WpvewJ9svhHxSQoiA==",
+  "dgSpecHash": "HAa8kEQIs0qq4GZTR4WCoFNfy3s/9uUiLLOK1cA6WA1nXQ50WpAkuHRpyN1LM0LdJkLZFOoPV0J18xATAfJhSw==",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\smsirrestfulnetcore\\1.1.4\\smsirrestfulnetcore.1.1.4.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "O74khSQ3ltJJNe99Wp5VgaCKS4dPgq5UhyNvZb+VwTaPVHBZCE6f0/YJT+4nCHqAgUWLeURfkrPSVWYXQkEUrg==",
+  "dgSpecHash": "IwWQtrqpNSWSPI9d55NceRI11Wgerw1dyqU/4iBFJWZdwMigrdklJAfnfJVovktbt1paXTAa2W/Jw5b34Y958w==",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\smsirrestfulnetcore\\1.1.4\\smsirrestfulnetcore.1.1.4.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",

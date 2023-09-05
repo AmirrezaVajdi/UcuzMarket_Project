@@ -117,5 +117,15 @@ namespace AccountManagement.Application
         {
             return _accountRepository.GetAccounts();
         }
+
+        public AccountViewModel GetAccountBy(long id)
+        {
+            var account = _accountRepository.Get(id);
+            return new()
+            {
+                Fullname = account.Fullname,
+                Mobile = account.Mobile
+            };
+        }
     }
 }

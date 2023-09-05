@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FDfR3H0TfhMJy3uAUe9KF2pff16BKKFG3sqZJOIJGR0XKqTJfZZhs4LAE+Hme29ueBrACLrTJEeTVTBP1BzUGA==",
+  "dgSpecHash": "8H1n58WVyRFfi0SMsIaY7/4xnyHbxD7uyu6zQzLokQTNR31GogIB3ELzul1mXkiNemnlyfPYK5Jfd6ID+2RXaQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Application\\InventoryManagement.Application.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\smsirrestfulnetcore\\1.1.4\\smsirrestfulnetcore.1.1.4.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4V/eENEBj3O2Q7SX/3XYlRTTPaiYeNt8nSv/dqzEo2ScVhCznNwe8DryzPRCtcr9gg01ASXGN0OmIsWXzbzr+Q==",
+  "dgSpecHash": "EEDPB/w+7E4XmrrtmeMys0YL2gCk19sZ0b90QRyQSU6VzRkD8iYp63vp7c595C6jGiat3TyA5P1z6RxYyRcK/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
   "expectedPackageFiles": [
@@ -65,6 +65,7 @@
     "C:\\Users\\lenovo\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\smsirrestfulnetcore\\1.1.4\\smsirrestfulnetcore.1.1.4.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
