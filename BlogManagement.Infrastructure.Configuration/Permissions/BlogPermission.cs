@@ -12,6 +12,5 @@
         public const int SearchArticleCategories = 61;
         public const int CreateArticleCategory = 62;
         public const int EditArticleCategory = 63;
-
     }
 }

@@ -25,25 +25,28 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             ProductCategories = _productCategoryApplication.Search(searchModel);
         }
 
+        [NeedPermission(ShopPermissions.CreateProductCategory)]
         public IActionResult OnGetCreate()
         {
             return Partial("./Create", new CreateProductCategory());
         }
 
-        [NeedPermission(ShopPermissions.CreateProduct)]
+        [NeedPermission(ShopPermissions.CreateProductCategory)]
         public JsonResult OnPostCreate(CreateProductCategory command)
         {
             var result = _productCategoryApplication.Create(command);
             return new JsonResult(result);
         }
 
+
+        [NeedPermission(ShopPermissions.EditProductCategory)]
         public IActionResult OnGetEdit(long id)
         {
             var productCategory = _productCategoryApplication.GetDetails(id);
             return Partial("Edit", productCategory);
         }
 
-        [NeedPermission(ShopPermissions.EditProduct)]
+        [NeedPermission(ShopPermissions.EditProductCategory)]
         public JsonResult OnPostEdit(EditProductCategory command)
         {
             if (ModelState.IsValid)

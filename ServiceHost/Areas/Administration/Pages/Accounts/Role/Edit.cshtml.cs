@@ -1,5 +1,7 @@
+using _01_Framework.Application;
 using _01_Framework.Infrastructure;
 using AccountManagement.Application.Contracts.Role;
+using AccountManagement.Configuration.Permissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,6 +22,7 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
             _exposers = exposers;
         }
 
+        [NeedPermission(AccountPermission.EditRole)]
         public void OnGet(long id)
         {
             Command = _roleApplication.GetDetails(id);
@@ -54,6 +57,7 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Role
             }
         }
 
+        [NeedPermission(AccountPermission.EditRole)]
         public IActionResult OnPost(EditRole command)
         {
             var result = _roleApplication.Edit(command);

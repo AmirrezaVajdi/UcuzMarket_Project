@@ -7,10 +7,12 @@ namespace InventoryManagement.Application
     public class InventoryApplication : IInventoryApplication
     {
         private readonly IInventoryRepository _inventoryRepository;
+        private readonly IAuthHelper _authHelper;
 
-        public InventoryApplication(IInventoryRepository inventoryRepository)
+        public InventoryApplication(IInventoryRepository inventoryRepository, IAuthHelper authHelper = null)
         {
             _inventoryRepository = inventoryRepository;
+            _authHelper = authHelper;
         }
 
         public OperationResult Create(CreateInventory command)
@@ -23,11 +25,6 @@ namespace InventoryManagement.Application
             _inventoryRepository.Create(inventory);
             _inventoryRepository.SaveChanges();
             return operation.Succeded();
-        }
-
-        public OperationResult Decrease(List<ReduceInventory> command)
-        {
-            throw new NotImplementedException();
         }
 
         public OperationResult Edit(EditInventory command)
@@ -74,7 +71,8 @@ namespace InventoryManagement.Application
             if (inventory == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            const long operatorId = 1;
+            var operatorId = _authHelper.CurrentAccountId();
+
             inventory.Reduce(command.Count, operatorId, command.Description, 0);
             _inventoryRepository.SaveChanges();
             return operation.Succeded();
@@ -84,7 +82,7 @@ namespace InventoryManagement.Application
         {
             OperationResult operation = new();
 
-            const long operatorId = 1;
+            var operatorId = _authHelper.CurrentAccountId();
 
             foreach (var item in command)
             {

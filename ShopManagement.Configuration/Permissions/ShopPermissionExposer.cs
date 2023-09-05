@@ -41,14 +41,25 @@ namespace ShopManagement.Configuration.Permissions
                     }
                 },
                 {
-                    "" ,
+                    "بنر ها" ,
                     new()
                     {
                         new(ShopPermissions.ListSlides , "مشاهده لیست اسلایدر"),
                         new(ShopPermissions.CreateSlide , "ایجاد اسلایدر"),
                         new(ShopPermissions.EditSlide , "ویرایش اسلایدر"),
-                        new(ShopPermissions.DeleteSlide , "حذف کردن اسلایدر"),
+                        new(ShopPermissions.RemoveSlide , "حذف کردن اسلایدر"),
 
+                    }
+                },
+                {
+                    "سفارشات" ,
+                    new()
+                    {
+                        new(ShopPermissions.ListOrders , "لیست سفارشات"),
+                        new(ShopPermissions.SearchOrders , "سرچ کردن در سفارشات"),
+                        new(ShopPermissions.ConfirmOrder , "تایید سفارش"),
+                        new(ShopPermissions.CancelOrder , "لغو سفارش"),
+                        new(ShopPermissions.ItemsOrder , "آیتم ها"),
                     }
                 }
             };

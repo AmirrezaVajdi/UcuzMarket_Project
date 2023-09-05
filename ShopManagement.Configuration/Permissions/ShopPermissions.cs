@@ -19,9 +19,17 @@
         public const int RestoreProductPicture = 184;
         public const int RemoveProductPicture = 185;
 
-        public const int ListSlides = 170;  
+        public const int ListSlides = 170;
         public const int CreateSlide = 171;
         public const int EditSlide = 172;
-        public const int DeleteSlide = 173;
+        public const int RemoveSlide = 173;
+        public const int RestoreSlide = 174;
+
+        public const int ListOrders = 160;
+        public const int SearchOrders = 161;
+        public const int ConfirmOrder = 162;
+        public const int CancelOrder = 163;
+        public const int ItemsOrder = 164;
+
     }
 }

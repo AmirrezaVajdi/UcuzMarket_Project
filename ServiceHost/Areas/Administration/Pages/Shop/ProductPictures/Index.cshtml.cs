@@ -1,8 +1,10 @@
+using _01_Framework.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductPicture;
+using ShopManagement.Configuration.Permissions;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
 {
@@ -18,17 +20,18 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
 
         public IndexModel(IProductApplication productApplication, IProductPictureApplication productPictureApplication)
         {
-
             _productApplication = productApplication;
             _productPictureApplication = productPictureApplication;
         }
 
+        [NeedPermission(ShopPermissions.ListProductPictures)]
         public void OnGet(ProductPictureSearchModel searchModel)
         {
             Product = new(_productApplication.GetProducts(), "Id", "Name");
             ProductPictures = _productPictureApplication.Search(searchModel);
         }
 
+        [NeedPermission(ShopPermissions.CreateProductPicture)]
         public IActionResult OnGetCreate()
         {
             var command = new CreateProductPicture
@@ -38,12 +41,14 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
             return Partial("./Create", command);
         }
 
+        [NeedPermission(ShopPermissions.CreateProductPicture)]
         public JsonResult OnPostCreate(CreateProductPicture command)
         {
             var result = _productPictureApplication.Create(command);
             return new JsonResult(result);
         }
 
+        [NeedPermission(ShopPermissions.EditProductPicture)]
         public IActionResult OnGetEdit(long id)
         {
             var productPicture = _productPictureApplication.GetDetails(id);
@@ -51,12 +56,14 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
             return Partial("./Edit", productPicture);
         }
 
+        [NeedPermission(ShopPermissions.EditProductPicture)]
         public JsonResult OnPostEdit(EditProductPicture command)
         {
             var result = _productPictureApplication.Edit(command);
             return new JsonResult(result);
         }
 
+        [NeedPermission(ShopPermissions.RemoveProductPicture)]
         public IActionResult OnGetRemove(long id)
         {
             var result = _productPictureApplication.Remove(id);
@@ -68,6 +75,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
             return RedirectToPage("./Index");
         }
 
+        [NeedPermission(ShopPermissions.RestoreProductPicture)]
         public IActionResult OnGetRestore(long Id)
         {
             var result = _productPictureApplication.Restore(Id);

@@ -1733,12 +1733,20 @@
       "PackagePath": "staticwebassets\\Theme\\assets\\img\\testimonial\\testimor3-72x72.png"
     },
     {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\js\\Custom.js",
+      "PackagePath": "staticwebassets\\Theme\\assets\\js\\Custom.js"
+    },
+    {
       "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\js\\active.js",
       "PackagePath": "staticwebassets\\Theme\\assets\\js\\active.js"
     },
     {
       "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\js\\ajax-mail.js",
       "PackagePath": "staticwebassets\\Theme\\assets\\js\\ajax-mail.js"
+    },
+    {
+      "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\Theme\\assets\\js\\plugins.js"
     },
     {
       "Id": "C:\\Users\\lenovo\\Desktop\\LampShade\\ServiceHost\\wwwroot\\Theme\\assets\\js\\vendors.js",

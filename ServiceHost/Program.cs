@@ -1,4 +1,5 @@
-using _0_Framework.Application;
+﻿using _0_Framework.Application;
+using _0_Framework.Application.ZarinPal;
 using _01_Framework.Application;
 using _01_Framework.Infrastructure;
 using AccountManagement.Configuration;
@@ -6,9 +7,11 @@ using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
+using InventoryManagement.Presentation.Api;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ServiceHost;
 using ShopManagement.Configuration;
+using ShopManagement.Presentation.Api;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
@@ -30,11 +33,15 @@ AccountManagementBootstrapper.Configure(builder.Services, connectionString);
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 builder.Services.AddTransient<IAuthHelper, AuthHelper>();
+builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
+
 
 builder.Services.Configure<CookiePolicyOptions>(option =>
 {
     option.CheckConsentNeeded = context => true;
-    option.MinimumSameSitePolicy = SameSiteMode.Strict;
+    //option.MinimumSameSitePolicy = SameSiteMode.Strict; وقتی از درگاه پرداخت برمیگشتیم به سایت کوکی ما رو نمی خوند و با خطای لاگین مواجه می شدیم بنابراین کار زیر را می کنیم 
+
+    option.MinimumSameSitePolicy = SameSiteMode.Lax;
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -75,7 +82,9 @@ builder.Services.AddRazorPages()
     options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
     options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
     options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
-});
+})
+    .AddApplicationPart(typeof(ProductController).Assembly)
+    .AddApplicationPart(typeof(InventoryController).Assembly);
 
 
 var app = builder.Build();
@@ -99,5 +108,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapDefaultControllerRoute();
+app.MapControllers();
 
 app.Run();

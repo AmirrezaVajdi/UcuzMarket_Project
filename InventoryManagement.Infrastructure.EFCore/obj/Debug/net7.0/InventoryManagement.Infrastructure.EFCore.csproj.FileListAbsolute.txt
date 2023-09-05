@@ -3,6 +3,9 @@ C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\InventoryManagement.Infrastructure.EFCore.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\InventoryManagement.Infrastructure.EFCore.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\01_Framework.dll
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\AccountManagement.Application.Contracts.dll
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\AccountManagement.Domain.dll
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\AccountManagement.Infrastructure.EFCore.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\InventoryManagement.Application.Contract.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\InventoryManagement.Domain.dll
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\ShopManagement.Application.Contracts.dll
@@ -11,6 +14,9 @@ C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\InventoryManagement.Domain.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\ShopManagement.Infrasturecure.EFCore.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\01_Framework.pdb
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\AccountManagement.Application.Contracts.pdb
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\AccountManagement.Domain.pdb
+C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\AccountManagement.Infrastructure.EFCore.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\InventoryManagement.Application.Contract.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\ShopManagement.Application.Contracts.pdb
 C:\Users\lenovo\Desktop\LampShade\InventoryManagement.Infrastructure.EFCore\bin\Debug\net7.0\ShopManagement.Domain.pdb

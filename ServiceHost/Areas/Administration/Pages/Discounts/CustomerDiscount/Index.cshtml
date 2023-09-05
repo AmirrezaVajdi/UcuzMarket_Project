@@ -1,10 +1,11 @@
 ﻿@page
+@using DiscountManagement.Configuration.Permissions;
 @model ServiceHost.Areas.Administration.Pages.Discounts.CustomerDiscount.IndexModel
 @{
     ViewData["Title"] = "مدیریت تخفیف مشتریان";
 }
 
-<div class="row">
+<div class="row" Permission="@DiscountPermission.DefineCustomerDiscount">
     <div class="col-sm-12">
         <h4 class="page-title pull-right">@ViewData["title"]</h4>
         <p class="pull-left">
@@ -13,7 +14,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" Permission="@DiscountPermission.SearchCustomerDiscounts">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -46,7 +47,7 @@
     </div>
 </div>
 
-<div class="row" id="ProductCategoriesDiv">
+<div class="row" id="ProductCategoriesDiv" Permission="@DiscountPermission.ListCustomerDiscounts">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -80,8 +81,8 @@
                                         <td>@customerDiscount.Reason</td>
                                         <td>@customerDiscount.CreationDate</td>
                                         <td>
-                                            <a class="btn btn-warning waves-effect waves-light m-b-5"
-                                           href="#showmodal=@Url.Page("./Index", "Edit" , new {id = customerDiscount.Id})">
+                                            <a Permission="@DiscountPermission.EditCustomerDiscount" class="btn btn-warning waves-effect waves-light m-b-5"
+                                               href="#showmodal=@Url.Page("./Index", "Edit" , new {id = customerDiscount.Id})">
                                                 <i class="fa fa-edit"></i> ویرایش
                                             </a>
                                         </td>

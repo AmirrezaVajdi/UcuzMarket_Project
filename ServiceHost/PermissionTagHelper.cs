@@ -23,13 +23,11 @@ namespace ServiceHost
             }
 
             var permission = _authHelper.GetPermissions();
-            if (!permission.Any(x => x != Permission))
+            if (permission.All(x => x != Permission))
             {
                 output.SuppressOutput();
                 return;
             }
-
-
             base.Process(context, output);
         }
     }

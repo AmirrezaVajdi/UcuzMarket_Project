@@ -9,7 +9,7 @@ namespace InventoryManagement.Infrastructure.Configuration.Permissions
             return new()
             {
                 {
-                    "Inventory",
+                    "انبارداری",
                     new()
                     {
                         new PermissionDto(InventoryPermissions.ListInventory, "مشاهده لیست انبار"),

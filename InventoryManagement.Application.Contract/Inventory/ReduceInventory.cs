@@ -14,5 +14,18 @@ namespace InventoryManagement.Application.Contract.Inventory
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Description { get; set; }
         public long OrderId { get; set; }
+
+        public ReduceInventory()
+        {
+            
+        }
+
+        public ReduceInventory(long porudctId, int count, string description, long orderId)
+        {
+            PorudctId = porudctId;
+            Count = count;
+            Description = description;
+            OrderId = orderId;
+        }
     }
 }

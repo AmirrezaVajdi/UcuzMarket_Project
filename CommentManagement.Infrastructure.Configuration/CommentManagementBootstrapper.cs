@@ -1,5 +1,7 @@
-﻿using CommandManagement.Application;
+﻿using _01_Framework.Infrastructure;
+using CommandManagement.Application;
 using CommandManagement.Domain.CommentAgg;
+using CommentManagement.Infrastructure.Configuration.Permissions;
 using CommentManagement.Infrastructure.EFCore;
 using CommentManagement.Infrastructure.EFCore.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -15,12 +17,14 @@ namespace CommentManagement.Infrastructure.Configuration
 {
     public class CommentManagementBootstrapper
     {
-        public static void Configure(IServiceCollection service, string ConnectionString)
+        public static void Configure(IServiceCollection services, string ConnectionString)
         {
-            service.AddTransient<ICommentRepository, CommentRepository>();
-            service.AddTransient<ICommentApplication, CommentApplication>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<ICommentApplication, CommentApplication>();
 
-            service.AddDbContext<CommentContext>(x => x.UseSqlServer(ConnectionString));
+            services.AddTransient<IPermissionExposer, CommentPermissionExposer>();
+
+            services.AddDbContext<CommentContext>(x => x.UseSqlServer(ConnectionString));
         }
     }
 }

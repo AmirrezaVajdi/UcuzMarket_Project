@@ -28,6 +28,13 @@ namespace _0_Framework.Application
             return null;
         }
 
+        public long CurrentAccountId()
+        {
+            if (IsAuthenticated())
+                return long.Parse(_contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "AccountId").Value);
+            return 0;
+        }
+
         public AuthViewModel CurrentAccountInfo()
         {
             AuthViewModel result = new();
@@ -45,11 +52,11 @@ namespace _0_Framework.Application
 
         public List<int> GetPermissions()
         {
-            if (IsAuthenticated())
-                return new();
+            if (!IsAuthenticated())
+                return new List<int>();
 
-            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "Permissions")?.Value;
-
+            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
+                ?.Value;
             return JsonSerializer.Deserialize<List<int>>(permissions);
         }
 
@@ -74,7 +81,8 @@ namespace _0_Framework.Application
 
             var authProperties = new AuthenticationProperties
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1)
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(10),
+                IsPersistent = true
             };
 
             _contextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,

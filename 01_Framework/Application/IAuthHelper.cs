@@ -8,5 +8,6 @@
         string CurrenAccountRole();
         AuthViewModel CurrentAccountInfo();
         List<int> GetPermissions();
+        long CurrentAccountId();
     }
 }
