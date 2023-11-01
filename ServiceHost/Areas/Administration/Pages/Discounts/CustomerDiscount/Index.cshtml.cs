@@ -28,6 +28,7 @@ namespace ServiceHost.Areas.Administration.Pages.Discounts.CustomerDiscount
             _customerDiscountApplication = customerDiscountApplication;
         }
 
+        [NeedPermission(DiscountPermission.ListCustomerDiscounts)]
         public void OnGet(CustomerDiscountSearchModel searchModel)
         {
             Products = new(_productApplication.GetProducts(), "Id", "Name");

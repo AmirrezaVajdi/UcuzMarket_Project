@@ -9,11 +9,11 @@ using ShopManagement.Infrastructure.EFCore;
 
 #nullable disable
 
-namespace ShopManagement.Infrastructure.EFCore.Migrations
+namespace ShopManagement.Infrasturecure.EFCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20230831101547_PaymentMehtodAdded")]
-    partial class PaymentMehtodAdded
+    [Migration("20231101150629_Init_ShopDatabase")]
+    partial class Init_ShopDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -303,6 +303,9 @@ namespace ShopManagement.Infrastructure.EFCore.Migrations
                                 .HasColumnType("bigint");
 
                             SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<long>("Id"));
+
+                            b1.Property<int>("Count")
+                                .HasColumnType("int");
 
                             b1.Property<DateTime>("CreationDate")
                                 .HasColumnType("datetime2");

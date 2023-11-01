@@ -3,14 +3,36 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ShopManagement.Infrastructure.EFCore.Migrations
+namespace ShopManagement.Infrasturecure.EFCore.Migrations
 {
     /// <inheritdoc />
-    public partial class Init_DataBase : Migration
+    public partial class Init_ShopDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccountId = table.Column<long>(type: "bigint", nullable: false),
+                    PaymentMethod = table.Column<int>(type: "int", nullable: false),
+                    TotalAmount = table.Column<double>(type: "float", nullable: false),
+                    DiscountAmount = table.Column<double>(type: "float", nullable: false),
+                    PayAmount = table.Column<double>(type: "float", nullable: false),
+                    IsPaid = table.Column<bool>(type: "bit", nullable: false),
+                    IsCanceled = table.Column<bool>(type: "bit", nullable: false),
+                    IssueTrackingNo = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
+                    RefId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ProductCategories",
                 columns: table => new
@@ -55,6 +77,30 @@ namespace ShopManagement.Infrastructure.EFCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<long>(type: "bigint", nullable: false),
+                    UnitPrice = table.Column<double>(type: "float", nullable: false),
+                    DiscountRate = table.Column<int>(type: "int", nullable: false),
+                    Count = table.Column<int>(type: "int", nullable: false),
+                    OrderId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -62,8 +108,6 @@ namespace ShopManagement.Infrastructure.EFCore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     Code = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    UnitPrice = table.Column<double>(type: "float", nullable: false),
-                    IsInStock = table.Column<bool>(type: "bit", nullable: false),
                     ShortDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Picture = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
@@ -111,6 +155,11 @@ namespace ShopManagement.Infrastructure.EFCore.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                table: "OrderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductPictures_ProductId",
                 table: "ProductPictures",
                 column: "ProductId");
@@ -125,10 +174,16 @@ namespace ShopManagement.Infrastructure.EFCore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "OrderItems");
+
+            migrationBuilder.DropTable(
                 name: "ProductPictures");
 
             migrationBuilder.DropTable(
                 name: "Slides");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");

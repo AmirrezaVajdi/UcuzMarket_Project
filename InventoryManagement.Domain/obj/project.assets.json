@@ -1965,23 +1965,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lenovo\\.nuget\\packages\\": {},
+    "C:\\Users\\Binam-PC\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Domain\\InventoryManagement.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Domain\\InventoryManagement.Domain.csproj",
       "projectName": "InventoryManagement.Domain",
-      "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Domain\\InventoryManagement.Domain.csproj",
-      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Domain\\obj\\",
+      "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Domain\\InventoryManagement.Domain.csproj",
+      "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1997,11 +1997,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
             },
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Application.Contract\\InventoryManagement.Application.Contract.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\InventoryManagement.Application.Contract\\InventoryManagement.Application.Contract.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Application.Contract\\InventoryManagement.Application.Contract.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Application.Contract\\InventoryManagement.Application.Contract.csproj"
             }
           }
         }

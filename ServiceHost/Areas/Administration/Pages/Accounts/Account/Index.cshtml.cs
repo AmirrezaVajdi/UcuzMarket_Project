@@ -29,6 +29,7 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
             _roleApplication = roleApplication;
         }
 
+        [NeedPermission(AccountPermission.ListAccount)]
         public void OnGet(AccountSearchModel searchModel)
         {
             Roles = new(_roleApplication.List(), "Id", "Name");

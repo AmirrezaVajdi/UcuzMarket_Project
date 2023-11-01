@@ -4545,23 +4545,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lenovo\\.nuget\\packages\\": {},
+    "C:\\Users\\Binam-PC\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj",
+      "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj",
       "projectName": "ShopManagement.Configuration",
-      "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj",
-      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Configuration\\obj\\",
+      "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj",
+      "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4577,23 +4577,23 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Query\\01_LampShadeQuery.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Query\\01_LampShadeQuery.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Query\\01_LampShadeQuery.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Query\\01_LampShadeQuery.csproj"
             },
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
             },
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application\\ShopManagement.Application.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application\\ShopManagement.Application.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application\\ShopManagement.Application.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application\\ShopManagement.Application.csproj"
             },
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrastructure.AccountAcl\\ShopManagement.Infrastructure.AccountAcl.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrastructure.AccountAcl\\ShopManagement.Infrastructure.AccountAcl.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrastructure.AccountAcl\\ShopManagement.Infrastructure.AccountAcl.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrastructure.AccountAcl\\ShopManagement.Infrastructure.AccountAcl.csproj"
             },
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrastructure.InvenoryAcl\\ShopManagement.Infrastructure.InventoryAcl.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrastructure.InvenoryAcl\\ShopManagement.Infrastructure.InventoryAcl.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrastructure.InvenoryAcl\\ShopManagement.Infrastructure.InventoryAcl.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrastructure.InvenoryAcl\\ShopManagement.Infrastructure.InventoryAcl.csproj"
             },
-            "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
-              "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj"
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj"
             }
           }
         }

@@ -29,6 +29,7 @@ namespace ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscount
             _ColleagueDiscountApplication = colleagueDiscountApplication;
         }
 
+        [NeedPermission(DiscountPermission.ListColleagueDiscounts)]
         public void OnGet(ColleagueDiscountSearchModel searchModel)
         {
             Products = new(_productApplication.GetProducts(), "Id", "Name");

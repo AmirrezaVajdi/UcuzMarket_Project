@@ -24,6 +24,7 @@ namespace ServiceHost.Areas.Administration.Pages.Comments
             _commentApplication = commentApplication;
         }
 
+        [NeedPermission(CommentPermission.ListComments)]
         public void OnGet(CommentSearchModel searchModel)
         {
             Comments = _commentApplication.Search(searchModel);

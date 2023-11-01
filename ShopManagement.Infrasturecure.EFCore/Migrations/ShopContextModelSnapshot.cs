@@ -8,7 +8,7 @@ using ShopManagement.Infrastructure.EFCore;
 
 #nullable disable
 
-namespace ShopManagement.Infrastructure.EFCore.Migrations
+namespace ShopManagement.Infrasturecure.EFCore.Migrations
 {
     [DbContext(typeof(ShopContext))]
     partial class ShopContextModelSnapshot : ModelSnapshot

@@ -725,6 +725,14 @@
           }
         }
       },
+      "SmsIrRestfulNetCore/1.1.4": {
+        "runtime": {
+          "lib/netcoreapp2.0/SmsIrRestfulNetCore.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "System.Buffers/4.5.1": {},
       "System.CodeDom/4.4.0": {
         "runtime": {
@@ -988,7 +996,8 @@
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.8",
           "Newtonsoft.Json": "13.0.3",
-          "RestSharp": "110.2.0"
+          "RestSharp": "110.2.0",
+          "SmsIrRestfulNetCore": "1.1.4"
         },
         "runtime": {
           "01_Framework.dll": {}
@@ -1502,6 +1511,13 @@
       "sha512": "sha512-FXGw0IMcqY7yO/hzS9QrD3iNswNgb9UxJnxWmfOxmGs4kRlZWqdtBoGPLuhlbgsDzX1RFo4WKui8TGGKXWKalw==",
       "path": "restsharp/110.2.0",
       "hashPath": "restsharp.110.2.0.nupkg.sha512"
+    },
+    "SmsIrRestfulNetCore/1.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yZVm87oKasXdVl1BYucfj66ZPtFDcMR7Wc7Kf9Zgbw7ylMR2bCBuKD1dEawYBVQLwTZmFjjnTZQCSEw+nZ5CNw==",
+      "path": "smsirrestfulnetcore/1.1.4",
+      "hashPath": "smsirrestfulnetcore.1.1.4.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

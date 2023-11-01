@@ -21,6 +21,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Slides
             _slideApplication = slideApplication;
         }
 
+        [NeedPermission(ShopPermissions.ListSlides)]
         public void OnGet()
         {
             Slides = _slideApplication.GetList();

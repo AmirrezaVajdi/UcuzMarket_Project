@@ -34,6 +34,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             _inventoryApplication = inventoryApplication;
         }
 
+        [NeedPermission(InventoryPermissions.ListInventory)]
         public void OnGet(InventorySearchModel searchModel)
         {
             Products = new(_productApplication.GetProducts(), "Id", "Name");

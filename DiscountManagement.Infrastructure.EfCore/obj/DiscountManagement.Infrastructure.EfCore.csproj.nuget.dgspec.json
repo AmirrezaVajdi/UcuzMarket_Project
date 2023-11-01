@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj": {}
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj",
         "projectName": "01_Framework",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -94,20 +94,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj",
         "projectName": "AccountManagement.Application.Contracts",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Application.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -123,8 +123,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
               }
             }
           }
@@ -158,20 +158,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Domain\\AccountManagement.Domain.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Domain\\AccountManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Domain\\AccountManagement.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Domain\\AccountManagement.Domain.csproj",
         "projectName": "AccountManagement.Domain",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Domain\\AccountManagement.Domain.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Domain\\AccountManagement.Domain.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -187,11 +187,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
               },
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Application.Contracts\\AccountManagement.Application.Contracts.csproj"
               }
             }
           }
@@ -225,20 +225,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj",
         "projectName": "AccountManagement.Infrastructure.EFCore",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Infrastructure.EFCore\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Infrastructure.EFCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -254,8 +254,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Domain\\AccountManagement.Domain.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Domain\\AccountManagement.Domain.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Domain\\AccountManagement.Domain.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Domain\\AccountManagement.Domain.csproj"
               }
             }
           }
@@ -305,20 +305,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj",
         "projectName": "DiscountManagement.Domain",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -334,11 +334,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
               },
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj"
               }
             }
           }
@@ -372,20 +372,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
         "projectName": "DiscountManagement.Infrastructure.EfCore",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Infrastructure.EfCore\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -401,11 +401,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj"
               },
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj"
               }
             }
           }
@@ -455,20 +455,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
         "projectName": "DiscountManagment.Application.Contract",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\DiscountManagment.Application.Contract\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -484,11 +484,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
               },
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
               }
             }
           }
@@ -522,20 +522,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
         "projectName": "ShopManagement.Application.Contracts",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -551,8 +551,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
               }
             }
           }
@@ -592,20 +592,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Domain\\ShopManagement.Domain.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Domain\\ShopManagement.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Domain\\ShopManagement.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Domain\\ShopManagement.Domain.csproj",
         "projectName": "ShopManagement.Domain",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Domain\\ShopManagement.Domain.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Domain\\ShopManagement.Domain.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -621,11 +621,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
               },
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
               }
             }
           }
@@ -659,20 +659,20 @@
         }
       }
     },
-    "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
+    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj",
+        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj",
         "projectName": "ShopManagement.Infrasturecure.EFCore",
-        "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Infrasturecure.EFCore\\obj\\",
+        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj",
+        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -688,11 +688,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Infrastructure.EFCore\\AccountManagement.Infrastructure.EFCore.csproj"
               },
-              "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Domain\\ShopManagement.Domain.csproj": {
-                "projectPath": "C:\\Users\\lenovo\\Desktop\\LampShade\\ShopManagement.Domain\\ShopManagement.Domain.csproj"
+              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Domain\\ShopManagement.Domain.csproj": {
+                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Domain\\ShopManagement.Domain.csproj"
               }
             }
           }

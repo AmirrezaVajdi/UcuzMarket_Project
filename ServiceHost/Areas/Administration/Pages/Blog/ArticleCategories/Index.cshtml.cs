@@ -20,6 +20,7 @@ namespace ServiceHost.Areas.Administration.Pages.Blog.ArticleCategories
             _articleCategoryApplication = articleCategoryApplication;
         }
 
+        [NeedPermission(BlogPermission.ListArticleCategories)]
         public void OnGet(ArticleCategorySearchModel searchModel)
         {
             ArticleCategories = _articleCategoryApplication.Search(searchModel);
