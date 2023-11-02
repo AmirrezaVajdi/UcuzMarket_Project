@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 namespace _01_Framework.Application
 {
@@ -8,12 +9,18 @@ namespace _01_Framework.Application
     {
         private readonly int _maxFileSize;
 
-        public MaxFileSizeAttribute(int maxFileSize)
+        public MaxFileSizeAttribute()
         {
-            _maxFileSize = maxFileSize;
+            try
+            {
+                var json = File.ReadAllText("Settings.json");
+                _maxFileSize = JsonSerializer.Deserialize<SettingModel>(json).MaxFileSize;
+            }
+            catch
+            {
+
+            }
         }
-
-
 
         public override bool IsValid(object? value)
         {

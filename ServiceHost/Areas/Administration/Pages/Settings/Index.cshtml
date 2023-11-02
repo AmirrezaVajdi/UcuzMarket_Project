@@ -1,0 +1,67 @@
+﻿@page
+@model ServiceHost.Areas.Administration.Pages.Settings.IndexModel
+@{
+}
+@if (TempData["Error"] != null)
+{
+    <span class="text-danger m-auto">@TempData["Error"]</span>
+    <hr />
+}
+@if (TempData["Success"] != null)
+{
+    <span class="text-success">@TempData["Success"]</span>
+    <hr />
+}
+
+<h5 class="text-center mb-4">تنظیمات فروشگاه دزنی</h5>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title m-0 me-2">سایز مجاز برای آپلود عکس (بایت)</h5>
+                </div>
+                <div class="card-body">
+                    <input class="form-control" id="size" min="1024" name="MaxFileSize" type="number" value="@Model.Setting.MaxFileSize" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title m-0 me-2">فرمت عکس های مجاز برای آپلود</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-check custom-option custom-option-basic mb-3">
+                        <label class="form-check-label custom-option-content" for="png">
+                            <input class="form-check-input" type="checkbox" id="png" name="FileExtensionLimit" value="png" @(Model.Setting.FileExtensionLimit.Contains("png") ? "checked='checked''" : "") />
+                            <span class="custom-option-header pb-0">
+                                <span class="fw-semibold">PNG</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check custom-option custom-option-basic mb-3">
+                        <label class="form-check-label custom-option-content" for="jpg">
+                            <input class="form-check-input" type="checkbox" id="jpg" value="jpg" name="FileExtensionLimit" @(Model.Setting.FileExtensionLimit.Contains("jpg") ? "checked='checked''" : "") />
+                            <span class="custom-option-header pb-0">
+                                <span class="fw-semibold">JPG</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check custom-option custom-option-basic mb-3">
+                        <label class="form-check-label custom-option-content" for="jpeg">
+                            <input class="form-check-input" type="checkbox" id="jpeg" value="jpeg" name="FileExtensionLimit" @(Model.Setting.FileExtensionLimit.Contains("jpeg") ? "checked='checked''" : "") />
+                            <span class="custom-option-header pb-0">
+                                <span class="fw-semibold">JPEG</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="col-6 m-auto btn btn-outline-success">ذخیره کردن</button>
+    </div>
+</form>

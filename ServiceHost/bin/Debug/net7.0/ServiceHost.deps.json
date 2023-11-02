@@ -17,6 +17,8 @@
           "DiscountManagement.Configuration": "1.0.0",
           "InventoryManagement.Infrastructure.Configuration": "1.0.0",
           "InventoryManagement.Presentation.Api": "1.0.0",
+          "LampShade.Settings": "1.0.0",
+          "LampShade.Settings.Api": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "7.0.8",
           "ShopManagement.Configuration": "1.0.0",
           "ShopManagement.Presentation.Api": "1.0.0",
@@ -1109,6 +1111,23 @@
           "InventoryManagement.Presentation.Api.dll": {}
         }
       },
+      "LampShade.Settings/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "runtime": {
+          "LampShade.Settings.dll": {}
+        }
+      },
+      "LampShade.Settings.Api/1.0.0": {
+        "dependencies": {
+          "LampShade.Settings": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+        },
+        "runtime": {
+          "LampShade.Settings.Api.dll": {}
+        }
+      },
       "ShopManagement.Application/1.0.0": {
         "dependencies": {
           "ShopManagement.Application.Contracts": "1.0.0",
@@ -2011,6 +2030,16 @@
       "sha512": ""
     },
     "InventoryManagement.Presentation.Api/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LampShade.Settings/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LampShade.Settings.Api/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

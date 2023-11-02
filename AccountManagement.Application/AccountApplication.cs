@@ -45,7 +45,7 @@ namespace AccountManagement.Application
         {
             OperationResult operation = new();
             if (_accountRepository.Exsists(x => x.Username == command.Username || x.Mobile == command.Mobile))
-                return operation.Failed(ApplicationMessages.DuplicatedRecored);
+                return operation.Failed("نام کاربری یا موبایل قبلا ثبت شده است");
 
             var password = _passwordHasher.Hash(command.Password);
             var path = "ProfilePhotos";

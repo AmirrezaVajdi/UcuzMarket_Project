@@ -299,3 +299,8 @@ C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\obj\Debug\net7.0\refint\S
 C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\obj\Debug\net7.0\ServiceHost.pdb
 C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\obj\Debug\net7.0\ServiceHost.genruntimeconfig.cache
 C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\obj\Debug\net7.0\ref\ServiceHost.dll
+C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\bin\Debug\net7.0\LampShade.Settings.dll
+C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\bin\Debug\net7.0\LampShade.Settings.pdb
+C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\bin\Debug\net7.0\Settings.json
+C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\bin\Debug\net7.0\LampShade.Settings.Api.dll
+C:\Users\Binam-PC\Desktop\LampShadeProject\ServiceHost\bin\Debug\net7.0\LampShade.Settings.Api.pdb

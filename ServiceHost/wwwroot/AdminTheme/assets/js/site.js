@@ -186,33 +186,67 @@ function handleAjaxCall(method, url, data) {
 
 jQuery.validator.addMethod("maxFileSize",
     function (value, element, params) {
+
+        var limitSize = GetFileSizeLimit();
+
         var size = element.files[0].size;
-        var maxSize = 3 * 1024 * 1024;
-        if (size > maxSize)
+        if (size > limitSize)
             return false;
         else {
             return true;
         }
+
     });
 jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
 
-jQuery.validator.addMethod("fileExtentionLimit",
+
+jQuery.validator.addMethod("fileExtensionLimit",
     function (value, element, params) {
 
-        var extensions = ["png", "jpg", "jpeg"];
-
         var fileExtension = value.split('.').pop();
+        var result = false;
 
         if (element != null) {
-
-            extensions.forEach((item) => {
-                if (item != fileExtension) {
-                    return false;
+            FileExtensionLimit.every((item) => {
+                if (item == fileExtension) {
+                    result = true;
                 }
                 else {
-                    return true;
+                    result = false;
                 }
             });
+
+            return result;
         }
     });
-jQuery.validator.unobtrusive.adapters.addBool("fileExtentionLimit");
+jQuery.validator.unobtrusive.adapters.addBool("fileExtensionLimit");
+
+
+function GetFileSizeLimit() {
+
+    return LimitSize;
+};
+
+$(document).ready(function () {
+
+    var settings = {
+        "url": "https://localhost:7211/api/LampShade/GetMaxFileSizeLimit",
+        "method": "GET",
+        "timeout": 0,
+    };
+    var settings2 = {
+        "url": "https://localhost:7211/api/LampShade/GetFileExtensionLimit",
+        "method": "GET",
+        "timeout": 0,
+    };
+    $.ajax(settings).done(function (response) {
+        LimitSize = response;
+    });
+    $.ajax(settings2).done(function (response) {
+        FileExtensionLimit = response;
+    });
+});
+
+
+var LimitSize;
+var FileExtensionLimit = [];

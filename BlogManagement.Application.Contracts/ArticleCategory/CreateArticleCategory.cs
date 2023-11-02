@@ -9,8 +9,8 @@ namespace BlogManagement.Application.Contracts.ArticleCategory
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Name { get; set; }
 
-        [FileExtentionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
-        [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        [MaxFileSize(ErrorMessage = ValidationMessages.MaxFileSize)]
+        [FileExtensionLimitation(ErrorMessage = ValidationMessages.InvalidFileFormat)]
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public IFormFile Picture { get; set; }
 

@@ -76,6 +76,10 @@
                                 {
                                     <div class="alert alert-danger">@Model.RegisterMessage</div>
                                 }
+                                @if (Model.RegisterMessageSucess != null)
+                                {
+                                    <div class="alert alert-success">@Model.RegisterMessageSucess</div>
+                                }
 
                                 <form method="post" asp-page-handler="Register">
                                     <div class="login-form">

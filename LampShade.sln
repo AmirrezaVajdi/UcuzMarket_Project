@@ -131,7 +131,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountManagement.Configura
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountManagement.Infrastructure.EFCore", "AccountManagement.Infrastructure.EFCore\AccountManagement.Infrastructure.EFCore.csproj", "{8B0FF9E1-00F9-481B-91C4-DBE104D28489}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructure.AccountAcl", "ShopManagement.Infrastructure.AccountAcl\ShopManagement.Infrastructure.AccountAcl.csproj", "{8C5362E6-1CB2-4B77-8A72-56EC306CA0BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructure.AccountAcl", "ShopManagement.Infrastructure.AccountAcl\ShopManagement.Infrastructure.AccountAcl.csproj", "{8C5362E6-1CB2-4B77-8A72-56EC306CA0BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LampShadeSettings", "LampShadeSettings", "{B571226F-48F4-48D2-BE36-696CB5FBACF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LampShade.Settings.Api", "LampShadeSettings\LampShade.Settings.Api\LampShade.Settings.Api.csproj", "{54996DAC-FC96-424D-8268-CD8909C183B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LampShade.Settings", "LampShadeSettings\LampShadeSettings\LampShade.Settings.csproj", "{1607175A-5612-4F74-8039-1551AD2C4E83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -291,6 +297,14 @@ Global
 		{8C5362E6-1CB2-4B77-8A72-56EC306CA0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C5362E6-1CB2-4B77-8A72-56EC306CA0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C5362E6-1CB2-4B77-8A72-56EC306CA0BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54996DAC-FC96-424D-8268-CD8909C183B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54996DAC-FC96-424D-8268-CD8909C183B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54996DAC-FC96-424D-8268-CD8909C183B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54996DAC-FC96-424D-8268-CD8909C183B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1607175A-5612-4F74-8039-1551AD2C4E83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1607175A-5612-4F74-8039-1551AD2C4E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1607175A-5612-4F74-8039-1551AD2C4E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1607175A-5612-4F74-8039-1551AD2C4E83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -352,6 +366,8 @@ Global
 		{7ABCAEAB-6EEB-4D87-B088-9703A288FA07} = {D9A87442-AA16-4D09-A25C-7A3D9AF2EFA3}
 		{8B0FF9E1-00F9-481B-91C4-DBE104D28489} = {D9A87442-AA16-4D09-A25C-7A3D9AF2EFA3}
 		{8C5362E6-1CB2-4B77-8A72-56EC306CA0BB} = {C076EC1A-16D6-4770-8311-DC4381A2AAED}
+		{54996DAC-FC96-424D-8268-CD8909C183B4} = {B571226F-48F4-48D2-BE36-696CB5FBACF6}
+		{1607175A-5612-4F74-8039-1551AD2C4E83} = {B571226F-48F4-48D2-BE36-696CB5FBACF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {697964D0-D8FD-4BF8-8399-9269FAB4FC49}

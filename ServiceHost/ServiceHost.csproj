@@ -27,6 +27,8 @@
     <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManagement.Presentation.Api\InventoryManagement.Presentation.Api.csproj" />
+    <ProjectReference Include="..\LampShadeSettings\LampShade.Settings.Api\LampShade.Settings.Api.csproj" />
+    <ProjectReference Include="..\LampShadeSettings\LampShadeSettings\LampShade.Settings.csproj" />
     <ProjectReference Include="..\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
     <ProjectReference Include="..\ShopManagement.Presentation.Api\ShopManagement.Presentation.Api.csproj" />
   </ItemGroup>

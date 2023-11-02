@@ -9,6 +9,7 @@ using CommentManagement.Infrastructure.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using InventoryManagement.Presentation.Api;
+using LampShade.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ServiceHost;
 using ShopManagement.Configuration;
@@ -36,6 +37,7 @@ builder.Services.AddTransient<IFileUploader, FileUploader>();
 builder.Services.AddTransient<IAuthHelper, AuthHelper>();
 builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
 builder.Services.AddTransient<ISmsService, SmsService>();
+LampShadeSettingsBootstrapper.Configure(builder.Services);
 
 
 builder.Services.Configure<CookiePolicyOptions>(option =>
@@ -86,7 +88,8 @@ builder.Services.AddRazorPages()
     options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
 })
     .AddApplicationPart(typeof(ProductController).Assembly)
-    .AddApplicationPart(typeof(InventoryController).Assembly);
+    .AddApplicationPart(typeof(InventoryController).Assembly)
+    .AddApplicationPart(typeof(LampShadeController).Assembly);
 
 
 var app = builder.Build();

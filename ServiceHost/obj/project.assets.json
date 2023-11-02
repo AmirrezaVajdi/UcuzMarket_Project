@@ -2080,6 +2080,33 @@
           "bin/placeholder/InventoryManagement.Presentation.Api.dll": {}
         }
       },
+      "LampShade.Settings/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LampShade.Settings.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LampShade.Settings.dll": {}
+        }
+      },
+      "LampShade.Settings.Api/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LampShade.Settings": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+        },
+        "compile": {
+          "bin/placeholder/LampShade.Settings.Api.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LampShade.Settings.Api.dll": {}
+        }
+      },
       "ShopManagement.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -5098,6 +5125,16 @@
       "path": "../InventoryManagement.Presentation.Api/InventoryManagement.Presentation.Api.csproj",
       "msbuildProject": "../InventoryManagement.Presentation.Api/InventoryManagement.Presentation.Api.csproj"
     },
+    "LampShade.Settings/1.0.0": {
+      "type": "project",
+      "path": "../LampShadeSettings/LampShadeSettings/LampShade.Settings.csproj",
+      "msbuildProject": "../LampShadeSettings/LampShadeSettings/LampShade.Settings.csproj"
+    },
+    "LampShade.Settings.Api/1.0.0": {
+      "type": "project",
+      "path": "../LampShadeSettings/LampShade.Settings.Api/LampShade.Settings.Api.csproj",
+      "msbuildProject": "../LampShadeSettings/LampShade.Settings.Api/LampShade.Settings.Api.csproj"
+    },
     "ShopManagement.Application/1.0.0": {
       "type": "project",
       "path": "../ShopManagement.Application/ShopManagement.Application.csproj",
@@ -5150,6 +5187,8 @@
       "DiscountManagement.Configuration >= 1.0.0",
       "InventoryManagement.Infrastructure.Configuration >= 1.0.0",
       "InventoryManagement.Presentation.Api >= 1.0.0",
+      "LampShade.Settings >= 1.0.0",
+      "LampShade.Settings.Api >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.8",
       "ShopManagement.Configuration >= 1.0.0",
       "ShopManagement.Presentation.Api >= 1.0.0",
@@ -5216,6 +5255,12 @@
             },
             "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Presentation.Api\\InventoryManagement.Presentation.Api.csproj": {
               "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Presentation.Api\\InventoryManagement.Presentation.Api.csproj"
+            },
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShade.Settings.Api\\LampShade.Settings.Api.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShade.Settings.Api\\LampShade.Settings.Api.csproj"
+            },
+            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShadeSettings\\LampShade.Settings.csproj": {
+              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShadeSettings\\LampShade.Settings.csproj"
             },
             "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj": {
               "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj"

@@ -19,8 +19,8 @@ namespace ShopManagement.Application.Contracts.Product
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Description { get; set; }
 
-        [MaxFileSize(5 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
-        [FileExtentionLimitation(new[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+        [MaxFileSize(ErrorMessage = ValidationMessages.MaxFileSize)]
+        [FileExtensionLimitation(ErrorMessage = ValidationMessages.InvalidFileFormat)]
         public IFormFile Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]

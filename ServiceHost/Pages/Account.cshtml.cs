@@ -9,6 +9,8 @@ namespace ServiceHost.Pages
     {
         [TempData]
         public string RegisterMessage { get; set; }
+        [TempData]
+        public string RegisterMessageSucess { get; set; }
 
         [TempData]
         public string LoginMessage { get; set; }
@@ -35,11 +37,11 @@ namespace ServiceHost.Pages
                 LoginMessage = "نام کاربری یا رمز عبور اشتباه می باشد";
                 TempData["message"] = "نام کاربری یا رمز عبور اشتباه می باشد";
 
-                return RedirectToPage("./Account");
+                return Page();
             }
 
             LoginMessage = "نام کاربری و رمز عبور اجباری می باشد";
-            return RedirectToPage("./Account");
+            return Page();
         }
 
         public IActionResult OnGetLogout()
@@ -55,14 +57,14 @@ namespace ServiceHost.Pages
                 var result = _accountApplication.Register(command);
                 if (result.isSuccedded)
                 {
-                    RegisterMessage = "ثبت نام شما با موفقیت انجام شد . میتوانید وارد فروشگاه شوید";
-                    return RedirectToPage("./Account");
+                    RegisterMessageSucess = "ثبت نام شما با موفقیت انجام شد . میتوانید وارد فروشگاه شوید";
+                    return Page();
                 }
                 RegisterMessage = result.Message;
-                return RedirectToPage("./Account");
+                return Page();
             }
             RegisterMessage = "همه مقادیر باید پر شده باشند";
-            return RedirectToPage("./Account");
+            return Page();
         }
 
         public bool LoginModelIsNull(Login login)
