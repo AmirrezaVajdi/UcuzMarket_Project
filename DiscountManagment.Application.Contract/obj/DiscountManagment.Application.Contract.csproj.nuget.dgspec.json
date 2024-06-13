@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {}
+    "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
+    "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj",
+        "projectUniqueName": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj",
         "projectName": "01_Framework",
-        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj",
-        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\obj\\",
+        "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj",
+        "packagesPath": "C:\\Users\\Amirreza-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Amirreza-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -85,29 +90,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {
+    "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
+        "projectUniqueName": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
         "projectName": "DiscountManagment.Application.Contract",
-        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
-        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagment.Application.Contract\\obj\\",
+        "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagment.Application.Contract\\DiscountManagment.Application.Contract.csproj",
+        "packagesPath": "C:\\Users\\Amirreza-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagment.Application.Contract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Amirreza-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -123,11 +142,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj"
               },
-              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
-                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
+              "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj"
               }
             }
           }
@@ -136,6 +155,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -152,29 +176,43 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
+    "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
         "projectName": "ShopManagement.Application.Contracts",
-        "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
-        "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Application.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Application.Contracts\\ShopManagement.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Amirreza-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Amirreza-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -190,8 +228,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj": {
-                "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Framework\\01_Framework.csproj"
+              "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj": {
+                "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Framework\\01_Framework.csproj"
               }
             }
           }
@@ -200,6 +238,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -222,12 +265,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5196,23 +5196,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Binam-PC\\.nuget\\packages\\": {},
+    "C:\\Users\\Amirreza-PC\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ServiceHost\\ServiceHost.csproj",
+      "projectUniqueName": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ServiceHost\\ServiceHost.csproj",
       "projectName": "ServiceHost",
-      "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ServiceHost\\ServiceHost.csproj",
-      "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ServiceHost\\obj\\",
+      "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ServiceHost\\ServiceHost.csproj",
+      "packagesPath": "C:\\Users\\Amirreza-PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ServiceHost\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Amirreza-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5222,51 +5222,50 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Query\\01_LampShadeQuery.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\01_Query\\01_LampShadeQuery.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Query\\01_LampShadeQuery.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\01_Query\\01_LampShadeQuery.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Configuration\\AccountManagement.Configuration.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\AccountManagement.Configuration\\AccountManagement.Configuration.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\AccountManagement.Configuration\\AccountManagement.Configuration.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\AccountManagement.Configuration\\AccountManagement.Configuration.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\BlogManagement.Application.Contracts\\BlogManagement.Application.Contracts.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\BlogManagement.Application.Contracts\\BlogManagement.Application.Contracts.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\BlogManagement.Application.Contracts\\BlogManagement.Application.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\BlogManagement.Application.Contracts\\BlogManagement.Application.Contracts.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\BlogManagement.Infrastructure.Configuration\\BlogManagement.Infrastructure.Configuration.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\BlogManagement.Infrastructure.Configuration\\BlogManagement.Infrastructure.Configuration.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\BlogManagement.Infrastructure.Configuration\\BlogManagement.Infrastructure.Configuration.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\BlogManagement.Infrastructure.Configuration\\BlogManagement.Infrastructure.Configuration.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\CommandManagement.Application.Infrastructure.EFCore\\CommandManagement.Application.Contract.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\CommandManagement.Application.Infrastructure.EFCore\\CommandManagement.Application.Contract.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\CommandManagement.Application.Infrastructure.EFCore\\CommandManagement.Application.Contract.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\CommandManagement.Application.Infrastructure.EFCore\\CommandManagement.Application.Contract.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\CommentManagement.Infrastructure.Configuration\\CommentManagement.Infrastructure.Configuration.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\CommentManagement.Infrastructure.Configuration\\CommentManagement.Infrastructure.Configuration.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\CommentManagement.Infrastructure.Configuration\\CommentManagement.Infrastructure.Configuration.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\CommentManagement.Infrastructure.Configuration\\CommentManagement.Infrastructure.Configuration.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Configuration\\DiscountManagement.Configuration.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Configuration\\DiscountManagement.Configuration.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Configuration\\DiscountManagement.Configuration.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Configuration\\DiscountManagement.Configuration.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Infrastructure.Configuration\\InventoryManagement.Infrastructure.Configuration.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Infrastructure.Configuration\\InventoryManagement.Infrastructure.Configuration.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\InventoryManagement.Infrastructure.Configuration\\InventoryManagement.Infrastructure.Configuration.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\InventoryManagement.Infrastructure.Configuration\\InventoryManagement.Infrastructure.Configuration.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Presentation.Api\\InventoryManagement.Presentation.Api.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\InventoryManagement.Presentation.Api\\InventoryManagement.Presentation.Api.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\InventoryManagement.Presentation.Api\\InventoryManagement.Presentation.Api.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\InventoryManagement.Presentation.Api\\InventoryManagement.Presentation.Api.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShade.Settings.Api\\LampShade.Settings.Api.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShade.Settings.Api\\LampShade.Settings.Api.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\LampShadeSettings\\LampShade.Settings.Api\\LampShade.Settings.Api.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\LampShadeSettings\\LampShade.Settings.Api\\LampShade.Settings.Api.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShadeSettings\\LampShade.Settings.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\LampShadeSettings\\LampShadeSettings\\LampShade.Settings.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\LampShadeSettings\\LampShadeSettings\\LampShade.Settings.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\LampShadeSettings\\LampShadeSettings\\LampShade.Settings.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Configuration\\ShopManagement.Configuration.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Presentation.Api\\ShopManagement.Presentation.Api.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Presentation.Api\\ShopManagement.Presentation.Api.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Presentation.Api\\ShopManagement.Presentation.Api.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Presentation.Api\\ShopManagement.Presentation.Api.csproj"
             }
           }
         }
@@ -5275,6 +5274,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -5303,6 +5307,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.18, 7.0.18]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.18, 7.0.18]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.18, 7.0.18]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.18, 7.0.18]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5311,7 +5333,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }

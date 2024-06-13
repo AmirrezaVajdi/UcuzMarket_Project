@@ -4480,23 +4480,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Binam-PC\\.nuget\\packages\\": {},
+    "C:\\Users\\Amirreza-PC\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
+      "projectUniqueName": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
       "projectName": "DiscountManagement.Infrastructure.EfCore",
-      "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
-      "packagesPath": "C:\\Users\\Binam-PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Infrastructure.EfCore\\obj\\",
+      "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Infrastructure.EfCore\\DiscountManagement.Infrastructure.EfCore.csproj",
+      "packagesPath": "C:\\Users\\Amirreza-PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Infrastructure.EfCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Binam-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Amirreza-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4512,11 +4512,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\DiscountManagement.Domain\\DiscountManagement.Domain.csproj"
             },
-            "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
-              "projectPath": "C:\\Users\\Binam-PC\\Desktop\\LampShadeProject\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj"
+            "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj": {
+              "projectPath": "C:\\Users\\Amirreza-PC\\Desktop\\LampShade_Project\\ShopManagement.Infrasturecure.EFCore\\ShopManagement.Infrasturecure.EFCore.csproj"
             }
           }
         }
@@ -4525,6 +4525,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4557,12 +4562,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.18, 7.0.18]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.18, 7.0.18]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.18, 7.0.18]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }
