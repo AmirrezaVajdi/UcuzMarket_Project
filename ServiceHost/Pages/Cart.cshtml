@@ -62,7 +62,7 @@
                                                 </a>
                                             </td>
                                             <td class="pro-title">
-                                                <a href="single-product.html">@cart.Name</a>
+                                                <a asp-page="./Product" asp-route-id="@cart.Name.Slugiffy()">@cart.Name</a>
                                             </td>
                                             <td class="pro-price">
                                                 <span>@cart.UnitPrice.ToMoney()</span>
