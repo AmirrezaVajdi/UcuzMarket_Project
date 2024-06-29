@@ -20,9 +20,7 @@ namespace CommandManagement.Application.Contract.Comment
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public int Type { get; set; }
-
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
-        public long ParentId { get; set; }
+        public long? ParentId { get; set; }
 
     }
 }
