@@ -97,7 +97,7 @@ namespace AccountManagement.Infrastructure.EFCore.Mapping
 
                 };
 
-                builder.HasData(roles);
+                //builder.HasData(roles);
             });
         }
     }

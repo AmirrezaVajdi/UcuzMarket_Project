@@ -49,9 +49,10 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
         [NeedPermission(AccountPermission.RegisterAccount)]
         public IActionResult OnPostCreate(RegisterAccount command)
         {
-            var model = ModelState;
+            ModelState.ClearValidationState("Roles");
+            ModelState.MarkFieldValid("Roles");
 
-            if (model.IsValid)
+            if (ModelState.IsValid)
             {
                 var result = _accountApplication.Register(command);
                 return new JsonResult(result);
