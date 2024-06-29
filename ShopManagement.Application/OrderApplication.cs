@@ -54,8 +54,8 @@ namespace ShopManagement.Application
             if (_shopInventoryAcl.ReduceFromInventory(order.Items))
             {
                 _orderRepository.SaveChanges();
-                var account = _shopAccountAcl.GetAccountBy(order.AccountId);
-                _smsService.Send(account.mobile, $"{account.name} گرامی پرداخت شمما با شماره پیگیری {issueTrackingNo} با موفقیت پرداخت شد و به زودی برای شما ارسال خواهد شد");
+                //var account = _shopAccountAcl.GetAccountBy(order.AccountId);
+                //_smsService.Send(account.mobile, $"{account.name} گرامی پرداخت شمما با شماره پیگیری {issueTrackingNo} با موفقیت پرداخت شد و به زودی برای شما ارسال خواهد شد");
                 return issueTrackingNo;
             }
             return "";
