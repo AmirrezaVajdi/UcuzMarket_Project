@@ -60,9 +60,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\ProductPictures\" />
-    <Folder Include="wwwroot\ProductPictures\ProfilePhotos\" />
-  </ItemGroup>
-
 </Project>
