@@ -3,7 +3,7 @@
 @inject IAuthHelper authHelper;
 @model MenuModel
 @{
-
+    var role = authHelper.CurrenAccountRole();
 }
 
 <div class="header-area header-sticky">
@@ -50,6 +50,13 @@
                                 <li>
                                     <a href="contact.html">تماس با ما</a>
                                 </li>
+                                @if (role == "1" || role == "3" || role == "4")
+                                {
+
+                                    <li>
+                                        <a asp-area="Administration" asp-page="/Index">پنل ادمین</a>
+                                    </li>
+                                }
                                 @if (!authHelper.IsAuthenticated())
                                 {
                                     <li>
@@ -62,6 +69,7 @@
                                         <a asp-page="./Account" asp-page-handler="Logout">خروج</a>
                                     </li>
                                 }
+
                             </ul>
                         </nav>
                     </div>
@@ -210,9 +218,25 @@
                         <li class="menu-item-has-children">
                             <a href="#">پروفایل من</a>
                             <ul class="sub-menu">
-                                <li>
-                                    <a asp-page="./Account">ورود / ثبت نام</a>
-                                </li>
+                                @if (role == "1" || role == "3" || role == "4")
+                                {
+
+                                    <li>
+                                        <a asp-area="Administration" asp-page="/Index">پنل ادمین</a>
+                                    </li>
+                                }
+                                @if (!authHelper.IsAuthenticated())
+                                {
+                                    <li>
+                                        <a asp-page="./Account">ورود / ثبت نام</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a asp-page="./Account" asp-page-handler="Logout">خروج</a>
+                                    </li>
+                                }
                             </ul>
                         </li>
                     </ul>
