@@ -14,26 +14,26 @@ namespace ServiceHost
     {
         public static void Migrate(IServiceProvider provider)
         {
-            var res = provider.GetRequiredService<AccountContext>();
-            var res1 = provider.GetRequiredService<BlogContext>();
-            var res2 = provider.GetRequiredService<CommentContext>();
-            var res3 = provider.GetRequiredService<DiscountContext>();
-            var res4 = provider.GetRequiredService<InventoryContext>();
-            var res5 = provider.GetRequiredService<ShopContext>();
+            var accountContext = provider.GetRequiredService<AccountContext>();
+            var blogContext = provider.GetRequiredService<BlogContext>();
+            var commentContext = provider.GetRequiredService<CommentContext>();
+            var discountContext = provider.GetRequiredService<DiscountContext>();
+            var inventoryContext = provider.GetRequiredService<InventoryContext>();
+            var shopContext = provider.GetRequiredService<ShopContext>();
 
+            var isDbCreated = accountContext.Database.EnsureCreated();
 
+            if (isDbCreated)
+            {
+                blogContext.Database.Migrate();
+                commentContext.Database.Migrate();
+                discountContext.Database.Migrate();
+                inventoryContext.Database.Migrate();
+                shopContext.Database.Migrate();
 
-            res.Database.Migrate();
-            res1.Database.Migrate();
-            res2.Database.Migrate();
-            res3.Database.Migrate();
-            res4.Database.Migrate();
-            res5.Database.Migrate();
+                var account = new Account("کاربر ادمین پیش فرض", "admin", "10000.zmlstgGPOBLwzIQhde+BpQ==.WuOA2mKKSjZbDXpF23/y29s1c1EBPaNMk2iFeYttUhE=", "09999999999", 1, "");
 
-
-            var account = new Account("کاربر ادمین پیش فرض", "admin", "10000.zmlstgGPOBLwzIQhde+BpQ==.WuOA2mKKSjZbDXpF23/y29s1c1EBPaNMk2iFeYttUhE=", "09999999999", 1, "");
-
-            var adminRolePermissions = new List<Permission>()
+                var adminRolePermissions = new List<Permission>()
                 {
                     new(60),
                     new(61),
@@ -96,8 +96,8 @@ namespace ServiceHost
                     new(118),
                 };
 
-            Role[] roles =
-            {
+                Role[] roles =
+                {
                     new Role("مدیر سیستم" , adminRolePermissions) ,
                     new Role("کاربر سیستم" , null) ,
                     new Role("محتوا گذار" , null) ,
@@ -105,10 +105,11 @@ namespace ServiceHost
 
                 };
 
-            res.Roles.AddRange(roles);
-            res.SaveChanges();
-            res.Accounts.Add(account);
-            res.SaveChanges();
+                accountContext.Roles.AddRange(roles);
+                accountContext.SaveChanges();
+                accountContext.Accounts.Add(account);
+                accountContext.SaveChanges();
+            }
         }
     }
 }
