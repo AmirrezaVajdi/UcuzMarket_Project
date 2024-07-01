@@ -13,7 +13,7 @@
                 <div class="header-wrapper d-none d-lg-flex">
                     <!-- logo -->
                     <div class="logo">
-                        <a href="index.html">
+                        <a>
                             <img src="~/Theme/assets/img/logo.png" class="img-fluid" alt="">
                         </a>
                     </div>
@@ -127,10 +127,17 @@
                                     <ul class="icon-list justify-content-end">
                                         <li>
                                             <div class="header-cart-icon">
-                                                <a href="cart.html">
+                                                <a asp-page="/Cart" id="minicart-trigger">
                                                     <i class="ion-bag"></i>
-                                                    <span class="counter">3</span>
+                                                    <span class="counter" id="cart_items_count-mobile">0</span>
                                                 </a>
+                                                <div class="mini-cart" id="mini-cart">
+                                                    <div class="cart-items-wrapper ps-scroll" id="cart_items_wrapper">
+                                                    </div>
+                                                    <div class="cart-buttons">
+                                                        <a asp-page="/Cart">مشاهده سبد خرید</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </li>
                                         <li>
@@ -160,8 +167,8 @@
 
         <div class="offcanvas-inner-content">
             <div class="offcanvas-mobile-search-area">
-                <form action="#">
-                    <input type="search" placeholder="جست و جو ...">
+                <form method="get" asp-page="/Search">
+                    <input type="search" placeholder="جست و جو ..." name="value">
                     <button type="submit">
                         <i class="fa fa-search"></i>
                     </button>

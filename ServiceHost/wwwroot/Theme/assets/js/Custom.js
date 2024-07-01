@@ -109,3 +109,9 @@ function changeCartItemCount(id, totalId, count) {
         }
     });
 }
+
+function GetCartCount() {
+    var products = $.cookie(cookieName);
+    products = JSON.parse(products);
+    $("#cart_items_count-mobile").text(products.length);
+}

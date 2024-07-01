@@ -59,17 +59,21 @@ namespace ServiceHost.Pages
         public IActionResult OnGetGoToCheckOut()
         {
             var value = Request.Cookies[CookieName];
-            var cartItems = JsonConvert.DeserializeObject<List<CartItem>>(value);
-            foreach (var cart in cartItems)
+            if (value != null)
             {
-                cart.CalculateTotalItemPrice();
+                var cartItems = JsonConvert.DeserializeObject<List<CartItem>>(value);
+                foreach (var cart in cartItems)
+                {
+                    cart.CalculateTotalItemPrice();
+                }
+
+                CartItems = _productQuery.CheckInventoryStatus(cartItems);
+                if (CartItems.Any(x => !x.IsInStock))
+                    return RedirectToPage("./Cart");
+
+                return RedirectToPage("./CheckOut");
             }
-
-            CartItems = _productQuery.CheckInventoryStatus(cartItems);
-            if (CartItems.Any(x => !x.IsInStock))
-                return RedirectToPage("./Cart");
-
-            return RedirectToPage("./CheckOut");
+            return RedirectToPage("./Cart");
         }
     }
 }
