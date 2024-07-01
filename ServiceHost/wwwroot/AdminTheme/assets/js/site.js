@@ -1,4 +1,6 @@
-﻿var SinglePage = {};
+﻿const fullUrl = location.protocol + '//' + location.host;
+
+var SinglePage = {};
 
 SinglePage.LoadModal = function () {
     var url = window.location.hash.toLowerCase();
@@ -230,12 +232,12 @@ function GetFileSizeLimit() {
 $(document).ready(function () {
 
     var settings = {
-        "url": "https://localhost:7211/api/LampShade/GetMaxFileSizeLimit",
+        "url": fullUrl + "/api/LampShade/GetMaxFileSizeLimit",
         "method": "GET",
         "timeout": 0,
     };
     var settings2 = {
-        "url": "https://localhost:7211/api/LampShade/GetFileExtensionLimit",
+        "url": fullUrl + "/api/LampShade/GetFileExtensionLimit",
         "method": "GET",
         "timeout": 0,
     };
