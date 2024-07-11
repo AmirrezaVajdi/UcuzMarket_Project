@@ -1,6 +1,4 @@
-﻿const fullUrl = location.protocol + '//' + location.host;
-
-var SinglePage = {};
+﻿var SinglePage = {};
 
 SinglePage.LoadModal = function () {
     var url = window.location.hash.toLowerCase();
@@ -37,10 +35,10 @@ $(document).ready(function () {
     $("#MainModal").on("shown.bs.modal",
         function () {
             window.location.hash = "##";
-            $('.persianDateInput').persianDatepicker({
-                format: 'YYYY/MM/DD',
-                autoClose: true
-            });
+            //$('.persianDateInput').persianDatepicker({
+            //    format: 'YYYY/MM/DD',
+            //    autoClose: true
+            //});
         });
 
     $(document).on("submit",
@@ -186,65 +184,14 @@ function handleAjaxCall(method, url, data) {
     }
 }
 
-jQuery.validator.addMethod("maxFileSize",
-    function (value, element, params) {
-
-        var limitSize = GetFileSizeLimit();
-
-        var size = element.files[0].size;
-        if (size > limitSize)
-            return false;
-        else {
-            return true;
-        }
-
-    });
-jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
-
-
-jQuery.validator.addMethod("fileExtensionLimit",
-    function (value, element, params) {
-
-        var fileExtension = value.split('.').pop();
-        var result = false;
-
-        var result = false;
-        if (element != null) {
-            FileExtensionLimit.forEach(x => {
-                if (x == fileExtension) {
-                    result = true;
-                }
-            })
-        }
-        return result;
-    });
-jQuery.validator.unobtrusive.adapters.addBool("fileExtensionLimit");
-
-function GetFileSizeLimit() {
-
-    return LimitSize;
-};
-
-$(document).ready(function () {
-
-    var settings = {
-        "url": fullUrl + "/api/LampShade/GetMaxFileSizeLimit",
-        "method": "GET",
-        "timeout": 0,
-    };
-    var settings2 = {
-        "url": fullUrl + "/api/LampShade/GetFileExtensionLimit",
-        "method": "GET",
-        "timeout": 0,
-    };
-    $.ajax(settings).done(function (response) {
-        LimitSize = response;
-    });
-    $.ajax(settings2).done(function (response) {
-        FileExtensionLimit = response;
-    });
-});
-
-
-var LimitSize;
-var FileExtensionLimit = [];
+//jQuery.validator.addMethod("maxFileSize",
+//    function (value, element, params) {
+//        var size = element.files[0].size;
+//        var maxSize = 3 * 1024 * 1024;
+//        if (size > maxSize)
+//            return false;
+//        else {
+//            return true;
+//        }
+//    });
+//jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");

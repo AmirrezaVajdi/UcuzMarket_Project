@@ -3,6 +3,17 @@
 * File include item demo only specific css only
 ******************************************************************************/
 
+@font-face {
+    font-family: 'IranSans';
+    src: url('../../fonts/IranianSans.eot'), url('../../fonts/IranianSans.eot') format('embedded-opentype'), url('../../fonts/IranianSans.woff') format('woff'), url('../../fonts/IranianSans.ttf') format('truetype'), url('../../fonts/IranianSans.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family:IranSans;
+}
+
 .menu .app-brand.demo {
   height: 64px;
   margin-top: 12px;
