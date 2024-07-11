@@ -208,21 +208,17 @@ jQuery.validator.addMethod("fileExtensionLimit",
         var fileExtension = value.split('.').pop();
         var result = false;
 
+        var result = false;
         if (element != null) {
-            FileExtensionLimit.every((item) => {
-                if (item == fileExtension) {
+            FileExtensionLimit.forEach(x => {
+                if (x == fileExtension) {
                     result = true;
                 }
-                else {
-                    result = false;
-                }
-            });
-
-            return result;
+            })
         }
+        return result;
     });
 jQuery.validator.unobtrusive.adapters.addBool("fileExtensionLimit");
-
 
 function GetFileSizeLimit() {
 
