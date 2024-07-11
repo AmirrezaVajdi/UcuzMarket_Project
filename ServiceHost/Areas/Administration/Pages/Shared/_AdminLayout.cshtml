@@ -111,7 +111,7 @@
 <script src="~/AdminTheme/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 <script src="~/AdminTheme/assets/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
 <script src="~/AdminTheme/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
-<script src="~/site.js"></script>
+<script src="~/AdminTheme/assets/js/site.js"></script>
 
 <script src="~/AdminTheme/assets/vendor/libs/toastr/toastr.js"></script>
 
@@ -124,4 +124,7 @@
 <!--Validation Scripts-->
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+@RenderSection("Scripts" , false)
+
 </html>
