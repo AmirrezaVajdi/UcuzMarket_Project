@@ -13,8 +13,10 @@
     <div class="col-12">
         <h3 class="panel-title">جستجو در گروه محصولات</h3>
         <form method="get">
-            <input class="form-control w-50 float-start" asp-for="SearchModel.Name" placeholder="نام گروه محصولی">
-            <div class="float-end">
+            <div class="d-flex mb-4">
+                <input class="form-control" asp-for="SearchModel.Name" placeholder="نام گروه محصولی">
+            </div>
+            <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                 <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
             </div>

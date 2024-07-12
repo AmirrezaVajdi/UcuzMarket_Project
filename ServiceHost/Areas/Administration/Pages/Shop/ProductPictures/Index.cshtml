@@ -13,10 +13,12 @@
     <div class="col-12">
         <h3 class="panel-title">جستجو در عکس محصولات</h3>
         <form method="get">
-            <select asp-items="Model.Product" class="form-control  w-50 float-start" asp-for="SearchModel.ProductId">
-                <option>محصول ...</option>
-            </select>
-            <div class="float-end">
+            <div class="d-flex mb-4">
+                <select asp-items="Model.Product" class="form-control" asp-for="SearchModel.ProductId">
+                    <option>محصول ...</option>
+                </select>
+            </div>
+            <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                 <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
             </div>
