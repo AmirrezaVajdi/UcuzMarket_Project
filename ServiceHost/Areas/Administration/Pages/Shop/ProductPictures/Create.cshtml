@@ -16,7 +16,7 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label asp-for="ProductId" class="control-label">گروه محصول</label>
                         <select class="form-control" asp-for="ProductId"
                                 asp-items='new SelectList(Model.Products, "Id", "Name")'>
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label asp-for="Picture" class="control-label">عکس</label>
                         <input type="file" class="form-control" asp-for="Picture" accept="image/*">
                         <span asp-validation-for="Picture" class="error"></span>
@@ -37,14 +37,14 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label asp-for="PicutreAlt" class="control-label">Alt</label>
                         <input type="text" class="form-control" asp-for="PicutreAlt">
                         <span asp-validation-for="PicutreAlt" class="error"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label asp-for="PictureTitle" class="control-label">عنوان</label>
                         <input type="text" class="form-control" asp-for="PictureTitle">
                         <span asp-validation-for="PictureTitle" class="error"></span>
