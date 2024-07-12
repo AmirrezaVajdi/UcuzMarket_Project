@@ -8,44 +8,53 @@
         <button type="button" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal" aria-hidden="true">×</button>
     </div>
 
-    <div class="modal-body">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>تعداد</th>
-                    <th>تاریخ</th>
-                    <th>عملیات</th>
-                    <th>موجودی فعلی</th>
-                    <th>عملگر</th>
-                    <th>توضیحات</th>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr class="text-white @(item.Operation ? "bg-success" : "bg-danger")">
-                        <td>@item.Id</td>
-                        <td>@item.Count</td>
-                        <td>@item.OperationDate</td>
-                        <td>
-                            @if (item.Operation)
-                            {
-                                <span>افزایش</span>
-                            }
-                            else
-                            {
-                                <span>کاهش</span>
-                            }
-                        </td>
-                        <td>@item.CurrentCount</td>
-                        <td>@item.Operator</td>
-                        <td>@item.Description</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>تعداد</th>
+                            <th>تاریخ</th>
+                            <th>عملیات</th>
+                            <th>موجودی فعلی</th>
+                            <th>عملگر</th>
+                            <th>توضیحات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="text-white @(item.Operation ? "bg-success" : "bg-danger")">
+                                <td>@item.Id</td>
+                                <td>@item.Count</td>
+                                <td>@item.OperationDate</td>
+                                <td>
+                                    @if (item.Operation)
+                                    {
+                                        <span>افزایش</span>
+                                    }
+                                    else
+                                    {
+                                        <span>کاهش</span>
+                                    }
+                                </td>
+                                <td>@item.CurrentCount</td>
+                                <td>@item.Operator</td>
+                                <td>@item.Description</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="reset" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal">بستن</button>
     </div>
 </div>
+
+
+
+
