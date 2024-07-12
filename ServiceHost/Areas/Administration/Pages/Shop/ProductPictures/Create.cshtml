@@ -2,58 +2,59 @@
 @{
 }
 
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">ایجادعکس محصول جدید</h4>
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">ایجادعکس محصول جدید</h4>
+        <button type="button" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <form asp-page="./Index" asp-page-handler="Create"
+          method="post"
+          data-ajax="true"
+          data-callback=""
+          data-action="Refresh"
+          enctype="multipart/form-data">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="ProductId" class="control-label">گروه محصول</label>
+                        <select class="form-control" asp-for="ProductId"
+                                asp-items='new SelectList(Model.Products, "Id", "Name")'>
+                            <option value="0">محصول</option>
+                        </select>
+                        <span asp-validation-for="ProductId" class="error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Picture" class="control-label">عکس</label>
+                        <input type="file" class="form-control" asp-for="Picture" accept="image/*">
+                        <span asp-validation-for="Picture" class="error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PicutreAlt" class="control-label">Alt</label>
+                        <input type="text" class="form-control" asp-for="PicutreAlt">
+                        <span asp-validation-for="PicutreAlt" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PictureTitle" class="control-label">عنوان</label>
+                        <input type="text" class="form-control" asp-for="PictureTitle">
+                        <span asp-validation-for="PictureTitle" class="error"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="reset" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal">بستن</button>
+            <button type="submit" class="btn btn-info">ایجاد</button>
+        </div>
+    </form>
 </div>
-
-<form asp-page="./Index" asp-page-handler="Create"
-      method="post"
-      data-ajax="true"
-      data-callback=""
-      data-action="Refresh"
-      enctype="multipart/form-data">
-    <div class="modal-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label asp-for="ProductId" class="control-label">گروه محصول</label>
-                    <select class="form-control" asp-for="ProductId"
-                            asp-items='new SelectList(Model.Products, "Id", "Name")'>
-                        <option value="0">محصول</option>
-                    </select>
-                    <span asp-validation-for="ProductId" class="error"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label asp-for="Picture" class="control-label">عکس</label>
-                    <input type="file" class="form-control" asp-for="Picture" accept="image/*">
-                    <span asp-validation-for="Picture" class="error"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="PicutreAlt" class="control-label">Alt</label>
-                    <input type="text" class="form-control" asp-for="PicutreAlt">
-                    <span asp-validation-for="PicutreAlt" class="error"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="PictureTitle" class="control-label">عنوان</label>
-                    <input type="text" class="form-control" asp-for="PictureTitle">
-                    <span asp-validation-for="PictureTitle" class="error"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
-        <button type="submit" class="btn btn-info waves-effect waves-light">ایجاد</button>
-    </div>
-</form>
