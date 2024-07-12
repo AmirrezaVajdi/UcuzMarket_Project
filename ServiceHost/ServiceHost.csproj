@@ -63,6 +63,8 @@
   <ItemGroup>
     <None Include="wwwroot\AdminTheme\multiselect\jquery.multi-select.js" />
     <None Include="wwwroot\AdminTheme\multiselect\jquery.quicksearch.js" />
+    <None Include="wwwroot\AdminTheme\PersianDatePicker\persian-date.min.js" />
+    <None Include="wwwroot\AdminTheme\PersianDatePicker\persian-datepicker.min.js" />
   </ItemGroup>
 
 </Project>
