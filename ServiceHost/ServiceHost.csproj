@@ -61,7 +61,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\AdminTheme\" />
+    <None Include="wwwroot\AdminTheme\multiselect\jquery.multi-select.js" />
+    <None Include="wwwroot\AdminTheme\multiselect\jquery.quicksearch.js" />
   </ItemGroup>
 
 </Project>
