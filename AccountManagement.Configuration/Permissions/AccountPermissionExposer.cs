@@ -12,6 +12,7 @@ namespace AccountManagement.Configuration.Permissions
                   "کاربران" ,
                   new()
                   {
+                      new(AccountPermission.SearchAccount , "سرچ کردن در کاربران"),
                       new(AccountPermission.RegisterAccount , "ثبت نام کاربر"),
                       new(AccountPermission.EditAccount , "ویرایش کاربر"),
                       new(AccountPermission.ChangePassword , "تغیر رمز کاربر"),

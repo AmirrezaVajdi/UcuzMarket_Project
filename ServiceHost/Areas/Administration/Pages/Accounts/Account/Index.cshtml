@@ -11,15 +11,23 @@
 
 <div permission="@AccountPermission.SearchAccount">
     <div class="col-12">
-        <h3 class="panel-title">جستجو در محصولات</h3>
+        <h6 class="panel-title">جستجو در کاربران</h6>
         <form method="get">
-            <div class="d-flex mb-4">
-                <input class="form-control" asp-for="SearchModel.Fullname" placeholder="نام">
-                <input class="form-control" asp-for="SearchModel.Username" placeholder="نام کاربری">
-                <input class="form-control" asp-for="SearchModel.Mobile" placeholder="موبایل">
-                <select class="form-control" asp-for="SearchModel.RoleId" asp-items="Model.Roles">
-                    <option value="0">نقش</option>
-                </select>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <input class="form-control" asp-for="SearchModel.Fullname" placeholder="نام">
+                </div>
+                <div class="col-6">
+                    <input class="form-control" asp-for="SearchModel.Username" placeholder="نام کاربری">
+                </div>
+                <div class="col-6 mt-2">
+                    <input class="form-control" asp-for="SearchModel.Mobile" placeholder="موبایل">
+                </div>
+                <div class="col-6 mt-2">
+                    <select class="form-control" asp-for="SearchModel.RoleId" asp-items="Model.Roles">
+                        <option value="0">نقش</option>
+                    </select>
+                </div>
             </div>
             <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
@@ -43,8 +51,8 @@
 
 <div class="card" permission="@AccountPermission.ListAccount">
     <h5 class="card-header">لیست کاربران</h5>
-    <div class="card-datatable table-responsive">
-        <table class="dt-responsive table border-top">
+    <div class="table-responsive text-nowrap">
+        <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
