@@ -11,17 +11,21 @@
 
 <div permission="@InventoryPermissions.SearchInventory">
     <div class="col-12">
-        <h3 class="panel-title">جست و جو در انبار</h3>
+        <h6 class="panel-title">جست و جو در انبار</h6>
         <form method="get">
-            <div class="d-flex mb-4">
-                <select asp-items="Model.Products" class="form-control" asp-for="SearchModel.ProductId">
-                    <option value="0">گروه محصولی ...</option>
-                </select>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <select asp-items="Model.Products" class="form-control" asp-for="SearchModel.ProductId">
+                        <option value="0">گروه محصولی ...</option>
+                    </select>
+                </div>
             </div>
+
             <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                 <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
             </div>
+
         </form>
     </div>
 </div>
@@ -40,8 +44,8 @@
 
 <div class="card" permission="@InventoryPermissions.ListInventory">
     <h5 class="card-header">لیست کاربران</h5>
-    <div class="card-datatable table-responsive">
-        <table class="dt-responsive table border-top">
+    <div class="table-responsive text-nowrap">
+        <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
