@@ -6,23 +6,23 @@
     ViewData["title"] = "مدیریت سفارشات";
 }
 
-<h4 class="fw-bold py-3 mb-4">
+<h4 class="fw-bold py-3 mb-4 border-bottom">
     <span class="text-muted fw-light">@ViewData["title"]</span>
 </h4>
 
+
 <div permission="@ShopPermissions.SearchOrders">
     <div class="col-12">
-        <h3 class="panel-title">جستجو در سفارشات</h3>
-
-
+        <h6 class="panel-title">جستجو در سفارشات</h6>
         <form method="get">
-            <div class="d-flex mb-4">
-                <select class="form-control w-75" asp-for="SearchModel.AccountId" asp-items="Model.Accounts">
-                    <option value="0">انتخاب کاربر خریدار ...</option>
-                </select>
-
-                <div style="margin-right:10px;margin-top:10px">
-                    <input asp-for="SearchModel.IsCanceled" class="form-check-input" type="checkbox" value="true" id="defaultCheck1">
+            <div class="row mb-3">
+                <div class="col-6">
+                    <select class="form-control" asp-for="SearchModel.AccountId" asp-items="Model.Accounts">
+                        <option value="0">انتخاب کاربر خریدار ...</option>
+                    </select>
+                </div>
+                <div class="col-6 m-auto">
+                    <input asp-for="SearchModel.IsCanceled" class="col-6 form-check-input" type="checkbox" value="true" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                         جستجو در لغو شده ها
                     </label>
@@ -33,8 +33,8 @@
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                 <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
             </div>
-        </form>
 
+        </form>
     </div>
 </div>
 
@@ -44,8 +44,8 @@
 
 <div class="card" permission="@ShopPermissions.ListOrders">
     <h5 class="card-header">لیست کاربران</h5>
-    <div class="card-datatable table-responsive">
-        <table class="dt-responsive table border-top">
+    <div class="table-responsive text-nowrap">
+        <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -61,7 +61,7 @@
                     <th>عملیات</th>
                 </tr>
             </thead>
-            <tfoot>
+            <tbody class="table-border-bottom-0">
                 @foreach (var item in Model.Orders)
                 {
                     <tr>
@@ -105,7 +105,7 @@
                         </td>
                     </tr>
                 }
-            </tfoot>
+            </tbody>
         </table>
     </div>
 </div>
