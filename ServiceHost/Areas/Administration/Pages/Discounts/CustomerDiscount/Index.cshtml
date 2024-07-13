@@ -11,19 +11,29 @@
 
 <div permission="@DiscountPermission.SearchCustomerDiscounts">
     <div class="col-12">
-        <h3 class="panel-title">جستجو در تخفیف مشتریان</h3>
+        <h6 class="panel-title">جستجو در تخفیف همکاران</h6>
         <form method="get">
-            <div class="d-flex mb-4">
-                <input asp-for="SearchModel.StartDate" class="form-control persianDateInput">
-                <input asp-for="SearchModel.EndDate" class="form-control persianDateInput">
-                <select asp-items="Model.Products" class="form-control" asp-for="SearchModel.ProductId">
-                    <option value="0">گروه محصولی ...</option>
-                </select>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label for="startDate">از تاریخ</label>
+                    <input asp-for="SearchModel.StartDate" id="startDate" class="form-control persianDateInput">
+                </div>
+                <div class="col-6">
+                    <label for="endDate">به تاریخ</label>
+                    <input asp-for="SearchModel.EndDate" id="endDate" class="form-control persianDateInput">
+                </div>
+                <div class="col-12 mt-2">
+                    <select asp-items="Model.Products" class="form-control" asp-for="SearchModel.ProductId">
+                        <option value="0">گروه محصولی ...</option>
+                    </select>
+                </div>
             </div>
+
             <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
                 <a class="btn btn-primary waves-effect waves-light m-l-10" asp-page="./Index">مشاهده همه</a>
             </div>
+
         </form>
     </div>
 </div>
@@ -79,3 +89,17 @@
         </table>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.persianDateInput').persianDatepicker({
+                format: 'YYYY/MM/DD',
+                autoClose: true
+            }); $('.persianDateInput').persianDatepicker({
+                format: 'YYYY/MM/DD',
+                autoClose: true
+            });
+        });
+    </script>
+}
