@@ -11,14 +11,21 @@
 
 <div permission="@ShopPermissions.SearchProducts">
     <div class="col-12">
-        <h3 class="panel-title">جستجو در محصولات</h3>
+        <h6 class="panel-title">جستجو در محصولات</h6>
         <form method="get">
-            <div class="d-flex mb-4">
-                <input class="form-control" asp-for="SearchModel.Name" placeholder="نام محصول">
-                <input class="form-control" asp-for="SearchModel.Code" placeholder="کد">
-                <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.ProductCategories">
-                    <option value="0">گروه محصولی ...</option>
-                </select>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <input class="form-control" asp-for="SearchModel.Name" placeholder="نام محصول">
+                </div>
+                <div class="col-6">
+                    <input class="form-control" asp-for="SearchModel.Code" placeholder="کد">
+                </div>
+                <div class="col-12 mt-2">
+                    <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.ProductCategories">
+                        <option value="0">گروه محصولی ...</option>
+                    </select>
+
+                </div>
             </div>
             <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
@@ -42,8 +49,8 @@
 
 <div class="card" permission="@ShopPermissions.ListProductCategories">
     <h5 class="card-header">لیست کاربران</h5>
-    <div class="card-datatable table-responsive">
-        <table class="dt-responsive table border-top">
+    <div class="table-responsive text-nowrap">
+        <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
