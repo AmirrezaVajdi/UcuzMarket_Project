@@ -11,12 +11,14 @@
 
 <div permission="@ShopPermissions.SearchProductPictures">
     <div class="col-12">
-        <h3 class="panel-title">جستجو در عکس محصولات</h3>
+        <h6 class="panel-title">جستجو در عکس محصولات</h6>
         <form method="get">
-            <div class="d-flex mb-4">
-                <select asp-items="Model.Product" class="form-control" asp-for="SearchModel.ProductId">
-                    <option>محصول ...</option>
-                </select>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <select asp-items="Model.Product" class="form-control" asp-for="SearchModel.ProductId">
+                        <option>محصول ...</option>
+                    </select>
+                </div>
             </div>
             <div class="float-start">
                 <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">جستجو</button>
@@ -40,8 +42,8 @@
 
 <div class="card" permission="@ShopPermissions.ListProductPictures">
     <h5 class="card-header">لیست عکس محصولات</h5>
-    <div class="card-datatable table-responsive">
-        <table class="dt-responsive table border-top">
+    <div class="table-responsive text-nowrap">
+        <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
