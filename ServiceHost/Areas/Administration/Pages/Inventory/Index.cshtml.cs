@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Client;
+using ServiceHost.Pages;
 using ServiceHost.Pages.Discounts.CustomerDiscount;
 using ShopManagement.Application.Contracts.ProdcutCategory;
 using ShopManagement.Application.Contracts.Product;
@@ -44,9 +45,24 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
         [NeedPermission(InventoryPermissions.CreateInventory)]
         public IActionResult OnGetCreate()
         {
+            Inventory = _inventoryApplication.Search(new());
+            var products = _productApplication.GetProducts();
+            var removeProducts = new List<ProductViewModel>();
+            foreach (var product in products)
+            {
+                var res = Inventory.FirstOrDefault(x => x.ProductId == product.Id);
+                if (res != null)
+                    removeProducts.Add(products.FirstOrDefault(x => x.Id == res.ProductId));
+            }
+
+            foreach (var removeProduct in removeProducts)
+            {
+                products.Remove(removeProduct);
+            }
+
             CreateInventory command = new()
             {
-                Products = _productApplication.GetProducts()
+                Products = products
             };
             return Partial("./Create", command);
         }
