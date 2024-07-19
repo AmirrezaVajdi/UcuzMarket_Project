@@ -28,7 +28,12 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         [NeedPermission(ShopPermissions.CreateProductCategory)]
         public IActionResult OnGetCreate()
         {
-            return Partial("./Create", new CreateProductCategory());
+            var productCategory = _productCategoryApplication.GetProductCategories();
+            var model = new CreateProductCategory()
+            {
+                Categoires = productCategory
+            };
+            return Partial("./Create", model);
         }
 
         [NeedPermission(ShopPermissions.CreateProductCategory)]
@@ -43,16 +48,16 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         public IActionResult OnGetEdit(long id)
         {
             var productCategory = _productCategoryApplication.GetDetails(id);
+            productCategory.Categoires = _productCategoryApplication.GetProductCategories();
+
+            productCategory.Categoires.Remove(productCategory.Categoires.Where(x => x.Id == productCategory.Id).FirstOrDefault());
+
             return Partial("Edit", productCategory);
         }
 
         [NeedPermission(ShopPermissions.EditProductCategory)]
         public JsonResult OnPostEdit(EditProductCategory command)
         {
-            if (ModelState.IsValid)
-            {
-            }
-
             var result = _productCategoryApplication.Edit(command);
             return new JsonResult(result);
         }

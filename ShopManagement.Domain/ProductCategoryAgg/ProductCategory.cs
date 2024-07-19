@@ -13,9 +13,11 @@ namespace ShopManagement.Domain.ProductCategoryAgg
         public string KeyWords { get; private set; }
         public string MetaDescription { get; private set; }
         public string Slug { get; private set; }
+        public ProductCategory Parent { get; set; }
+        public long? ParentId { get; set; }
         public List<Product> Products { get; private set; }
 
-        public ProductCategory(string name, string description, string picture, string pictureAlt, string pictureTitle, string keyWords, string metaDescription, string slug)
+        public ProductCategory(string name, string description, string picture, string pictureAlt, string pictureTitle, string keyWords, string metaDescription, string slug, long? parentId)
         {
             Name = name;
             Description = description;
@@ -26,9 +28,10 @@ namespace ShopManagement.Domain.ProductCategoryAgg
             MetaDescription = metaDescription;
             Slug = slug;
             Products = new();
+            ParentId = parentId;
         }
 
-        public void Edit(string name, string description, string picture, string pictureAlt, string pictureTitle, string slug)
+        public void Edit(string name, string description, string picture, string pictureAlt, string pictureTitle, string slug, long? parentId)
         {
             Name = name;
             Description = description;
@@ -38,6 +41,7 @@ namespace ShopManagement.Domain.ProductCategoryAgg
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Slug = slug;
+            ParentId = parentId;
 
         }
     }

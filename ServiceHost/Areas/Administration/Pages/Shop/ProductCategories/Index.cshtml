@@ -49,6 +49,7 @@
                     <th>#</th>
                     <th>عکس</th>
                     <th>نام</th>
+                    <th>نام دسته بندی مادر</th>
                     <th>تاریخ تولید</th>
                     <th>عملیات</th>
                 </tr>
@@ -62,6 +63,7 @@
                             <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
                         </td>
                         <td>@item.Name</td>
+                        <td>@item.ParentName</td>
                         <td>@item.CreationDate</td>
                         <td>
                             <a permission="@ShopPermissions.EditProductCategory" class="btn btn-warning pull-right m-rl-5"

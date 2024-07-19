@@ -7,5 +7,6 @@
         public string Picture { get; set; }
         public string CreationDate { get; set; }
         public long ProudctsCount { get; set; }
+        public string ParentName { get; set; }
     }
 }

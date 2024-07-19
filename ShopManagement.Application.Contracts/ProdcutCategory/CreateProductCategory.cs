@@ -31,5 +31,7 @@ namespace ShopManagement.Application.Contracts.ProdcutCategory
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Slug { get; set; }
+        public long? ParentId { get; set; }
+        public List<ProductCategoryViewModel> Categoires { get; set; }
     }
 }

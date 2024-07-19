@@ -1,5 +1,6 @@
 ﻿using _01_Framework.Application;
 using _01_Framework.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using ShopManagement.Application.Contracts.ProdcutCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -28,7 +29,8 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 PictureTitle = x.PictureTitle,
                 KeyWords = x.KeyWords,
                 MetaDescription = x.MetaDescription,
-                Slug = x.Slug
+                Slug = x.Slug,
+                ParentId = x.ParentId
             }).FirstOrDefault(x => x.Id == id);
         }
 
@@ -49,12 +51,14 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel)
         {
-            var query = _context.ProductCategories.Select(x => new ProductCategoryViewModel
+
+            var query = _context.ProductCategories.Include(x => x.Parent).Select(x => new ProductCategoryViewModel
             {
                 Id = x.Id,
                 CreationDate = x.CreationDate.ToFarsi(),
                 Name = x.Name,
-                Picture = x.Picture
+                Picture = x.Picture,
+                ParentName = x.Parent.Name ?? "دسته بندی مادر"
             }).ToList();
 
             if (!string.IsNullOrWhiteSpace(serachModel.Name))

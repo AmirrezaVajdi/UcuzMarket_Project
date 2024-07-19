@@ -26,7 +26,7 @@ namespace ShopManagement.Application
             var picturepath = $"{command.Slug}";
             var fileName = _fileUploader.Upload(command.Picture, picturepath);
             var productCategory = new ProductCategory(command.Name, command.Description, fileName, command.PictureAlt
-                , command.PictureTitle, command.KeyWords, command.MetaDescription, slug);
+                , command.PictureTitle, command.KeyWords, command.MetaDescription, slug, command.ParentId);
 
             _productCategoryRepository.Create(productCategory);
             _productCategoryRepository.SaveChanges();
@@ -50,14 +50,9 @@ namespace ShopManagement.Application
             var slug = command.Slug.Slugiffy();
             var picturepath = $"{command.Slug}";
             var fileName = _fileUploader.Upload(command.Picture, picturepath);
-            prodcutCategory.Edit(command.Name, command.Description, fileName, command.PictureAlt, command.PictureTitle, slug);
+            prodcutCategory.Edit(command.Name, command.Description, fileName, command.PictureAlt, command.PictureTitle, slug, command.ParentId);
             _productCategoryRepository.SaveChanges();
             return operation.Succeded();
-        }
-
-        public EditProductCategory GetDatails(long id)
-        {
-            throw new NotImplementedException();
         }
 
         public EditProductCategory GetDetails(long id)
