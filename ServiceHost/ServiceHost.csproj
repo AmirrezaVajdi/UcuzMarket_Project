@@ -14,6 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Shared\zzln0hvf.wbs~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\01_Query\01_LampShadeQuery.csproj" />
     <ProjectReference Include="..\AccountManagement.Configuration\AccountManagement.Configuration.csproj" />
     <ProjectReference Include="..\BlogManagement.Application.Contracts\BlogManagement.Application.Contracts.csproj" />
