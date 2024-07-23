@@ -13,5 +13,6 @@ namespace _01_Query.Contract.Product
         List<ProductQueryModel> GetPopularProducts(int take = 8);
         List<ProductQueryModel> Search(string value);
         List<CartItem> CheckInventoryStatus(List<CartItem> cartItems);
+        List<ProductQueryModel> GetDiscountedProducts(int take = 4);
     }
 }

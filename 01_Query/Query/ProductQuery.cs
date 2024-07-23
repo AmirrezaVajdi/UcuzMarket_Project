@@ -3,10 +3,13 @@ using _01_Query.Contract.Comment;
 using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
 using CommentManagement.Infrastructure.EFCore;
+using DiscountManagement.Domain.CustomerDiscountAgg;
 using DiscountManagement.Infrastructure.EfCore;
+using InventoryManagement.Domain.InventoryAgg;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Order;
+using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
@@ -25,8 +28,6 @@ namespace _01_Query.Query
             _discountContext = discountContext;
             _commentContext = commentContext;
         }
-
-
 
         public List<ProductQueryModel> GetPopularProducts(int take = 8)
         {
@@ -66,7 +67,8 @@ namespace _01_Query.Query
                     PictureAlt = x.PictureAlt,
                     Slug = x.Slug,
                     CategorySlug = x.Category.Slug
-                }).OrderByDescending(x => x.Id)
+                })
+                .OrderByDescending(x => x.Id)
                 .Take(take)
                 .AsNoTracking()
                 .ToList();
@@ -245,6 +247,89 @@ namespace _01_Query.Query
             }
 
             return cartItems;
+        }
+
+        public List<ProductQueryModel> GetDiscountedProducts(int take = 4)
+        {
+
+            var inventories = _inventoryContext
+                .Inventory
+                .Select(x => new
+                {
+                    x.ProductId,
+                    x.UnitPrice,
+                    x.InStock
+                }
+                )
+                .AsNoTracking()
+                .ToList();
+
+            var discounts = _discountContext
+               .CustomerDiscounts
+               .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+               .Select(x => new
+               {
+                   x.ProductId,
+                   x.DiscountRate
+               }
+               ).AsNoTracking()
+               .ToList();
+
+            var products = _shopContext
+                .Products
+                .Select(x => new ProductQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Picture = x.Picture,
+                    PictureTitle = x.PictureTitle,
+                    PictureAlt = x.PictureAlt,
+                    Slug = x.Slug
+                })
+                .OrderByDescending(x => x.Id)
+                 .Take(take)
+                 .AsNoTracking()
+                 .ToList();
+
+            var productsToRemove = new List<ProductQueryModel>();
+
+
+            foreach (var product in products)
+            {
+                if (!discounts.Any(x => x.ProductId == product.Id))
+                {
+                    productsToRemove.Add(product);
+                }
+            }
+
+            foreach (var productToRemove in productsToRemove)
+            {
+                products.Remove(productToRemove);
+            }
+
+            foreach (var product in products)
+            {
+                var productInventory = inventories.FirstOrDefault(x => x.ProductId == product.Id);
+                if (productInventory != null)
+                {
+                    var price = productInventory.UnitPrice;
+                    product.IsInStock = productInventory.InStock;
+
+                    product.Price = price.ToMoney();
+
+                    var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                    if (discount != null)
+                    {
+                        var discountRate = discount.DiscountRate;
+                        product.DiscountRate = discountRate;
+                        product.HasDiscount = discountRate > 0;
+                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                    }
+                }
+            }
+
+            return products;
         }
     }
 }
