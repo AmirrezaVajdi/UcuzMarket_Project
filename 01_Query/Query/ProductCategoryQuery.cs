@@ -24,8 +24,6 @@ namespace _01_Query.Query
 
         public List<ProdcutCategoryQueryModel> GetProductCategories()
         {
-            var res = _shopContext.ProductCategories.Where(x => x.ParentId == null).Include(x => x.Children).ToList();
-
             return _shopContext.ProductCategories.Select(x => new ProdcutCategoryQueryModel
             {
                 Name = x.Name,
@@ -152,6 +150,25 @@ namespace _01_Query.Query
                      Children = ProductCategoryChildrenMapper(x.Children)
                  }).
                  ToList();
+        }
+
+        public List<ProdcutCategoryQueryModel> GetCategryWithProudctCount()
+        {
+            return _shopContext
+                .ProductCategories
+                .Include(x => x.Products)
+                .Select(x => new ProdcutCategoryQueryModel
+                {
+                    Name = x.Name,
+                    Slug = x.Slug,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    ProductCount = x.Products.Count.ToString()
+                }
+                )
+                .AsNoTracking()
+                .ToList();
         }
 
         private static List<ProductCategoryWithChildren> ProductCategoryChildrenMapper(List<ProductCategory> children)

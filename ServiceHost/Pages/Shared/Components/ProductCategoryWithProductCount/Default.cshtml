@@ -1,0 +1,26 @@
+﻿@using _01_Query.Contract.ProductCategory
+@model List<ProdcutCategoryQueryModel>
+@{
+}
+
+<div class="col-lg-3 pb-2 pb-sm-3 pb-md-4 mb-5 mb-lg-0">
+    <h2 class="h3 border-bottom pb-3 pb-md-4 mb-4">دسته بندی ها</h2>
+    <div class="row nav g-3 g-sm-4">
+        @foreach (var category in Model)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-12 d-flex">
+                <div class="position-relative d-flex min-w-0 align-items-center">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-body-tertiary rounded-circle" style="width: 56px; height: 56px">
+                        <img class="rounded-circle" src="~/ProductPictures/@category.Picture" width="50px" height="50px" alt="@category.PictureAlt" title="@category.PictureTitle">
+                    </div>
+                    <div class="min-w-0 ps-3">
+                        <a class="nav-link animate-underline stretched-link fs-base fw-semibold p-0 mb-1" href="shop-catalog-grocery.html">
+                            <span class="animate-target text-truncate">@category.Name</span>
+                        </a>
+                        <div class="fs-xs fw-normal text-body-secondary">@category.ProductCount محصول</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
