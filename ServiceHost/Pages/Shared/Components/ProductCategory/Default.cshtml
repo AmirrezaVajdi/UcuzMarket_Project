@@ -2,36 +2,21 @@
 @model List<ProdcutCategoryQueryModel>
 
 
-<div class="category-area section-space">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="category-wrapper">
-                    <div class="row row-10 masonry-category-layout">
-
-                        @foreach (var item in Model)
-                        {
-
-                            <div class="col-lg-4 col-sm-6 grid-item">
-                                <div class="single-category-item">
-                                    <div class="single-category-item__image">
-                                        <a asp-page="/ProductCategory" asp-route-id="@item.Slug">
-                                            <img src="~/ProductPictures/@item.Picture" class="img-fluid" alt="@item.PictureAlt" title="@item.PictureTitle">
-                                        </a>
-                                    </div>
-                                    <div class="single-category-item__content">
-                                        <h3 class="title">@item.Name</h3>
-                                        <a href="shop-left-sidebar.html">
-                                            <i class="ion-android-arrow-dropleft-circle"></i> همین الان خرید کنید
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-
-                    </div>
-                </div>
+<!-- Categories -->
+<section class="border-top">
+    <div class="container py-lg-1">
+        <div class="overflow-auto" data-simplebar="">
+            <div class="nav flex-nowrap justify-content-between gap-4 py-2">
+                @foreach (var category in Model)
+                {
+                    <a class="nav-link align-items-center animate-underline gap-2 p-0" href="shop-catalog-grocery.html">
+                        <span class="d-flex align-items-center justify-content-center bg-body-tertiary rounded-circle" style="width: 40px; height: 40px">
+                            <img class="rounded-circle" src="~/ProductPictures/@category.Picture" width="50px" height="50px" alt="@category.PictureAlt" title="@category.PictureTitle">
+                        </span>
+                        <span class="d-block animate-target fw-semibold text-nowrap ms-1">@category.Name</span>
+                    </a>
+                }
             </div>
         </div>
     </div>
-</div>
+</section>

@@ -28,7 +28,6 @@ namespace _01_Query.Query
 
             return _shopContext.ProductCategories.Select(x => new ProdcutCategoryQueryModel
             {
-                Id = x.Id,
                 Name = x.Name,
                 Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
