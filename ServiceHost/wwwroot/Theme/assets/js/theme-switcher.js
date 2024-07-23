@@ -1,7 +1,3 @@
-/**
- * Switch between light and dark themes (color modes)
- */
-
 ;(() => {
     'use strict'
   
