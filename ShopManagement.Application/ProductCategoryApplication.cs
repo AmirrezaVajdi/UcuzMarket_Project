@@ -49,7 +49,16 @@ namespace ShopManagement.Application
 
             var slug = command.Slug.Slugiffy();
             var picturepath = $"{command.Slug}";
-            var fileName = _fileUploader.Upload(command.Picture, picturepath);
+            string fileName = "";
+            if (command.Picture is not null)
+            {
+                fileName = _fileUploader.Upload(command.Picture, picturepath);
+            }
+            else
+            {
+                fileName = prodcutCategory.Picture;
+            }
+
             prodcutCategory.Edit(command.Name, command.Description, fileName, command.PictureAlt, command.PictureTitle, slug, command.ParentId);
             _productCategoryRepository.SaveChanges();
             return operation.Succeded();
