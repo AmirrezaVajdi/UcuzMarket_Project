@@ -49,7 +49,18 @@ namespace BlogManagement.Application
 
             var slug = command.Slug.Slugiffy();
             var path = $"{article.Category.Slug}/{slug}";
-            var pictureName = _fileUploader.Upload(command.Picture, path);
+
+            string pictureName = "";
+
+            if (command.Picture is not null)
+            {
+                pictureName = _fileUploader.Upload(command.Picture, path);
+            }
+            else
+            {
+                pictureName = article.Picture;
+            }
+
             var publishDate = command.PublishDate.ToGeorgianDateTime();
 
             article.Edit(command.Description, command.Title, command.ShortDescription, pictureName, command.PictureAlt, command.PictureTitle, publishDate, slug, command.MetaDescription, command.Keywords, command.CanonicalAddress, command.CategoryId);
