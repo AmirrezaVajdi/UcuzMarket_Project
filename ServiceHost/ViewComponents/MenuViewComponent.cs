@@ -20,7 +20,7 @@ namespace ServiceHost.ViewComponents
             var result = new MenuModel()
             {
                 ArticleCategories = _articleCategoryQuery.GetArticleCategories(),
-                ProductCategories = _ProductCategoryQuery.GetProductCategories()
+                ProductCategories = _ProductCategoryQuery.GetCategoryWithChildren()
             };
 
             return View(result);

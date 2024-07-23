@@ -1,4 +1,5 @@
 ﻿using _01_Query.Contract.Product;
+using _01_Query.Query;
 
 namespace _01_Query.Contract.ProductCategory
 {
@@ -7,5 +8,6 @@ namespace _01_Query.Contract.ProductCategory
         ProdcutCategoryQueryModel GetProductCategoryWithProductsBy(string slug);
         List<ProdcutCategoryQueryModel> GetProductCategories();
         List<ProdcutCategoryQueryModel> GetProductCategoriesWithProducts();
+        List<ProductCategoryWithChildren> GetCategoryWithChildren();
     }
 }

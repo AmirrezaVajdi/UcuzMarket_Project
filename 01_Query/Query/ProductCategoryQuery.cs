@@ -5,6 +5,7 @@ using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAgg;
+using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_Query.Query
@@ -138,6 +139,34 @@ namespace _01_Query.Query
             }
 
             return category;
+        }
+
+        public List<ProductCategoryWithChildren> GetCategoryWithChildren()
+        {
+            return _shopContext.
+                 ProductCategories.
+                 Where(x => x.ParentId == null).
+                 Select(x => new ProductCategoryWithChildren
+                 {
+                     Slug = x.Slug,
+                     Name = x.Name,
+                     Children = ProductCategoryChildrenMapper(x.Children)
+                 }).
+                 ToList();
+        }
+
+        private static List<ProductCategoryWithChildren> ProductCategoryChildrenMapper(List<ProductCategory> children)
+        {
+            List<ProductCategoryWithChildren> withChildrens = new();
+
+            children.ForEach(x =>
+            withChildrens.Add(new()
+            {
+                Name = x.Name,
+                Slug = x.Slug
+            }));
+
+            return withChildrens;
         }
     }
 }

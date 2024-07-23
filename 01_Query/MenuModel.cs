@@ -7,6 +7,6 @@ namespace _01_Query
     public class MenuModel
     {
         public List<ArticleCategoryQueryModel> ArticleCategories { get; set; }
-        public List<ProdcutCategoryQueryModel> ProductCategories { get; set; }
+        public List<ProductCategoryWithChildren> ProductCategories { get; set; }
     }
 }
