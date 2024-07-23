@@ -52,7 +52,17 @@ namespace ShopManagement.Application
 
             var slug = command.Slug.Slugiffy();
             var path = $"{product.Category.Slug}/{slug}";
-            var picturePath = _fileUploader.Upload(command.Picture, path);
+
+            string picturePath = "";
+
+            if (command.Picture is not null)
+            {
+                picturePath = _fileUploader.Upload(command.Picture, path);
+            }
+            else
+            {
+                picturePath = product.Picture;
+            }
 
             product.Edit(command.Name, command.Code, command.ShortDescription, command.Description, picturePath, command.PictureAlt, command.PictureTitle, slug, command.KeyWords, command.MetaDescription, command.CategoryId);
             _productRepository.SaveChanges();
