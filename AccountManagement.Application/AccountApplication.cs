@@ -124,7 +124,8 @@ namespace AccountManagement.Application
             return new()
             {
                 Fullname = account.Fullname,
-                Mobile = account.Mobile
+                Mobile = account.Mobile,
+                ProfilePhoto = account.ProfilePhoto
             };
         }
     }
