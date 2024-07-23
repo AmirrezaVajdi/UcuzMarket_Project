@@ -28,25 +28,48 @@ namespace _01_Query.Query
 
 
 
-        public List<ProductQueryModel> GetLatestArrivals()
+        public List<ProductQueryModel> GetPopularProducts(int take = 8)
         {
-            var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
+            var inventory = _inventoryContext
+                .Inventory
+                .Select(x => new
+                {
+                    x.ProductId,
+                    x.UnitPrice,
+                    x.InStock
+                }
+                )
+                .AsNoTracking()
+                .ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).AsNoTracking().ToList();
+            var discounts = _discountContext
+                .CustomerDiscounts
+                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Select(x => new
+                {
+                    x.ProductId,
+                    x.DiscountRate
+                }
+                ).AsNoTracking()
+                .ToList();
 
-            var products = _shopContext.Products.Include(x => x.Category).Select(x => new ProductQueryModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Category = x.Category.Name,
-                Picture = x.Picture,
-                PictureTitle = x.PictureTitle,
-                PictureAlt = x.PictureAlt,
-                Slug = x.Slug,
-                CategorySlug = x.Category.Slug
-            }).OrderByDescending(x => x.Id).Take(6).AsNoTracking().ToList();
-
-
+            var products = _shopContext
+                .Products
+                .Include(x => x.Category)
+                .Select(x => new ProductQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Category = x.Category.Name,
+                    Picture = x.Picture,
+                    PictureTitle = x.PictureTitle,
+                    PictureAlt = x.PictureAlt,
+                    Slug = x.Slug,
+                    CategorySlug = x.Category.Slug
+                }).OrderByDescending(x => x.Id)
+                .Take(take)
+                .AsNoTracking()
+                .ToList();
 
             foreach (var product in products)
             {
@@ -54,6 +77,7 @@ namespace _01_Query.Query
                 if (productInventory != null)
                 {
                     var price = productInventory.UnitPrice;
+                    product.IsInStock = productInventory.InStock;
 
                     product.Price = price.ToMoney();
 
@@ -68,8 +92,6 @@ namespace _01_Query.Query
                     }
                 }
             }
-
-
 
             return products;
         }

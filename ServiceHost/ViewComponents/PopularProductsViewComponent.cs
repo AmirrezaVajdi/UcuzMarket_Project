@@ -4,18 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.ViewComponents
 {
-    public class LatestArrivalsViewComponent : ViewComponent
+    public class PopularProductsViewComponent : ViewComponent
     {
         private readonly IProductQuery _productQuery;
 
-        public LatestArrivalsViewComponent(IProductQuery productQuery)
+        public PopularProductsViewComponent(IProductQuery productQuery)
         {
             _productQuery = productQuery;
         }
 
         public IViewComponentResult Invoke()
         {
-            var products = _productQuery.GetLatestArrivals();
+            var products = _productQuery.GetPopularProducts();
             return View(products);
         }
     }

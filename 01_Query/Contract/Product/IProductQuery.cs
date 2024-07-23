@@ -10,7 +10,7 @@ namespace _01_Query.Contract.Product
     public interface IProductQuery
     {
         ProductQueryModel GetProductDetails(string slug);
-        List<ProductQueryModel> GetLatestArrivals();
+        List<ProductQueryModel> GetPopularProducts(int take = 8);
         List<ProductQueryModel> Search(string value);
         List<CartItem> CheckInventoryStatus(List<CartItem> cartItems);
     }
