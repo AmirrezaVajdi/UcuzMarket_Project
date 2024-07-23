@@ -46,7 +46,17 @@ namespace ShopManagement.Application
                 return operatin.Failed(ApplicationMessages.RecordNotFound);
 
             var path = $"{productPicture.Product.Category.Slug}//{productPicture.Product.Slug}";
-            var picturePath = _fileUploader.Upload(command.Picture, path);
+
+            string picturePath = "";
+
+            if (command.Picture is not null)
+            {
+                picturePath = _fileUploader.Upload(command.Picture, path);
+            }
+            else
+            {
+                picturePath = productPicture.Picture;
+            }
 
             productPicture.Edit(picturePath, command.PictureTitle, command.PicutreAlt, command.ProductId);
             _productPictureRepository.SaveChanges();
