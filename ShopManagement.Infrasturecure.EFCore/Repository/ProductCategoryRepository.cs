@@ -36,16 +36,31 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             }).FirstOrDefault(x => x.Id == id);
         }
 
-        public List<ProductCategoryViewModel> GetProductCategories()
+        public List<ProductCategoryViewModel> GetProductCategories(bool forProductPage = false)
         {
-            return _context.ProductCategories
-                .Where(x => x.ParentId == null)
-                .Select(x => new ProductCategoryViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                }
-            ).ToList();
+            List<ProductCategoryViewModel> result = new();
+            if (!forProductPage)
+            {
+                result = _context.ProductCategories
+                   .Where(x => x.ParentId == null)
+                   .Select(x => new ProductCategoryViewModel
+                   {
+                       Id = x.Id,
+                       Name = x.Name
+                   })
+                   .ToList();
+            }
+            else
+            {
+                result = _context.ProductCategories
+                   .Select(x => new ProductCategoryViewModel
+                   {
+                       Id = x.Id,
+                       Name = x.Name
+                   })
+                   .ToList();
+            }
+            return result;
         }
 
         public string GetSlugBy(long id)

@@ -2,6 +2,7 @@
 using _01_Framework.Application;
 using ShopManagement.Application.Contracts.ProdcutCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
+using System.Linq.Expressions;
 
 namespace ShopManagement.Application
 {
@@ -69,9 +70,9 @@ namespace ShopManagement.Application
             return _productCategoryRepository.GetDetails(id);
         }
 
-        public List<ProductCategoryViewModel> GetProductCategories()
+        public List<ProductCategoryViewModel> GetProductCategories(bool forProductPage = false)
         {
-            return _productCategoryRepository.GetProductCategories();
+            return _productCategoryRepository.GetProductCategories(forProductPage);
         }
 
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel)

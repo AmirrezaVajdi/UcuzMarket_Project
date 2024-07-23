@@ -1,4 +1,5 @@
 ﻿using _01_Framework.Application;
+using System.Linq.Expressions;
 
 
 namespace ShopManagement.Application.Contracts.ProdcutCategory
@@ -8,7 +9,7 @@ namespace ShopManagement.Application.Contracts.ProdcutCategory
         OperationResult Create(CreateProductCategory command);
         OperationResult Edit(EditProductCategory command);
         EditProductCategory GetDetails(long id);
-        List<ProductCategoryViewModel> GetProductCategories();
+        List<ProductCategoryViewModel> GetProductCategories(bool forProductPage = false);
         List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel);
     }
 }
