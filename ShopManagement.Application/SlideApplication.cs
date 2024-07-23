@@ -46,8 +46,16 @@ namespace ShopManagement.Application
             if (slide == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            var pictureName = _fileUploader.Upload(command.Picture, "Slides");
+            string pictureName = "";
 
+            if (command.Picture is not null)
+            {
+                pictureName = _fileUploader.Upload(command.Picture, "Slides");
+            }
+            else
+            {
+                pictureName = slide.Picture;
+            }
 
             slide.Edit(pictureName, command.PictureAlt, command.PictureTitle, command.Heading, command.Title, command.Text, command.Link, command.BtnText);
 
