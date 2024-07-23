@@ -23,6 +23,8 @@ namespace _01_Query.Query
 
         public List<ProdcutCategoryQueryModel> GetProductCategories()
         {
+            var res = _shopContext.ProductCategories.Where(x => x.ParentId == null).Include(x => x.Children).ToList();
+
             return _shopContext.ProductCategories.Select(x => new ProdcutCategoryQueryModel
             {
                 Id = x.Id,
