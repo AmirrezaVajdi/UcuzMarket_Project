@@ -42,7 +42,17 @@ namespace BlogManagement.Application
                 return operation.Failed(ApplicationMessages.DuplicatedRecored);
 
             var slug = command.Slug.Slugiffy();
-            var pictureName = _fileUploader.Upload(command.Picture, slug);
+
+            string pictureName = "";
+
+            if (command.Picture is not null)
+            {
+                pictureName = _fileUploader.Upload(command.Picture, slug);
+            }
+            else
+            {
+                pictureName = articleCategory.Picture;
+            }
 
             articleCategory.Edit(command.Name, pictureName, command.PictureAlt, command.PictureTitle, command.Description, command.ShowOrder, slug, command.Keywords, command.Metadescription, command.CanonicalAddress);
 
