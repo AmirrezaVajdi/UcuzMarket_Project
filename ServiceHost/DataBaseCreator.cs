@@ -3,6 +3,7 @@ using AccountManagement.Domain.RoleAgg;
 using AccountManagement.Infrastructure.EFCore;
 using BlogManagement.Infrastructure.EFCore;
 using CommentManagement.Infrastructure.EFCore;
+using DeliveryManagement.Infrastructure.EfCore;
 using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,8 @@ namespace ServiceHost
             var discountContext = provider.GetRequiredService<DiscountContext>();
             var inventoryContext = provider.GetRequiredService<InventoryContext>();
             var shopContext = provider.GetRequiredService<ShopContext>();
+            var deliveryContext = provider.GetRequiredService<DeliveryContext>();
+
 
             var isDbCreated = accountContext.Database.EnsureCreated();
 
@@ -30,6 +33,7 @@ namespace ServiceHost
                 discountContext.Database.Migrate();
                 inventoryContext.Database.Migrate();
                 shopContext.Database.Migrate();
+                deliveryContext.Database.Migrate();
 
                 var account = new Account("کاربر ادمین پیش فرض", "admin", "10000.zmlstgGPOBLwzIQhde+BpQ==.WuOA2mKKSjZbDXpF23/y29s1c1EBPaNMk2iFeYttUhE=", "09999999999", 1, "");
 
