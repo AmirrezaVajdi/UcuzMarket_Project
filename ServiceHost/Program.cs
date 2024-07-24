@@ -13,7 +13,7 @@ using InventoryManagement.Presentation.Api;
 using LampShade.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using ServiceHost;
-using ShopManagement.Configuration;
+using ShopManagement.Infrastructure.Configuration;
 using ShopManagement.Presentation.Api;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;

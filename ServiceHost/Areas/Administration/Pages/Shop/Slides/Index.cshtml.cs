@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductPicture;
 using ShopManagement.Application.Contracts.Slide;
-using ShopManagement.Configuration.Permissions;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.Slides
 {

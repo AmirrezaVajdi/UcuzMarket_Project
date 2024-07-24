@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.ProdcutCategory;
 using ShopManagement.Application.Contracts.Product;
-using ShopManagement.Configuration.Permissions;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.Product
 {

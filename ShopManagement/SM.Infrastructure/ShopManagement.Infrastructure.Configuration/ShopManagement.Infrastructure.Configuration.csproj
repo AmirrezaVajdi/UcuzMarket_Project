@@ -1,0 +1,23 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\01_Query\01_UcuzMarketQuery.csproj" />
+    <ProjectReference Include="..\..\SM.Application\ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\SM.Application\ShopManagement.Application\ShopManagement.Application.csproj" />
+    <ProjectReference Include="..\ShopManagement.Infrastructure.AccountAcl\ShopManagement.Infrastructure.AccountAcl.csproj" />
+    <ProjectReference Include="..\ShopManagement.Infrastructure.InvenoryAcl\ShopManagement.Infrastructure.InventoryAcl.csproj" />
+    <ProjectReference Include="..\ShopManagement.Infrasturecure.EFCore\ShopManagement.Infrasturecure.EFCore.csproj" />
+  </ItemGroup>
+
+</Project>

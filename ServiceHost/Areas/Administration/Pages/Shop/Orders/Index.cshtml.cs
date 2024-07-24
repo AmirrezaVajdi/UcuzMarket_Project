@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Application.Contracts.ProdcutCategory;
-using ShopManagement.Configuration.Permissions;
+using ShopManagement.Infrastructure.Configuration.Permissions;
 using System.Collections.Generic;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.Orders

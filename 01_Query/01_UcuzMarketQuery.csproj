@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>_01_Query</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlogManagement\BM.Infrastructure\BlogManagement.Infrasturcture.EFCore\BlogManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\CommentManagement\CM.Infrastructure\CommentManagement.Infrastructure.EFCore\CommentManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\DiscountManagement\DM.Infrastructure\DiscountManagement.Infrastructure.EfCore\DiscountManagement.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\InventoryManagement\IM.Infrastructure\InventoryManagement.Infrastructure.EFCore\InventoryManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\ShopManagement\SM.Infrastructure\ShopManagement.Infrasturecure.EFCore\ShopManagement.Infrasturecure.EFCore.csproj" />
+  </ItemGroup>
+
+</Project>
