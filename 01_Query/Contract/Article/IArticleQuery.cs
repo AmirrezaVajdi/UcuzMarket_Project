@@ -3,6 +3,6 @@
     public interface IArticleQuery
     {
         ArticleQueryModel GetArticleDetails(string slug);
-        List<ArticleQueryModel> LatestArticles();
+        List<ArticleQueryModel> LatestArticles(int take = 6);
     }
 }

@@ -71,18 +71,25 @@ namespace _01_Query.Query
             return article;
         }
 
-        public List<ArticleQueryModel> LatestArticles()
+        public List<ArticleQueryModel> LatestArticles(int take = 6)
         {
-            return _context.Articles.Include(x => x.Category).Where(x => x.PublishDate <= DateTime.Now).Select(x => new ArticleQueryModel
-            {
-                Title = x.Title,
-                Slug = x.Slug,
-                Picture = x.Picture,
-                PictureTitle = x.PictureTitle,
-                PictureAlt = x.PictureAlt,
-                PublishDate = x.PublishDate.ToFarsi(),
-                ShortDescription = x.ShortDescription
-            }).ToList();
+            return _context
+                .Articles
+                .Include(x => x.Category)
+                .Where(x => x.PublishDate <= DateTime.Now)
+                .OrderByDescending(x => x.Id)
+                .Select(x => new ArticleQueryModel
+                {
+                    Title = x.Title,
+                    Slug = x.Slug,
+                    Picture = x.Picture,
+                    PictureTitle = x.PictureTitle,
+                    PictureAlt = x.PictureAlt,
+                    PublishDate = x.PublishDate.ToFarsi(),
+                    ShortDescription = x.ShortDescription
+                })
+                .Take(take)
+                .ToList();
         }
     }
 }
