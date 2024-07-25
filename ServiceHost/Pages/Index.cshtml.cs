@@ -7,11 +7,11 @@ namespace ServiceHost.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly IDeliveryApplication _deliveryApplication;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IDeliveryApplication deliveryApplication)
         {
-            _logger = logger;
+            _deliveryApplication = deliveryApplication;
         }
 
         public void OnGet()
@@ -19,9 +19,15 @@ namespace ServiceHost.Pages
 
         }
 
-        public IActionResult OnPostCreateDelivery(CreateDelivery createDelivery, SetToDefaultDelivery defaultDelivery)
+        public IActionResult OnPostCreateDelivery(CreateDelivery createDelivery)
         {
             return new OkResult();
+        }
+
+        public JsonResult OnPostSetDefaultDelivery(SetToDefaultDelivery setToDefaultDelivery)
+        {
+            var result = _deliveryApplication.SetToDefaultDelivery(setToDefaultDelivery);
+            return new JsonResult(result);
         }
     }
 }

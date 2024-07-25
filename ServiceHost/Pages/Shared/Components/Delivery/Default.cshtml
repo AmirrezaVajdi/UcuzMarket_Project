@@ -35,10 +35,11 @@
                         @foreach (var delivery in Model)
                         {
                             <div class="form-check border-bottom py-4 m-0">
-                                <input type="radio" class="form-check-input" id="address-@delivery.Id" name="delivery-address" @(delivery.DefaultAddress ? "checked" : "") onchange="" />
+                                <input type="radio" class="form-check-input" id="address-@delivery.Id" name="delivery-address" @(delivery.DefaultAddress ? "checked" : "") onclick="SetDefaultAdderss(@delivery.Id)"/>
                                 <label for="address-@delivery.Id" class="form-check-label text-dark-emphasis fw-semibold">میاندوآب ، @delivery.Address ، @delivery.PostalCode</label>
                             </div>
                         }
+                    <div class="deliveryMessage"></div>
                     </div>
                 </div>
 
@@ -63,10 +64,10 @@
                         <div class="mb-3 mb-lg-4">
                             <label class="form-label">شهرستان</label>
                             <select class="form-select form-select-lg rounded-pill" data-select="{
-                                                                                                        &quot;classNames&quot;: {
-                                                                                                          &quot;containerInner&quot;: &quot;form-select form-select-lg rounded-pill&quot;
-                                                                                                        }
-                                                                                                      }" aria-label="Large pill select">
+                                                                                                                &quot;classNames&quot;: {
+                                                                                                                  &quot;containerInner&quot;: &quot;form-select form-select-lg rounded-pill&quot;
+                                                                                                                }
+                                                                                                              }" aria-label="Large pill select">
                                 <option value="">میاندوآب</option>
                             </select>
                         </div>
@@ -95,7 +96,6 @@
         </div>
 
         <!-- Footer -->
-        
     }
     else
     {

@@ -7,6 +7,7 @@ using AccountManagement.Configuration;
 using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Configuration;
 using DeliveryManagement.Infrastructure.Configuration;
+using DeliveryManagement.Presentation.API;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using InventoryManagement.Presentation.Api;
@@ -91,7 +92,8 @@ builder.Services.AddRazorPages()
 })
     .AddApplicationPart(typeof(ProductController).Assembly)
     .AddApplicationPart(typeof(InventoryController).Assembly)
-    .AddApplicationPart(typeof(LampShadeController).Assembly);
+    .AddApplicationPart(typeof(LampShadeController).Assembly)
+    .AddApplicationPart(typeof(DeliveryController).Assembly);
 
 
 var app = builder.Build();

@@ -24,6 +24,7 @@
     <ProjectReference Include="..\CommentManagement\CM.Application\CommantManagement.Application.Contract\CommantManagement.Application.Contract.csproj" />
     <ProjectReference Include="..\CommentManagement\CM.Infrastructure\CommentManagement.Infrastructure.Configuration\CommentManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\DeliveryManagement\DM.Infrastructure\DeliveryManagement.Infrastructure.Configuration\DeliveryManagement.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\DeliveryManagement\DM.Presentation\DeliveryManagement.Presentation.API\DeliveryManagement.Presentation.API.csproj" />
     <ProjectReference Include="..\DiscountManagement\DM.Infrastructure\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManagement\IM.Infrastructure\InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManagement\IM.Presentation\InventoryManagement.Presentation.Api\InventoryManagement.Presentation.Api.csproj" />
