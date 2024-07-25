@@ -12,6 +12,6 @@ namespace DeliveryManagement.Application.Contract.Delivery
         List<DeliveryViewModel> List(long accountId);
         OperationResult Create(CreateDelivery command);
         OperationResult Edit(EditDelivery command);
-
+        OperationResult SetToDefaultDelivery(SetToDefaultDelivery command);
     }
 }

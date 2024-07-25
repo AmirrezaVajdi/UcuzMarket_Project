@@ -6,8 +6,8 @@ namespace DeliveryManagement.Domain.DeliveryAgg
     public class Delivery : EntityBase
     {
         public string Address { get; private set; }
-
         public string PostalCode { get; private set; }
+        public bool DefaultDelivery { get; private set; }
         public long AccountId { get; private set; }
 
         public Delivery(string address, string postalCode, long accountId)
@@ -21,6 +21,11 @@ namespace DeliveryManagement.Domain.DeliveryAgg
         {
             Address = address;
             PostalCode = postalCode;
+        }
+
+        public void SetToDefaultDelivery()
+        {
+            DefaultDelivery = true;
         }
     }
 }

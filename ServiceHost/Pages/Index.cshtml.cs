@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DeliveryManagement.Application.Contract.Delivery;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Pages
@@ -15,6 +17,11 @@ namespace ServiceHost.Pages
         public void OnGet()
         {
 
+        }
+
+        public IActionResult OnPostCreateDelivery(CreateDelivery createDelivery, SetToDefaultDelivery defaultDelivery)
+        {
+            return new OkResult();
         }
     }
 }

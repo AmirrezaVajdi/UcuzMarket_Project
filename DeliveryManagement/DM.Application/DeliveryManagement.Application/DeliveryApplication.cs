@@ -41,5 +41,18 @@ namespace DeliveryManagement.Application
         {
             return _deliveryRepository.List(accountId);
         }
+
+        public OperationResult SetToDefaultDelivery(SetToDefaultDelivery command)
+        {
+            OperationResult operation = new();
+            var delivery = _deliveryRepository.Get(command.Id);
+            if (delivery == null)
+                return operation.Failed(ApplicationMessages.RecordNotFound);
+
+            delivery.SetToDefaultDelivery();
+
+            _deliveryRepository.SaveChanges();
+            return operation.Succeded();
+        }
     }
 }

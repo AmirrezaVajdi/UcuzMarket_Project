@@ -21,9 +21,12 @@ namespace DeliveryManagement.Infrastructure.EfCore.Repository
                  .Where(x => x.AccountId == accountId)
                  .Select(x => new DeliveryViewModel
                  {
+                     Id = x.Id,
                      Address = x.Address,
-                     PostalCode = x.PostalCode
+                     PostalCode = x.PostalCode,
+                     DefaultAddress = x.DefaultDelivery
                  })
+                 .OrderBy(x => x.Id)
                  .ToList();
         }
     }
