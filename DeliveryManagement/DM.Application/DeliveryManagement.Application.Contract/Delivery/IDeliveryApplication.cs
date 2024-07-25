@@ -9,7 +9,7 @@ namespace DeliveryManagement.Application.Contract.Delivery
 {
     public interface IDeliveryApplication
     {
-        List<DeliveryViewModel> List();
+        List<DeliveryViewModel> List(long accountId);
         OperationResult Create(CreateDelivery command);
         OperationResult Edit(EditDelivery command);
 

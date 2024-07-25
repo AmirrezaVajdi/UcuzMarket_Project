@@ -1,0 +1,104 @@
+﻿@using DeliveryManagement.Application.Contract.Delivery;
+@using _01_Framework.Application
+@model List<DeliveryViewModel>
+@inject IAuthHelper _helper
+@{
+}
+<div class="offcanvas offcanvas-end pb-sm-2 px-sm-2" id="deliveryOptions" tabindex="-1" aria-labelledby="deliveryOptionsLabel" style="width: 500px">
+
+        <!-- Header with nav tabs -->
+        <div class="offcanvas-header flex-column align-items-start py-3 pt-lg-4">
+            <div class="d-flex align-items-center justify-content-between w-100 pb-xl-1 mb-4">
+                <h4 class="offcanvas-title" id="deliveryOptionsLabel">تنظیمات آدرس</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <ul class="nav nav-pills nav-justified w-100" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button type="button" class="nav-link active" id="delivery-tab" data-bs-toggle="tab" data-bs-target="#delivery-tab-pane" role="tab" aria-controls="delivery-tab-pane" aria-selected="true">
+                        <i class="ci-shopping-bag fs-base ms-n1 me-2"></i>
+                        آدرس
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+    @if (_helper.IsAuthenticated())
+    {
+        <div class="offcanvas-body tab-content py-2 py-sm-3">
+
+            <!-- Delivery tab -->
+            <div class="tab-pane fade show active" id="delivery-tab-pane" role="tabpanel" aria-labelledby="delivery-tab">
+
+                <!-- Address options collapse -->
+                <div class="collapse delivery-address show" id="deliveryAddressOptions">
+                    <div class="mt-n3">
+                        @foreach (var delivery in Model)
+                        {
+                            <div class="form-check border-bottom py-4 m-0">
+                                <input type="radio" class="form-check-input" id="address-1" name="delivery-address" checked="">
+                                <label for="address-1" class="form-check-label text-dark-emphasis fw-semibold">میاندوآب ، @delivery.Address ، @delivery.PostalCode</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Add new address collapse -->
+                <div class="collapse delivery-address" id="deliveryAddressAdd">
+                    <div class="nav mb-4">
+                        <a class="nav-link animate-underline p-0" href=".delivery-address" data-bs-toggle="collapse" aria-expanded="true" aria-controls="deliveryAddressOptions deliveryAddressAdd">
+                            <i class="ci-chevron-left fs-lg ms-n1 me-1"></i>
+                            <span class="animate-target">بازگشت</span>
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-3 mb-lg-4">
+                        <h5 class="h6 mb-0 me-3">برای سفارش دادن یک آدرس اضافه کنید</h5>
+                        <a class="btn btn-sm btn-outline-primary rounded-pill" href="#!">
+                            <i class="ci-map-pin fs-base ms-n1 me-1"></i>
+                            انتخاب از نقشه
+                        </a>
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label class="form-label">شهرستان</label>
+                        <select class="form-select form-select-lg rounded-pill" data-select="{
+                            &quot;classNames&quot;: {
+                              &quot;containerInner&quot;: &quot;form-select form-select-lg rounded-pill&quot;
+                            }
+                          }" aria-label="Large pill select">
+                            <option value="">میاندوآب</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label for="my-address" class="form-label">آدرس *</label>
+                        <input type="text" class="form-control form-control-lg rounded-pill" id="my-address">
+                    </div>
+                    <div class="mb-3 mb-lg-4">
+                        <label for="my-postcode" class="form-label">کدپستی *</label>
+                        <input type="number" class="form-control form-control-lg rounded-pill" id="my-postcode">
+                    </div>
+
+                </div>
+
+                <!-- Add address collapse toggle -->
+                <div class="nav">
+                    <a class="nav-link hiding-collapse-toggle animate-underline collapsed px-0 mt-4" href=".delivery-address" data-bs-toggle="collapse" aria-expanded="false" aria-controls="deliveryAddressOptions deliveryAddressAdd">
+                        <span class="animate-target">اضافه کردن آدرس</span>
+                        <i class="ci-plus fs-base ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="offcanvas-header">
+            <button type="button" class="btn btn-lg btn-primary w-100 rounded-pill">تایید آدرس</button>
+        </div>
+    }
+    else
+    {
+        <div class="alert d-flex alert-primary" role="alert">
+            <i class="ci-bell fs-lg pe-1 mt-1 me-2"></i>
+            <div>برای افزودن آدرس لطفا وارد حساب کاربری خود شوید</div>
+        </div>
+    }
+
+</div>

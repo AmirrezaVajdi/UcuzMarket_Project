@@ -14,11 +14,12 @@ namespace DeliveryManagement.Infrastructure.EfCore.Repository
             _context = context;
         }
 
-        public List<DeliveryViewModel> List()
+        public List<DeliveryViewModel> List(long accountId)
         {
-            return _context.
-                 Deliveries.
-                 Select(x => new DeliveryViewModel
+            return _context
+                 .Deliveries
+                 .Where(x => x.AccountId == accountId)
+                 .Select(x => new DeliveryViewModel
                  {
                      Address = x.Address,
                      PostalCode = x.PostalCode

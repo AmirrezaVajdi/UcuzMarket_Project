@@ -5,6 +5,6 @@ namespace DeliveryManagement.Domain.DeliveryAgg
 {
     public interface IDeliveryRepository : IRepository<long, Delivery>
     {
-        List<DeliveryViewModel> List();
+        List<DeliveryViewModel> List(long accountId);
     }
 }

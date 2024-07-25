@@ -37,9 +37,9 @@ namespace DeliveryManagement.Application
             return operation.Succeded();
         }
 
-        public List<DeliveryViewModel> List()
+        public List<DeliveryViewModel> List(long accountId)
         {
-            return _deliveryRepository.List();
+            return _deliveryRepository.List(accountId);
         }
     }
 }
