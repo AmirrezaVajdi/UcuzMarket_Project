@@ -29,5 +29,16 @@ namespace DeliveryManagement.Infrastructure.EfCore.Repository
                  .OrderBy(x => x.Id)
                  .ToList();
         }
+
+        public void UnSetSetToDefaultAddress(long accountId)
+        {
+            var delivery = _context
+                 .Deliveries
+                 .Where(x => x.DefaultDelivery == true & x.AccountId == accountId)
+                 .FirstOrDefault();
+
+            if (delivery != null)
+                delivery.UnSetDefaultDelivery();
+        }
     }
 }

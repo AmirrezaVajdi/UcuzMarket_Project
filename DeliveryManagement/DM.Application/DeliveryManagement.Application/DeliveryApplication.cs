@@ -7,10 +7,12 @@ namespace DeliveryManagement.Application
     public class DeliveryApplication : IDeliveryApplication
     {
         private readonly IDeliveryRepository _deliveryRepository;
+        private readonly IAuthHelper _helper;
 
-        public DeliveryApplication(IDeliveryRepository deliveryRepository)
+        public DeliveryApplication(IDeliveryRepository deliveryRepository, IAuthHelper helper)
         {
             _deliveryRepository = deliveryRepository;
+            _helper = helper;
         }
 
         public OperationResult Create(CreateDelivery command)
@@ -48,6 +50,8 @@ namespace DeliveryManagement.Application
             var delivery = _deliveryRepository.Get(command.Id);
             if (delivery == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
+
+            _deliveryRepository.UnSetSetToDefaultAddress(_helper.CurrentAccountId());
 
             delivery.SetToDefaultDelivery();
 

@@ -21,13 +21,8 @@ namespace ServiceHost.Pages
 
         public IActionResult OnPostCreateDelivery(CreateDelivery createDelivery)
         {
-            return new OkResult();
-        }
-
-        public JsonResult OnPostSetDefaultDelivery(SetToDefaultDelivery setToDefaultDelivery)
-        {
-            var result = _deliveryApplication.SetToDefaultDelivery(setToDefaultDelivery);
-            return new JsonResult(result);
+            _deliveryApplication.Create(createDelivery);
+            return RedirectToPage("~/Index");
         }
     }
 }

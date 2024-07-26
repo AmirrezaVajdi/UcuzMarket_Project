@@ -6,5 +6,6 @@ namespace DeliveryManagement.Domain.DeliveryAgg
     public interface IDeliveryRepository : IRepository<long, Delivery>
     {
         List<DeliveryViewModel> List(long accountId);
+        void UnSetSetToDefaultAddress(long accountId);
     }
 }

@@ -27,5 +27,10 @@ namespace DeliveryManagement.Domain.DeliveryAgg
         {
             DefaultDelivery = true;
         }
+
+        public void UnSetDefaultDelivery()
+        {
+            DefaultDelivery = false;
+        }
     }
 }
