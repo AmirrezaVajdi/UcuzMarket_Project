@@ -22,7 +22,7 @@ namespace ServiceHost.Pages
         public IActionResult OnPostCreateDelivery(CreateDelivery createDelivery)
         {
             _deliveryApplication.Create(createDelivery);
-            return RedirectToPage("~/Index");
+            return RedirectToPage("./Index");
         }
     }
 }
