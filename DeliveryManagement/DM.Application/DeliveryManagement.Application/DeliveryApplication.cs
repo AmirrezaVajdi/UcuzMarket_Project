@@ -39,6 +39,11 @@ namespace DeliveryManagement.Application
             return operation.Succeded();
         }
 
+        public DeliveryViewModel GetDefaultDeliveryBy(long accountId)
+        {
+            return _deliveryRepository.GetDefaultDeliveryBy(accountId);
+        }
+
         public List<DeliveryViewModel> List(long accountId)
         {
             return _deliveryRepository.List(accountId);

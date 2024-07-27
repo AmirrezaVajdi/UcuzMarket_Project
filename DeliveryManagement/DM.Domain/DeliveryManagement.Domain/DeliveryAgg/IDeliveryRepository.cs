@@ -7,5 +7,6 @@ namespace DeliveryManagement.Domain.DeliveryAgg
     {
         List<DeliveryViewModel> List(long accountId);
         void UnSetSetToDefaultAddress(long accountId);
+        DeliveryViewModel GetDefaultDeliveryBy(long accountId);
     }
 }

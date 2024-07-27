@@ -13,5 +13,6 @@ namespace DeliveryManagement.Application.Contract.Delivery
         OperationResult Create(CreateDelivery command);
         OperationResult Edit(EditDelivery command);
         OperationResult SetToDefaultDelivery(SetToDefaultDelivery command);
+        DeliveryViewModel GetDefaultDeliveryBy(long accountId);
     }
 }
