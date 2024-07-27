@@ -44,14 +44,14 @@ namespace AccountManagement.Application
         public OperationResult Register(RegisterAccount command)
         {
             OperationResult operation = new();
-            if (_accountRepository.Exsists(x => x.Username == command.Username || x.Mobile == command.Mobile))
-                return operation.Failed("نام کاربری یا موبایل قبلا ثبت شده است");
+            if (_accountRepository.Exsists(x => x.Mobile == command.Mobile))
+                return operation.Failed("موبایل قبلا ثبت شده است");
 
             var password = _passwordHasher.Hash(command.Password);
             var path = "ProfilePhotos";
             var pictureName = _fileUploader.Upload(command.ProfilePhoto, path);
 
-            Account account = new(command.Fullname, command.Username, password, command.Mobile, command.RoleId, pictureName);
+            Account account = new(command.Fullname, password, command.Mobile, command.RoleId, pictureName);
             _accountRepository.Create(account);
             _accountRepository.SaveChanges();
             return operation.Succeded();
@@ -65,14 +65,14 @@ namespace AccountManagement.Application
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
             if (_accountRepository.Exsists(x =>
-                (x.Username == command.Username || x.Mobile == command.Mobile) && x.Id != command.Id))
+                (x.Mobile == command.Mobile) && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicatedRecored);
 
 
             var path = "ProfilePhotos";
             var pictureName = _fileUploader.Upload(command.ProfilePhoto, path);
 
-            account.Edit(command.Fullname, command.Username, command.Mobile, command.RoleId, pictureName);
+            account.Edit(command.Fullname, command.Mobile, command.RoleId, pictureName);
             _accountRepository.SaveChanges();
             return operation.Succeded();
         }
@@ -96,7 +96,7 @@ namespace AccountManagement.Application
 
             var permissions = _roleRepository.Get(account.RoleId).Permissions.Select(x => x.Code).ToList();
 
-            AuthViewModel authViewModel = new(account.Id, account.RoleId, account.Fullname, account.Username, permissions);
+            AuthViewModel authViewModel = new(account.Id, account.RoleId, account.Fullname, permissions);
 
             _authHelper.Signin(authViewModel);
 

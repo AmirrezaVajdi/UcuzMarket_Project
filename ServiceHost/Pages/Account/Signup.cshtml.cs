@@ -8,10 +8,8 @@ namespace ServiceHost.Pages.Account
     {
         private IAccountApplication _accountApplication;
 
-        [TempData]
-        public string LoginMessage { get; set; }
-
-        public RegisterAccount RegisterAccountModel { get; set; }
+        [BindProperty]
+        public RegisterAccount RegisterModel { get; set; }
 
         public SignupModel(IAccountApplication accountApplication)
         {
@@ -21,22 +19,30 @@ namespace ServiceHost.Pages.Account
         {
         }
 
-        public IActionResult OnPost(RegisterAccount command)
+        public IActionResult OnPost()
         {
+            ModelState.ClearValidationState("RegisterModel.Roles");
+            ModelState.MarkFieldValid("RegisterModel.Roles");
+
+            ModelState.ClearValidationState("RegisterModel.RoleId");
+            ModelState.MarkFieldValid("RegisterModel.RoleId");
+
             if (ModelState.IsValid)
             {
-                var isRegister = _accountApplication.Register(command);
+                //User RoleId
+                RegisterModel.RoleId = 2;
+                var isRegister = _accountApplication.Register(RegisterModel);
                 if (isRegister.isSuccedded)
                 {
                     return RedirectToPage("./Signin");
                 }
                 else
                 {
-                    LoginMessage = isRegister.Message;
+                    TempData["RegisterMessage"] = isRegister.Message;
                     return Page();
                 }
             }
-            LoginMessage = "لطفا فیلد های اجباری را وارد کنید";
+            TempData["RegisterMessage"] = "لطفا فیلد های اجباری را وارد کنید";
             return Page();
         }
     }

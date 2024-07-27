@@ -17,9 +17,6 @@
                 <div class="col-6">
                     <input class="form-control" asp-for="SearchModel.Fullname" placeholder="نام">
                 </div>
-                <div class="col-6">
-                    <input class="form-control" asp-for="SearchModel.Username" placeholder="نام کاربری">
-                </div>
                 <div class="col-6 mt-2">
                     <input class="form-control" asp-for="SearchModel.Mobile" placeholder="موبایل">
                 </div>
@@ -58,7 +55,6 @@
                     <th>#</th>
                     <th>عکس</th>
                     <th>نام</th>
-                    <th>نام کاربری</th>
                     <th>موبایل</th>
                     <th>نقش</th>
                     <th>تاریخ تولید</th>
@@ -81,7 +77,6 @@
                             }
                         </td>
                         <td>@item.Fullname</td>
-                        <td>@item.Username</td>
                         <td>@item.Mobile</td>
                         <td>@item.Role</td>
                         <td>@item.CreationDate</td>

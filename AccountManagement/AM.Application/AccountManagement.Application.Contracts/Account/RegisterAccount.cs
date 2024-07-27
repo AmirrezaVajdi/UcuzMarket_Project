@@ -13,9 +13,6 @@ namespace AccountManagement.Application.Contracts.Account
         public string Fullname { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
-        public string Username { get; set; }
-
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Password { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]

@@ -59,8 +59,6 @@ namespace ServiceHost.Pages
 
             if (paymentMethod == 1)
             {
-                var accountUsername = _authHelper.CurrentAccountInfo().Username;
-
                 var paymentResponse = _zarinPalFactory.CreatePaymentRequest(cart.PayAmmount.ToString(), "", "", "خرید از لوازم خانگی و دکوری", orderId);
 
                 return Redirect($"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Authority}");

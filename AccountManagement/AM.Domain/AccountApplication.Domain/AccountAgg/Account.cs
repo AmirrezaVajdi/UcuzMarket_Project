@@ -6,27 +6,24 @@ namespace AccountManagement.Domain.AccountAgg
     public class Account : EntityBase
     {
         public string Fullname { get; private set; }
-        public string Username { get; private set; }
         public string Password { get; private set; }
         public string Mobile { get; private set; }
         public Role Role { get; private set; }
         public long RoleId { get; private set; }
         public string ProfilePhoto { get; private set; }
 
-        public Account(string fullname, string username, string password, string mobile, long roleId, string profilePhoto)
+        public Account(string fullname, string password, string mobile, long roleId, string profilePhoto)
         {
             Fullname = fullname;
-            Username = username;
             Password = password;
             Mobile = mobile;
             RoleId = (roleId == 0 ? 2 : roleId);
             ProfilePhoto = profilePhoto;
         }
 
-        public void Edit(string fullname, string username, string mobile, long roleId, string profilePhoto)
+        public void Edit(string fullname, string mobile, long roleId, string profilePhoto)
         {
             Fullname = fullname;
-            Username = username;
             Mobile = mobile;
             RoleId = roleId;
 

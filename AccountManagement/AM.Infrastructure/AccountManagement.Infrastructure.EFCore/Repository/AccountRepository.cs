@@ -41,7 +41,6 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                       Fullname = x.Fullname,
                       Mobile = x.Mobile,
                       RoleId = x.RoleId,
-                      Username = x.Username
                   }).FirstOrDefault(x => x.Id == id);
         }
 
@@ -53,7 +52,6 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
                 {
                     Id = x.Id,
                     Fullname = x.Fullname,
-                    Username = x.Username,
                     Mobile = x.Mobile,
                     ProfilePhoto = x.ProfilePhoto,
                     Role = x.Role.Name,
@@ -63,9 +61,6 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
             if (!string.IsNullOrWhiteSpace(searchModel.Fullname))
                 query = query.Where(x => x.Fullname.Contains(searchModel.Fullname));
-
-            if (!string.IsNullOrWhiteSpace(searchModel.Username))
-                query = query.Where(x => x.Username.Contains(searchModel.Username));
 
             if (!string.IsNullOrWhiteSpace(searchModel.Mobile))
                 query = query.Where(x => x.Mobile.Contains(searchModel.Mobile));

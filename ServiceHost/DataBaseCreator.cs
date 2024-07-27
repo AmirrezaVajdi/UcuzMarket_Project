@@ -35,7 +35,7 @@ namespace ServiceHost
                 shopContext.Database.Migrate();
                 deliveryContext.Database.Migrate();
 
-                var account = new Account("کاربر ادمین پیش فرض", "admin", "10000.zmlstgGPOBLwzIQhde+BpQ==.WuOA2mKKSjZbDXpF23/y29s1c1EBPaNMk2iFeYttUhE=", "09999999999", 1, "");
+                var account = new Account("کاربر ادمین پیش فرض", "10000.zmlstgGPOBLwzIQhde+BpQ==.WuOA2mKKSjZbDXpF23/y29s1c1EBPaNMk2iFeYttUhE=", "09999999999", 1, "");
 
                 var adminRolePermissions = new List<Permission>()
                 {
