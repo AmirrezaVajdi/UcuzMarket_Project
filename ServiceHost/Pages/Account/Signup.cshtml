@@ -41,16 +41,17 @@
         </div>
 
         <!-- Form -->
-        <form class="needs-validation" method="post" novalidate="">
+        <form class="needs-validation" method="post">
             <div class="position-relative mb-4">
-                <label for="register-email" class="form-label">شماره تلفن</label>
-                <input type="number" class="form-control form-control-lg" id="register-email" required="">
+                <label for="phoneNumber" class="form-label">شماره تلفن</label>
+                <input asp-for="@Model.RegisterAccountModel.Username" type="number" class="form-control form-control-lg" id="phoneNumber">
+                <span class="text-danger" asp-validation-for="@Model.RegisterAccountModel.Username"></span>
             </div>
             <div class="mb-4">
                 <label for="register-password" class="form-label">رمز ورود</label>
                 <div class="password-toggle">
-                    <input type="password" class="form-control form-control-lg" id="register-password"
-                           minlength="8" placeholder="Minimum 8 characters" required="">
+                    <input asp-for="@Model.RegisterAccountModel.Password" type="password" class="form-control form-control-lg" id="register-password">
+                    <span class="text-danger" asp-validation-for="@Model.RegisterAccountModel.Username"></span>
                     <label class="password-toggle-button fs-lg" aria-label="Show/hide password">
                         <input type="checkbox" class="btn-check">
                     </label>

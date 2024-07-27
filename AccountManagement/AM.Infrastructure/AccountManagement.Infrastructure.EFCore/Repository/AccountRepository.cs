@@ -27,9 +27,9 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
             }).ToList();
         }
 
-        public Account GetBy(string username)
+        public Account GetBy(string phoneNumber)
         {
-            return _context.Accounts.FirstOrDefault(x => x.Username == username);
+            return _context.Accounts.FirstOrDefault(x => x.Mobile == phoneNumber);
         }
 
         public EditAccount GetDetails(long id)

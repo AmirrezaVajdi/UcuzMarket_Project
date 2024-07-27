@@ -85,7 +85,7 @@ namespace AccountManagement.Application
         public OperationResult Login(Login command)
         {
             OperationResult operation = new();
-            var account = _accountRepository.GetBy(command.Username);
+            var account = _accountRepository.GetBy(command.PhoneNumber);
             if (account == null)
                 return operation.Failed(ApplicationMessages.WrongUserPass);
 

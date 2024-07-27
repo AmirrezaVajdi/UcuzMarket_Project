@@ -14839,7 +14839,8 @@ kbd {
     position: absolute;
     right: 0;
     top: 0;
-    transition: color .2s ease-in-out
+    transition: color .2s ease-in-out;
+    height : 75%;
 }
 
 .password-toggle-button:hover {

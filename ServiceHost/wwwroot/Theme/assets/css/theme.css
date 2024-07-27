@@ -15009,6 +15009,7 @@ h6, .h6 {
     color: var(--cz-body-color);
     cursor: pointer;
     transition: color 0.2s ease-in-out;
+    height : 75%;
 }
 
     .password-toggle-button:hover {

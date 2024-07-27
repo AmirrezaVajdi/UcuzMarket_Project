@@ -15388,7 +15388,8 @@ h6 a {
     padding: 0 1rem;
     position: absolute;
     top: 0;
-    transition: color .2s ease-in-out
+    transition: color .2s ease-in-out;
+    height : 75%;
 }
 
 .password-toggle-button:hover {

@@ -34,6 +34,12 @@
             </a>
         </header>
 
+        @if (TempData["LoginMessage"] != null)
+        {
+            <span class="text-danger w-100 text-center">@TempData["LoginMessage"]</span>
+        }
+
+
         <h1 class="h2 mt-auto">سلام!</h1>
         <div class="nav fs-sm mb-4">
             از قبل حساب کاربری دارید؟
@@ -43,27 +49,28 @@
         </div>
 
         <!-- Form -->
-        <form class="needs-validation" method="post" novalidate="">
+        <form class="needs-validation" method="post">
             <div class="position-relative mb-4">
-                <input type="number" class="form-control form-control-lg" placeholder="شماره تلفن">
+                <input asp-for="LoginModel.PhoneNumber" type="tel" class="form-control form-control-lg" placeholder="شماره تلفن">
+                <span class="text-danger" asp-validation-for="LoginModel.PhoneNumber"></span>
             </div>
             <div class="mb-4">
                 <div class="password-toggle">
-                    <input type="password" class="form-control form-control-lg" placeholder="رمز ورود"
-                           required="">
+                    <input asp-for="LoginModel.Password" type="password" class="form-control form-control-lg" placeholder="رمز ورود">
                     <label class="password-toggle-button fs-lg" aria-label="Show/hide password">
                         <input type="checkbox" class="btn-check">
                     </label>
+                    <span class="text-danger" asp-validation-for="LoginModel.Password"></span>
                 </div>
             </div>
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <div class="form-check me-2">
                     <input type="checkbox" class="form-check-input" id="remember-30">
-                    <label for="remember-30" class="form-check-label">Remember for 30 days</label>
+                    <label for="remember-30" class="form-check-label">مرا به خاطر بسپار</label>
                 </div>
                 <div class="nav">
                     <a class="nav-link animate-underline p-0" href="account-password-recovery.html">
-                        <span class="animate-target">رمز ورود خود را فراموش کرده اید?</span>
+                        <span class="animate-target">رمز ورود خود را فراموش کرده اید؟</span>
                     </a>
                 </div>
             </div>
