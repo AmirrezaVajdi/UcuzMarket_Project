@@ -159,7 +159,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DM.Presentation", "DM.Presentation", "{95EB748A-A726-43FB-B6F5-0D287594A79D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryManagement.Presentation.API", "DeliveryManagement\DM.Presentation\DeliveryManagement.Presentation.API\DeliveryManagement.Presentation.API.csproj", "{D42DD5A4-3468-43E6-A152-C3D79E6AE3A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryManagement.Presentation.API", "DeliveryManagement\DM.Presentation\DeliveryManagement.Presentation.API\DeliveryManagement.Presentation.API.csproj", "{D42DD5A4-3468-43E6-A152-C3D79E6AE3A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="fa-IR" data-bs-theme="light" data-pwa="true">
+<head>
+    <meta charset="utf-8">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+
+    <!-- SEO Meta Tags -->
+    @if (ViewData["Title"] != null)
+    {
+        <title>@ViewData["Title"] | اوجوز مارکت</title>
+    }
+    else
+    {
+        <title>اوجوز مارکت</title>
+    }
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
+    <meta name="author" content="Amirreza Vajdi">
+
+    <!-- Webmanifest + Favicon / App icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <link rel="icon" type="image/png" href="~/Theme/assets/app-icons/icon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="~/Theme/assets/app-icons/icon-180x180.png">
+
+    <!-- Theme switcher (color modes) -->
+    <script src="~/Theme/assets/js/theme-switcher.js"></script>
+
+    <!-- Preloaded local web font (Inter) -->
+    <link rel="preload" href="~/Theme/assets/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin="">
+
+    <!-- Font icons -->
+    <link rel="preload" href="~/Theme/assets/icons/cartzilla-icons.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="stylesheet" href="~/Theme/assets/icons/cartzilla-icons.min.css">
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="~/Theme/assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/Theme/assets/vendor/simplebar/simplebar.min.css">
+    <link rel="stylesheet" href="~/Theme/assets/vendor/choices.js/choices.min.css">
+
+    <!-- Bootstrap + Theme styles -->
+    <link rel="preload" href="~/Theme/assets/css/theme.min.css" as="style">
+    <link rel="preload" href="~/Theme/assets/css/theme.rtl.min.css" as="style">
+    <link rel="stylesheet" href="~/Theme/assets/css/theme.min.css" id="theme-styles">
+
+    <!-- Customizer -->
+    <script src="~/Theme/assets/js/customizer.min.js"></script>
+</head>
+
+
+<!-- Body -->
+<body>
+    <main class="content-wrapper w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style="max-width: 1920px">
+        @RenderBody()
+    </main>
+
+    <!-- Vendor scripts -->
+    <script src="~/Theme/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Theme/assets/vendor/simplebar/simplebar.min.js"></script>
+    <script src="~/Theme/assets/vendor/choices.js/choices.min.js"></script>
+
+    <!-- Bootstrap + Theme scripts -->
+    <script src="~/Theme/assets/js/theme.min.js"></script>
+    <script src="~/Theme/assets/js/custom.js"></script>
+
+</body>
+</html>
