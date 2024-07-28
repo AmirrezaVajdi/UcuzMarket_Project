@@ -41,6 +41,8 @@ builder.Services.AddTransient<IAuthHelper, AuthHelper>();
 builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
 builder.Services.AddTransient<ISmsService, SmsService>();
 LampShadeSettingsBootstrapper.Configure(builder.Services);
+builder.Services.AddSingleton<PasswordRecoveyTokenService>();
+
 
 
 builder.Services.Configure<CookiePolicyOptions>(option =>

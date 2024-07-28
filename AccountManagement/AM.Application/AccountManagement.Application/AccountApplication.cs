@@ -128,5 +128,22 @@ namespace AccountManagement.Application
                 ProfilePhoto = account.ProfilePhoto
             };
         }
+
+        public AccountViewModel GetAccountBy(string phoneNumber)
+        {
+            var account = _accountRepository.GetBy(phoneNumber);
+
+            AccountViewModel avm = new();
+
+            if (account != null)
+            {
+                avm = new()
+                {
+                    Id = account.Id,
+                    Mobile = account.Mobile,
+                };
+            }
+            return avm;
+        }
     }
 }

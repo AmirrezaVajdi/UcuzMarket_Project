@@ -21,6 +21,8 @@ namespace ServiceHost
 
         public void OnPageHandlerExecuting(PageHandlerExecutingContext context)
         {
+            try
+            {
             var handlerPermission = (NeedPermissionAttribute)context.HandlerMethod.MethodInfo.GetCustomAttribute(typeof(NeedPermissionAttribute));
 
             if (handlerPermission == null)
@@ -30,6 +32,11 @@ namespace ServiceHost
 
             if (accountPermissions.All(x => x != handlerPermission.Permission))
                 context.HttpContext.Response.Redirect("/Account");
+            }
+            catch
+            {
+                return;
+            }
         }
 
         public void OnPageHandlerSelected(PageHandlerSelectedContext context)
