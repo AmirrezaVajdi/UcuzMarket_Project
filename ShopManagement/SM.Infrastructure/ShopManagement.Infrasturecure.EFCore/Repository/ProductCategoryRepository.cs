@@ -71,25 +71,24 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel)
         {
-            var query = _context.ProductCategories.ToList();
+            var query = _context
+                .ProductCategories
+                .DefaultIfEmpty()
+                .Select(x => new ProductCategoryViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    CreationDate = x.CreationDate.ToFarsi(),
+                    Picture = x.Picture,
+                    ParentName = (x.Parent == null ? "دسته بندی اصلی" : x.Parent.Name)
+                });
 
             if (!string.IsNullOrWhiteSpace(serachModel.Name))
             {
-                query = query.Where(x => x.Name.Contains(serachModel.Name)).ToList();
+                query = query.Where(x => x.Name.Contains(serachModel.Name));
             }
 
-            List<ProductCategoryViewModel> vm = new(query.Count);
-
-            query.ForEach(x => vm.Add(new()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                CreationDate = x.CreationDate.ToFarsi(),
-                Picture = x.Picture,
-                ParentName = (x.Parent == null ? "دسته بندی اصلی" : x.Parent.Name)
-            }));
-
-            return vm;
+            return query.ToList();
         }
     }
 }
