@@ -53,6 +53,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             else
             {
                 result = _context.ProductCategories
+                    .Where(x => x.ParentId != null)
                    .Select(x => new ProductCategoryViewModel
                    {
                        Id = x.Id,
