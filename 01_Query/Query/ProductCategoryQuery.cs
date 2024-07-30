@@ -48,7 +48,7 @@ namespace _01_Query.Query
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 Slug = x.Slug,
-                Products = MapProducts(x.Products)
+                Products = x.Products != null ? MapProducts(x.Products) : new()
             }).AsNoTracking().ToList();
 
             foreach (var category in categories)
@@ -98,19 +98,27 @@ namespace _01_Query.Query
 
             var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).AsNoTracking().ToList();
 
-            var category = _shopContext.ProductCategories.Include(x => x.Products).ThenInclude(x => x.Category).Select(x => new ProdcutCategoryQueryModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Picture = x.Picture,
-                PictureAlt = x.PictureAlt,
-                PictureTitle = x.PictureTitle,
-                Slug = x.Slug,
-                Description = x.Description,
-                MetaDescription = x.MetaDescription,
-                KeyWords = x.KeyWords,
-                Products = MapProducts(x.Products)
-            }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
+            var category = _shopContext
+                .ProductCategories
+                .Where(x => x.Slug == slug)
+                .Include(x => x.Products)
+                .DefaultIfEmpty()
+                .Select(x => new ProdcutCategoryQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    Slug = x.Slug,
+                    Description = x.Description,
+                    MetaDescription = x.MetaDescription,
+                    KeyWords = x.KeyWords,
+                    ParentName = x.Parent == null ? "" : x.Parent.Name,
+                    Products = MapProducts(x.Products)
+                })
+                .AsNoTracking()
+                .FirstOrDefault();
 
 
             foreach (var product in category.Products)
@@ -183,6 +191,23 @@ namespace _01_Query.Query
             }));
 
             return withChildrens;
+        }
+
+        public List<ProductCategoryWithChildren> GetCategoryAndPictureWithChildren()
+        {
+            return _shopContext.
+                 ProductCategories.
+                 Where(x => x.ParentId == null).
+                 Select(x => new ProductCategoryWithChildren
+                 {
+                     Slug = x.Slug,
+                     Name = x.Name,
+                     Picture = x.Picture,
+                     PictureAlt = x.PictureAlt,
+                     PictureTitle = x.PictureTitle,
+                     Children = ProductCategoryChildrenMapper(x.Children)
+                 }).
+                 ToList();
         }
     }
 }
