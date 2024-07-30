@@ -36,12 +36,12 @@
                                     <div class="h6">@category.Name</div>
                                     <ul class="nav flex-column gap-2 mt-n2">
                                         <li class="d-flex w-100 pt-1">
-                                            <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="shop-catalog-grocery.html">مشاهده همه</a>
+                                            <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" asp-page="/ProductCategory" asp-route-id="@category.Slug">مشاهده همه</a>
                                         </li>
                                         @foreach (var subCategory in category.Children)
                                         {
                                             <li class="d-flex w-100 pt-1">
-                                                <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="shop-catalog-grocery.html">@subCategory.Name</a>
+                                                <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" asp-page="/ProudctCategory" asp-route-id="@subCategory.Slug">@subCategory.Name</a>
                                             </li>
                                         }
                                     </ul>
@@ -52,24 +52,39 @@
                 </div>
             </div>
         </div>
+
+        @if (authHelper.CurrenAccountRole() == "1")
+        {
+            <div class="h6 fw-medium py-1 mb-0">
+                <a class="d-block animate-underline py-1" asp-area="Administration" asp-page="/Index">
+                    <span class="d-inline-block animate-target py-1">پنل مدیریت</span>
+                </a>
+            </div>
+        }
+
         <div class="h6 fw-medium py-1 mb-0">
-            <a class="d-block animate-underline py-1" href="docs/installation.html">
+            <a class="d-block animate-underline py-1" href="/">
                 <span class="d-inline-block animate-target py-1">خانه</span>
-            </a>
-        </div>
-        <div class="h6 fw-medium py-1 mb-0">
-            <a class="d-block animate-underline py-1" href="docs/typography.html">
-                <span class="d-inline-block animate-target py-1">حساب</span>
             </a>
         </div>
     </div>
 
     <!-- Account button visible on screens < 768px wide (md breakpoint) -->
     <div class="offcanvas-header flex-column align-items-start d-md-none">
-        <a class="btn btn-lg btn-outline-secondary w-100 rounded-pill" asp-page="/account/signin">
-            <i class="ci-user fs-lg ms-n1 me-2"></i>
-            حساب کاربری
-        </a>
+        @if (authHelper.IsAuthenticated())
+        {
+            <a class="btn btn-lg btn-outline-secondary w-100 rounded-pill">
+                <i class="ci-user fs-lg ms-n1 me-2"></i>
+                مدیریت حساب
+            </a>
+        }
+        else
+        {
+            <a class="btn btn-lg btn-outline-secondary w-100 rounded-pill" asp-page="/account/signin">
+                <i class="ci-user fs-lg ms-n1 me-2"></i>
+                حساب کاربری
+            </a>
+        }
     </div>
 </nav>
 
@@ -101,12 +116,12 @@
                             <div class="h6">@category.Name</div>
                             <ul class="nav flex-column gap-2 mt-n2">
                                 <li class="d-flex w-100 pt-1">
-                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="shop-catalog-grocery.html">مشاهده همه</a>
+                                    <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" asp-page="/ProductCategory" asp-route-id="@category.Slug">مشاهده همه</a>
                                 </li>
                                 @foreach (var subCategory in category.Children)
                                 {
                                     <li class="d-flex w-100 pt-1">
-                                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="shop-catalog-grocery.html">@subCategory.Name</a>
+                                        <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" asp-page="/ProductCategory" asp-route-id="@subCategory.Slug">@subCategory.Name</a>
                                     </li>
                                 }
                             </ul>

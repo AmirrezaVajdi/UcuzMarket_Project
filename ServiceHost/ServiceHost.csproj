@@ -242,6 +242,7 @@
     <None Include="wwwroot\AdminTheme\multiselect\jquery.quicksearch.js" />
     <None Include="wwwroot\AdminTheme\PersianDatePicker\persian-date.min.js" />
     <None Include="wwwroot\AdminTheme\PersianDatePicker\persian-datepicker.min.js" />
+    <None Include="wwwroot\ProductPictures\خوابار\روغن-خوراکی-5-کیلویی-آریا\2024-07-17-11-43-32-1-preview %281%29.webp" />
     <None Include="wwwroot\Theme\assets\fonts\sahel\Sahel-Black-FD.woff2" />
     <None Include="wwwroot\Theme\assets\fonts\sahel\Sahel-Bold-FD.woff2" />
     <None Include="wwwroot\Theme\assets\fonts\sahel\Sahel-FD.woff2" />
