@@ -2,6 +2,30 @@
 @model IndexModel
 @{
 }
+
+
+<!-- Hero slider -->
+@await Component.InvokeAsync("Slide")
+
+<!-- Categories + Popular products -->
+<section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5 mt-5">
+    <div class="row">
+
+        <!-- Categories list -->
+        @await Component.InvokeAsync("ProductCategoryWithProductCount")
+
+        @await Component.InvokeAsync("PopularProducts")
+
+
+        <!-- Banner + Discounted products -->
+        @await Component.InvokeAsync("DiscountedProducts")
+
+        <!-- Latest Articles -->
+        @await Component.InvokeAsync("LatestArticles")
+
+    </div>
+</section>
+
 <!-- CTA banners -->
 <section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
     <div class="row">
