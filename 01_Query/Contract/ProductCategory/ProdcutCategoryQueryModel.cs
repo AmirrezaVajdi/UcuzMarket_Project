@@ -1,4 +1,5 @@
 ﻿using _01_Query.Contract.Product;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _01_Query.Contract.ProductCategory
 {
@@ -14,6 +15,8 @@ namespace _01_Query.Contract.ProductCategory
         public string KeyWords { get; set; }
         public string MetaDescription { get; set; }
         public string ProductCount { get; set; }
+        [NotMapped]
+        public string? ParentName { get; set; }
         public List<ProductQueryModel> Products { get; set; }
     }
 }

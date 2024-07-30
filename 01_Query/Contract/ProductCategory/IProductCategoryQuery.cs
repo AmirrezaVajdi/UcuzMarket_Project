@@ -9,6 +9,7 @@ namespace _01_Query.Contract.ProductCategory
         List<ProdcutCategoryQueryModel> GetProductCategories();
         List<ProdcutCategoryQueryModel> GetProductCategoriesWithProducts();
         List<ProductCategoryWithChildren> GetCategoryWithChildren();
+        List<ProductCategoryWithChildren> GetCategoryAndPictureWithChildren();
         List<ProdcutCategoryQueryModel> GetCategryWithProudctCount();
     }
 }
