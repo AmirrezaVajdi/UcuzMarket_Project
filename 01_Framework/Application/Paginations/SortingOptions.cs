@@ -2,5 +2,5 @@
 
 namespace _01_Framework.Application.Pagination
 {
-    public record SortingOptions<T>(Expression<Func<T, bool>> SortingWhere);
+    public record SortingOptions<T>(Expression<Func<T, object>> expression, bool IsAscending = false);
 }
