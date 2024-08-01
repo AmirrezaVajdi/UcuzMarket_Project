@@ -9,7 +9,7 @@
             <div class="nav flex-nowrap justify-content-between gap-4 py-2">
                 @foreach (var category in Model)
                 {
-                    <a class="nav-link align-items-center animate-underline gap-2 p-0" href="shop-catalog-grocery.html">
+                    <a class="nav-link align-items-center animate-underline gap-2 p-0" asp-page="/ProductCategory" asp-route-id="@category.Slug">
                         <span class="d-flex align-items-center justify-content-center bg-body-tertiary rounded-circle" style="width: 40px; height: 40px">
                             <img class="rounded-circle" src="~/ProductPictures/@category.Picture" width="50px" height="50px" alt="@category.PictureAlt" title="@category.PictureTitle">
                         </span>

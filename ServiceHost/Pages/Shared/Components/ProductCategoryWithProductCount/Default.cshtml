@@ -14,7 +14,7 @@
                         <img class="rounded-circle" src="~/ProductPictures/@category.Picture" width="50px" height="50px" alt="@category.PictureAlt" title="@category.PictureTitle">
                     </div>
                     <div class="min-w-0 ps-3">
-                        <a class="nav-link animate-underline stretched-link fs-base fw-semibold p-0 mb-1" href="shop-catalog-grocery.html">
+                        <a class="nav-link animate-underline stretched-link fs-base fw-semibold p-0 mb-1" asp-page="/ProductCategory" asp-route-id="@category.Slug">
                             <span class="animate-target text-truncate">@category.Name</span>
                         </a>
                         <div class="fs-xs fw-normal text-body-secondary">@category.ProductCount محصول</div>

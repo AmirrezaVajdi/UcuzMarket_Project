@@ -12,7 +12,9 @@
 <!-- Site menu offcanvas -->
 <nav class="offcanvas offcanvas-start" id="navbarNav" tabindex="-1" aria-labelledby="navbarNavLabel">
     <div class="offcanvas-header py-3">
-        <h5 class="offcanvas-title" id="navbarNavLabel">اوجوز مارکت</h5>
+        <a href="/" class="text-decoration-none">
+            <h5 class="offcanvas-title" id="navbarNavLabel">اوجوز مارکت</h5>
+        </a>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body pt-0 pb-3">
@@ -41,7 +43,7 @@
                                         @foreach (var subCategory in category.Children)
                                         {
                                             <li class="d-flex w-100 pt-1">
-                                                <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" asp-page="/ProudctCategory" asp-route-id="@subCategory.Slug">@subCategory.Name</a>
+                                                <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" asp-page="/ProductCategory" asp-route-id="@subCategory.Slug">@subCategory.Name</a>
                                             </li>
                                         }
                                     </ul>
