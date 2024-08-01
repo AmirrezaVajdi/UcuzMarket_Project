@@ -12,30 +12,44 @@ namespace ServiceHost.Pages
 
         public ProdcutCategoryQueryModel ProductCategory { get; set; }
 
-        public List<ProductCategoryWithChildren> ProductCategoryWithChildren { get; set; }
-
         [BindProperty]
         public PaginationOptions PaginationOptions { get; set; }
 
         [BindProperty]
-        public FilteringOptions<ProdcutCategoryQueryModel> FilteringOptions { get; set; }
+        public string CurentPageSlug { get; set; }
 
         [BindProperty]
-        public SortingOptions<ProdcutCategoryQueryModel> SortingOptions { get; set; }
-
-        [BindProperty]
-        public PricingOptions PricingOptions { get; set; }
+        public string SelectedFilter { get; set; }
 
         public ProductCategoryModel(IProductCategoryQuery productCategoryQuery)
         {
             _productCategoryQuery = productCategoryQuery;
         }
 
-        public void OnGet(string id)
+        public void OnGet(string id, int pageNumber = 1)
         {
-            PaginationOptions = new();
-            ProductCategoryWithChildren = _productCategoryQuery.GetCategoryAndPictureWithChildren();
-            ProductCategory = _productCategoryQuery.GetProductCategoryWithProductsBy(id, PaginationOptions, FilteringOptions, SortingOptions);
+            PaginationOptions = new(PageNumber: pageNumber);
+
+            ProductCategory = _productCategoryQuery.GetProductCategoryWithProductsBy(id, PaginationOptions);
+        }
+
+        public IActionResult OnPost()
+        {
+            //if (SelectedFilter != null)
+            //{
+            //    switch (SelectedFilter)
+            //    {
+            //        case "1":
+            //            {
+            //                SortingOptions = new(x => x.unitpr);
+            //                break;
+            //            }
+            //    }
+
+            //}
+
+            //ProductCategory = _productCategoryQuery.GetProductCategoryWithProductsBy(CurentPageSlug, PaginationOptions, FilteringOptions, SortingOptions, ProductStatusOptions);
+            return RedirectToPage("/");
         }
     }
 }
