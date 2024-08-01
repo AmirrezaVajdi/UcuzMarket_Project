@@ -15,4 +15,8 @@
     <ProjectReference Include="..\ShopManagement\SM.Infrastructure\ShopManagement.Infrasturecure.EFCore\ShopManagement.Infrasturecure.EFCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Query\Discount\" />
+  </ItemGroup>
+
 </Project>

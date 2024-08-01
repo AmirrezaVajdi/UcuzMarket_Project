@@ -16,6 +16,9 @@ namespace _01_Query.Contract.ProductCategory
         public string MetaDescription { get; set; }
         public string ProductCount { get; set; }
         public string? ParentName { get; set; }
+        public string? ParentSlug { get; set; }
+        public int PageNumber { get; set; }
+        public long TotalPage { get; set; }
         public List<ProductQueryModel> Products { get; set; }
     }
 }

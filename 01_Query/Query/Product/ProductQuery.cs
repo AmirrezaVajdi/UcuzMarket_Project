@@ -89,7 +89,7 @@ namespace _01_Query.Query
                         var discountRate = discount.DiscountRate;
                         product.DiscountRate = discountRate;
                         product.HasDiscount = discountRate > 0;
-                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        var discountAmount = Math.Round(price * discountRate / 100);
                         product.PriceWithDiscount = (price - discountAmount).ToMoney();
                     }
                 }
@@ -151,7 +151,7 @@ namespace _01_Query.Query
                     product.DiscountRate = discountRate;
                     product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
                     product.HasDiscount = discountRate > 0;
-                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    var discountAmount = Math.Round(price * discountRate / 100);
                     product.PriceWithDiscount = (price - discountAmount).ToMoney();
                 }
             }
@@ -226,7 +226,7 @@ namespace _01_Query.Query
                         product.DiscountRate = discountRate;
                         product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
                         product.HasDiscount = discountRate > 0;
-                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        var discountAmount = Math.Round(price * discountRate / 100);
                         product.PriceWithDiscount = (price - discountAmount).ToMoney();
                     }
                 }
@@ -323,7 +323,7 @@ namespace _01_Query.Query
                         var discountRate = discount.DiscountRate;
                         product.DiscountRate = discountRate;
                         product.HasDiscount = discountRate > 0;
-                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        var discountAmount = Math.Round(price * discountRate / 100);
                         product.PriceWithDiscount = (price - discountAmount).ToMoney();
                     }
                 }
