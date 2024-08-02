@@ -6,289 +6,166 @@
     ViewData["Description"] = Model.Product.MetaDescription;
 }
 
-<div class="breadcrumb-area section-space--half">
-    <div class="container wide">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
-                    <div class="breadcrumb-content">
-                        <h1 class="breadcrumb-content__title">@Model.Product.Name</h1>
-                        <ul class="breadcrumb-content__page-map">
-                            <li>
-                                <a asp-page="./Index">صفحه اصلی</a>
-                            </li>
-                            <li>
-                                <a asp-page="/ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
-                            </li>
-                            <li class="active">@Model.Product.Name</li>
-                        </ul>
+@section Css {
+    <link rel="stylesheet" href="~/Theme/assets/vendor/glightbox/glightbox.min.css">
+}
+
+<!-- Breadcrumb -->
+<nav class="container position-relative z-2 pt-lg-2 mt-3 mt-lg-4" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="/">خانه</a></li>
+        <li class="breadcrumb-item"><a asp-page="./ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Product.Name</li>
+    </ol>
+</nav>
+
+<!-- Product gallery + Product details -->
+<section class="container pt-md-4 pb-5 mt-md-2 mt-lg-3 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+    <div class="row align-items-start">
+
+        <!-- Product gallery -->
+        <div class="col-md-6 col-lg-7 sticky-md-top z-1 mb-4 mb-md-0" style="margin-top: -120px">
+            <div class="d-flex" style="padding-top: 120px">
+
+                <!-- Thumbnails -->
+                <div class="swiper swiper-load swiper-thumbs d-none d-lg-block w-100 me-xl-3" id="thumbs"
+                     data-swiper="{
+                &quot;direction&quot;: &quot;vertical&quot;,
+                &quot;spaceBetween&quot;: 12,
+                &quot;slidesPerView&quot;: 4,
+                &quot;watchSlidesProgress&quot;: true
+              }" style="max-width: 96px; height: 420px;">
+                    <div class="swiper-wrapper flex-column">
+
+                        <div class="swiper-slide swiper-thumb">
+                            <div class="ratio ratio-1x1" style="max-width: 94px">
+                                <img src="~/ProductPictures/@Model.Product.Picture" class="swiper-thumb-img"
+                                     alt="@Model.Product.PictureAlt" title="@Model.Product.PictureTitle">
+                            </div>
+                        </div>
+
+                        @foreach (var picture in Model.Product.Pictures)
+                        {
+                            <div class="swiper-slide swiper-thumb">
+                                <div class="ratio ratio-1x1" style="max-width: 94px">
+                                    <img src="~/ProductPictures/@picture.Picture" class="swiper-thumb-img"
+                                         alt="@picture.PicutreAlt" title="@picture.PictureTitle">
+                                </div>
+                            </div>
+                        }
+
                     </div>
+                </div>
+
+                <!-- Preview (Large image) -->
+                <div class="swiper w-100" data-swiper="{
+                &quot;loop&quot;: false,
+                &quot;thumbs&quot;: {
+                  &quot;swiper&quot;: &quot;#thumbs&quot;
+                },
+                &quot;pagination&quot;: {
+                  &quot;el&quot;: &quot;.swiper-pagination&quot;,
+                  &quot;clickable&quot;: true
+                }
+              }">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a class="ratio ratio-1x1 d-block cursor-zoom-in"
+                               href="~/ProductPictures/@Model.Product.Picture" data-glightbox=""
+                               data-gallery="product-gallery">
+                                <img src="~/ProductPictures/@Model.Product.Picture" alt="@Model.Product.PictureAlt" title="@Model.Product.PictureTitle">>
+                            </a>
+                        </div>
+                        @foreach (var picture in Model.Product.Pictures)
+                        {
+                            <div class="swiper-slide">
+                                <a class="ratio ratio-1x1 d-block cursor-zoom-in"
+                                   href="~/ProductPictures/@picture.Picture" data-glightbox=""
+                                   data-gallery="product-gallery">
+                                    <img src="~/ProductPictures/@picture.Picture" alt="@picture.PicutreAlt" title="@picture.PictureTitle">
+                                </a>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Slider pagination (Bullets) visible on screens > 991px wide (lg breakpoint) -->
+                    <div class="swiper-pagination mb-n3 d-lg-none"></div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="page-content-area">
-    <div class="page-content-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="page-wrapper">
-                        <div class="page-content-wrapper">
-                            <div class="single-product-main-content-area section-space" style="direction: ltr;">
-                                <div class="row" style="display: flex; flex-direction: row-reverse">
-                                    <div class="col-lg-6">
-                                        <div class="product-details-slider-area">
-                                            <div class="big-image-wrapper">
-                                                <div class="product-details-big-image-slider-wrapper product-details-big-image-slider-wrapper--bottom-space ht-slick-slider"
-                                                     data-slick-setting='{
-            "slidesToShow": 1,
-            "slidesToScroll": 1,
-            "arrows": false,
-            "autoplay": false,
-            "autoplaySpeed": 5000,
-            "fade": true,
-            "speed": 500,
-            "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
-            "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
-        }' data-slick-responsive='[
-            {"breakpoint":1501, "settings": {"slidesToShow": 1, "arrows": false} },
-            {"breakpoint":1199, "settings": {"slidesToShow": 1, "arrows": false} },
-            {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
-            {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
-            {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
-            {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
-        ]'>
-                                                    <div class="single-image">
-                                                        <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
-                                                             alt="@Model.Product.PictureAlt" title="@Model.Product.PictureTitle">
-                                                    </div>
-
-                                                    @foreach (var picture in Model.Product.Pictures)
-                                                    {
-                                                        <div class="single-image">
-                                                            <img src="~/ProductPictures/@picture.Picture" alt="@picture.PicutreAlt" title="@picture.PictureTitle" class="img-fluid"
-                                                                 alt="">
-                                                        </div>
-                                                    }
-
-                                                </div>
-                                            </div>
 
 
-                                            <div class="product-details-small-image-slider-wrapper product-details-small-image-slider-wrapper--horizontal-space ht-slick-slider"
-                                                 data-slick-setting='{
-        "slidesToShow": 4,
-        "slidesToScroll": 1,
-        "arrows": true,
-        "autoplay": false,
-        "autoplaySpeed": 5000,
-        "speed": 500,
-        "asNavFor": ".product-details-big-image-slider-wrapper",
-        "focusOnSelect": true,
-        "centerMode": false,
-        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
-        "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
-    }' data-slick-responsive='[
-        {"breakpoint":1501, "settings": {"slidesToShow": 3, "arrows": false} },
-        {"breakpoint":1199, "settings": {"slidesToShow": 3, "arrows": false} },
-        {"breakpoint":991, "settings": {"slidesToShow": 5, "arrows": false, "slidesToScroll": 1} },
-        {"breakpoint":767, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
-        {"breakpoint":575, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
-        {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
-    ]'>
-                                                <div class="single-image">
-                                                    <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
-                                                         alt="@Model.Product.PictureAlt" title="@Model.Product.PictureTitle">
-                                                </div>
+        <!-- Product details -->
+        <div class="col-md-6 col-lg-5 position-relative">
+            <div class="ps-xxl-3">
+                <h1 class="h5 mb-2">@Model.Product.Name</h1>
+                @if (Model.Product.IsInStock)
+                {
+                    <div class="fs-sm fw-medium">موجود در انبار</div>
+                }
+                else
+                {
+                    <div class="fs-sm fw-medium">ناموجود</div>
+                }
+                <div class="h3">$2.15</div>
+                <div class="d-flex gap-3 mb-4">
+                    <div class="count-input flex-shrink-0 rounded-pill">
+                        <button type="button" class="btn btn-icon btn-lg" data-decrement=""
+                                aria-label="Decrement quantity" disabled="">
+                            <i class="ci-minus"></i>
+                        </button>
+                        <input type="number" class="form-control form-control-lg" value="1" min="1" readonly="">
+                        <button type="button" class="btn btn-icon btn-lg" data-increment=""
+                                aria-label="Increment quantity">
+                            <i class="ci-plus"></i>
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-lg btn-primary rounded-pill w-100">افزودن به سبد خرید</button>
+                </div>
+                <p class="fs-sm mb-4">
+                    @Model.Product.ShortDescription
+                </p>
 
-                                                @foreach (var picture in Model.Product.Pictures)
-                                                {
-                                                    <div class="single-image">
-                                                        <img src="~/ProductPictures/@picture.Picture" alt="@picture.PicutreAlt" title="@picture.PictureTitle" class="img-fluid"
-                                                             alt="">
-                                                    </div>
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="single-product-content-description rtlDiscounted">
-                                            <p class="single-info">
-                                                <a asp-page="ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
-                                            </p>
-                                            <h4 class="product-title">@Model.Product.Name</h4>
-                                            <div class="product-rating">
-                                                <span class="rating">
-                                                    <i class="ion-android-star active"></i>
-                                                    <i class="ion-android-star active"></i>
-                                                    <i class="ion-android-star active"></i>
-                                                    <i class="ion-android-star active"></i>
-                                                    <i class="ion-android-star-outline"></i>
-                                                </span>
-
-                                                <span class="review-count">
-                                                    <a href="#">(2 reviews)</a> | <a href="#">نظر دهید</a>
-                                                </span>
-                                            </div>
-
-                                            <p class="single-grid-product__price">
-                                                @if (Model.Product.HasDiscount)
-                                                {
-                                                    <span class="discounted-price">@Model.Product.PriceWithDiscount تومان</span>
-                                                    <span class="main-price discounted">@Model.Product.Price تومان</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="main-price">@Model.Product.Price تومان</span>
-                                                }
-
-                                            </p>
-
-                                            <p class="single-info">کد محصول: <span class="value">@Model.Product.Code</span> </p>
-                                            <p class="single-info">
-                                                @if (Model.Product.IsInStock)
-                                                {
-                                                    <span class="text-success">موجود در انبار</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="text-dagner">ناموجود</span>
-                                                }
-                                            </p>
-
-                                            <p class="product-description">
-                                                @Model.Product.ShortDescription
-                                            </p>
-                                            @if (Model.Product.HasDiscount)
-                                            {
-                                                <div class="product-countdown" data-countdown="@Model.Product.DiscountExpireDate"></div>
-                                            }
-
-                                            <div class="product-actions">
-                                                <div class="quantity-selection">
-                                                    <label>تعداد</label>
-                                                    <input type="number" value="1" min="1" id="productCount">
-                                                </div>
-
-                                                <div class="product-buttons">
-                                                    <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
-                                                        <i class="ion-bag"></i>افزودن به سبد خرید
-                                                    </a>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="social-share-buttons mt-20">
-                                                <h5>این محصول را به اشتراک بگذارید</h5>
-                                                <ul>
-                                                    <li>
-                                                        <a class="twitter" href="#">
-                                                            <i class="fa fa-twitter"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="facebook" href="#">
-                                                            <i class="fa fa-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="google-plus" href="#">
-                                                            <i class="fa fa-google-plus"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="pinterest" href="#">
-                                                            <i class="fa fa-pinterest"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <p class="single-info mb-0">
-                                                @Model.Product.Keywords
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                <!-- Product info accordion -->
+                <div class="accordion accordion-alt-icon py-2 mb-4" id="productAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingProductInfo">
+                            <button type="button" class="accordion-button animate-underline collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#productInfo" aria-expanded="false"
+                                    aria-controls="productInfo">
+                                <span class="animate-target me-2">توضیحات بیشتر محصول</span>
+                            </button>
+                        </h3>
+                        <div class="accordion-collapse collapse" id="productInfo"
+                             aria-labelledby="headingProductInfo" data-bs-parent="#productAccordion">
+                            <div class="accordion-body">
+                                @Model.Product.Description
                             </div>
-                            <div class="product-description-review-area">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="tab-slider-wrapper product-description-review-container  section-space--inner">
-                                            <nav>
-                                                <div class="nav nav-tabs justify-content-center" id="nav-tab"
-                                                     role="tablist">
-                                                    <a class="nav-item nav-link active" id="description-tab"
-                                                       data-toggle="tab" href="#product-description" role="tab"
-                                                       aria-selected="true">توضیحات</a>
-                                                    <a class="nav-item nav-link" id="review-tab" data-toggle="tab"
-                                                       href="#review" role="tab" aria-selected="false">نظرات (@Model.Product.Comments.Count)</a>
-                                                </div>
-                                            </nav>
-                                            <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane fade show active" id="product-description"
-                                                     role="tabpanel" aria-labelledby="description-tab">
-
-                                                    <div class="product-description">
-                                                        @Model.Product.Description
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="review" role="tabpanel"
-                                                     aria-labelledby="review-tab">
-
-                                                    @foreach (var comment in Model.Product.Comments)
-                                                    {
-                                                        <div class="ratings-wrapper">
-                                                            <div class="sin-ratings">
-                                                                <div class="rating-author">
-                                                                    <h3>@comment.Name</h3>
-                                                                    @*<div class="rating-star">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <span>(5)</span>
-                                                                </div>*@
-                                                                </div>
-                                                                <p>@comment.Message</p>
-                                                            </div>
-                                                        </div>
-
-                                                    }
-
-                                                </div>
-                                                <div class="rating-form-wrapper fix">
-                                                    <h3>نظر خود را بگویید</h3>
-                                                    <form method="post">
-                                                        <div class="rating-form row">
-                                                            <div class="col-md-6 col-12 form-group">
-                                                                <label for="name">نام:</label>
-                                                                <input id="name" placeholder="مثال : علی علوی" name="name" type="text">
-                                                            </div>
-                                                            <div class="col-md-6 col-12 form-group">
-                                                                <label for="email">ایمیل:</label>
-                                                                <input id="email" placeholder="مثال : YourName@gmail.com"
-                                                                       name="email" type="text">
-                                                            </div>
-                                                            <div class="col-12 form-group">
-                                                                <label for="your-review">بازخورد شما:</label>
-                                                                <textarea name="message" id="message" name="message"
-                                                                          placeholder="نظر خود را بنویسید"></textarea>
-                                                            </div>
-                                                            <input type="hidden" name="OwnerRecordId" value="@Model.Product.Id" />
-                                                            <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
-
-                                                            <div class="col-12">
-                                                                <input value="ثتب نظر" type="submit">
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingProductIngredients">
+                            <button type="button" class="accordion-button animate-underline collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#productIngredients"
+                                    aria-expanded="false" aria-controls="productIngredients">
+                                <span class="animate-target me-2">نظرات محصول</span>
+                            </button>
+                        </h3>
+                        <div class="accordion-collapse collapse" id="productIngredients"
+                             aria-labelledby="headingProductIngredients" data-bs-parent="#productAccordion">
+                            <div class="accordion-body">
+                                <ul class="m-0">
+                                    <li>Gluten-free oats</li>
+                                    <li>Almonds</li>
+                                    <li>Sunflower seeds</li>
+                                    <li>Pumpkin seeds</li>
+                                    <li>Dried cranberries (cranberries, sugar, sunflower oil)</li>
+                                    <li>Dried apricots (apricots, rice flour)</li>
+                                    <li>Coconut flakes</li>
+                                    <li>Flax seeds</li>
+                                    <li>Chia seeds</li>
+                                    <li>Cinnamon</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -296,6 +173,386 @@
             </div>
         </div>
     </div>
-</div>
+</section>
+
+
+<!-- Bought together carousel -->
+<section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+    <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4 mb-3 mb-md-4">
+        <h2 class="h3 mb-0">Often bought with</h2>
+
+        <!-- Slider prev/next buttons -->
+        <div class="d-flex gap-2 ms-3">
+            <button type="button"
+                    class="btn btn-icon btn-outline-secondary animate-slide-start rounded-circle me-1" id="prevBtn"
+                    aria-label="Prev">
+                <i class="ci-chevron-left fs-lg animate-target"></i>
+            </button>
+            <button type="button" class="btn btn-icon btn-outline-secondary animate-slide-end rounded-circle"
+                    id="nextBtn" aria-label="Next">
+                <i class="ci-chevron-right fs-lg animate-target"></i>
+            </button>
+        </div>
     </div>
-</div>
+
+    <!-- Slider -->
+    <div class="swiper" data-swiper="{
+              &quot;slidesPerView&quot;: 2,
+              &quot;spaceBetween&quot;: 24,
+              &quot;loop&quot;: true,
+              &quot;navigation&quot;: {
+                &quot;prevEl&quot;: &quot;#prevBtn&quot;,
+                &quot;nextEl&quot;: &quot;#nextBtn&quot;
+              },
+              &quot;breakpoints&quot;: {
+                &quot;500&quot;: {
+                  &quot;slidesPerView&quot;: 3
+                },
+                &quot;768&quot;: {
+                  &quot;slidesPerView&quot;: 4
+                },
+                &quot;1100&quot;: {
+                  &quot;slidesPerView&quot;: 5
+                }
+              }
+            }">
+        <div class="swiper-wrapper">
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-1 mt-sm-2 ms-1 ms-sm-2">-30%</span>
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/02.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">
+                            $3.12 <del class="fs-sm fw-normal text-body-tertiary ms-1">$4.05</del>
+                        </div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal" href="shop-product-grocery.html">
+                                Fresh
+                                orange Klementina, Spain
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">1kg</div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/03.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">$0.80</div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal" href="shop-product-grocery.html">
+                                Pepsi
+                                soda classic, can
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">330ml</div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/04.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">$2.99</div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal"
+                               href="shop-product-grocery.html">Mozzarella mini cheese Granaloro</a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">250g</div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/05.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">$1.24</div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal"
+                               href="shop-product-grocery.html">Coconut, Indonesia</a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">1 coconut</div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/06.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">$3.95</div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal" href="shop-product-grocery.html">
+                                Pesto
+                                sauce Barilla with parmesan and basil
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">200g</div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/09.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">$18.60</div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal" href="shop-product-grocery.html">
+                                Pure
+                                virgin olive oil Basso
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">1000ml</div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="swiper-slide h-auto">
+                <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                    <div class="position-relative z-2">
+                        <button type="button"
+                                class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                aria-label="Add to Wishlist">
+                            <i class="ci-heart animate-target"></i>
+                        </button>
+                        <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                            <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                <img src="assets/img/shop/grocery/16.png" alt="Image">
+                            </div>
+                        </a>
+                        <div class="position-absolute w-100 start-0 bottom-0">
+                            <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                            data-decrement="" aria-label="Decrement quantity">
+                                        <i class="ci-minus fs-sm"></i>
+                                    </button>
+                                    <input type="number"
+                                           class="form-control form-control-sm bg-primary text-white w-100"
+                                           value="0" min="0" readonly="">
+                                    <button type="button"
+                                            class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                            data-increment="" aria-label="Increment quantity">
+                                        <span data-count-input-value=""></span>
+                                        <i class="ci-plus fs-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                        <div class="h6 mb-2">$2.65</div>
+                        <h3 class="fs-sm lh-base mb-0">
+                            <a class="hover-effect-underline fw-normal" href="shop-product-grocery.html">
+                                Reggia
+                                penne rigate No.34 pasta, pack
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">500g</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA banners -->
+@await Html.PartialAsync("CTABanner")
+                    ;
+
+@section Scripts {
+    <script src="~/Theme/assets/vendor/glightbox/glightbox.min.js"></script>
+}
