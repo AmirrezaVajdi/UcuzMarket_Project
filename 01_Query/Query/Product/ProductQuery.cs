@@ -126,90 +126,163 @@ namespace _01_Query.Query
 
         public ProductQueryModel GetProductDetails(string slug)
         {
-            var inventory = _inventoryContext.Inventory
-                .Select(x => new { x.ProductId, x.UnitPrice, x.InStock })
-                .AsNoTracking()
-                .ToList();
+            //var inventory = _inventoryContext.Inventory
+            //    .Select(x => new { x.ProductId, x.UnitPrice, x.InStock })
+            //    .AsNoTracking()
+            //    .ToList();
 
-            var discounts = _discountContext.CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
-                .Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).
-                AsNoTracking()
-                .ToList();
+            //var discounts = _discountContext.CustomerDiscounts
+            //    .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+            //    .Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).
+            //    AsNoTracking()
+            //    .ToList();
 
 
-            var product = _shopContext.Products
+            //var product = _shopContext.Products
+            //    .Include(x => x.Category)
+            //    .Include(x => x.ProductPictures)
+            //    .Select(x => new ProductQueryModel
+            //    {
+            //        Id = x.Id,
+            //        Name = x.Name,
+            //        Category = x.Category.Name,
+            //        CategorySlug = x.Category.Slug,
+            //        Picture = x.Picture,
+            //        PictureTitle = x.PictureTitle,
+            //        PictureAlt = x.PictureAlt,
+            //        Slug = x.Slug,
+            //        ShortDescription = x.ShortDescription,
+            //        Code = x.Code,
+            //        Description = x.Description,
+            //        Keywords = x.KeyWords,
+            //        MetaDescription = x.MetaDescription,
+            //        Pictures = MapProductPictures(x.ProductPictures),
+            //    }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
+
+            //if (product == null)
+            //    return new ProductQueryModel();
+
+            //var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+            //if (productInventory != null)
+            //{
+            //    product.IsInStock = productInventory.InStock;
+            //    var price = productInventory.UnitPrice;
+
+            //    product.Price = price.ToMoney();
+            //    product.DoublePrice = price;
+            //    var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+            //    if (discount != null)
+            //    {
+            //        var discountRate = discount.DiscountRate;
+            //        product.DiscountRate = discountRate;
+            //        product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+            //        product.HasDiscount = discountRate > 0;
+            //        var discountAmount = Math.Round(price * discountRate / 100);
+            //        product.PriceWithDiscount = (price - discountAmount).ToMoney();
+            //    }
+            //}
+
+            //product.Comments = _commentContext.Comments
+            //    .Where(x => x.Type == CommentType.Product)
+            //    .Where(x => x.OwnerRecordId == product.Id)
+            //    .Where(x => x.IsConfirmed)
+            //    .Where(x => !x.IsCanceled)
+            //    .Select(x => new CommentQueryModel
+            //    {
+            //        Id = x.Id,
+            //        Name = x.Name,
+            //        Message = x.Message
+            //    })
+            //    .OrderByDescending(x => x.Id)
+            //    .ToList();
+
+
+            //return product;
+
+            var product = _shopContext
+                .Products
+                .Where(x => x.Slug == slug)
                 .Include(x => x.Category)
                 .Include(x => x.ProductPictures)
                 .Select(x => new ProductQueryModel
                 {
                     Id = x.Id,
-                    Name = x.Name,
                     Category = x.Category.Name,
                     CategorySlug = x.Category.Slug,
-                    Picture = x.Picture,
-                    PictureTitle = x.PictureTitle,
-                    PictureAlt = x.PictureAlt,
-                    Slug = x.Slug,
-                    ShortDescription = x.ShortDescription,
                     Code = x.Code,
                     Description = x.Description,
                     Keywords = x.KeyWords,
                     MetaDescription = x.MetaDescription,
-                    Pictures = MapProductPictures(x.ProductPictures),
-                }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
+                    Name = x.Name,
+                    Picture = x.Picture,
+                    PictureTitle = x.PictureTitle,
+                    PictureAlt = x.PictureAlt,
+                    Pictures = MapProductPictures(x.ProductPictures.Where(x => !x.IsRemoved).ToList())
+                })
+                .AsNoTracking()
+                .SingleOrDefault();
 
-            if (product == null)
-                return new ProductQueryModel();
+            product.Comments = _commentContext
+                .Comments
+                .Where(x => x.Type == CommentType.Product && x.OwnerRecordId == product.Id)
+                .Select(x => new CommentQueryModel
+                {
+                    Name = x.Name,
+                    Message = x.Message,
+                    ParentId = x.ParentId,
+                    CreationDate = x.CreationDate.ToFarsi(),
+                    ParentName = x.Parent.Name
+                })
+                .AsNoTracking()
+                .ToList();
 
-            var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
-            if (productInventory != null)
+            var discount = _discountContext
+                .CustomerDiscounts
+                .Where(x => x.ProductId == product.Id)
+                .AsNoTracking()
+                .SingleOrDefault();
+
+            var inventory = _inventoryContext
+                .Inventory
+                .Where(x => x.ProductId == product.Id)
+                .AsNoTracking()
+                .SingleOrDefault();
+
+            double price = (inventory != null ? inventory.UnitPrice : 0);
+
+            if (inventory != null)
             {
-                product.IsInStock = productInventory.InStock;
-                var price = productInventory.UnitPrice;
+                product.IsInStock = inventory.InStock;
 
                 product.Price = price.ToMoney();
                 product.DoublePrice = price;
-                var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
-                if (discount != null)
-                {
-                    var discountRate = discount.DiscountRate;
-                    product.DiscountRate = discountRate;
-                    product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
-                    product.HasDiscount = discountRate > 0;
-                    var discountAmount = Math.Round(price * discountRate / 100);
-                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
-                }
             }
 
-            product.Comments = _commentContext.Comments
-                .Where(x => x.Type == CommentType.Product)
-                .Where(x => x.OwnerRecordId == product.Id)
-                .Where(x => x.IsConfirmed)
-                .Where(x => !x.IsCanceled)
-                .Select(x => new CommentQueryModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Message = x.Message
-                })
-                .OrderByDescending(x => x.Id)
-                .ToList();
-
+            if (discount != null)
+            {
+                var discountRate = discount.DiscountRate;
+                product.DiscountRate = discountRate;
+                product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                product.HasDiscount = discountRate > 0;
+                var discountAmount = Math.Round(price * discountRate / 100);
+                product.PriceWithDiscount = (price - discountAmount).ToMoney();
+            }
 
             return product;
         }
 
         private static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> productPictures)
         {
-            return productPictures.Select(x => new ProductPictureQueryModel
-            {
-                IsRemoved = x.IsRemoved,
-                Picture = x.Picture,
-                PictureTitle = x.PictureTitle,
-                PicutreAlt = x.PicutreAlt,
-                ProductId = x.ProductId
-            }).Where(x => !x.IsRemoved).ToList();
+            return productPictures
+                .Where(x => !x.IsRemoved)
+                .Select(x => new ProductPictureQueryModel
+                {
+                    Picture = x.Picture,
+                    PictureTitle = x.PictureTitle,
+                    PicutreAlt = x.PicutreAlt,
+                    ProductId = x.ProductId
+                })
+                .ToList();
         }
 
         public List<ProductQueryModel> Search(string value)
