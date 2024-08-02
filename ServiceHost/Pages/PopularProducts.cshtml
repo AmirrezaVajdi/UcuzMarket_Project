@@ -1,0 +1,414 @@
+﻿@page
+@model ServiceHost.Pages.PopularProductsModel
+@{
+    ViewData["Title"] = "محصولات پر طرفدار";
+
+
+    long PageNumber = Model.Products.Item2.PageNumber;
+    long totalPage = Model.Products.Item2.TotalPage;
+    bool firstPage = (PageNumber == 1);
+    bool OneToTheLast = ((PageNumber + 1) == totalPage);
+    bool TwoToTheLast = ((PageNumber + 2) == totalPage);
+    bool endPage = (PageNumber == totalPage);
+    bool otherPage = (PageNumber != 1 && !OneToTheLast && !endPage && !TwoToTheLast);
+}
+
+@section Css {
+    <link rel="stylesheet" href="~/Theme/assets/vendor/nouislider/nouislider.min.css">
+}
+@section Filter {
+    <!-- Filter offcanvas toggle that is visible on screens < 992px wide (lg breakpoint) -->
+    <button type="button"
+            class="fixed-bottom z-sticky w-100 btn btn-lg btn-dark border-0 border-top border-light border-opacity-10 rounded-0 pb-4 d-lg-none"
+            data-bs-toggle="offcanvas" data-bs-target="#filterSidebar" aria-controls="filterSidebar" data-bs-theme="light">
+        <i class="ci-filter fs-base me-2"></i>
+        فیلتر کردن پیشرفته
+    </button>
+}
+
+<!-- Breadcrumb -->
+<nav class="container pt-lg-2 my-3 my-lg-4" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">خانه</a></li>
+        <li class="breadcrumb-item active" aria-current="page">محصولات پر طرفدار</li>
+    </ol>
+</nav>
+
+
+<!-- Page title -->
+<h1 class="h3 container pb-2 pb-md-3 pb-lg-4">محصولات پر طرفدار</h1>
+
+
+<!-- Products grid + Sidebar with filters -->
+<section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+    <div class="row">
+
+        <!-- Filter sidebar that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
+
+        <p>فیلتر کردن پیشرفته :</p>
+        <aside class="col-lg-3">
+            <div class="offcanvas-lg offcanvas-start pe-lg-4" id="filterSidebar">
+                <div class="offcanvas-header py-3">
+                    <h5 class="offcanvas-title">فیلتر کردن پیشرفته</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                            data-bs-target="#filterSidebar" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body flex-column pt-2 py-lg-0">
+                    <!-- Filters -->
+                    <div class="accordion border-top mb-4">
+                        <form method="post">
+                            <!-- Price -->
+                            <div class="accordion-item">
+                                <h4 class="accordion-header" id="headingPrice">
+                                    <button type="button" class="accordion-button collapsed"
+                                            data-bs-toggle="collapse" data-bs-target="#price" aria-expanded="false"
+                                            aria-controls="price">
+                                        قیمت
+                                    </button>
+                                </h4>
+                                <div class="accordion-collapse collapse" id="price" aria-labelledby="headingPrice">
+                                    <div class="accordion-body">
+                                        <div class="range-slider ps-1"
+                                             data-range-slider="{&quot;startMin&quot;: 1, &quot;startMax&quot;: 2000000, &quot;min&quot;: 0, &quot;max&quot;: 15000000, &quot;step&quot;: 100, &quot;tooltipPrefix&quot;: &quot;$&quot;}"
+                                             aria-labelledby="headingPrice">
+                                            <div class="range-slider-ui"></div>
+                                            <div class="">
+                                                <div class="position-relative w-100">
+                                                    <i class="ci-dollar-sign position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                                    <input type="number" class="form-control form-icon-start"
+                                                           min="0" data-range-slider-min="">
+                                                </div>
+                                                <i class="ci-minus text-body-emphasis mx-2"></i>
+                                                <div class="position-relative w-100">
+                                                    <i class="ci-dollar-sign position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                                    <input type="number" class="form-control form-icon-start"
+                                                           min="0" data-range-slider-max="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="accordion-item">
+                                <h4 class="accordion-header" id="headingStatus">
+                                    <button type="button" class="accordion-button collapsed"
+                                            data-bs-toggle="collapse" data-bs-target="#status" aria-expanded="false"
+                                            aria-controls="status">
+                                        وضعیت کالا
+                                    </button>
+                                </h4>
+                                <div class="accordion-collapse collapse" id="status"
+                                     aria-labelledby="headingStatus">
+                                    <div class="accordion-body">
+                                        <div class="d-flex flex-column gap-2">
+                                            <div class="form-check mb-0">
+                                                <input type="checkbox" class="form-check-input" id="instock">
+                                                <label for="instock" class="form-check-label text-body-emphasis">
+                                                    موجود در انبار
+                                                </label>
+                                            </div>
+                                            <div class="form-check mb-0">
+                                                <input type="checkbox" class="form-check-input" id="sale">
+                                                <label for="sale" class="form-check-label text-body-emphasis">
+                                                    تخفیف دار
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <button type="submit" class="btn btn-lg btn-primary d-block m-auto mt-3 rounded-pill">اعمال کردن</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product grid -->
+        <div class="col-lg-9">
+
+            <!-- Sorting -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="fs-sm text-body-emphasis text-nowrap mb-2 mb-sm-0">
+                    <span class="fw-semibold">@Model.Products.Item2.ProductCount</span> محصول یافت شد
+                </div>
+                <div class="d-flex align-items-center text-nowrap">
+                    <label class="form-label fw-semibold mb-0 me-2">فیلتر :</label>
+                    <div style="width: 200px">
+                        <form method="post">
+                            <select class="form-select rounded-pill" data-select="{
+                    &quot;removeItemButton&quot;: false,
+                    &quot;classNames&quot;: {
+                      &quot;containerInner&quot;: &quot;form-select rounded-pill&quot;
+                    }
+                  }">
+                                <option value="">انتخاب کنید</option>
+                                <option value="1">ارزان ترین قیمت</option>
+                                <option value="2">گران ترین قیمت</option>
+                                <option value="3">جدید ترین محصولات</option>
+                            </select>
+
+                            <input type="hidden" />
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-3 row-cols-xl-4 g-4">
+
+                @foreach (var product in Model.Products.Item1)
+                {
+                    <!-- Item -->
+                    <div class="col">
+                        <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                            <div class="position-relative z-2">
+
+                                @if (product.HasDiscount)
+                                {
+                                    <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-1 mt-sm-2 ms-1 ms-sm-2">@product.DiscountRate%</span>
+                                }
+
+                                <button type="button"
+                                        class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                        aria-label="Add to Wishlist">
+                                    <i class="ci-heart animate-target"></i>
+                                </button>
+                                <a class="d-block p-2 p-lg-3" href="shop-product-grocery.html">
+                                    <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                        <img src="~/ProductPictures/@product.Picture" alt="@product.PictureAlt" title="@product.PictureTitle">
+                                    </div>
+                                </a>
+                                <div class="position-absolute w-100 start-0 bottom-0">
+                                    <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                        <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                            <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                                    data-decrement="" aria-label="Decrement quantity">
+                                                <i class="ci-minus fs-sm"></i>
+                                            </button>
+                                            <input type="number"
+                                                   class="form-control form-control-sm bg-primary text-white w-100"
+                                                   value="0" min="0" readonly="">
+                                            <button type="button"
+                                                    class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                                    data-increment="" aria-label="Increment quantity">
+                                                <span data-count-input-value=""></span>
+                                                <i class="ci-plus fs-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                                @if (product.HasDiscount)
+                                {
+                                    <div class="h6 mb-2">
+                                        @product.PriceWithDiscount تومان
+                                        <del class="fs-sm fw-normal text-body-tertiary ms-1">@product.Price تومان</del>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="h6 mb-2">
+                                        @product.Price تومان
+                                    </div>
+                                }
+
+                                <h3 class="fs-sm lh-base mb-0">
+                                    <a class="hover-effect-underline fw-normal" href="shop-product-grocery.html">@product.Name</a>
+                                </h3>
+                            </div>
+                            @if (product.IsInStock)
+                            {
+                                <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">موجود</div>
+                            }
+                            else
+                            {
+                                <div class="fs-xs text-danger px-1 px-md-2 px-lg-3 pb-2 pb-md-3">نا موجود</div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <nav class="border-top mt-4 pt-3" aria-label="Catalog pagination">
+                <ul class="pagination pagination-lg pt-2 pt-md-3">
+
+                    @if (Model.Products.Item2.ProductCount <= 16)
+                    {
+                        <li class="page-item disabled me-auto">
+                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="#!"
+                               aria-label="Previous page">
+                                <i class="ci-chevron-left mx-1"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">
+                                1
+                                <span class="visually-hidden">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item disabled ms-auto">
+                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="#!"
+                               aria-label="Next page">
+                                <i class="ci-chevron-right mx-1"></i>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        @if (firstPage)
+                        {
+                            <li class="page-item disabled me-auto">
+                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2"
+                                   aria-label="Previous page">
+                                    <i class="ci-chevron-left mx-1"></i>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item me-auto">
+                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2" asp-page="./PopularProducts" asp-route-pageNumber="@(Model.Products.Item2.PageNumber - 1)"
+                                   aria-label="Previous page">
+                                    <i class="ci-chevron-left mx-1"></i>
+                                </a>
+                            </li>
+                        }
+
+                        @if (firstPage)
+                        {
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    @PageNumber
+                                    <span class="visually-hidden">(current)</span>
+                                </span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 2)">@(PageNumber + 2)</a>
+                            </li>
+                            <li class="page-item">
+                                <span class="page-link pe-none">...</span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
+                            </li>
+                        }
+                        @if (otherPage)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    @PageNumber
+                                    <span class="visually-hidden">(current)</span>
+                                </span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
+                            </li>
+                            <li class="page-item">
+                                <span class="page-link pe-none">...</span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
+                            </li>
+                        }
+                        @if (TwoToTheLast)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    @PageNumber
+                                    <span class="visually-hidden">(current)</span>
+                                </span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
+                            </li>
+                        }
+                        @if (OneToTheLast)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 2)">@(PageNumber - 2)</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    @PageNumber
+                                    <span class="visually-hidden">(current)</span>
+                                </span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
+                            </li>
+                        }
+                        @if (endPage)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 3)">@(PageNumber - 3)</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 2)">@(PageNumber - 2)</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber -1)">@(PageNumber - 1)</a>
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">
+                                    @PageNumber
+                                    <span class="visually-hidden">(current)</span>
+                                </span>
+                            </li>
+                        }
+
+                        @if (endPage)
+                        {
+
+                            <li class="page-item disabled ms-auto">
+                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="#!"
+                                   aria-label="Next page">
+                                    <i class="ci-chevron-right mx-1"></i>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item ms-auto">
+                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2" asp-page="./PopularProducts" asp-route-pageNumber="@(Model.Products.Item2.PageNumber + 1)"
+                                   aria-label="Next page">
+                                    <i class="ci-chevron-right mx-1"></i>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script src="~/Theme/assets/vendor/nouislider/nouislider.min.js"></script>
+    <script src="~/Theme/assets/vendor/list.js/list.min.js"></script>
+}

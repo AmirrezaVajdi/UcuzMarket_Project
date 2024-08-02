@@ -1,4 +1,6 @@
 ﻿using _01_Framework.Application;
+using _01_Framework.Application.Pagination;
+using _01_Framework.Application.Paginations;
 using _01_Query.Contract.Comment;
 using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
@@ -29,73 +31,97 @@ namespace _01_Query.Query
             _commentContext = commentContext;
         }
 
-        public List<ProductQueryModel> GetPopularProducts(int take = 8)
+        public (List<ProductQueryModel>, PaginationResult) GetPopularProducts(PaginationOptions paginationOptions)
         {
-            var inventory = _inventoryContext
-                .Inventory
-                .Select(x => new
-                {
-                    x.ProductId,
-                    x.UnitPrice,
-                    x.InStock
-                }
-                )
-                .AsNoTracking()
+            var productsQuery = _shopContext
+                .Products
+                .Skip(paginationOptions.PageSize * (paginationOptions.PageNumber - 1))
+                .Take(paginationOptions.PageSize)
+                .OrderByDescending(x => x.Id)
+                .AsNoTracking();
+
+            var selectedData = productsQuery
+             .Select(x => new ProductQueryModel
+             {
+                 Name = x.Name,
+                 Picture = x.Picture,
+                 PictureAlt = x.PictureAlt,
+                 PictureTitle = x.PictureTitle,
+                 Slug = x.Slug,
+             });
+
+            var products = selectedData
                 .ToList();
+
+
+            var ProductsId = GetProductsId(products);
+
 
             var discounts = _discountContext
                 .CustomerDiscounts
                 .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => ProductsId.Any(z => x.ProductId == z))
                 .Select(x => new
                 {
                     x.ProductId,
-                    x.DiscountRate
-                }
-                ).AsNoTracking()
-                .ToList();
+                    x.DiscountRate,
+                    x.EndDate
 
-            var products = _shopContext
-                .Products
-                .Include(x => x.Category)
-                .Select(x => new ProductQueryModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Category = x.Category.Name,
-                    Picture = x.Picture,
-                    PictureTitle = x.PictureTitle,
-                    PictureAlt = x.PictureAlt,
-                    Slug = x.Slug,
-                    CategorySlug = x.Category.Slug
                 })
-                .OrderByDescending(x => x.Id)
-                .Take(take)
                 .AsNoTracking()
                 .ToList();
 
+
+            var inventories = _inventoryContext
+                .Inventory
+                .Where(x => ProductsId.Any(z => x.ProductId == z))
+               .Select(x => new
+               {
+                   x.ProductId,
+                   x.UnitPrice,
+                   x.InStock
+               })
+               .AsNoTracking();
+
+            var result = selectedData
+                .ToList();
+
+
             foreach (var product in products)
             {
-                var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+                var productInventory = inventories
+                    .SingleOrDefault(x => x.ProductId == product.Id);
+
                 if (productInventory != null)
                 {
                     var price = productInventory.UnitPrice;
                     product.IsInStock = productInventory.InStock;
 
+
                     product.Price = price.ToMoney();
 
-                    var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                    var discount = discounts.SingleOrDefault(x => x.ProductId == product.Id);
                     if (discount != null)
                     {
                         var discountRate = discount.DiscountRate;
                         product.DiscountRate = discountRate;
+                        product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
                         product.HasDiscount = discountRate > 0;
-                        var discountAmount = Math.Round(price * discountRate / 100);
+                        var discountAmount = Math.Round((price * discountRate) / 100);
                         product.PriceWithDiscount = (price - discountAmount).ToMoney();
                     }
                 }
             }
 
-            return products;
+            PaginationResult paginationResult = new();
+
+            paginationResult.PageNumber = paginationOptions.PageNumber;
+
+            paginationResult.ProductCount = GetProductsCount();
+
+            paginationResult.TotalPage = (long)Math.Ceiling(double.Parse(paginationResult.ProductCount.ToString()) / paginationOptions.PageSize);
+
+            return (result, paginationResult);
         }
 
         public ProductQueryModel GetProductDetails(string slug)
@@ -330,6 +356,19 @@ namespace _01_Query.Query
             }
 
             return products;
+        }
+        private List<long> GetProductsId(List<ProductQueryModel> model)
+        {
+            List<long> ProductsId = new(model.Count);
+
+            model.ForEach((x) => ProductsId.Add(x.Id));
+
+            return ProductsId;
+        }
+        private long GetProductsCount()
+        {
+            return _shopContext.Products
+                       .Count();
         }
     }
 }

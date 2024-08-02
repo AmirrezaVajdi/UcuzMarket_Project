@@ -18,7 +18,8 @@ namespace ShopManagement.Presentation.Api
         [HttpGet]
         public List<ProductQueryModel> GetLatestArrivals()
         {
-            return _productQuery.GetPopularProducts();
+            return null;
+            //return _productQuery.GetPopularProducts();
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿@using _01_Query.Contract.Product;
-@model List<ProductQueryModel>
+﻿@using _01_Framework.Application.Paginations
+@using _01_Query.Contract.Product;
+@model (List<ProductQueryModel> , PaginationResult)
 
 <div class="col-lg-9">
     <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4 mb-3 mb-lg-4">
         <h2 class="h3 mb-0">محصولات پر طرفدار</h2>
         <div class="nav ms-3">
-            <a class="nav-link animate-underline px-0 py-2" href="shop-catalog-grocery.html">
+            <a class="nav-link animate-underline px-0 py-2" asp-page="/PopularProducts">
                 <span class="animate-target">مشاهده همه</span>
                 <i class="ci-chevron-right fs-base ms-1"></i>
             </a>
@@ -16,7 +17,7 @@
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-3 row-cols-xl-4 g-4">
 
         <!-- Item -->
-        @foreach (var product in Model)
+        @foreach (var product in Model.Item1)
         {
             <div class="col">
                 <div class="card product-card h-100 bg-transparent border-0 shadow-none">

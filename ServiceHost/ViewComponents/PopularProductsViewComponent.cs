@@ -1,4 +1,5 @@
-﻿using _01_Query.Contract.Product;
+﻿using _01_Framework.Application.Pagination;
+using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,8 @@ namespace ServiceHost.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var products = _productQuery.GetPopularProducts();
+            PaginationOptions paginationOptions = new(PageSize: 8);
+            var products = _productQuery.GetPopularProducts(paginationOptions);
             return View(products);
         }
     }
