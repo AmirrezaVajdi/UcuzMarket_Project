@@ -15,6 +15,6 @@ namespace _01_Query.Contract.Product
         (List<ProductQueryModel>, PaginationResult) GetPopularProducts(PaginationOptions paginationOptions);
         List<ProductQueryModel> Search(string value);
         List<CartItem> CheckInventoryStatus(List<CartItem> cartItems);
-        List<ProductQueryModel> GetDiscountedProducts(int take = 4);
+        (List<ProductQueryModel>, PaginationResult) GetDiscountedProducts(PaginationOptions paginationOptions);
     }
 }
