@@ -72,6 +72,8 @@ namespace _01_Framework.Application
 
         public static string ToPersianNumber(this string intNum)
         {
+            if (intNum is null) return string.Empty;
+
             for (var i = 0; i < 10; i++)
                 intNum = intNum.Replace(En[i], Pn[i]);
             return intNum;
