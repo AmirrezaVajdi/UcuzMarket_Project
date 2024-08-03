@@ -1,4 +1,5 @@
 ﻿@page "{id}"
+@using _01_Framework.Application;
 @model ServiceHost.Pages.ProductModel
 @{
     ViewData["Title"] = Model.Product.Name;
@@ -105,9 +106,24 @@
                 }
                 else
                 {
-                    <div class="fs-sm fw-medium">ناموجود</div>
+                    <div class="fs-sm fw-medium text-danger">ناموجود</div>
                 }
-                <div class="h3">$2.15</div>
+                @if (Model.Product.HasDiscount)
+                {
+                    <div class="h3 mb-2">
+                        @Model.Product.PriceWithDiscount.ToPersianNumber() تومان
+                        <del class="h5 ms-1 text-body-tertiary">@Model.Product.Price.ToPersianNumber() تومان</del>
+                    </div>
+                }
+                else
+                {
+                    <div class="h3 mb-2">
+                        @Model.Product.Price.ToPersianNumber() تومان
+                    </div>
+                }
+
+
+
                 <div class="d-flex gap-3 mb-4">
                     <div class="count-input flex-shrink-0 rounded-pill">
                         <button type="button" class="btn btn-icon btn-lg" data-decrement=""
