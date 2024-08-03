@@ -102,11 +102,11 @@
                 <h1 class="h5 mb-2">@Model.Product.Name</h1>
                 @if (Model.Product.IsInStock)
                 {
-                    <div class="fs-sm fw-medium">موجود در انبار</div>
+                    <div class="fw-medium">موجود در انبار</div>
                 }
                 else
                 {
-                    <div class="fs-sm fw-medium text-danger">ناموجود</div>
+                    <div class="fw-medium text-danger">ناموجود</div>
                 }
                 @if (Model.Product.HasDiscount)
                 {
@@ -159,43 +159,71 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingProductIngredients">
-                            <button type="button" class="accordion-button animate-underline collapsed"
-                                    data-bs-toggle="collapse" data-bs-target="#productIngredients"
-                                    aria-expanded="false" aria-controls="productIngredients">
-                                <span class="animate-target me-2">نظرات محصول</span>
-                            </button>
-                        </h3>
-                        <div class="accordion-collapse collapse" id="productIngredients"
-                             aria-labelledby="headingProductIngredients" data-bs-parent="#productAccordion">
-                            <div class="accordion-body">
-                                <ul class="m-0">
-                                    <li>Gluten-free oats</li>
-                                    <li>Almonds</li>
-                                    <li>Sunflower seeds</li>
-                                    <li>Pumpkin seeds</li>
-                                    <li>Dried cranberries (cranberries, sugar, sunflower oil)</li>
-                                    <li>Dried apricots (apricots, rice flour)</li>
-                                    <li>Coconut flakes</li>
-                                    <li>Flax seeds</li>
-                                    <li>Chia seeds</li>
-                                    <li>Cinnamon</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<section class="container">
+    <p class="h3">نظرات</p>
+    <!-- Product review -->
+    @if (Model.Product.Comments.Count == 0)
+    {
+        <p class="border-bottom pb-3">نظری برای محصول @Model.Product.Name ثبت نشده است</p>
+    }
+    @foreach (var comment in Model.Product.Comments)
+    {
+        <div class="border-top border-bottom py-3">
+            <div class="d-flex align-items-center mb-3">
+                <div class="text-nowrap me-3">
+                    <span class="h6 mb-0">@comment.Name</span>
+                </div>
+                <span class="text-body-secondary fs-sm ms-auto">@comment.CreationDate</span>
+            </div>
+            <div class="d-flex gap-1 fs-sm pb-2 mb-1">
+                <i class="ci-star-filled text-warning"></i>
+                <i class="ci-star-filled text-warning"></i>
+                <i class="ci-star-filled text-warning"></i>
+                <i class="ci-star-filled text-warning"></i>
+                <i class="ci-star-filled text-warning"></i>
+            </div>
+            <p class="fs-sm">@comment.Message</p>
+            <div class="nav align-items-center">
+                <button type="button" class="nav-link animate-underline px-0">
+                    <i class="ci-corner-down-right fs-base ms-1 me-1"></i>
+                    <span class="animate-target">Reply</span>
+                </button>
+                <button type="button" class="nav-link text-body-secondary animate-scale px-0 ms-auto me-n1">
+                    <i class="ci-thumbs-up text-success fs-base animate-target me-1"></i>
+                    29
+                </button>
+                <hr class="vr my-2 mx-3">
+                <button type="button" class="nav-link text-body-secondary animate-scale px-0 ms-n1">
+                    <i class="ci-thumbs-down text-danger fs-base animate-target me-1"></i>
+                    5
+                </button>
+            </div>
+
+            <!-- Reply -->
+            <div class="ps-3 pb-2">
+                <div class="d-flex align-items-center pt-3 pb-2 mb-1">
+                    <span class="badge bg-primary me-2">Reply</span>
+                    <span class="h6 mb-0 me-4">Cartzilla Company</span>
+                    <span class="text-body-secondary fs-sm">May 8, 2024</span>
+                </div>
+                <p class="fs-sm mb-0">Thank you for your feedback! We are glad that you were satisfied with your purchase :)</p>
+            </div>
+        </div>
+    }
+
+</section>
+
 
 <!-- Bought together carousel -->
 <section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
     <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4 mb-3 mb-md-4">
-        <h2 class="h3 mb-0">Often bought with</h2>
+        <h2 class="h3 mb-0">محصولات مرتبط</h2>
 
         <!-- Slider prev/next buttons -->
         <div class="d-flex gap-2 ms-3">
