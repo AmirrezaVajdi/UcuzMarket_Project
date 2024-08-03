@@ -11,7 +11,10 @@ namespace ServiceHost.Pages
     {
         private readonly IProductQuery _productQuery;
         private readonly ICommentApplication _commentApplication;
+
         public ProductQueryModel Product;
+        public List<ProductQueryModel> RelatedProducts { get; set; }
+
         public ProductModel(IProductQuery productQuery, ICommentApplication commentApplication)
         {
             _productQuery = productQuery;
@@ -21,6 +24,7 @@ namespace ServiceHost.Pages
         public void OnGet(string id)
         {
             Product = _productQuery.GetProductDetails(id);
+            RelatedProducts = _productQuery.GetRelatedPrdoucts(Product.CategorySlug);
         }
 
         public IActionResult OnPost(AddComment comment, string productSlug)
