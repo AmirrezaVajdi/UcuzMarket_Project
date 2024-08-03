@@ -239,8 +239,9 @@ namespace _01_Query.Query
             var discount = _discountContext
                 .CustomerDiscounts
                 .Where(x => x.ProductId == product.Id)
+                .OrderByDescending(x => x.Id)
                 .AsNoTracking()
-                .SingleOrDefault();
+                .FirstOrDefault();
 
             var inventory = _inventoryContext
                 .Inventory
