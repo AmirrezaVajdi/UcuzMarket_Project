@@ -70,6 +70,13 @@ namespace _01_Framework.Application
             return chash;
         }
 
+        public static string ToPersianNumber(this string intNum)
+        {
+            for (var i = 0; i < 10; i++)
+                intNum = intNum.Replace(En[i], Pn[i]);
+            return intNum;
+        }
+
         public static DateTime? FromFarsiDate(this string InDate)
         {
             if (string.IsNullOrEmpty(InDate))
