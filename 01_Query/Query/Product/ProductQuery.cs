@@ -317,7 +317,7 @@ namespace _01_Query.Query
             foreach (var product in products)
             {
 
-                var discount = productDiscount.SingleOrDefault(x => x.ProudctId == product.Id);
+                var discount = productDiscount.FirstOrDefault(x => x.ProudctId == product.Id);
 
                 int discountRate = 0;
 
@@ -376,7 +376,8 @@ namespace _01_Query.Query
                     Name = x.Name,
                     Picture = x.Picture,
                     PictureAlt = x.PictureAlt,
-                    PictureTitle = x.PictureTitle
+                    PictureTitle = x.PictureTitle,
+                    Slug = x.Slug
                 })
                 .SingleOrDefault();
         }

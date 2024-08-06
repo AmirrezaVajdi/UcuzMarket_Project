@@ -249,4 +249,8 @@
     <None Include="wwwroot\Theme\assets\fonts\sahel\Sahel-FD.woff2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Theme\assets\vendor\timezz\" />
+  </ItemGroup>
+
 </Project>

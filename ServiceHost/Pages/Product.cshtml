@@ -114,6 +114,30 @@
                         @Model.Product.PriceWithDiscount.ToPersianNumber() تومان
                         <del class="h5 ms-1 text-body-tertiary">@Model.Product.Price.ToPersianNumber() تومان</del>
                     </div>
+
+                    <!-- Countdown example without years label -->
+                    <div class="d-flex justify-content-center m-4" data-countdown-date="@DateTime.Parse(Model.Product.DiscountExpireDate).ToString("MM/dd/yyyy") 24:00:00 UTC+03:30">
+                        <div class="text-center">
+                            <div class="h4 mb-0" data-seconds></div>
+                            <span class="fs-sm">ثانیه</span>
+                        </div>
+                        <span class="animate-blinking text-body-secondary fs-xl mx-2">:</span>
+                        <div class="text-center">
+                            <div class="h4 mb-0" data-minutes></div>
+                            <span class="fs-sm">دقیقه</span>
+                        </div>
+                        <span class="animate-blinking text-body-secondary fs-xl mx-2">:</span>
+                        <div class="text-center">
+                            <div class="h4 mb-0" data-hours></div>
+                            <span class="fs-sm">ساعت</span>
+                        </div>
+                        <span class="animate-blinking text-body-secondary fs-xl mx-2">:</span>
+                        <div class="text-center">
+                            <div class="h4 mb-0" data-days></div>
+                            <span class="fs-sm">روز</span>
+                        </div>
+                    </div>
+
                 }
                 else
                 {
@@ -344,4 +368,5 @@
 
 @section Scripts {
     <script src="~/Theme/assets/vendor/glightbox/glightbox.min.js"></script>
+    <script src="~/Theme/assets/vendor/timezz/timezz.js"></script>
 }
