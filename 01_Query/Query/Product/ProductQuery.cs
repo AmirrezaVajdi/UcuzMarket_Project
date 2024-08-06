@@ -59,7 +59,7 @@ namespace _01_Query.Query
 
             var discounts = _discountContext
                 .CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Where(x => ProductsId.Any(z => x.ProductId == z))
                 .Select(x => new
                 {
@@ -165,7 +165,7 @@ namespace _01_Query.Query
 
             var discount = _discountContext
                 .CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Where(x => x.ProductId == product.Id)
                 .OrderByDescending(x => x.Id)
                 .AsNoTracking()
@@ -218,7 +218,7 @@ namespace _01_Query.Query
         {
             var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).AsNoTracking().ToList();
+            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now.Date && x.EndDate > DateTime.Now.Date).Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).AsNoTracking().ToList();
 
             var query = _shopContext.Products.Include(x => x.Category).Select(x => new ProductQueryModel
             {
@@ -281,7 +281,7 @@ namespace _01_Query.Query
         {
             var productDiscount = _discountContext
                 .CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Select(x => new
                 {
                     ProudctId = x.ProductId,
@@ -407,7 +407,7 @@ namespace _01_Query.Query
 
             var discounts = _discountContext
                 .CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Where(x => ProductsId.Any(z => x.ProductId == z))
                 .Select(x => new
                 {
