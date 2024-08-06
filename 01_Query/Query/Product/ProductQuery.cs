@@ -165,6 +165,7 @@ namespace _01_Query.Query
 
             var discount = _discountContext
                 .CustomerDiscounts
+                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
                 .Where(x => x.ProductId == product.Id)
                 .OrderByDescending(x => x.Id)
                 .AsNoTracking()
