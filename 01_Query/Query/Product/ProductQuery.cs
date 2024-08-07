@@ -149,9 +149,10 @@ namespace _01_Query.Query
 
             product.Comments = _commentContext
                 .Comments
+                .OrderByDescending(x => x.CreationDate)
                 .Include(x => x.Child)
                 .DefaultIfEmpty()
-                .Where(x => x.Type == CommentType.Product && x.OwnerRecordId == product.Id)
+                .Where(x => x.Type == CommentType.Product && x.OwnerRecordId == product.Id && x.IsConfirmed && !x.IsCancelled)
                 .Select(x => new CommentQueryModel
                 {
                     Name = x.Name,

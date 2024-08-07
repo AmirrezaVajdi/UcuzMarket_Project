@@ -8,6 +8,7 @@ namespace CommandManagement.Domain.CommentAgg
         public string Email { get; private set; }
         public string Message { get; private set; }
         public bool IsConfirmed { get; private set; }
+        public bool IsCancelled { get; private set; }
         public long OwnerRecordId { get; private set; }
         public int Type { get; private set; }
         public long? ChildId { get; private set; }
@@ -30,9 +31,11 @@ namespace CommandManagement.Domain.CommentAgg
         public void Confirm()
         {
             IsConfirmed = true;
+            IsCancelled = false;
         }
         public void Cancel()
         {
+            IsCancelled = true;
             IsConfirmed = false;
         }
     }

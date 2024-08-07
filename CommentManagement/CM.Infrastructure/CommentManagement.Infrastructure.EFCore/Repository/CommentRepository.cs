@@ -15,17 +15,20 @@ namespace CommentManagement.Infrastructure.EFCore.Repository
 
         public List<CommentViewModel> Search(CommentSearchModel searchModel)
         {
-            var query = _context.Comments
+            var query = _context
+                .Comments
+                .Where(x => x.Type != CommentType.Admin)
                 .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
                     Email = x.Email,
                     Name = x.Name,
                     Message = x.Message,
-                    OwnerRecordId = x.OwnerRecordId , 
-                    Type = x.Type , 
+                    OwnerRecordId = x.OwnerRecordId,
+                    Type = x.Type,
                     CommentDate = x.CreationDate.ToFarsi(),
-                    IsConfirmed = x.IsConfirmed
+                    IsConfirmed = x.IsConfirmed,
+                    IsCanceled = x.IsCancelled
                 });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
