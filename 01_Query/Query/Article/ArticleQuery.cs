@@ -48,22 +48,21 @@ namespace _01_Query.Query
                 .Where(x => x.Type == CommentType.Article)
                 .Where(x => x.OwnerRecordId == article.Id)
                 .Where(x => x.IsConfirmed)
-                .Where(x => !x.IsCanceled)
                 .Select(x => new CommentQueryModel
                 {
                     Id = x.Id,
                     Name = x.Name,
                     Message = x.Message,
                     CreationDate = x.CreationDate.ToFarsi(),
-                    ParentId = x.ParentId,
+                    ChildId = x.ChildId,
                 })
                 .OrderByDescending(x => x.Id)
                 .ToList();
 
             foreach (var comment in comments)
             {
-                if (comment.ParentId > 0)
-                    comment.ParentName = comments.FirstOrDefault(x => x.Id == comment.ParentId)?.Name;
+                if (comment.ChildId > 0)
+                    comment.ParentName = comments.FirstOrDefault(x => x.Id == comment.ChildId)?.Name;
             }
 
             article.Comments = comments;

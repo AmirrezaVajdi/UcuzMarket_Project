@@ -21,12 +21,10 @@ namespace CommentManagement.Infrastructure.EFCore.Repository
                     Id = x.Id,
                     Email = x.Email,
                     Name = x.Name,
-                    WebSite = x.WebSite,
                     Message = x.Message,
                     OwnerRecordId = x.OwnerRecordId , 
                     Type = x.Type , 
                     CommentDate = x.CreationDate.ToFarsi(),
-                    IsCanceled = x.IsCanceled,
                     IsConfirmed = x.IsConfirmed
                 });
 

@@ -17,7 +17,7 @@ namespace CommandManagement.Application
         public OperationResult Add(AddComment command)
         {
             OperationResult operation = new();
-            var comment = new Comment(command.Name, command.Email, command.WebSite, command.Message, command.OwnerRecordId, command.Type, command.ParentId);
+            var comment = new Comment(command.Name, command.Email, command.Message, command.OwnerRecordId, command.Type, command.ChildId);
 
             _repository.Create(comment);
             _repository.SaveChanges();

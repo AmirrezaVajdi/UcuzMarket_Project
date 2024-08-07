@@ -149,19 +149,18 @@ namespace _01_Query.Query
 
             product.Comments = _commentContext
                 .Comments
-                .Include(x => x.Parent)
+                .Include(x => x.Child)
                 .DefaultIfEmpty()
-                //.Where(x => x.ParentId == null)
                 .Where(x => x.Type == CommentType.Product && x.OwnerRecordId == product.Id)
                 .Select(x => new CommentQueryModel
                 {
                     Name = x.Name,
                     Message = x.Message,
                     CreationDate = x.CreationDate.ToFarsi(),
-                    ParentId = x.ParentId,
-                    ParentName = (x.Parent != null ? x.Parent.Name : string.Empty),
-                    ParentMessage = (x.Parent != null ? x.Parent.Message : string.Empty),
-                    ParentCreationDate = (x.Parent != null ? x.Parent.CreationDate.ToFarsi() : string.Empty)
+                    ChildId = x.ChildId,
+                    ParentName = (x.Child != null ? x.Child.Name : string.Empty),
+                    ParentMessage = (x.Child != null ? x.Child.Message : string.Empty),
+                    ParentCreationDate = (x.Child != null ? x.Child.CreationDate.ToFarsi() : string.Empty)
                 })
                 .AsNoTracking()
                 .ToList();

@@ -117,10 +117,10 @@
                                                                 @comment.CreationDate
                                                             </span>
                                                         </h3>
-                                                        @if (comment.ParentId > 0)
+                                                        @if (comment.ChildId > 0)
                                                         {
                                                             <p>
-                                                                <span>در پاسخ به: </span><a href="#comment-@comment.ParentId">@comment.ParentName</a>
+                                                                <span>در پاسخ به: </span><a href="#comment-@comment.ChildId">@comment.ParentName</a>
                                                             </p>
                                                         }
                                                         <p class="comment-text">@comment.Message</p>
