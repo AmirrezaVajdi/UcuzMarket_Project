@@ -43,11 +43,12 @@ namespace _01_Query.Query
             var selectedData = productsQuery
              .Select(x => new ProductQueryModel
              {
+                 Id = x.Id,
                  Name = x.Name,
                  Picture = x.Picture,
                  PictureAlt = x.PictureAlt,
                  PictureTitle = x.PictureTitle,
-                 Slug = x.Slug,
+                 Slug = x.Slug
              });
 
             var products = selectedData
@@ -83,33 +84,30 @@ namespace _01_Query.Query
                })
                .AsNoTracking();
 
-            var result = selectedData
-                .ToList();
-
-
             foreach (var product in products)
             {
                 var productInventory = inventories
                     .SingleOrDefault(x => x.ProductId == product.Id);
 
+                double price = 0;
+
                 if (productInventory != null)
                 {
-                    var price = productInventory.UnitPrice;
+                    price = productInventory.UnitPrice;
                     product.IsInStock = productInventory.InStock;
-
-
                     product.Price = price.ToMoney();
+                }
 
-                    var discount = discounts.SingleOrDefault(x => x.ProductId == product.Id);
-                    if (discount != null)
-                    {
-                        var discountRate = discount.DiscountRate;
-                        product.DiscountRate = discountRate;
-                        product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
-                        product.HasDiscount = discountRate > 0;
-                        var discountAmount = Math.Round((price * discountRate) / 100);
-                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
-                    }
+                var discount = discounts.SingleOrDefault(x => x.ProductId == product.Id);
+
+                if (discount != null)
+                {
+                    var discountRate = discount.DiscountRate;
+                    product.DiscountRate = discountRate;
+                    product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                    product.HasDiscount = discountRate > 0;
+                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
                 }
             }
 
@@ -121,7 +119,7 @@ namespace _01_Query.Query
 
             paginationResult.TotalPage = (long)Math.Ceiling(double.Parse(paginationResult.ProductCount.ToString()) / paginationOptions.PageSize);
 
-            return (result, paginationResult);
+            return (products, paginationResult);
         }
 
         public ProductQueryModel GetProductDetails(string slug)
@@ -151,14 +149,19 @@ namespace _01_Query.Query
 
             product.Comments = _commentContext
                 .Comments
+                .Include(x => x.Parent)
+                .DefaultIfEmpty()
+                //.Where(x => x.ParentId == null)
                 .Where(x => x.Type == CommentType.Product && x.OwnerRecordId == product.Id)
                 .Select(x => new CommentQueryModel
                 {
                     Name = x.Name,
                     Message = x.Message,
-                    ParentId = x.ParentId,
                     CreationDate = x.CreationDate.ToFarsi(),
-                    ParentName = x.Parent.Name
+                    ParentId = x.ParentId,
+                    ParentName = (x.Parent != null ? x.Parent.Name : string.Empty),
+                    ParentMessage = (x.Parent != null ? x.Parent.Message : string.Empty),
+                    ParentCreationDate = (x.Parent != null ? x.Parent.CreationDate.ToFarsi() : string.Empty)
                 })
                 .AsNoTracking()
                 .ToList();
