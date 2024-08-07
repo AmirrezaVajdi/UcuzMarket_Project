@@ -205,39 +205,20 @@
                 </div>
                 <span class="text-body-secondary fs-sm ms-auto">@comment.CreationDate</span>
             </div>
-            <div class="d-flex gap-1 fs-sm pb-2 mb-1">
-                <i class="ci-star-filled text-warning"></i>
-                <i class="ci-star-filled text-warning"></i>
-                <i class="ci-star-filled text-warning"></i>
-                <i class="ci-star-filled text-warning"></i>
-                <i class="ci-star-filled text-warning"></i>
-            </div>
             <p class="fs-sm">@comment.Message</p>
-            <div class="nav align-items-center">
-                <button type="button" class="nav-link animate-underline px-0">
-                    <i class="ci-corner-down-right fs-base ms-1 me-1"></i>
-                    <span class="animate-target">Reply</span>
-                </button>
-                <button type="button" class="nav-link text-body-secondary animate-scale px-0 ms-auto me-n1">
-                    <i class="ci-thumbs-up text-success fs-base animate-target me-1"></i>
-                    29
-                </button>
-                <hr class="vr my-2 mx-3">
-                <button type="button" class="nav-link text-body-secondary animate-scale px-0 ms-n1">
-                    <i class="ci-thumbs-down text-danger fs-base animate-target me-1"></i>
-                    5
-                </button>
-            </div>
 
-            <!-- Reply -->
-            <div class="ps-3 pb-2">
-                <div class="d-flex align-items-center pt-3 pb-2 mb-1">
-                    <span class="badge bg-primary me-2">Reply</span>
-                    <span class="h6 mb-0 me-4">Cartzilla Company</span>
-                    <span class="text-body-secondary fs-sm">May 8, 2024</span>
+            @if (comment.ParentId != null)
+            {
+                <!-- Reply -->
+                <div class="ps-3 pb-2">
+                    <div class="d-flex align-items-center pt-3 pb-2 mb-1">
+                        <span class="badge bg-primary me-2">پاسخ به @comment.Name</span>
+                        <span class="h6 mb-0 me-4">@comment.ParentName</span>
+                        <span class="text-body-secondary fs-sm">@comment.ParentCreationDate</span>
+                    </div>
+                    <p class="fs-sm mb-0">@comment.ParentMessage</p>
                 </div>
-                <p class="fs-sm mb-0">Thank you for your feedback! We are glad that you were satisfied with your purchase :)</p>
-            </div>
+            }
         </div>
     }
 
@@ -245,7 +226,7 @@
 
 
 <!-- Bought together carousel -->
-<section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5">
+<section class="container pb-5 mb-2 mb-sm-3 mb-lg-4 mb-xl-5 mt-5">
     <div class="d-flex align-items-center justify-content-between border-bottom pb-3 pb-md-4 mb-3 mb-md-4">
         <h2 class="h3 mb-0">محصولات مرتبط</h2>
 

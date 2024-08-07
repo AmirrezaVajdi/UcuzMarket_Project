@@ -22,12 +22,10 @@
             <div class="col">
                 <div class="card product-card h-100 bg-transparent border-0 shadow-none">
                     <div class="position-relative z-2">
-
-                        @if (product.HasDiscount)
+                        @if(product.HasDiscount)
                         {
-                            <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-1 mt-sm-2 ms-1 ms-sm-2">@product.DiscountRate%</span>
+                        <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-1 mt-sm-2 ms-1 ms-sm-2">@product.DiscountRate%</span>
                         }
-
                         <button type="button" class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2" aria-label="Add to Wishlist">
                             <i class="ci-heart animate-target"></i>
                         </button>
@@ -71,7 +69,6 @@
                             <a class="hover-effect-underline fw-normal" asp-page="/Product" asp-route-id="@product.Slug">@product.Name</a>
                         </h3>
                     </div>
-
                     @if (product.IsInStock)
                     {
                         <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">موجود</div>
