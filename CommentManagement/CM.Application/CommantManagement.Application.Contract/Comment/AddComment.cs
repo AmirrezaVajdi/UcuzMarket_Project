@@ -10,7 +10,6 @@ namespace CommandManagement.Application.Contract.Comment
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Email { get; set; }
-        public string? WebSite { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Message { get; set; }

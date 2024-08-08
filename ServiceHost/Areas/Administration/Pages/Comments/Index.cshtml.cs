@@ -1,5 +1,6 @@
 using _01_Framework.Application;
 using CommandManagement.Application.Contract.Comment;
+using CommantManagement.Application.Contract.Comment;
 using CommentManagement.Infrastructure.Configuration.Permissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -52,6 +53,21 @@ namespace ServiceHost.Areas.Administration.Pages.Comments
             }
             Message = result.Message;
             return RedirectToPage("./Index");
+        }
+        public IActionResult OnGetAdminReply(long commentId)
+        {
+            var parentName = _commentApplication.GetCommentNameBy(commentId);
+            AdminReplyComment admin = new()
+            {
+                ParentId = commentId,
+                ParentName = parentName
+            };
+            return Partial("./AdminReply", admin);
+        }
+        public JsonResult OnPostAdminReply(AdminReplyComment command)
+        {
+            var result = _commentApplication.AddAdminReply(command);
+            return new JsonResult(result);
         }
     }
 }

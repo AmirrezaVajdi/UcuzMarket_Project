@@ -38,5 +38,10 @@ namespace CommandManagement.Domain.CommentAgg
             IsCancelled = true;
             IsConfirmed = false;
         }
+
+        public void AddAdminReply(Comment adminReplyComment)
+        {
+            Child = adminReplyComment;
+        }
     }
 }
