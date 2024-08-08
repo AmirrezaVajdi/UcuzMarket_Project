@@ -12,6 +12,7 @@
         public bool IsCanceled { get; set; }
         public long OwnerRecordId { get; set; }
         public string OwnerName { get; set; }
+        public bool hasAdminReply { get; set; }
         public int Type { get; set; }
     }
 }

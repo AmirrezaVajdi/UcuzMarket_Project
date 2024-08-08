@@ -28,7 +28,8 @@ namespace CommentManagement.Infrastructure.EFCore.Repository
                     Type = x.Type,
                     CommentDate = x.CreationDate.ToFarsi(),
                     IsConfirmed = x.IsConfirmed,
-                    IsCanceled = x.IsCancelled
+                    IsCanceled = x.IsCancelled,
+                    hasAdminReply = (x.ChildId == null ? false : true)
                 });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))

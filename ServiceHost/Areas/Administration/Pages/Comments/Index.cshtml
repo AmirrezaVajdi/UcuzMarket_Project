@@ -75,21 +75,31 @@
                             }
                         </td>
                         <td>
-                            @if (!comment.IsCanceled && !comment.IsConfirmed)
-                            {
-                                <a Permission="@CommentPermission.ConfirmComment" class="btn btn-success waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Confirm" asp-route-id="@comment.Id">تایید</a>
 
-                                <a Permission="@CommentPermission.CancelComment" class="btn btn-danger waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Cancel" asp-route-id="@comment.Id">کنسل</a>
+
+                            @if (!comment.hasAdminReply)
+                            {
+                                @if (!comment.IsCanceled && !comment.IsConfirmed)
+                                {
+                                    <a Permission="@CommentPermission.ConfirmComment" class="btn btn-success waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Confirm" asp-route-id="@comment.Id">تایید</a>
+
+                                    <a Permission="@CommentPermission.CancelComment" class="btn btn-danger waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Cancel" asp-route-id="@comment.Id">کنسل</a>
+                                }
+
+                                @if (!comment.IsConfirmed && comment.IsCanceled)
+                                {
+                                    <a Permission="@CommentPermission.ConfirmComment" class="btn btn-success waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Confirm" asp-route-id="@comment.Id">تایید</a>
+                                }
+
+                                @if (comment.IsConfirmed && !comment.IsCanceled)
+                                {
+                                    <a class="btn btn-success waves-effect waves-light m-b-5" href="#showmodal=@Url.Page("./Index" , "AdminReply" , new{commentId = comment.Id})">پاسخ دادن</a>
+                                }
+
                             }
-
-                            @if (!comment.IsConfirmed && comment.IsCanceled)
+                            else
                             {
-                                <a Permission="@CommentPermission.ConfirmComment" class="btn btn-success waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Confirm" asp-route-id="@comment.Id">تایید</a>
-                            }
-
-                            @if (comment.IsConfirmed && !comment.IsCanceled)
-                            {
-                                <a class="btn btn-success waves-effect waves-light m-b-5" href="#showmodal=@Url.Page("./Index" , "AdminReply" , new{commentId = comment.Id})">پاسخ دادن</a>
+                                <span class="text-success">جواب داده شد</span>
                             }
                         </td>
                     </tr>

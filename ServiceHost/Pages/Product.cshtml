@@ -222,7 +222,53 @@
         </div>
     }
 
+    <!-- Load more -->
+    <div class="align-items-center d-flex flex-column m-auto mt-4" style="max-width: 300px;">
+        <div class="fs-sm text-center mb-3">نمایش 5 نظر از 20 نظر</div>
+        <div class="progress w-100 mb-3" role="progressbar" aria-label="Items shown" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="height: 4px">
+            <div class="progress-bar bg-dark rounded-pill d-none-dark" style="width: 30%"></div>
+            <div class="progress-bar bg-light rounded-pill d-none d-block-dark" style="width: 30%"></div>
+        </div>
+        <button type="button" class="btn btn-lg btn-link text-body-emphasis text-decoration-none animate-underline">
+            <span class="animate-target">نمایش بیشتر</span>
+            <i class="ci-chevron-down fs-lg ms-2"></i>
+        </button>
+    </div>
+
+    <!-- Review Form -->
+    <div class="col-lg-6 col-md-6 col-sm-12 m-auto mt-4">
+        <form method="post">
+
+            <!-- Name Input -->
+            <div class="input-group mb-3">
+                <input asp-for="AddComment.Name" type="text" class="form-control" placeholder="نام و نام خانوادگی" aria-label="نام و نام خانوادگی">
+            </div>
+
+            <!-- Email -->
+            <div class="input-group mb-3">
+                <input asp-for="AddComment.Email" type="text" class="form-control" placeholder="ایمیل" aria-label="ایمیل">
+            </div>
+
+            <!-- Review -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="addon-icon">
+                    <i class="ci-edit fs-base"></i>
+                </span>
+                <textarea asp-for="AddComment.Message" class="form-control" placeholder="متن نظر" rows="5" aria-label="متن نظر"></textarea>
+            </div>
+
+            <input type="hidden" asp-for="AddComment.OwnerRecordId" value="@Model.Product.Id" />
+
+            <input type="hidden" asp-for="ProductSlug" value="@Model.Product.Slug" />
+
+            <button type="submit" class="btn btn-success m-auto d-block">ثبت نظر</button>
+
+        </form>
+    </div>
+
+
 </section>
+
 
 
 <!-- Bought together carousel -->

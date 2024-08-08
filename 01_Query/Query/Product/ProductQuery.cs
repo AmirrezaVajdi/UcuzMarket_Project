@@ -142,6 +142,7 @@ namespace _01_Query.Query
                     Picture = x.Picture,
                     PictureTitle = x.PictureTitle,
                     PictureAlt = x.PictureAlt,
+                    Slug = x.Slug,
                     Pictures = MapProductPictures(x.ProductPictures.Where(x => !x.IsRemoved).ToList())
                 })
                 .AsNoTracking()

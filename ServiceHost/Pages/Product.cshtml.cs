@@ -15,6 +15,12 @@ namespace ServiceHost.Pages
         public ProductQueryModel Product;
         public List<ProductQueryModel> RelatedProducts { get; set; }
 
+        [BindProperty]
+        public AddComment AddComment { get; set; }
+
+        [BindProperty]
+        public string ProductSlug { get; set; }
+
         public ProductModel(IProductQuery productQuery, ICommentApplication commentApplication)
         {
             _productQuery = productQuery;
@@ -27,11 +33,11 @@ namespace ServiceHost.Pages
             RelatedProducts = _productQuery.GetRelatedPrdoucts(Product.CategorySlug);
         }
 
-        public IActionResult OnPost(AddComment comment, string productSlug)
+        public IActionResult OnPost()
         {
-            comment.Type = CommentType.Product;
-            var result = _commentApplication.Add(comment);
-            return RedirectToPage("./Product", new { id = productSlug });
+            AddComment.Type = CommentType.Product;
+            var result = _commentApplication.Add(AddComment);
+            return RedirectToPage("./Product", new { id = ProductSlug });
         }
     }
 }
