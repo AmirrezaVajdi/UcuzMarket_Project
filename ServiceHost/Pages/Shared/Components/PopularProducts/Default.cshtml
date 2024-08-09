@@ -1,4 +1,5 @@
-﻿@using _01_Framework.Application.Paginations
+﻿@using _01_Framework.Application
+@using _01_Framework.Application.Paginations
 @using _01_Query.Contract.Product;
 @model (List<ProductQueryModel> , PaginationResult)
 
@@ -54,14 +55,14 @@
                         @if (product.HasDiscount)
                         {
                             <div class="h6 mb-2">
-                                @product.PriceWithDiscount تومان
-                                <del class="fs-sm fw-normal text-body-tertiary ms-1">@product.Price تومان</del>
+                                @product.PriceWithDiscount.ToPersianNumber() تومان
+                                <del class="fs-sm fw-normal text-body-tertiary ms-1">@product.Price.ToPersianNumber() تومان</del>
                             </div>
                         }
                         else
                         {
                             <div class="h6 mb-2">
-                                @product.Price تومان
+                                @product.Price.ToPersianNumber() تومان
                             </div>
                         }
 

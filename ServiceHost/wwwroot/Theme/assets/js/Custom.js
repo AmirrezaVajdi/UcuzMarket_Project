@@ -1,5 +1,5 @@
+const fullUrl = location.protocol + '//' + location.host;
 async function SetDefaultAdderss(id) {
-    const fullUrl = location.protocol + '//' + location.host;
     var headersList = {
         "Content-Type": "application/json"
     }
@@ -10,9 +10,8 @@ async function SetDefaultAdderss(id) {
         body: json,
         headers: headersList
     });
-    response.text().then(function (text) {
+}
 
-        var result = JSON.parse(text);
+async function AddToCart() {
 
-    });
 }
