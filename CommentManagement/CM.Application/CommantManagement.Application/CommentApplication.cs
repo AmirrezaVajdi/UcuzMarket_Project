@@ -20,7 +20,7 @@ namespace CommandManagement.Application
         public OperationResult Add(AddComment command)
         {
             OperationResult operation = new();
-            var comment = new Comment(command.Name, command.Email, command.Message, command.OwnerRecordId, command.Type, command.ChildId);
+            var comment = new Comment(command.Name, command.Email, command.Message, command.OwnerRecordId, command.Type, command.AccountId);
 
             _repository.Create(comment);
             _repository.SaveChanges();
@@ -35,7 +35,7 @@ namespace CommandManagement.Application
             {
                 var comment = _repository.Get(command.ParentId);
 
-                comment.AddAdminReply(new Comment("ادمین اوجوز مارکت", "admin@ucuzmarket.ir", command.Message, comment.OwnerRecordId, 0, null));
+                comment.AddAdminReply(new Comment("ادمین اوجوز مارکت", "admin@ucuzmarket.ir", command.Message, comment.OwnerRecordId, 0, 0));
 
                 _repository.SaveChanges();
 

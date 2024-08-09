@@ -13,19 +13,20 @@ namespace CommandManagement.Domain.CommentAgg
         public int Type { get; private set; }
         public long? ChildId { get; private set; }
         public Comment Child { get; private set; }
+        public long AccountId { get; set; }
         protected Comment()
         {
 
         }
 
-        public Comment(string name, string email, string message, long ownerRecordId, int type, long? childId)
+        public Comment(string name, string email, string message, long ownerRecordId, int type, long accountId)
         {
             Name = name;
             Email = email;
             Message = message;
             OwnerRecordId = ownerRecordId;
             Type = type;
-            ChildId = childId;
+            AccountId = accountId;
         }
 
         public void Confirm()

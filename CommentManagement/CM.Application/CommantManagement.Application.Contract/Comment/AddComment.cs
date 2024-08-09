@@ -19,7 +19,9 @@ namespace CommandManagement.Application.Contract.Comment
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public int Type { get; set; }
-        public long? ChildId { get; set; }
+
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        public long AccountId { get; set; }
 
     }
 }

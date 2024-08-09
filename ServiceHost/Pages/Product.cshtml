@@ -236,6 +236,11 @@
     </div>
 
     <!-- Review Form -->
+    @if (TempData["Message"] != null)
+    {
+        @Html.Raw(TempData["Message"])
+    }
+
     <div class="col-lg-6 col-md-6 col-sm-12 m-auto mt-4">
         <form method="post">
 
@@ -260,6 +265,7 @@
             <input type="hidden" asp-for="AddComment.OwnerRecordId" value="@Model.Product.Id" />
 
             <input type="hidden" asp-for="ProductSlug" value="@Model.Product.Slug" />
+
 
             <button type="submit" class="btn btn-success m-auto d-block">ثبت نظر</button>
 
