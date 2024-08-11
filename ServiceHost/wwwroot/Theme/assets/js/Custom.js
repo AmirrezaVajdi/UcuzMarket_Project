@@ -1,4 +1,4 @@
-const fullUrl = location.protocol + '//' + location.host;
+﻿const fullUrl = location.protocol + '//' + location.host;
 const storageName = "cart-items";
 const dayToCookeLife = 10;
 async function SetDefaultAdderss(id) {
@@ -56,10 +56,10 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
 
     localStorage.setItem(storageName, JSON.stringify(productsModel));
 
-    updateCart();
+    UpdateCart();
 }
 
-function updateCart() {
+function UpdateCart() {
     let products = localStorage.getItem(storageName);
 
     products = JSON.parse(products);
@@ -87,21 +87,34 @@ function updateCart() {
                             <a class="hover-effect-underline" href="${fullUrl}/Product/${product.slug}">${product.name}</a>
                         </h5>
                         <div class="h6 pb-1 mb-2">${product.price}</div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="count-input rounded-pill">
-                                <button type="button" class="btn btn-icon btn-sm" data-decrement="" aria-label="Decrement quantity">
-                                    <i class="ci-minus"></i>
-                                </button>
-                                <input type="number" class="form-control form-control-sm" value="3" readonly="">
-                                <button type="button" class="btn btn-icon btn-sm" data-increment="" aria-label="Increment quantity">
-                                    <i class="ci-plus"></i>
-                                </button>
-                            </div>
-                            <button type="button" class="btn-close fs-sm" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm" data-bs-title="Remove" aria-label="Remove from cart"></button>
+                        <div class="float-end">
+                            <button onclick="RemoveFromCart(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm" data-bs-title="حذف" aria-label="حذف"></button>
                         </div>
                     </div>
              </div >
             `
         cart_items_wrapper.innerHTML += res;
     });
+}
+
+function RemoveFromCart(id) {
+
+    let products = localStorage.getItem(storageName);
+
+    if (products === null) {
+        productsM = [];
+    }
+    else {
+        var productsM = JSON.parse(products);
+    }
+
+    let index = productsM.findIndex(function (x) {
+        return x.Id == id;
+    });
+
+    productsM.splice(index, 1);
+
+    localStorage.setItem(storageName, JSON.stringify(productsM));
+
+    UpdateCart();
 }
