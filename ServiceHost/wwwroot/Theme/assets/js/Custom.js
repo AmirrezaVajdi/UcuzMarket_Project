@@ -1,5 +1,5 @@
 const fullUrl = location.protocol + '//' + location.host;
-const cookieName = "cart-items";
+const storageName = "cart-items";
 const dayToCookeLife = 10;
 async function SetDefaultAdderss(id) {
     var headersList = {
@@ -12,31 +12,33 @@ async function SetDefaultAdderss(id) {
         body: json,
         headers: headersList
     });
-
-    AddToCart();
 }
 
 function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
 
-    let products = getCookie(cookieName);
+    let products = localStorage.getItem(storageName);
 
     if (products === null) {
-        products = [];
+        productsModel = [];
     }
     else {
-        products = JSON.parse(products);
+        var productsModel = JSON.parse(products);
     }
 
     let count = document.getElementById("productCount").value;
 
-    const currentProduct = products.find(x => x.Id == Id);
+    const currentProduct = productsModel.find(x => x.Id == Id);
 
     if (currentProduct !== undefined) {
-        products.find(x => x.Id === Id).count = parseInt(currentProduct.count) + parseInt(count);
+        productsModel.find(x => x.Id === Id).count = parseInt(currentProduct.count) + parseInt(count);
     }
     else {
         if (PriceWithDiscount === undefined || PriceWithDiscount === "") {
             PriceWithDiscount = 0;
+        }
+
+        if (price === undefined || PriceWithDiscount === "") {
+            price = 0;
         }
 
         const product = {
@@ -49,25 +51,28 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
             PriceWithDiscount
         }
 
-        products.push(product);
+        productsModel.push(product);
     }
-    var test = JSON.stringify(products);
-    setCookie(cookieName, JSON.stringify(products), dayToCookeLife);
+
+    localStorage.setItem(storageName, JSON.stringify(productsModel));
 
     updateCart();
 }
 
 function updateCart() {
-    let products = getCookie(cookieName);
+    let products = localStorage.getItem(storageName);
 
     products = JSON.parse(products);
+
+    if (products === null) {
+        products = [];
+    }
 
     let prdouctCount = document.getElementById("cart_items_count").innerText = products.length;
 
     document.getElementById("cart_items_wrapper").innerHTML = "";
 
     let cart_items_wrapper = document.getElementById("cart_items_wrapper");
-    
 
     products.forEach(function (product) {
         const res =
@@ -99,41 +104,4 @@ function updateCart() {
             `
         cart_items_wrapper.innerHTML += res;
     });
-
-}
-
-
-function setCookie(name, value, daysToLive) {
-    // Encode value in order to escape semicolons, commas, and whitespace
-    let cookie = name + "=" + encodeURIComponent(value);
-
-    cookie += ";path=/;"
-
-    if (typeof daysToLive === "number") {
-        /* Sets the max-age attribute so that the cookie expires
-        after the specified number of days */
-        cookie += "; max-age=" + (daysToLive * 24 * 60 * 60);
-
-        document.cookie = cookie;
-    }
-}
-
-function getCookie(name) {
-    // Split cookie string and get all individual name=value pairs in an array
-    let cookieArr = document.cookie.split(";");
-
-    // Loop through the array elements
-    for (let i = 0; i < cookieArr.length; i++) {
-        let cookiePair = cookieArr[i].split("=");
-
-        /* Removing whitespace at the beginning of the cookie name
-        and compare it with the given string */
-        if (name == cookiePair[0].trim()) {
-            // Decode the cookie value and return
-            return decodeURIComponent(cookiePair[1]);
-        }
-    }
-
-    // Return null if not found
-    return null;
 }
