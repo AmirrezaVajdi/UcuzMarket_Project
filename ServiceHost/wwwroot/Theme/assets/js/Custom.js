@@ -35,7 +35,7 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
         products.find(x => x.Id === Id).count = parseInt(currentProduct.count) + parseInt(count);
     }
     else {
-        if (PriceWithDiscount === undefined) {
+        if (PriceWithDiscount === undefined || PriceWithDiscount === "") {
             PriceWithDiscount = 0;
         }
 
@@ -51,7 +51,7 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
 
         products.push(product);
     }
-
+    var test = JSON.stringify(products);
     setCookie(cookieName, JSON.stringify(products), dayToCookeLife);
 
     updateCart();
@@ -64,7 +64,10 @@ function updateCart() {
 
     let prdouctCount = document.getElementById("cart_items_count").innerText = products.length;
 
+    document.getElementById("cart_items_wrapper").innerHTML = "";
+
     let cart_items_wrapper = document.getElementById("cart_items_wrapper");
+    
 
     products.forEach(function (product) {
         const res =
