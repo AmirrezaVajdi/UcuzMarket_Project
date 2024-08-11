@@ -1,6 +1,9 @@
 ﻿const fullUrl = location.protocol + '//' + location.host;
 const storageName = "cart-items";
 const dayToCookeLife = 10;
+const Pn = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+const En = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 async function SetDefaultAdderss(id) {
     var headersList = {
         "Content-Type": "application/json"
@@ -68,7 +71,7 @@ function UpdateCart() {
         products = [];
     }
 
-    let prdouctCount = document.getElementById("cart_items_count").innerText = products.length;
+    let prdouctCount = document.getElementById("cart_items_count").innerText = ToPersianNumber( products.length);
 
     document.getElementById("cart_items_wrapper").innerHTML = "";
 
@@ -79,14 +82,14 @@ function UpdateCart() {
             `
              <div class="d-flex align-items-center">
                     <a class="position-relative flex-shrink-0" href="${fullUrl}/Product/${product.slug}">
-                <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-0 ms-0">-${product.PriceWithDiscount}</span>
+                <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-0 ms-0">${ToPersianNumber(product.count)}</span>
                         <img src="${fullUrl}/ProductPictures/${product.picture}" style=" width:100px;height:100px">
                     </a>
                     <div class="w-100 ps-3">
                         <h5 class="fs-sm fw-medium lh-base mb-2">
                             <a class="hover-effect-underline" href="${fullUrl}/Product/${product.slug}">${product.name}</a>
                         </h5>
-                        <div class="h6 pb-1 mb-2">${product.price}</div>
+                        <div class="h6 pb-1 mb-2">${product.price} تومان</div>
                         <div class="float-end">
                             <button onclick="RemoveFromCart(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm" data-bs-title="حذف" aria-label="حذف"></button>
                         </div>
@@ -117,4 +120,15 @@ function RemoveFromCart(id) {
     localStorage.setItem(storageName, JSON.stringify(productsM));
 
     UpdateCart();
+}
+
+function ToPersianNumber(intNum) {
+    var chash = String(intNum);
+    if (chash === "" || chash === null) {
+        return intnum;
+    }
+    for (let i = 0; i < 10; i++) {
+        chash = chash.replace(En[i], Pn[i]);
+    }
+    return chash;
 }
