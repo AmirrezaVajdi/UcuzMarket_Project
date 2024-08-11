@@ -154,13 +154,13 @@
                                 aria-label="Decrement quantity" disabled="">
                             <i class="ci-minus"></i>
                         </button>
-                        <input type="number" class="form-control form-control-lg" value="1" min="1" readonly="">
+                        <input id="productCount" type="number" class="form-control form-control-lg" value="1" min="1" readonly="">
                         <button type="button" class="btn btn-icon btn-lg" data-increment=""
                                 aria-label="Increment quantity">
                             <i class="ci-plus"></i>
                         </button>
                     </div>
-                    <button type="button" class="btn btn-lg btn-primary rounded-pill w-100">افزودن به سبد خرید</button>
+                    <button type="button" class="btn btn-lg btn-primary rounded-pill w-100" onclick="AddToCart('@Model.Product.Id' , '@Model.Product.Name' , '@Model.Product.Slug' ,'@Model.Product.Picture' , '@Model.Product.Price' , '@Model.Product.PriceWithDiscount')">افزودن به سبد خرید</button>
                 </div>
                 <p class="fs-sm mb-4">
                     @Model.Product.ShortDescription
