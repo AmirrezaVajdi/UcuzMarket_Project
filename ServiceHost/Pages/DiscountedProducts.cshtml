@@ -5,6 +5,8 @@
 
     long PageNumber = Model.Products.Item2.PageNumber;
     long totalPage = Model.Products.Item2.TotalPage;
+    bool isTotalPageGretherThan3Page = (totalPage > 3);
+
     bool firstPage = (PageNumber == 1);
     bool OneToTheLast = ((PageNumber + 1) == totalPage);
     bool TwoToTheLast = ((PageNumber + 2) == totalPage);
@@ -241,22 +243,36 @@
             <nav class="border-top mt-4 pt-3" aria-label="Catalog pagination">
                 <ul class="pagination pagination-lg pt-2 pt-md-3">
 
-                    @if (Model.Products.Item2.ProductCount <= 16)
+                    @if (!isTotalPageGretherThan3Page)
                     {
-                        <li class="page-item disabled me-auto">
-                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="#!"
+                        <li class="page-item @(PageNumber == 1 ? "disabled" :"")  me-auto">
+                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="@(PageNumber != 1 ? Url.Page("DiscountedProducts" , new { pageNumber = (PageNumber - 1)}) : "")"
                                aria-label="Previous page">
                                 <i class="ci-chevron-left mx-1"></i>
                             </a>
                         </li>
-                        <li class="page-item active" aria-current="page">
-                            <span class="page-link">
-                                1
-                                <span class="visually-hidden">(current)</span>
-                            </span>
-                        </li>
-                        <li class="page-item disabled ms-auto">
-                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="#!"
+
+                        @for (int page = 1; page <= totalPage; page++)
+                        {
+                            <li class="page-item @(page == PageNumber ? "active  aria-current='page'" : "")">
+                                @if (page == PageNumber)
+                                {
+                                    <span class="page-link">
+                                        @PageNumber
+                                        <span class="visually-hidden">(current)</span>
+                                    </span>
+                                }
+                                else
+                                {
+                                    <a class="page-link" asp-page="./DiscountedProducts" asp-route-pageNumber="@(page)">
+                                        @(page)
+                                    </a>
+                                }
+                            </li>
+                        }
+
+                        <li class="page-item @(totalPage == 1 || PageNumber == totalPage ? "disabled" : "") ms-auto">
+                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="@(PageNumber != totalPage || totalPage != 1 ? Url.Page("DiscountedProducts" , new {pageNumber = (PageNumber + 1)}) : "")"
                                aria-label="Next page">
                                 <i class="ci-chevron-right mx-1"></i>
                             </a>
@@ -264,27 +280,21 @@
                     }
                     else
                     {
-                        @if (firstPage)
-                        {
-                            <li class="page-item disabled me-auto">
-                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2"
-                                   aria-label="Previous page">
-                                    <i class="ci-chevron-left mx-1"></i>
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="page-item me-auto">
-                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2" asp-page="./PopularProducts" asp-route-pageNumber="@(Model.Products.Item2.PageNumber - 1)"
-                                   aria-label="Previous page">
-                                    <i class="ci-chevron-left mx-1"></i>
-                                </a>
-                            </li>
-                        }
+                        <li class="page-item @(PageNumber == 1 ? "disabled" : "")  me-auto">
+                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="@(PageNumber != 1 ? Url.Page("DiscountedProducts" , new {pageNumber = (PageNumber - 1)}) : "")"
+                               aria-label="Previous page">
+                                <i class="ci-chevron-left mx-1"></i>
+                            </a>
+                        </li>
 
-                        @if (firstPage)
+                        @if (firstPage || otherPage && !OneToTheLast && !TwoToTheLast && !endPage)
                         {
+                            @if (!firstPage)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-page="./DiscountedProducts" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
+                                </li>
+                            }
                             <li class="page-item active" aria-current="page">
                                 <span class="page-link">
                                     @PageNumber
@@ -292,114 +302,54 @@
                                 </span>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
+                                <a class="page-link" asp-page="./DiscountedProducts" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
                             </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 2)">@(PageNumber + 2)</a>
-                            </li>
+                            @if (firstPage)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-page="./DiscountedProducts" asp-route-pageNumber="@(PageNumber + 2)">@(PageNumber + 2)</a>
+                                </li>
+                            }
+
                             <li class="page-item">
                                 <span class="page-link pe-none">...</span>
                             </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
-                            </li>
-                        }
-                        @if (otherPage)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    @PageNumber
-                                    <span class="visually-hidden">(current)</span>
-                                </span>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
-                            </li>
-                            <li class="page-item">
-                                <span class="page-link pe-none">...</span>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
-                            </li>
-                        }
-                        @if (TwoToTheLast)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    @PageNumber
-                                    <span class="visually-hidden">(current)</span>
-                                </span>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber + 1)">@(PageNumber + 1)</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
-                            </li>
-                        }
-                        @if (OneToTheLast)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 2)">@(PageNumber - 2)</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 1)">@(PageNumber - 1)</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    @PageNumber
-                                    <span class="visually-hidden">(current)</span>
-                                </span>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@totalPage">@(totalPage)</a>
-                            </li>
-                        }
-                        @if (endPage)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 3)">@(PageNumber - 3)</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber - 2)">@(PageNumber - 2)</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" asp-asp-page="./ProductCategory" asp-route-pageNumber="@(PageNumber -1)">@(PageNumber - 1)</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    @PageNumber
-                                    <span class="visually-hidden">(current)</span>
-                                </span>
-                            </li>
-                        }
 
-                        @if (endPage)
-                        {
-
-                            <li class="page-item disabled ms-auto">
-                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="#!"
-                                   aria-label="Next page">
-                                    <i class="ci-chevron-right mx-1"></i>
-                                </a>
-                            </li>
                         }
                         else
                         {
-                            <li class="page-item ms-auto">
-                                <a class="page-link d-flex align-items-center h-100 fs-lg px-2" asp-page="./PopularProducts" asp-route-pageNumber="@(Model.Products.Item2.PageNumber + 1)"
-                                   aria-label="Next page">
-                                    <i class="ci-chevron-right mx-1"></i>
-                                </a>
-                            </li>
+                            @for (long page = totalPage; (page - 3) < totalPage; page++)
+                            {
+                                <li class="page-item @((page - 3 == PageNumber) ? "active  aria-current='page'" : "")">
+                                    @if (page == PageNumber)
+                                    {
+                                        <span class="page-link">
+                                            @(page - 3)
+                                            <span class="visually-hidden">(current)</span>
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <a class="page-link" asp-page="./DiscountedProducts" asp-route-pageNumber="@(PageNumber - 3)">
+                                            @(page - 3)
+                                        </a>
+                                    }
+                                </li>
+                            }
                         }
+
+                        <li class="page-item @(endPage ? "active  aria-current='page'" : "")">
+                            <a class="page-link" asp-page="./DiscountedProducts">@totalPage</a>
+                        </li>
+
+                        <li class="page-item @(endPage ? "disabled" : "") ms-auto">
+                            <a class="page-link d-flex align-items-center h-100 fs-lg px-2" href="@(!endPage ? Url.Page("DiscountedProducts" , new {pageNumber = (PageNumber + 1)}) : "")"
+                               aria-label="Next page">
+                                <i class="ci-chevron-right mx-1"></i>
+                            </a>
+                        </li>
                     }
+
                 </ul>
             </nav>
         </div>

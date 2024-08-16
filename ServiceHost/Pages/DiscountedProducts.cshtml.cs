@@ -16,9 +16,9 @@ namespace ServiceHost.Pages
             _productQuery = productQuery;
         }
 
-        public void OnGet()
+        public void OnGet(int pageNumber = 1)
         {
-            PaginationOptions paginationOptions = new(PageSize: 16);
+            PaginationOptions paginationOptions = new(PageSize: 16, PageNumber: pageNumber);
             Products = _productQuery.GetDiscountedProducts(paginationOptions);
         }
     }
