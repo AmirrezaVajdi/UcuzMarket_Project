@@ -13,7 +13,7 @@ namespace _01_Query.Contract.Product
     {
         ProductQueryModel GetProductDetails(string slug);
         (List<ProductQueryModel>, PaginationResult) GetPopularProducts(PaginationOptions paginationOptions);
-        List<ProductQueryModel> Search(string value);
+        (List<ProductQueryModel>, PaginationResult) Search(PaginationOptions paginationOptions, string value);
         List<CartItem> CheckInventoryStatus(List<CartItem> cartItems);
         (List<ProductQueryModel>, PaginationResult) GetDiscountedProducts(PaginationOptions paginationOptions);
         List<ProductQueryModel> GetRelatedPrdoucts(string categorySlug);
