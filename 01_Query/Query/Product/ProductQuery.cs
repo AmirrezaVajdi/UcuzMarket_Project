@@ -11,6 +11,7 @@ using InventoryManagement.Domain.InventoryAgg;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Order;
+using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
@@ -403,6 +404,77 @@ namespace _01_Query.Query
             paginationResult.TotalPage = (long)Math.Ceiling(double.Parse(paginationResult.ProductCount.ToString()) / paginationOptions.PageSize);
 
             return (products, paginationResult);
+        }
+
+        public List<ProductQueryModel> GetCartsItemByProducts(long[] id)
+        {
+            var products = _shopContext
+                 .Products
+                 .Where(x => id.Any(z => z == x.Id))
+                 .Select(x => new ProductQueryModel
+                 {
+                     Id = x.Id,
+                     Name = x.Name,
+                     Picture = x.Picture,
+                     Slug = x.Slug,
+                 })
+                 .AsNoTracking()
+                 .ToList();
+
+            var discounts = _discountContext
+                .CustomerDiscounts
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
+                .Where(x => id.Any(z => x.ProductId == z))
+                .Select(x => new
+                {
+                    x.ProductId,
+                    x.DiscountRate,
+                    x.EndDate
+
+                })
+                .AsNoTracking()
+                .ToList();
+
+
+            var inventories = _inventoryContext
+                .Inventory
+                .Where(x => id.Any(z => x.ProductId == z))
+               .Select(x => new
+               {
+                   x.ProductId,
+                   x.UnitPrice,
+                   x.InStock
+               })
+               .AsNoTracking();
+
+            foreach (var product in products)
+            {
+                var productInventory = inventories
+                    .SingleOrDefault(x => x.ProductId == product.Id);
+
+                double price = 0;
+
+                if (productInventory != null)
+                {
+                    price = productInventory.UnitPrice;
+                    product.IsInStock = productInventory.InStock;
+                    product.Price = price.ToMoney();
+                }
+
+                var discount = discounts.SingleOrDefault(x => x.ProductId == product.Id);
+
+                if (discount != null)
+                {
+                    var discountRate = discount.DiscountRate;
+                    product.DiscountRate = discountRate;
+                    product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
+                    product.HasDiscount = discountRate > 0;
+                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                }
+            }
+
+            return products;
         }
         private List<long> GetProductsId(List<ProductQueryModel> model)
         {

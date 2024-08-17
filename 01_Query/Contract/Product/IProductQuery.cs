@@ -17,5 +17,6 @@ namespace _01_Query.Contract.Product
         List<CartItem> CheckInventoryStatus(List<CartItem> cartItems);
         (List<ProductQueryModel>, PaginationResult) GetDiscountedProducts(PaginationOptions paginationOptions);
         List<ProductQueryModel> GetRelatedPrdoucts(string categorySlug);
+        List<ProductQueryModel> GetCartsItemByProducts(long[] id);
     }
 }
