@@ -133,6 +133,19 @@ function ToPersianNumber(intNum) {
     return chash;
 }
 
+function ToEnglishNumber(intNum) {
+    var chash = String(intNum);
+    if (chash === "" || chash === null) {
+        return 0;
+    }
+
+    chash = chash.replace('٬', '');
+
+    chash = chash.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+
+    return chash;
+}
+
 function LoadCartItems() {
 
     let products = localStorage.getItem(storageName);
@@ -220,12 +233,14 @@ function LoadCartItems() {
         `
         cartItems.innerHTML += result;
 
-        let pc = product.price;
-        let pwd = product.PriceWithDiscount;
+        let pc = ToEnglishNumber(product.price);
+        let pwd = ToEnglishNumber(product.PriceWithDiscount);
+        let count = product.count;
 
         const price = {
             pc,
-            pwd
+            pwd,
+            count
         };
 
         totalPriced.push(price);
@@ -233,7 +248,11 @@ function LoadCartItems() {
 
     document.getElementById("totalProductCount").innerText = 'مجموع قیمت' + '(' + ToPersianNumber(products.length) + ' محصول' + ')';
 
-    
+    let totalPrice = 0;
+    totalPriced.forEach(function (price) {
+        let cu = Number(price.pc) * Number(price.count);
+        totalPrice += cu;
+    });
 
-    document.getElementById("totalProductPrice").innerText = "";
+    document.getElementById("totalProductPrice").innerText = String(ToPersianNumber(totalPrice));
 }
