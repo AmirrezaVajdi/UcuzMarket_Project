@@ -71,7 +71,7 @@ function UpdateCart() {
         products = [];
     }
 
-    let prdouctCount = document.getElementById("cart_items_count").innerText = ToPersianNumber( products.length);
+    let prdouctCount = document.getElementById("cart_items_count").innerText = ToPersianNumber(products.length);
 
     document.getElementById("cart_items_wrapper").innerHTML = "";
 
@@ -131,4 +131,109 @@ function ToPersianNumber(intNum) {
         chash = chash.replace(En[i], Pn[i]);
     }
     return chash;
+}
+
+function LoadCartItems() {
+
+    let products = localStorage.getItem(storageName);
+
+    let totalPriced = [];
+
+    products = JSON.parse(products);
+
+    if (products === null) {
+        products = [];
+    }
+
+    document.getElementById("cart-items").innerHTML = "";
+
+    let cartItems = document.getElementById("cart-items");
+
+    products.forEach(function (product) {
+        let result = `
+     <!-- Item -->
+                        <tr>
+                            <td class="py-3 ps-0">
+                                <div class="d-flex align-items-center">
+                                    <a class="position-relative flex-shrink-0" href="${fullUrl}/Product/${product.slug}">
+                                    ${(product.PriceWithDiscount != "0" ? '<span class="badge text-bg-danger position-absolute top-0 start-0">' + 'درصد تخفیف' + '</span>' : "")}
+                                        <img src="${fullUrl}/ProductPictures/${product.picture}" style="
+    width: 100px;
+    height: 100px;
+">
+                                    </a>
+                                    <div class="ps-2 ps-xl-3">
+                                        <h5 class="lh-sm mb-2">
+                                            <a class="hover-effect-underline fs-sm fw-medium"
+                                              href="${fullUrl}/Product/${product.slug}">
+                                                ${product.name}
+                                            </a>
+                                        </h5>
+                                         <ul class="list-unstyled gap-1 fs-xs mb-0">
+                                                    <li class="d-xl-none">
+                                                        <span class="text-body-secondary">قیمت:</span>
+                                                    <span class="text-dark-emphasis fw-medium">
+                                                    ${(product.PriceWithDiscount != "0" ? product.PriceWithDiscount + ' تومان' + '<del class="text-body-tertiary fw-normal d-block">' + product.price + ' تومان' + '</del>' : product.price + ' تومان')} 
+                                                    </span>
+                                                    </li>
+                                                </ul>
+        <div class="count-input rounded-pill d-md-none mt-3">
+            <button type="button" class="btn btn-sm btn-icon" data-decrement=""
+                aria-label="Decrement quantity">
+                <i class="ci-minus"></i>
+            </button>
+            <input type="number" class="form-control form-control-sm" value="${product.count}"
+                readonly="">
+                <button type="button" class="btn btn-sm btn-icon" data-increment=""
+                    aria-label="Increment quantity">
+                    <i class="ci-plus"></i>
+                </button>
+        </div>
+                                    </div >
+                                </div >
+                            </td >
+                            <td class="h6 py-3 d-none d-xl-table-cell">
+                                                 ${(product.PriceWithDiscount != "0" ? product.PriceWithDiscount + ' تومان' + '<del class="text-body-tertiary fs-sm fw-normal d-block">' + product.price + ' تومان' + '</del>' : product.price + ' تومان')} 
+                            </td>
+                            <td class="py-3 d-none d-md-table-cell">
+                                <div class="count-input rounded-pill">
+                                    <button type="button" class="btn btn-icon" data-decrement=""
+                                            aria-label="Decrement quantity">
+                                        <i class="ci-minus"></i>
+                                    </button>
+                                    <input type="number" class="form-control" value="${product.count}" readonly="">
+                                    <button type="button" class="btn btn-icon" data-increment=""
+                                            aria-label="Increment quantity">
+                                        <i class="ci-plus"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="h6 py-3 d-none d-md-table-cell">
+                            ${(product.PriceWithDiscount != "0" ? "" : "")}
+                            </td>
+                            <td class="text-end py-3 px-0">
+                                <button type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
+                                        data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+                                        aria-label="Remove from cart"></button>
+                            </td>
+                        </tr >
+        `
+        cartItems.innerHTML += result;
+
+        let pc = product.price;
+        let pwd = product.PriceWithDiscount;
+
+        const price = {
+            pc,
+            pwd
+        };
+
+        totalPriced.push(price);
+    })
+
+    document.getElementById("totalProductCount").innerText = 'مجموع قیمت' + '(' + ToPersianNumber(products.length) + ' محصول' + ')';
+
+    
+
+    document.getElementById("totalProductPrice").innerText = "";
 }
