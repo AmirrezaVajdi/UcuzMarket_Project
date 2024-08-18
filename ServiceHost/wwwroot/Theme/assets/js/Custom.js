@@ -125,11 +125,13 @@ function RemoveFromCart(id) {
 function ToPersianNumber(intNum) {
     var chash = String(intNum);
     if (chash === "" || chash === null) {
-        return intnum;
+        return 0;
     }
-    for (let i = 0; i < 10; i++) {
-        chash = chash.replace(En[i], Pn[i]);
-    }
+
+    chash = chash.replace(',', '');
+
+    chash = chash.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
     return chash;
 }
 
@@ -249,10 +251,15 @@ function LoadCartItems() {
     document.getElementById("totalProductCount").innerText = 'مجموع قیمت' + '(' + ToPersianNumber(products.length) + ' محصول' + ')';
 
     let totalPrice = 0;
+    let savePrice = 0;
     totalPriced.forEach(function (price) {
         let cu = Number(price.pc) * Number(price.count);
         totalPrice += cu;
+        savePrice += (price.pwd === undefined ? 0 : price.pc - price.pwd);
     });
 
-    document.getElementById("totalProductPrice").innerText = String(ToPersianNumber(totalPrice));
+    document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
+    document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
+
+    document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
 }

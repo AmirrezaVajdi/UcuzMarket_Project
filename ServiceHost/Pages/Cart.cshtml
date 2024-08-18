@@ -4,26 +4,6 @@
 @{
     ViewData["title"] = "سبد خرید";
 }
-<li class="d-xl-none">
-    <span class="text-body-secondary">Price:</span>
-    <span class="text-dark-emphasis fw-medium">$3.95</span>
-</li>
-
-
-
-
-<li class="d-xl-none">
-    <span class="text-body-secondary">قیمت:</span>
-            <span class="text-dark-emphasis fw-medium">
-                $3.12
-                <del class="text-body-tertiary fw-normal">$4.05</del>
-            </span>
-</li>
-
-
-
-
-
 
 <!-- Breadcrumb -->
 <nav class="container pt-1 pt-md-0 my-3 my-md-4" aria-label="breadcrumb">
@@ -99,7 +79,7 @@
                             </li>
                             <li class="d-flex justify-content-between">
                                 دخیره:
-                                <span class="text-danger fw-medium">-$2.79</span>
+                                <span class="text-danger fw-medium" id="savePrice"></span>
                             </li>
                             <li class="d-flex justify-content-between">
                                 حمل و نقل:
@@ -109,11 +89,11 @@
                         <div class="border-top pt-4 mt-4">
                             <div class="d-flex justify-content-between mb-3">
                                 <span class="fs-sm">قابل پرداخت:</span>
-                                <span class="h5 mb-0">$68.91</span>
+                                <span class="h4 mb-0" id="payToAmount"></span>
                             </div>
                             <a class="btn btn-lg btn-primary w-100 rounded-pill"
                                href="checkout-v2-delivery.html">
-                                Proceed to checkout
+                                اقدام به پرداخت
                                 <i class="ci-chevron-right fs-lg ms-1 me-n1"></i>
                             </a>
                         </div>
