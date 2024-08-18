@@ -121,7 +121,11 @@ function RemoveFromCart(id) {
 
     UpdateCart();
 }
-
+function RemoveFromCartPage(id) {
+    RemoveFromCart(id);
+    UpdateCart();
+    LoadCartItems();
+}
 function ToPersianNumber(intNum) {
     var chash = String(intNum);
     if (chash === "" || chash === null) {
@@ -227,7 +231,7 @@ function LoadCartItems() {
                             ${(product.PriceWithDiscount != "0" ? "" : "")}
                             </td>
                             <td class="text-end py-3 px-0">
-                                <button type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
+                                <button onclick="RemoveFromCartPage(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
                                         data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
                                         aria-label="Remove from cart"></button>
                             </td>
