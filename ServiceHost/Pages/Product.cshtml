@@ -160,7 +160,7 @@
                             <i class="ci-plus"></i>
                         </button>
                     </div>
-                    <button type="button" class="btn btn-lg btn-primary rounded-pill w-100" onclick="AddToCart('@Model.Product.Id' , '@Model.Product.Name' , '@Model.Product.Slug' ,'@Model.Product.Picture' , '@Model.Product.Price.ToPersianNumber()' , '@Model.Product.PriceWithDiscount.ToPersianNumber()')">افزودن به سبد خرید</button>
+                    <button type="button" class="btn btn-lg btn-primary rounded-pill w-100" onclick="AddToCart('@Model.Product.Id' , '@Model.Product.Name' , '@Model.Product.Slug' ,'@Model.Product.Picture' , '@Model.Product.Price.ToPersianNumber()' , '@Model.Product.PriceWithDiscount.ToPersianNumber()','@Model.Product.DiscountRate')">افزودن به سبد خرید</button>
                 </div>
                 <p class="fs-sm mb-4">
                     @Model.Product.ShortDescription

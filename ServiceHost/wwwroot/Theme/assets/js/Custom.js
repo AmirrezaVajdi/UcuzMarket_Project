@@ -1,8 +1,5 @@
 ﻿const fullUrl = location.protocol + '//' + location.host;
 const storageName = "cart-items";
-const dayToCookeLife = 10;
-const Pn = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-const En = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 async function SetDefaultAdderss(id) {
     var headersList = {
@@ -17,7 +14,7 @@ async function SetDefaultAdderss(id) {
     });
 }
 
-function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
+function AddToCart(Id, name, slug, picture, price, PriceWithDiscount, discountRate) {
 
     let products = localStorage.getItem(storageName);
 
@@ -44,6 +41,7 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
             price = 0;
         }
 
+        count = parseInt(count);
         const product = {
             Id,
             name,
@@ -51,7 +49,8 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount) {
             picture,
             price,
             count,
-            PriceWithDiscount
+            PriceWithDiscount,
+            discountRate
         }
 
         productsModel.push(product);
@@ -89,7 +88,7 @@ function UpdateCart() {
                         <h5 class="fs-sm fw-medium lh-base mb-2">
                             <a class="hover-effect-underline" href="${fullUrl}/Product/${product.slug}">${product.name}</a>
                         </h5>
-                        <div class="h6 pb-1 mb-2">${product.price} تومان</div>
+                        ${(product.PriceWithDiscount != 0 ? '<div class="h6 pb-1 mb-2" > ' + product.PriceWithDiscount + ' تومان  <del class="text-body-tertiary fs-sm fw-normal d-block">' + product.price + ' تومان' + '</del>   </div >' : '<div class="h6 pb-1 mb-2">' + product.price + ' تومان</div>')}
                         <div class="float-end">
                             <button onclick="RemoveFromCart(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm" data-bs-title="حذف" aria-label="حذف"></button>
                         </div>
@@ -121,11 +120,13 @@ function RemoveFromCart(id) {
 
     UpdateCart();
 }
+
 function RemoveFromCartPage(id) {
     RemoveFromCart(id);
     UpdateCart();
     LoadCartItems();
 }
+
 function ToPersianNumber(intNum) {
     var chash = String(intNum);
     if (chash === "" || chash === null) {
@@ -175,7 +176,7 @@ function LoadCartItems() {
                             <td class="py-3 ps-0">
                                 <div class="d-flex align-items-center">
                                     <a class="position-relative flex-shrink-0" href="${fullUrl}/Product/${product.slug}">
-                                    ${(product.PriceWithDiscount != "0" ? '<span class="badge text-bg-danger position-absolute top-0 start-0">' + 'درصد تخفیف' + '</span>' : "")}
+                                    ${(product.PriceWithDiscount != "0" ? '<span class="badge text-bg-danger position-absolute top-0 start-0">' + ToPersianNumber(product.discountRate) + '</span>' : "")}
                                         <img src="${fullUrl}/ProductPictures/${product.picture}" style="
     width: 100px;
     height: 100px;
@@ -228,15 +229,16 @@ function LoadCartItems() {
                                 </div>
                             </td>
                             <td class="h6 py-3 d-none d-md-table-cell">
-                            ${(product.PriceWithDiscount != "0" ? "" : "")}
-                            </td>
-                            <td class="text-end py-3 px-0">
-                                <button onclick="RemoveFromCartPage(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
-                                        data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
-                                        aria-label="Remove from cart"></button>
-                            </td>
+                            ${(product.PriceWithDiscount != 0 ? ToPersianNumber((ToEnglishNumber(product.PriceWithDiscount) * ToEnglishNumber(product.count))) + ' تومان' : ToPersianNumber(ToEnglishNumber(product.price) * ToEnglishNumber(product.count)) + ' تومان')
+            }
+                            </td >
+    <td class="text-end py-3 px-0">
+        <button onclick="RemoveFromCartPage(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
+            data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
+            aria-label="Remove from cart"></button>
+    </td>
                         </tr >
-        `
+    `
         cartItems.innerHTML += result;
 
         let pc = ToEnglishNumber(product.price);
@@ -259,11 +261,18 @@ function LoadCartItems() {
     totalPriced.forEach(function (price) {
         let cu = Number(price.pc) * Number(price.count);
         totalPrice += cu;
-        savePrice += (price.pwd === undefined ? 0 : price.pc - price.pwd);
+        //savePrice += (price.pwd === undefined || price.pwd == 0 ? 0 : price.pc - price.pwd);
+        savePrice += (price.pwd == undefined || price.pwd == 0 ? 0 : (price.pc - price.pwd) * price.count);
     });
 
     document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
     document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
 
     document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+}
+
+function RemoveAllCarts() {
+    localStorage.removeItem(storageName);
+    UpdateCart();
+    LoadCartItems();
 }
