@@ -3,124 +3,104 @@
 @using _01_Framework.Application;
 @model ServiceHost.Pages.CheckOutModel
 @{
-    ViewData["Title"] = "تایید سبد خرید / پرداخت";
+    ViewData["title"] = "تایید سبد خرید و پرداخت";
 }
 
-<div class="breadcrumb-area section-space--half">
-    <div class="container wide">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
-                    <div class="breadcrumb-content">
-                        <h2 class="breadcrumb-content__title">تایید سبد خرید / پرداخت</h2>
-                        <ul class="breadcrumb-content__page-map">
-                            <li><a asp-page="./Index">صفحه اصلی</a></li>
-                            <li class="active">تایید سبد خرید / پرداخت</li>
+<!-- Breadcrumb -->
+<nav class="container pt-1 pt-md-0 my-3 my-md-4" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="/">خانه</a></li>
+        <li class="breadcrumb-item active" aria-current="page">تایید سبد خرید و پرداخت</li>
+    </ol>
+</nav>
+
+
+<!-- Items in the cart + Order summary -->
+<section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <h1 class="h3 mb-4">تایید سبد خرید و پرداخت</h1>
+    <div class="row">
+
+        <!-- Items list + Delivery / pickup tabs -->
+        <div class="col-lg-8">
+            <div class="pe-lg-2 pe-xl-3 me-xl-3">
+
+                <!-- Table of items -->
+                <table class="table position-relative z-2 mb-4">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="fs-sm fw-normal py-3 ps-0">
+                                <span class="text-body">محصول</span>
+                            </th>
+                            <th scope="col" class="text-body fs-sm fw-normal py-3 d-none d-xl-table-cell">
+                                <span class="text-body">قیمت</span>
+                            </th>
+                             <th scope="col" class="text-body fs-sm fw-normal py-3 d-none d-xl-table-cell">
+                                <span class="text-body">تعداد</span>
+                            </th>
+                            <th scope="col" class="text-body fs-sm fw-normal py-3 d-none d-md-table-cell">
+                                <span class="text-body">قیمت کل</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle" id="cart-items">
+                    </tbody>
+                </table>
+
+                <div class="nav position-relative z-2 mb-4 mb-lg-0">
+                    <a class="nav-link animate-underline px-0" href="/">
+                        <i class="ci-chevron-left fs-lg me-1"></i>
+                        <span class="animate-target">ادامه خرید کردن</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Order summary (sticky sidebar) -->
+        <aside class="col-lg-4" style="margin-top: -115px">
+            <div class="position-sticky top-0" style="padding-top: 115px">
+                <h2 class="h5 border-bottom pb-4 mb-4 me-3">خلاصه سفارش</h2>
+                <div class="tab-content">
+
+                    <!-- Delivery tab -->
+                    <div class="tab-pane show active" id="delivery" role="tabpanel"
+                         aria-labelledby="cart-delivery-tab">
+                        <ul class="list-unstyled fs-sm gap-3 mb-0">
+                            <li class="d-flex justify-content-between">
+                                <span id="totalProductCount"></span>
+                                <span class="text-dark-emphasis fw-medium" id="totalProductPrice"></span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                دخیره:
+                                <span class="text-danger fw-medium" id="savePrice"></span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                حمل و نقل:
+                                <span class="text-dark-emphasis fw-medium">رایگان</span>
+                            </li>
                         </ul>
+                        <div class="border-top pt-4 mt-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="fs-sm">قابل پرداخت:</span>
+                                <span class="h4 mb-0" id="payToAmount"></span>
+                            </div>
+                            <a class="btn btn-lg btn-primary w-100 rounded-pill"
+                               href="checkout-v2-delivery.html">
+                                اقدام به پرداخت
+                                <i class="ci-chevron-right fs-lg ms-1 me-n1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
-</div>
+</section>
 
-<div class="page-content-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="page-wrapper">
-                    <div class="page-content-wrapper">
-                        <form method="post" asp-page-handler="Pay">
-                            <div class="cart-table table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="pro-thumbnail">عکس</th>
-                                            <th class="pro-thumbnail">محصول</th>
-                                            <th class="pro-title">قیمت واحد</th>
-                                            <th class="pro-price">تعداد</th>
-                                            <th class="pro-quantity">مبلغ کل بدون تخفیف</th>
-                                            <th class="pro-quantity">درصد تخفیف</th>
-                                            <th class="pro-subtotal">مبلغ کل تخفیف</th>
-                                            <th class="pro-remove">مبلغ پس از تخفیف</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Cart.Items)
-                                        {
-                                            <tr>
-                                                <td class="pro-thumbnail">
-                                                    <a>
-                                                        <img src="~/ProductPictures/@item.Picture" class="img-fluid"
-                                                             alt="@item.Name">
-                                                    </a>
-                                                </td>
-                                                <td class="pro-title">
-                                                    <a>
-                                                        @item.Name
-                                                    </a>
-                                                </td>
-                                                <td class="pro-price">
-                                                    <span>@item.UnitPrice.ToMoney() تومان</span>
-                                                </td>
-                                                <td class="pro-price">
-                                                    <span>@item.Count عدد</span>
-                                                </td>
-                                                <td class="pro-subtotal">
-                                                    <span>@item.TotalItemPrice.ToMoney() تومان</span>
-                                                </td>
-                                                <td class="pro-subtotal">
-                                                    <span>@item.DiscountRate%</span>
-                                                </td>
-                                                <td class="pro-subtotal">
-                                                    <span>@item.DiscountAmount.ToMoney() تومان</span>
-                                                </td>
-                                                <td class="pro-subtotal">
-                                                    <span>@item.ItemPayAmount.ToMoney() تومان</span>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-lg-6 col-12 d-flex">
-                                    <div class="checkout-payment-method">
-                                        <h4>نحوه پرداخت</h4>
-                                        @foreach (var method in PaymentMethod.GetList())
-                                        {
-                                            <div class="single-method">
-                                                <input type="radio" id="payment_@method.Id" name="paymentMethod" value="@method.Id" @(PaymentMethod.GetList().First().Id == method.Id ? "checked" : "") />
-                                                <label for="payment_@method.Id">@method.Name</label>
-                                                <p data-method="@method.Id" style="display:@(PaymentMethod.GetList().First().Id == method.Id ? "block" : "none");">@method.Description</p>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-lg-6 col-12 d-flex">
-                                    <div class="cart-summary">
-                                        <div class="cart-summary-wrap">
-                                            <h4>خلاصه وضعیت فاکتور</h4>
-                                            <p>مبلغ نهایی <span>@Model.Cart.TotalAmount.ToMoney() تومان</span></p>
-                                            <p>مبلغ تخفیف <span>@Model.Cart.DiscountAmount.ToMoney() تومان</span></p>
-                                            <h2>مبلغ قابل پرداخت <span>@Model.Cart.PayAmmount.ToMoney() تومان</span></h2>
-                                        </div>
-                                        <div class="cart-summary-button">
-                                            <button class="checkout-btn" asp-page="./CheckOut" asp-page-handler="Pay">پرداخت</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            GetPrductsId();
+        });
+    </script>
+}

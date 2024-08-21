@@ -21,5 +21,11 @@ namespace ShopManagement.Presentation.Api
             return null;
             //return _productQuery.GetPopularProducts();
         }
+
+        [HttpPost("GetProductsCheckout")]
+        public List<ProductQueryModel> GetProductsby([FromBody] long[] productsId)
+        {
+            return _productQuery.GetCartsItemByProducts(productsId);
+        }
     }
 }
