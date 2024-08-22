@@ -87,7 +87,24 @@ namespace ServiceHost.Pages
         //    return RedirectToPage("./PaymentResult", result);
         //}
 
-        public void OnGet([FromBody] long[] productsId)
+
+
+
+
+
+        //private readonly ICartService _cartService;
+
+        //public CheckOutModel(ICartService cartService)
+        //{
+        //    _cartService = cartService;
+        //}
+
+        public void OnGet()
+        {
+
+        }
+
+        public void OnPostPay(int paymentMethod, long[] productsId)
         {
 
         }

@@ -47,9 +47,9 @@
                 </table>
 
                 <div class="nav position-relative z-2 mb-4 mb-lg-0">
-                    <a class="nav-link animate-underline px-0" href="/">
+                    <a class="nav-link animate-underline px-0" asp-page="./Cart">
                         <i class="ci-chevron-left fs-lg me-1"></i>
-                        <span class="animate-target">ادامه خرید کردن</span>
+                        <span class="animate-target">بازگشت به سبد خرید</span>
                     </a>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                             </div>
                             <a class="btn btn-lg btn-primary w-100 rounded-pill"
                                href="checkout-v2-delivery.html">
-                                اقدام به پرداخت
+                                پرداخت
                                 <i class="ci-chevron-right fs-lg ms-1 me-n1"></i>
                             </a>
                         </div>
@@ -100,7 +100,7 @@
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            GetPrductsId();
+            GetCheckoutModel();
         });
     </script>
 }

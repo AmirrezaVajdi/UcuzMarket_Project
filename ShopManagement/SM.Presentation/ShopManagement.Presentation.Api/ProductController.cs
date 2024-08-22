@@ -1,6 +1,7 @@
 ﻿using _01_Query.Contract.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShopManagement.Application.Contracts.Order;
 
 namespace ShopManagement.Presentation.Api
 {
@@ -9,10 +10,12 @@ namespace ShopManagement.Presentation.Api
     public class ProductController : ControllerBase
     {
         private readonly IProductQuery _productQuery;
+        private readonly ICartService _cartService;
 
-        public ProductController(IProductQuery productQuery)
+        public ProductController(IProductQuery productQuery, ICartService cartService)
         {
             _productQuery = productQuery;
+            _cartService = cartService;
         }
 
         [HttpGet]
@@ -23,9 +26,20 @@ namespace ShopManagement.Presentation.Api
         }
 
         [HttpPost("GetProductsCheckout")]
-        public List<ProductQueryModel> GetProductsby([FromBody] long[] productsId)
+        public List<ProductQueryModel> GetProductsby([FromBody] List<CheckoutModel> models)
         {
-            return _productQuery.GetCartsItemByProducts(productsId);
+            var productsId = new List<long>(models.Count);
+
+            models.ForEach(x => productsId.Add(x.productId));
+
+            var products = _productQuery.GetCartsItemByProducts(productsId.ToArray());
+
+            return products;
         }
+    }
+    public class CheckoutModel
+    {
+        public long productId { get; set; }
+        public int count { get; set; }
     }
 }
