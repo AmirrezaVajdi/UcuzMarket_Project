@@ -82,7 +82,8 @@ function UpdateCart() {
             `
              <div class="d-flex align-items-center">
                     <a class="position-relative flex-shrink-0" href="${fullUrl}/Product/${product.slug}">
-                <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-0 ms-0">${ToPersianNumber(product.count)}</span>
+                    ${(product.discountRate != "0" ? '<span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-0 ms-0">' + ToPersianNumber(product.discountRate) + ' %' + '</span>' : '')}
+                    
                         <img src="${fullUrl}/ProductPictures/${product.picture}" style=" width:100px;height:100px">
                     </a>
                     <div class="w-100 ps-3">
@@ -93,7 +94,7 @@ function UpdateCart() {
 
 
                         <div class="count-input rounded-pill">
-                            <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-decrement="" aria-label="Decrement quantity">
+                            <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-decrement="" aria-label="Decrement quantity" ${(product.count <= 1 ? 'disabled' : '')}>
                                 <i class="ci-minus"></i>
                             </button>
                             <input min="1" type="number" class="form-control form-control-sm" value="${currentProductCount}" readonly="">
@@ -191,7 +192,7 @@ function LoadCartItems() {
                             <td class="py-3 ps-0">
                                 <div class="d-flex align-items-center">
                                     <a class="position-relative flex-shrink-0" href="${fullUrl}/Product/${product.slug}">
-                                    ${(product.PriceWithDiscount != "0" ? '<span class="badge text-bg-danger position-absolute top-0 start-0">' + ToPersianNumber(product.discountRate) + '</span>' : "")}
+                                    ${(product.PriceWithDiscount != "0" ? '<span class="badge text-bg-danger position-absolute top-0 start-0">' + ToPersianNumber(product.discountRate) + '%' + '</span>' : "")}
                                         <img src="${fullUrl}/ProductPictures/${product.picture}" style="
     width: 100px;
     height: 100px;
@@ -213,13 +214,13 @@ function LoadCartItems() {
                                                     </li>
                                                 </ul>
         <div class="count-input rounded-pill d-md-none mt-3">
-            <button type="button" class="btn btn-sm btn-icon" data-decrement=""
-                aria-label="Decrement quantity">
+            <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-sm btn-icon" data-decrement=""
+                aria-label="Decrement quantity" ${(product.count <= 1 ? 'disabled' : '')}>
                 <i class="ci-minus"></i>
             </button>
             <input type="number" class="form-control form-control-sm" value="${product.count}"
                 readonly="">
-                <button type="button" class="btn btn-sm btn-icon" data-increment=""
+                <button onclick="IncrementProductCount(${product.Id})" type="button" class="btn btn-sm btn-icon" data-increment=""
                     aria-label="Increment quantity">
                     <i class="ci-plus"></i>
                 </button>
@@ -233,7 +234,7 @@ function LoadCartItems() {
                             <td class="py-3 d-none d-md-table-cell">
                                 <div class="count-input rounded-pill">
                                     <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon" data-decrement=""
-                                            aria-label="Decrement quantity">
+                                            aria-label="Decrement quantity" ${(product.count <= 1 ? 'disabled' : '')}>
                                         <i class="ci-minus"></i>
                                     </button>
                                     <input min="1" type="number" class="form-control" value="${product.count}" readonly="">
