@@ -93,10 +93,10 @@ function UpdateCart() {
 
 
                         <div class="count-input rounded-pill">
-                            <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-decrement="" aria-label="Decrement quantity" ${(product.count <= 1 ? 'disabled' : '')}>
+                            <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-decrement="" aria-label="Decrement quantity">
                                 <i class="ci-minus"></i>
                             </button>
-                            <input type="number" class="form-control form-control-sm" value="${currentProductCount}" readonly="">
+                            <input min="1" type="number" class="form-control form-control-sm" value="${currentProductCount}" readonly="">
                             <button onclick="IncrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-increment="" aria-label="Increment quantity">
                                 <i class="ci-plus"></i>
                             </button>
@@ -231,12 +231,12 @@ function LoadCartItems() {
                             </td>
                             <td class="py-3 d-none d-md-table-cell">
                                 <div class="count-input rounded-pill">
-                                    <button type="button" class="btn btn-icon" data-decrement=""
+                                    <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon" data-decrement=""
                                             aria-label="Decrement quantity">
                                         <i class="ci-minus"></i>
                                     </button>
-                                    <input type="number" class="form-control" value="${product.count}" readonly="">
-                                    <button type="button" class="btn btn-icon" data-increment=""
+                                    <input min="1" type="number" class="form-control" value="${product.count}" readonly="">
+                                    <button onclick="IncrementProductCount(${product.Id})"  type="button" class="btn btn-icon" data-increment=""
                                             aria-label="Increment quantity">
                                         <i class="ci-plus"></i>
                                     </button>
@@ -248,8 +248,7 @@ function LoadCartItems() {
                             </td >
     <td class="text-end py-3 px-0">
         <button onclick="RemoveFromCartPage(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
-            data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
-            aria-label="Remove from cart"></button>
+            data-bs-custom-class="tooltip-sm"></button>
     </td>
                         </tr >
     `
