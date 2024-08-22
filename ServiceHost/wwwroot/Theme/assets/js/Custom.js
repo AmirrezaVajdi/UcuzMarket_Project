@@ -168,23 +168,24 @@ function ToEnglishNumber(intNum) {
 }
 
 function LoadCartItems() {
+    if (window.location.href == (fullUrl + '/Cart')) {
 
-    let products = localStorage.getItem(storageName);
+        let products = localStorage.getItem(storageName);
 
-    let totalPriced = [];
+        let totalPriced = [];
 
-    products = JSON.parse(products);
+        products = JSON.parse(products);
 
-    if (products === null) {
-        products = [];
-    }
+        if (products === null) {
+            products = [];
+        }
 
-    document.getElementById("cart-items").innerHTML = "";
+        document.getElementById("cart-items").innerHTML = "";
 
-    let cartItems = document.getElementById("cart-items");
+        let cartItems = document.getElementById("cart-items");
 
-    products.forEach(function (product) {
-        let result = `
+        products.forEach(function (product) {
+            let result = `
      <!-- Item -->
                         <tr>
                             <td class="py-3 ps-0">
@@ -244,7 +245,7 @@ function LoadCartItems() {
                             </td>
                             <td class="h6 py-3 d-none d-md-table-cell">
                             ${(product.PriceWithDiscount != 0 ? ToPersianNumber((ToEnglishNumber(product.PriceWithDiscount) * ToEnglishNumber(product.count))) + ' تومان' : ToPersianNumber(ToEnglishNumber(product.price) * ToEnglishNumber(product.count)) + ' تومان')
-            }
+                }
                             </td >
     <td class="text-end py-3 px-0">
         <button onclick="RemoveFromCartPage(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip"
@@ -252,36 +253,37 @@ function LoadCartItems() {
     </td>
                         </tr >
     `
-        cartItems.innerHTML += result;
+            cartItems.innerHTML += result;
 
-        let pc = ToEnglishNumber(product.price);
-        let pwd = ToEnglishNumber(product.PriceWithDiscount);
-        let count = product.count;
+            let pc = ToEnglishNumber(product.price);
+            let pwd = ToEnglishNumber(product.PriceWithDiscount);
+            let count = product.count;
 
-        const price = {
-            pc,
-            pwd,
-            count
-        };
+            const price = {
+                pc,
+                pwd,
+                count
+            };
 
-        totalPriced.push(price);
-    })
+            totalPriced.push(price);
+        })
 
-    document.getElementById("totalProductCount").innerText = 'مجموع قیمت' + '(' + ToPersianNumber(products.length) + ' محصول' + ')';
+        document.getElementById("totalProductCount").innerText = 'مجموع قیمت' + '(' + ToPersianNumber(products.length) + ' محصول' + ')';
 
-    let totalPrice = 0;
-    let savePrice = 0;
-    totalPriced.forEach(function (price) {
-        let cu = Number(price.pc) * Number(price.count);
-        totalPrice += cu;
-        //savePrice += (price.pwd === undefined || price.pwd == 0 ? 0 : price.pc - price.pwd);
-        savePrice += (price.pwd == undefined || price.pwd == 0 ? 0 : (price.pc - price.pwd) * price.count);
-    });
+        let totalPrice = 0;
+        let savePrice = 0;
+        totalPriced.forEach(function (price) {
+            let cu = Number(price.pc) * Number(price.count);
+            totalPrice += cu;
+            //savePrice += (price.pwd === undefined || price.pwd == 0 ? 0 : price.pc - price.pwd);
+            savePrice += (price.pwd == undefined || price.pwd == 0 ? 0 : (price.pc - price.pwd) * price.count);
+        });
 
-    document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
-    document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
+        document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
+        document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
 
-    document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+        document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+    }
 }
 
 function RemoveAllCarts() {
@@ -428,6 +430,7 @@ function IncrementProductCount(id) {
         product.count += 1;
         localStorage.setItem(storageName, JSON.stringify(products));
         UpdateCart();
+        LoadCartItems();
     }
 }
 
@@ -446,5 +449,6 @@ function DecrementProductCount(id) {
         product.count -= 1;
         localStorage.setItem(storageName, JSON.stringify(products));
         UpdateCart();
+        LoadCartItems();
     }
 }
