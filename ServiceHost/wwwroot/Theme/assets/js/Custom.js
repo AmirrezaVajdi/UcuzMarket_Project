@@ -379,7 +379,7 @@ async function GetCheckoutModel() {
         cartItems.innerHTML += res;
 
         let pc = ToEnglishNumber(product.price);
-        let pwd = ToEnglishNumber(product.PriceWithDiscount);
+        let pwd = ToEnglishNumber(product.priceWithDiscount);
         let count = storage.find(function (p) { return p.Id == product.id }).count;
 
         const price = {

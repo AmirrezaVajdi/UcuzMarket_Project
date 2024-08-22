@@ -458,7 +458,7 @@ namespace _01_Query.Query
                 {
                     price = productInventory.UnitPrice;
                     product.IsInStock = productInventory.InStock;
-                    product.Price = price.ToMoney();
+                    product.Price = price.ToString();
                 }
 
                 var discount = discounts.SingleOrDefault(x => x.ProductId == product.Id);
@@ -470,7 +470,7 @@ namespace _01_Query.Query
                     product.DiscountExpireDate = discount.EndDate.ToDiscountFormat();
                     product.HasDiscount = discountRate > 0;
                     var discountAmount = Math.Round((price * discountRate) / 100);
-                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                    product.PriceWithDiscount = (price - discountAmount).ToString();
                 }
             }
 
