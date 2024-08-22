@@ -77,6 +77,7 @@ function UpdateCart() {
     let cart_items_wrapper = document.getElementById("cart_items_wrapper");
 
     products.forEach(function (product) {
+        let currentProductCount = product.count;
         const res =
             `
              <div class="d-flex align-items-center">
@@ -89,14 +90,27 @@ function UpdateCart() {
                             <a class="hover-effect-underline" href="${fullUrl}/Product/${product.slug}">${product.name}</a>
                         </h5>
                         ${(product.PriceWithDiscount != 0 ? '<div class="h6 pb-1 mb-2" > ' + product.PriceWithDiscount + ' تومان  <del class="text-body-tertiary fs-sm fw-normal d-block">' + product.price + ' تومان' + '</del>   </div >' : '<div class="h6 pb-1 mb-2">' + product.price + ' تومان</div>')}
+
+
+                        <div class="count-input rounded-pill">
+                            <button onclick="DecrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-decrement="" aria-label="Decrement quantity" ${(product.count <= 1 ? 'disabled' : '')}>
+                                <i class="ci-minus"></i>
+                            </button>
+                            <input type="number" class="form-control form-control-sm" value="${currentProductCount}" readonly="">
+                            <button onclick="IncrementProductCount(${product.Id})" type="button" class="btn btn-icon btn-sm" data-increment="" aria-label="Increment quantity">
+                                <i class="ci-plus"></i>
+                            </button>
+                        </div>
                         <div class="float-end">
-                            <button onclick="RemoveFromCart(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm" data-bs-title="حذف" aria-label="حذف"></button>
+                            <button onclick="RemoveFromCart(${product.Id})" type="button" class="btn-close fs-sm" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm"></button>
                         </div>
                     </div>
              </div >
             `
         cart_items_wrapper.innerHTML += res;
     });
+
+    addScriptFilesToHtml();
 }
 
 function RemoveFromCart(id) {
@@ -388,4 +402,50 @@ async function GetCheckoutModel() {
     document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
 
     document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+}
+
+function addScriptFilesToHtml() {
+    var r = document.getElementById('themejs');
+    if (r == null) {
+        var s = document.createElement('script');
+        s.setAttribute('src', '/Theme/assets/js/theme.min.js');
+        s.setAttribute('id', 'themejs');
+        document.body.appendChild(s);
+    }
+}
+
+function IncrementProductCount(id) {
+    let products = localStorage.getItem(storageName);
+
+    if (products == null) {
+        products = [];
+    }
+    else {
+        products = JSON.parse(products);
+    }
+    let product = products.find(x => x.Id == id);
+
+    if (product != null) {
+        product.count += 1;
+        localStorage.setItem(storageName, JSON.stringify(products));
+        UpdateCart();
+    }
+}
+
+function DecrementProductCount(id) {
+    let products = localStorage.getItem(storageName);
+
+    if (products == null) {
+        products = [];
+    }
+    else {
+        products = JSON.parse(products);
+    }
+    let product = products.find(x => x.Id == id);
+
+    if (product != null) {
+        product.count -= 1;
+        localStorage.setItem(storageName, JSON.stringify(products));
+        UpdateCart();
+    }
 }
