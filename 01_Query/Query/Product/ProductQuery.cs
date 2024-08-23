@@ -518,23 +518,31 @@ namespace _01_Query.Query
                 .SingleOrDefault();
         }
 
-        public List<ProductQueryModel> GetRelatedPrdoucts(string categorySlug)
+        public List<ProductQueryModel> GetRelatedPrdoucts(string categorySlug = "", int take = 7)
         {
-            var products = _shopContext
+            var productsQuery = _shopContext
                 .Products
-                .Where(x => x.Category.Slug == categorySlug)
-                .OrderBy(x => Guid.NewGuid())
-                .Take(7)
-                .Include(x => x.Category)
-                .Select(x => new ProductQueryModel
-                {
-                    Name = x.Name,
-                    Picture = x.Picture,
-                    PictureAlt = x.PictureAlt,
-                    PictureTitle = x.PictureTitle,
-                    Slug = x.Slug,
-                })
-                .ToList();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(categorySlug))
+            {
+                productsQuery = productsQuery
+                    .Where(x => x.Category.Slug == categorySlug);
+            }
+
+            var products = productsQuery
+             .OrderBy(x => Guid.NewGuid())
+             .Take(take)
+             .Include(x => x.Category)
+             .Select(x => new ProductQueryModel
+             {
+                 Name = x.Name,
+                 Picture = x.Picture,
+                 PictureAlt = x.PictureAlt,
+                 PictureTitle = x.PictureTitle,
+                 Slug = x.Slug,
+             })
+             .ToList();
 
 
             var ProductsId = GetProductsId(products);

@@ -1,4 +1,5 @@
-﻿using _01_Query.Contract.Product;
+﻿using _01_Query;
+using _01_Query.Contract.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopManagement.Application.Contracts.Order;
@@ -11,11 +12,13 @@ namespace ShopManagement.Presentation.Api
     {
         private readonly IProductQuery _productQuery;
         private readonly ICartService _cartService;
+        private readonly ICartCalculatorService _cartCalculatorService;
 
-        public ProductController(IProductQuery productQuery, ICartService cartService)
+        public ProductController(IProductQuery productQuery, ICartService cartService, ICartCalculatorService cartCalculatorService)
         {
             _productQuery = productQuery;
             _cartService = cartService;
+            _cartCalculatorService = cartCalculatorService;
         }
 
         [HttpGet]
@@ -33,6 +36,30 @@ namespace ShopManagement.Presentation.Api
             models.ForEach(x => productsId.Add(x.productId));
 
             var products = _productQuery.GetCartsItemByProducts(productsId.ToArray());
+
+
+            var cartItems = new List<CartItem>(productsId.Count);
+
+            for (int i = 0; i < productsId.Count; i++)
+            {
+                var product = products.First(x => x.Id == models[i].productId);
+                var cartitem = new CartItem()
+                {
+                    Id = product.Id,
+                    Count = models[i].count,
+                    DiscountRate = product.DiscountRate,
+                    UnitPrice = double.Parse(product.Price)
+                };
+
+                cartitem.CalculateTotalItemPrice();
+
+                cartItems.Add(cartitem);
+
+            }
+
+            Cart cart = _cartCalculatorService.ComputeCart(cartItems);
+
+            _cartService.Set(cart);
 
             return products;
         }

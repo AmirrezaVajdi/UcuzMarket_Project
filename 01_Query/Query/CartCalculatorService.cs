@@ -25,7 +25,7 @@ namespace _01_Query.Query
                 .ToList();
 
             var customerDiscounts = _discountContext.CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Select(x => new { x.DiscountRate, x.ProductId })
                 .ToList();
             var currentAccountRole = _authHelper.CurrenAccountRole();

@@ -4,53 +4,127 @@
     ViewData["Title"] = "نتیجه پرداخت";
 }
 
-
-<div class="breadcrumb-area section-space--half">
-    <div class="container wide">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-wrapper breadcrumb-bg">
-                    <div class="breadcrumb-content">
-                        <h2 class="breadcrumb-content__title">نتیجه خرید</h2>
-                        <ul class="breadcrumb-content__page-map">
-                            <li><a asp-page="./Index">صفحه اصلی</a></li>
-                            <li class="active">نتیجه خرید</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<!-- Thank you message -->
+<section class="container pt-3 pt-sm-4 pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <div class="position-relative overflow-hidden rounded-5 p-4 p-sm-5"
+         style="background-color: var(--cz-success-border-subtle)">
+        <div class="position-relative z-2 text-center py-4 py-md-5 my-md-2 my-lg-5 mx-auto"
+             style="max-width: 536px">
+            <h1 class="pt-xl-4 mb-4">از خرید شما متشکریم</h1>
+            <p class="text-dark-emphasis pb-3 pb-sm-4">
+                سفارش شما با شماره پیگیری <span class="fw-semibold">#234000</span>
+                دریافت شد و بزودی پردازش خواهد شد
+            </p>
+            <a class="btn btn-lg btn-dark rounded-pill mb-xl-4" href="/">
+                ادامه خرید کردن
+            </a>
         </div>
+        <img src="~/theme/assets/img/shop/grocery/thankyou-bg-1.png"
+             class="animate-up-down position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
+        <img src="~/theme/assets/img/shop/grocery/thankyou-bg-2.png"
+             class="animate-down-up position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
     </div>
-</div>
+</section>
 
-<div class="page-content-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                @if (Model.Result.IsSuccessful)
-                {
-                    <div class="alert alert-success">
-                        <p>
-                            @Model.Result.Message
-                        </p>
-                        @if (!string.IsNullOrWhiteSpace(Model.Result.IssueTrackingNo))
+
+<!-- Similar products carousel -->
+<section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+    <h2 class="h3 text-center mb-4">ممکن است دوست داشته باشید</h2>
+    <!-- Slider -->
+    <div class="swiper" data-swiper="{
+          &quot;slidesPerView&quot;: 2,
+          &quot;spaceBetween&quot;: 24,
+          &quot;pagination&quot;: {
+            &quot;el&quot;: &quot;.swiper-pagination&quot;,
+            &quot;clickable&quot;: true
+          },
+          &quot;breakpoints&quot;: {
+            &quot;500&quot;: {
+              &quot;slidesPerView&quot;: 3
+            },
+            &quot;768&quot;: {
+              &quot;slidesPerView&quot;: 4
+            },
+            &quot;1100&quot;: {
+              &quot;slidesPerView&quot;: 5
+            }
+          }
+        }">
+        <div class="swiper-wrapper">
+            @foreach (var product in Model.Products)
+            {
+                <!-- Product -->
+                <div class="swiper-slide h-auto">
+                    <div class="card product-card h-100 bg-transparent border-0 shadow-none">
+                        <div class="position-relative z-2">
+                            @if (product.HasDiscount)
+                            {
+                                <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-1 mt-sm-2 ms-1 ms-sm-2">@product.DiscountRate%</span>
+                            }
+                            <button type="button"
+                                    class="btn btn-icon btn-sm btn-secondary animate-pulse fs-sm bg-body border-0 position-absolute top-0 end-0 z-2 mt-1 mt-sm-2 me-1 me-sm-2"
+                                    aria-label="Add to Wishlist">
+                                <i class="ci-heart animate-target"></i>
+                            </button>
+                            <a class="d-block p-2 p-lg-3" asp-page="./Product" asp-route-id="@product.Slug">
+                                <div class="ratio" style="--cz-aspect-ratio: calc(160 / 191 * 100%)">
+                                    <img src="~/ProductPictures/@product.Picture" alt="@product.PictureAlt" title="@product.PictureTitle">
+                                </div>
+                            </a>
+                            <div class="position-absolute w-100 start-0 bottom-0">
+                                <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
+                                    <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
+                                        <button type="button" class="btn btn-icon btn-sm btn-primary"
+                                                data-decrement="" aria-label="Decrement quantity">
+                                            <i class="ci-minus fs-sm"></i>
+                                        </button>
+                                        <input type="number"
+                                               class="form-control form-control-sm bg-primary text-white w-100"
+                                               value="0" min="0" readonly="">
+                                        <button type="button"
+                                                class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto"
+                                                data-increment="" aria-label="Increment quantity">
+                                            <span data-count-input-value=""></span>
+                                            <i class="ci-plus fs-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 px-1 px-md-2 px-lg-3 pb-2">
+                            @if (product.HasDiscount)
+                            {
+                                <div class="h6 mb-2">
+                                    @product.PriceWithDiscount تومان
+                                    <del class="fs-sm fw-normal text-body-tertiary ms-1">@product.Price تومان</del>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="h6 mb-2">
+                                    @product.Price تومان
+                                </div>
+                            }
+
+                            <h3 class="fs-sm lh-base mb-0">
+                                <a class="hover-effect-underline fw-normal" asp-page="/Product" asp-route-id="@product.Slug">@product.Name</a>
+                            </h3>
+                        </div>
+                        @if (product.IsInStock)
                         {
-                            <p>
-                                شماره پیگیری شما :<storng>@Model.Result.IssueTrackingNo</storng>
-                            </p>
+                            <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">موجود</div>
+                        }
+                        else
+                        {
+                            <div class="fs-xs text-danger px-1 px-md-2 px-lg-3 pb-2 pb-md-3">نا موجود</div>
                         }
                     </div>
-                }
-                else
-                {
-                    <div class="alert alert-danger">
-                        <p>
-                            @Model.Result.Message
-                        </p>
-                    </div>
-                }
-            </div>
+                </div>
+            }
         </div>
+
+        <!-- Pagination (Bullets) -->
+        <div class="swiper-pagination position-static mt-3"></div>
     </div>
-</div>
+</section>
 
