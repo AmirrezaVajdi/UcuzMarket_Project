@@ -3,6 +3,7 @@ using _01_Framework.Application;
 using _01_Query;
 using _01_Query.Contract.Product;
 using _01_Query.Query;
+using DeliveryManagement.Application.Contract.Delivery;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -99,6 +100,8 @@ namespace ServiceHost.Pages
         private readonly IOrderApplication _orderApplication;
         private readonly IZarinPalFactory _zarinPalFactory;
         private readonly IAuthHelper _authHelper;
+
+        public DeliveryViewModel Delivery { get; set; }
 
         public CheckOutModel(ICartService cartService, IProductQuery productQuery, IOrderApplication orderApplication, IZarinPalFactory zarinPalFactory, IAuthHelper authHelper)
         {

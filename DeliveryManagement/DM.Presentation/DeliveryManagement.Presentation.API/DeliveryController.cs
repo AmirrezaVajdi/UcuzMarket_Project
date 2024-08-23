@@ -2,6 +2,7 @@
 using DeliveryManagement.Application.Contract.Delivery;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
 
 namespace DeliveryManagement.Presentation.API
 {
@@ -27,6 +28,24 @@ namespace DeliveryManagement.Presentation.API
                 return JsonConvert.SerializeObject(result);
             }
             return "Please Login to System";
+        }
+
+        [HttpGet("GetDefaultAddress")]
+        public string GetDefaultDeliveryBy()
+        {
+            if (_helper.IsAuthenticated())
+            {
+                var res = _deliveryApplication.GetDefaultDeliveryBy(_helper.CurrentAccountId());
+                if (res != null)
+                {
+                    var address = res.Address;
+                    var postalCode = res.PostalCode;
+                    return JsonConvert.SerializeObject(new { address, postalCode });
+                }
+                return null;
+
+            }
+            return null;
         }
     }
 }

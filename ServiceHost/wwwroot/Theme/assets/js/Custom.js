@@ -12,6 +12,10 @@ async function SetDefaultAdderss(id) {
         body: json,
         headers: headersList
     });
+
+    if (window.location.href == (fullUrl + '/CheckOut')) {
+        GetDefaultDelivery();
+    }
 }
 
 function AddToCart(Id, name, slug, picture, price, PriceWithDiscount, discountRate) {
@@ -404,6 +408,8 @@ async function GetCheckoutModel() {
     document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
 
     document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+
+    GetDefaultDelivery();
 }
 
 function addScriptFilesToHtml() {
@@ -451,5 +457,29 @@ function DecrementProductCount(id) {
         localStorage.setItem(storageName, JSON.stringify(products));
         UpdateCart();
         LoadCartItems();
+    }
+}
+
+async function GetDefaultDelivery() {
+    let headersList = {
+        "Content-Type": "application/json"
+    }
+
+    let response = await fetch(fullUrl + "/api/Delivery/GetDefaultAddress", {
+        method: "GET",
+        headers: headersList
+    });
+
+    let result = await response.text();
+
+    if (result != '') {
+
+        let model = JSON.parse(result);
+        document.getElementById("defaultAddress").innerText = '';
+        let res = document.getElementById("defaultAddress").innerText = 'میاندوآب ، ' + model.address + ' , ' + model.postalCode;
+    }
+    else {
+        document.getElementById("defaultAddress").innerText = '';
+        let res = document.getElementById("defaultAddress").innerText = 'لطفا ادرس جدیدی را ثبت کنید';
     }
 }
