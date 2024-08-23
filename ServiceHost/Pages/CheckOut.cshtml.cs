@@ -100,16 +100,18 @@ namespace ServiceHost.Pages
         private readonly IOrderApplication _orderApplication;
         private readonly IZarinPalFactory _zarinPalFactory;
         private readonly IAuthHelper _authHelper;
+        private readonly IDeliveryApplication _deliveryApplication;
 
         public DeliveryViewModel Delivery { get; set; }
 
-        public CheckOutModel(ICartService cartService, IProductQuery productQuery, IOrderApplication orderApplication, IZarinPalFactory zarinPalFactory, IAuthHelper authHelper)
+        public CheckOutModel(ICartService cartService, IProductQuery productQuery, IOrderApplication orderApplication, IZarinPalFactory zarinPalFactory, IAuthHelper authHelper, IDeliveryApplication deliveryApplication)
         {
             _cartService = cartService;
             _productQuery = productQuery;
             _orderApplication = orderApplication;
             _zarinPalFactory = zarinPalFactory;
             _authHelper = authHelper;
+            _deliveryApplication = deliveryApplication;
         }
 
         public void OnGet()
@@ -126,7 +128,11 @@ namespace ServiceHost.Pages
             if (result.Any(x => !x.IsInStock))
                 return RedirectToPage("./Cart");
 
-            var orderId = _orderApplication.PlaceOrder(cart);
+
+            var delivery = _deliveryApplication.GetDefaultDeliveryBy(_authHelper.CurrentAccountId());
+            var address = "میاندوآب ، " + delivery.Address + " ، " + delivery.PostalCode;
+
+            var orderId = _orderApplication.PlaceOrder(cart, address);
 
             if (paymentMethod == 1)
             {

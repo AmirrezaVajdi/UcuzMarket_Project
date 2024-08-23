@@ -61,11 +61,11 @@ namespace ShopManagement.Application
             return "";
         }
 
-        public long PlaceOrder(Cart cart)
+        public long PlaceOrder(Cart cart, string address)
         {
             var currentAccountId = _authHelper.CurrentAccountId();
 
-            Order order = new(currentAccountId, cart.PaymentMethod, cart.TotalAmount, cart.DiscountAmount, cart.PayAmmount);
+            Order order = new(currentAccountId, cart.PaymentMethod, cart.TotalAmount, cart.DiscountAmount, cart.PayAmmount, address);
 
             foreach (var item in cart.Items)
             {

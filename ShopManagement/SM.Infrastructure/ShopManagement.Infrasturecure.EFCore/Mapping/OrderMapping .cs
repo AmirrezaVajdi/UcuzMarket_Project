@@ -12,6 +12,8 @@ namespace ShopManagement.Infrasturecure.EFCore.Mapping
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.IssueTrackingNo).HasMaxLength(8).IsRequired(false);
+            builder.Property(x => x.Address).IsRequired().HasMaxLength(1000);
+
             builder.OwnsMany(x => x.Items, builder =>
             {
                 builder.ToTable("OrderItems");

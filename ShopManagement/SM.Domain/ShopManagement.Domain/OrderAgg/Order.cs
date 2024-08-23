@@ -13,9 +13,10 @@ namespace ShopManagement.Domain.OrderAgg
         public bool IsCanceled { get; private set; }
         public string IssueTrackingNo { get; private set; }
         public long RefId { get; private set; }
+        public string Address { get; private set; }
         public List<OrderItem> Items { get; private set; }
 
-        public Order(long accountId, int paymentMethod, double totalAmount, double discountAmount, double payAmount)
+        public Order(long accountId, int paymentMethod, double totalAmount, double discountAmount, double payAmount, string address)
         {
             AccountId = accountId;
             PaymentMethod = paymentMethod;
@@ -26,6 +27,7 @@ namespace ShopManagement.Domain.OrderAgg
             IsCanceled = false;
             RefId = 0;
             Items = new();
+            Address = address;
         }
 
         public void PaymentSucceeded(long refId)

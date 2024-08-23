@@ -5,6 +5,7 @@
         public long Id { get; set; }
         public long AccountId { get; set; }
         public string AccountFullName { get; set; }
+        public string Address { get; set; }
         public int PaymentMethodId { get; set; }
         public string PaymentMethod { get; set; }
         public double TotalAmount { get; set; }

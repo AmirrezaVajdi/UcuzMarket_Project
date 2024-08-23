@@ -56,6 +56,7 @@ namespace ShopManagement.Infrasturecure.EFCore.Repository
             {
                 Id = x.Id,
                 AccountId = x.AccountId,
+                Address = x.Address,
                 DiscountAmount = x.DiscountAmount,
                 CreationDate = x.CreationDate.ToFarsi(),
                 IsCanceled = x.IsCanceled,
