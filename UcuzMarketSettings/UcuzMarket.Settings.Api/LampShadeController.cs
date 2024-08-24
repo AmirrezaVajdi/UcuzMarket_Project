@@ -25,5 +25,11 @@ namespace LampShade.Settings
         {
             return _settingRepository.GetAllSetting().FileExtensionLimit;
         }
+
+        [HttpGet("GetDeliverFee")]
+        public double GetDeliveryFee()
+        {
+            return _settingRepository.GetAllSetting().DeliveryFee;
+        }
     }
 }

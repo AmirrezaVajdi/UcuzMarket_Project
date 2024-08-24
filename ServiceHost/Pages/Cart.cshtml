@@ -18,10 +18,10 @@
 <section class="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
     <h1 class="h3 mb-4">سبد خرید</h1>
 
-        <div id="inventoryAlert" class="alert d-flex alert-warning d-none" role="alert">
-            <i class="ci-alert-triangle fs-lg pe-1 mt-1 me-2"></i>
-            
-        </div>
+    <div id="inventoryAlert" class="alert d-flex alert-warning d-none" role="alert">
+        <i class="ci-alert-triangle fs-lg pe-1 mt-1 me-2"></i>
+
+    </div>
 
     <div class="row">
 
@@ -89,7 +89,7 @@
                             </li>
                             <li class="d-flex justify-content-between">
                                 حمل و نقل:
-                                <span class="text-dark-emphasis fw-medium">رایگان</span>
+                                <span class="text-dark-emphasis fw-medium">@(Model.DeliveryFee == 0 ? "رایگان!" : Model.DeliveryFee.ToMoney().ToPersianNumber() + " تومان")</span>
                             </li>
                         </ul>
                         <div class="border-top pt-4 mt-4">

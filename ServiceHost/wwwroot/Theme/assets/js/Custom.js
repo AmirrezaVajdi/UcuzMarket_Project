@@ -172,7 +172,7 @@ function ToEnglishNumber(intNum) {
     return chash;
 }
 
-function LoadCartItems() {
+async function LoadCartItems() {
     if (window.location.href == (fullUrl + '/Cart')) {
 
         let products = localStorage.getItem(storageName);
@@ -190,11 +190,11 @@ function LoadCartItems() {
         let cartItems = document.getElementById("cart-items");
 
         products.forEach(function (product) {
-            let inventoryResult = CheckInventoryStatusBy(product.Id, product.count);
+            //let inventoryResult = CheckInventoryStatusBy(product.Id, product.count);
+            //if (inventoryResult == false) {
+            //    document.getElementById("inventoryAlert").classList.remove("d-none");
+            //}
 
-            if (inventoryResult == false) {
-                document.getElementById("inventoryAlert").classList.remove("d-none");
-            }
             let result = `
      <!-- Item -->
                         <tr>
@@ -289,10 +289,12 @@ function LoadCartItems() {
             savePrice += (price.pwd == undefined || price.pwd == 0 ? 0 : (price.pc - price.pwd) * price.count);
         });
 
+        let deliveryFee = await GetDeliveryFee();
+
         document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
         document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
 
-        document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+        document.getElementById("payToAmount").innerText = ToPersianNumber((totalPrice - savePrice) + deliveryFee) + ' تومان';
     }
 }
 
@@ -409,10 +411,12 @@ async function GetCheckoutModel() {
         savePrice += (price.pwd === "undefined" || price.pwd === "null" ? 0 : (price.pc - price.pwd) * price.count);
     });
 
+    let deliveryFee = await GetDeliveryFee();
+
     document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
     document.getElementById("savePrice").innerText = ToPersianNumber(savePrice) + ' تومان';
 
-    document.getElementById("payToAmount").innerText = ToPersianNumber(totalPrice - savePrice) + ' تومان';
+    document.getElementById("payToAmount").innerText = ToPersianNumber((totalPrice - savePrice) + deliveryFee) + ' تومان';
 
     GetDefaultDelivery();
 }
@@ -509,4 +513,16 @@ async function CheckInventoryStatusBy(productId, count) {
     } else {
         return Boolean('false');
     }
+}
+
+async function GetDeliveryFee() {
+    let headersList = {
+        "Content-Type": "application/json"
+    }
+    let response = await fetch(fullUrl + "/api/LampShade/GetDeliverFee", {
+        method: "GET",
+        headers: headersList
+    });
+    let deliveryFeeResult = await response.text();
+    return Number(deliveryFeeResult);
 }

@@ -4,6 +4,7 @@ using _01_Query;
 using _01_Query.Contract.Product;
 using _01_Query.Query;
 using DeliveryManagement.Application.Contract.Delivery;
+using LampShade.Settings.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -101,10 +102,13 @@ namespace ServiceHost.Pages
         private readonly IZarinPalFactory _zarinPalFactory;
         private readonly IAuthHelper _authHelper;
         private readonly IDeliveryApplication _deliveryApplication;
+        private SettingRepository _settingRepository;
 
+        public double DeliveryFee { get; set; }
+    
         public DeliveryViewModel Delivery { get; set; }
 
-        public CheckOutModel(ICartService cartService, IProductQuery productQuery, IOrderApplication orderApplication, IZarinPalFactory zarinPalFactory, IAuthHelper authHelper, IDeliveryApplication deliveryApplication)
+        public CheckOutModel(ICartService cartService, IProductQuery productQuery, IOrderApplication orderApplication, IZarinPalFactory zarinPalFactory, IAuthHelper authHelper, IDeliveryApplication deliveryApplication, SettingRepository settingRepository)
         {
             _cartService = cartService;
             _productQuery = productQuery;
@@ -112,11 +116,12 @@ namespace ServiceHost.Pages
             _zarinPalFactory = zarinPalFactory;
             _authHelper = authHelper;
             _deliveryApplication = deliveryApplication;
+            _settingRepository = settingRepository;
         }
 
         public void OnGet()
         {
-
+            DeliveryFee = _settingRepository.GetAllSetting().DeliveryFee;
         }
 
         public IActionResult OnGetPay(int paymentMethod = 1)

@@ -14,10 +14,22 @@
     <hr />
 }
 
-<h5 class="text-center mb-4">تنظیمات فروشگاه دزنی</h5>
+<h5 class="text-center mb-4">تنظیمات فروشگاه اوجوز مارکت</h5>
 
 <form method="post">
     <div class="row">
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title m-0 me-2">هزینه ارسال به تومان</h5>
+                </div>
+                <div class="card-body">
+                    <input class="form-control" id="deliveryFee" name="DeliveryFee" type="number" value="@Model.Setting.DeliveryFee" />
+                </div>
+            </div>
+        </div>
+
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
