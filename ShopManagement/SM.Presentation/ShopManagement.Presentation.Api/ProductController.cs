@@ -63,10 +63,22 @@ namespace ShopManagement.Presentation.Api
 
             return products;
         }
+
+        [HttpPost("CheckInventoryStatus")]
+        public bool CheckInventoryStatusBy([FromBody] CheckInventoryModel model)
+        {
+            return _productQuery.CheckInventoryStatusBy(model.ProductId, model.Count);
+        }
     }
     public class CheckoutModel
     {
         public long productId { get; set; }
         public int count { get; set; }
+    }
+
+    public class CheckInventoryModel
+    {
+        public long ProductId { get; set; }
+        public int Count { get; set; }
     }
 }

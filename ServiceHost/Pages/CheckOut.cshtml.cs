@@ -138,7 +138,7 @@ namespace ServiceHost.Pages
             {
                 var paymentResponse = _zarinPalFactory.CreatePaymentRequest(cart.PayAmmount.ToString(), "", "", "اوجوز مارکت", orderId);
 
-                return Redirect($"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Authority}");
+                return Redirect($"https://{_zarinPalFactory.Prefix}.zarinpal.com/pg/StartPay/{paymentResponse.Authority}/Asan");
             }
 
             PaymentResult paymentResult = new();

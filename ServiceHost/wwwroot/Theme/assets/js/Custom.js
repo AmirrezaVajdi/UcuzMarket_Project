@@ -190,6 +190,11 @@ function LoadCartItems() {
         let cartItems = document.getElementById("cart-items");
 
         products.forEach(function (product) {
+            let inventoryResult = CheckInventoryStatusBy(product.Id, product.count);
+
+            if (inventoryResult == false) {
+                document.getElementById("inventoryAlert").classList.remove("d-none");
+            }
             let result = `
      <!-- Item -->
                         <tr>
@@ -401,7 +406,7 @@ async function GetCheckoutModel() {
     totalPriced.forEach(function (price) {
         let cu = Number(price.pc) * Number(price.count);
         totalPrice += cu;
-        savePrice += (price.pwd === "undefined" ? 0 : (price.pc - price.pwd) * price.count);
+        savePrice += (price.pwd === "undefined" || price.pwd === "null" ? 0 : (price.pc - price.pwd) * price.count);
     });
 
     document.getElementById("totalProductPrice").innerText = ToPersianNumber(totalPrice) + ' تومان';
@@ -481,5 +486,27 @@ async function GetDefaultDelivery() {
     else {
         document.getElementById("defaultAddress").innerText = '';
         let res = document.getElementById("defaultAddress").innerText = 'لطفا ادرس جدیدی را ثبت کنید';
+    }
+}
+
+async function CheckInventoryStatusBy(productId, count) {
+    let headersList = {
+        "Content-Type": "application/json"
+    }
+    let model = {
+        productId,
+        count
+    }
+    let json = JSON.stringify(model);
+    let response = await fetch(fullUrl + "/api/product/CheckInventoryStatus", {
+        method: "POST",
+        body: json,
+        headers: headersList
+    });
+    let inventoryResult = await response.text();
+    if (inventoryResult != 'null') {
+        return Boolean(inventoryResult);
+    } else {
+        return Boolean('false');
     }
 }

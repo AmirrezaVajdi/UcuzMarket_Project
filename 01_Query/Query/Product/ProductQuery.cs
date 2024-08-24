@@ -317,10 +317,17 @@ namespace _01_Query.Query
 
         public List<CartItem> CheckInventoryStatus(List<CartItem> cartItems)
         {
-            var inventory = _inventoryContext.Inventory.ToList();
+            var productsId = new List<long>(cartItems.Count);
+            cartItems.ForEach(x => productsId.Add(x.Id));
+
+            var inventory = _inventoryContext
+                .Inventory
+                .Where(x => productsId.Any(z => z == x.ProductId) && x.InStock)
+                .AsNoTracking()
+                .ToList();
 
             foreach (var cartItem in cartItems.Where(cartItem =>
-                inventory.Any(x => x.ProductId == cartItem.Id && x.InStock)))
+                inventory.Any(x => x.ProductId == cartItem.Id)))
             {
                 var itemInventory = inventory.Find(x => x.ProductId == cartItem.Id);
                 cartItem.IsInStock = itemInventory.CalculateCurrentCount() >= cartItem.Count;
@@ -603,6 +610,17 @@ namespace _01_Query.Query
 
 
             return products;
+        }
+
+        public bool CheckInventoryStatusBy(long productId, int count)
+        {
+            var inventory = _inventoryContext
+                .Inventory
+                .Where(x => x.ProductId == productId)
+                .FirstOrDefault();
+            if (inventory != null)
+                return inventory.CalculateCurrentCount() >= count;
+            return false;
         }
     }
 }
