@@ -43,6 +43,8 @@ namespace ShopManagement.Presentation.Api
             for (int i = 0; i < productsId.Count; i++)
             {
                 var product = products.First(x => x.Id == models[i].productId);
+                product.Price = (product.Price == null ? "0" : product.Price);
+
                 var cartitem = new CartItem()
                 {
                     Id = product.Id,
