@@ -70,11 +70,11 @@
                                     <div class="position-absolute w-100 start-0 bottom-0">
                                         <div class="d-flex justify-content-end px-2 px-lg-3 pb-2 pb-lg-3">
                                             <div class="count-input count-input-collapsible collapsed justify-content-between w-100 bg-transparent border-0 rounded-2">
-                                                <button type="button" class="btn btn-icon btn-sm btn-primary" data-decrement="" aria-label="Decrement quantity">
+                                                <button onclick="DecrementProductCount(@dProduct.Id)" type="button" class="btn btn-icon btn-sm btn-primary" data-decrement="" aria-label="Decrement quantity">
                                                     <i class="ci-minus fs-sm"></i>
                                                 </button>
                                                 <input type="number" class="form-control form-control-sm bg-primary text-white w-100" value="0" min="0" readonly="">
-                                                <button type="button" class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto" data-increment="" aria-label="Increment quantity">
+                                                <button onclick="AddToCart('@dProduct.Id' , '@dProduct.Name' , '@dProduct.Slug' ,'@dProduct.Picture' , '@dProduct.Price.ToPersianNumber()' , '@dProduct.PriceWithDiscount.ToPersianNumber()','@dProduct.DiscountRate')" type="button" class="product-card-button btn btn-icon btn-sm btn-secondary ms-auto" data-increment="" aria-label="Increment quantity">
                                                     <span data-count-input-value=""></span>
                                                     <i class="ci-plus fs-sm"></i>
                                                 </button>
@@ -104,7 +104,7 @@
                                 </div>
                                 @if (dProduct.IsInStock)
                                 {
-                                    <div class="fs-xs text-body-secondary px-1 px-md-2 px-lg-3 pb-2 pb-md-3">موجود</div>
+                                    <div class="fs-xs text-success px-1 px-md-2 px-lg-3 pb-2 pb-md-3">موجود</div>
                                 }
                                 else
                                 {

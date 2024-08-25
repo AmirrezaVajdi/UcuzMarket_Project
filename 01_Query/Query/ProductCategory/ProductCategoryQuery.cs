@@ -40,7 +40,9 @@ namespace _01_Query.Query
         {
             var inventory = _inventoryContext.Inventory.Select(x => new { x.ProductId, x.UnitPrice }).AsNoTracking().ToList();
 
-            var discounts = _discountContext.CustomerDiscounts.Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).AsNoTracking().ToList();
+            var discounts = _discountContext.CustomerDiscounts
+                           .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
+                           .Select(x => new { x.ProductId, x.DiscountRate }).AsNoTracking().ToList();
 
             var categories = _shopContext.ProductCategories.Include(x => x.Products).ThenInclude(x => x.Category).Select(x => new ProdcutCategoryQueryModel
             {
@@ -187,7 +189,7 @@ namespace _01_Query.Query
 
             var discounts = _discountContext
                 .CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Where(x => ProductsId.Any(z => x.ProductId == z))
                 .Select(x => new
                 {
@@ -280,6 +282,7 @@ namespace _01_Query.Query
                 .AsNoTracking()
                 .Select(x => new ProductQueryModel
                 {
+                    Id = x.Id,
                     Slug = x.Slug,
                     Category = categories.Name,
                     CategorySlug = categories.Slug,
@@ -297,7 +300,7 @@ namespace _01_Query.Query
 
             var discounts = _discountContext
                 .CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate <= DateTime.Now.Date && x.EndDate >= DateTime.Now.Date)
                 .Where(x => ProductsId.Any(z => x.ProductId == z))
                 .Select(x => new
                 {
@@ -308,21 +311,22 @@ namespace _01_Query.Query
                 .AsNoTracking()
                 .ToList();
 
+
             var inventories = _inventoryContext
                 .Inventory
                 .Where(x => ProductsId.Any(z => x.ProductId == z))
-               .Select(x => new
-               {
-                   x.ProductId,
-                   x.UnitPrice,
-                   x.InStock
-               })
+                .Select(x => new
+                {
+                    x.ProductId,
+                    x.UnitPrice,
+                    x.InStock
+                })
                .AsNoTracking();
 
             foreach (var product in products)
             {
                 var productInventory = inventories
-                    .SingleOrDefault(x => x.ProductId == product.Id);
+                    .FirstOrDefault(x => x.ProductId == product.Id);
 
                 if (productInventory != null)
                 {

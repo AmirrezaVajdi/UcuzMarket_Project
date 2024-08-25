@@ -18,6 +18,53 @@ async function SetDefaultAdderss(id) {
     }
 }
 
+//function AddToCart(Id, name, slug, picture, price, PriceWithDiscount, discountRate) {
+
+//    let products = localStorage.getItem(storageName);
+
+//    if (products === null) {
+//        productsModel = [];
+//    }
+//    else {
+//        var productsModel = JSON.parse(products);
+//    }
+
+//    let count = document.getElementById("productCount").value;
+
+//    const currentProduct = productsModel.find(x => x.Id == Id);
+
+//    if (currentProduct !== undefined) {
+//        productsModel.find(x => x.Id === Id).count = parseInt(currentProduct.count) + parseInt(count);
+//    }
+//    else {
+//        if (PriceWithDiscount === undefined || PriceWithDiscount === "") {
+//            PriceWithDiscount = 0;
+//        }
+
+//        if (price === undefined || PriceWithDiscount === "") {
+//            price = 0;
+//        }
+
+//        count = parseInt(count);
+//        const product = {
+//            Id,
+//            name,
+//            slug,
+//            picture,
+//            price,
+//            count,
+//            PriceWithDiscount,
+//            discountRate
+//        }
+
+//        productsModel.push(product);
+//    }
+
+//    localStorage.setItem(storageName, JSON.stringify(productsModel));
+
+//    UpdateCart();
+//}
+
 function AddToCart(Id, name, slug, picture, price, PriceWithDiscount, discountRate) {
 
     let products = localStorage.getItem(storageName);
@@ -29,7 +76,11 @@ function AddToCart(Id, name, slug, picture, price, PriceWithDiscount, discountRa
         var productsModel = JSON.parse(products);
     }
 
-    let count = document.getElementById("productCount").value;
+    let productCountElement = document.getElementById("productCount");
+    let count = 1;
+    if (productCountElement != null) {
+        count = document.getElementById("productCount").value;
+    }
 
     const currentProduct = productsModel.find(x => x.Id == Id);
 
@@ -463,6 +514,12 @@ function DecrementProductCount(id) {
 
     if (product != null) {
         product.count -= 1;
+        if (product.count == 0) {
+            let index = products.indexOf(function (x) {
+                return x.Id == id;
+            });
+            products.splice(index, 1);
+        }
         localStorage.setItem(storageName, JSON.stringify(products));
         UpdateCart();
         LoadCartItems();

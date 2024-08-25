@@ -543,6 +543,7 @@ namespace _01_Query.Query
              .Include(x => x.Category)
              .Select(x => new ProductQueryModel
              {
+                 Id = x.Id,
                  Name = x.Name,
                  Picture = x.Picture,
                  PictureAlt = x.PictureAlt,
