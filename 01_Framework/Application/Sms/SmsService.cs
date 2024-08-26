@@ -60,81 +60,81 @@ namespace _0_Framework.Application.Sms
             _verficationCodeService = verficationCodeService;
         }
 
-        //public async Task<bool> SendVerificationCodeAsync(string moblie)
-        //{
-        //    var apiKey = _configuration.GetSection("SmsSetting")["ApiKey"];
-
-        //    try
-        //    {
-        //        SmsIr smsIr = new SmsIr(apiKey);
-
-        //        int templateId = 990782; //990782 custom template Id
-
-        //        int code = Random.Shared.Next(111111, 999999);
-
-        //        _verficationCodeService.SetVerficationCode(code);
-
-        //        VerifySendParameter[] verifySendParameters = {
-        //        new VerifySendParameter("CODE", code.ToString()),
-        //    };
-
-        //        // انجام ارسال وریفای
-        //        var response = await smsIr.VerifySendAsync(moblie, templateId, verifySendParameters);
-
-        //        // ارسال شما در اینجا با موفقیت انجام شده‌است.
-
-        //        // گرفتن بخش دیتا خروجی
-        //        VerifySendResult verifySendResult = response.Data;
-
-        //        // شناسه پیامک ارسال شده
-        //        int messageId = verifySendResult.MessageId;
-
-        //        // هزینه ارسال
-        //        decimal cost = verifySendResult.Cost;
-
-        //        string resultDescription = "Your message was sent successfully." +
-        //            $"\n - Message Id: {messageId} " +
-        //            $"\n - Cost: {cost}";
-
-
-        //        return true;
-        //        //await Console.Out.WriteLineAsync(resultDescription);
-        //    }
-        //    catch (Exception ex) // درخواست ناموفق
-        //    {
-        //        // جدول توضیحات کد وضعیت
-        //        // https://app.sms.ir/developer/help/statusCode
-
-        //        string errorName = ex.GetType().Name;
-        //        string errorNameDescription = errorName switch
-        //        {
-        //            "UnauthorizedException" => "The provided token is not valid or access is denied.",
-        //            "LogicalException" => "Please check and correct the request parameters.",
-        //            "TooManyRequestException" => "The request count has exceeded the allowed limit.",
-        //            "UnexpectedException" or "InvalidOperationException" => "An unexpected error occurred on the remote server.",
-        //            _ => "Unable to send the request due to an unspecified error.",
-        //        };
-
-        //        var errorDescription = "There is a problem with the request." +
-        //            $"\n - Error: {errorName} - {errorNameDescription} - {ex.Message}";
-
-
-        //        return false;
-        //        //await Console.Out.WriteLineAsync(errorDescription);
-        //    }
-        //}
-
-        public async Task<bool> SendVerificationCodeAsync(string mobile)
+        public async Task<bool> SendVerificationCodeAsync(string moblie)
         {
-            int code = Random.Shared.Next(111111, 999999);
+            var apiKey = _configuration.GetSection("SmsSetting")["ApiKey"];
 
-            Console.WriteLine(code);
+            try
+            {
+                SmsIr smsIr = new SmsIr(apiKey);
 
-            VerificationModel verificationModel = new(mobile, code);
+                int templateId = 990782; //990782 custom template Id
 
-            _verficationCodeService.AddVerification(verificationModel);
+                int code = Random.Shared.Next(111111, 999999);
 
-            return true;
+                _verficationCodeService.SetVerficationCode(code);
+
+                VerifySendParameter[] verifySendParameters = {
+                new VerifySendParameter("CODE", code.ToString()),
+            };
+
+                // انجام ارسال وریفای
+                var response = await smsIr.VerifySendAsync(moblie, templateId, verifySendParameters);
+
+                // ارسال شما در اینجا با موفقیت انجام شده‌است.
+
+                // گرفتن بخش دیتا خروجی
+                VerifySendResult verifySendResult = response.Data;
+
+                // شناسه پیامک ارسال شده
+                int messageId = verifySendResult.MessageId;
+
+                // هزینه ارسال
+                decimal cost = verifySendResult.Cost;
+
+                string resultDescription = "Your message was sent successfully." +
+                    $"\n - Message Id: {messageId} " +
+                    $"\n - Cost: {cost}";
+
+
+                return true;
+                //await Console.Out.WriteLineAsync(resultDescription);
+            }
+            catch (Exception ex) // درخواست ناموفق
+            {
+                // جدول توضیحات کد وضعیت
+                // https://app.sms.ir/developer/help/statusCode
+
+                string errorName = ex.GetType().Name;
+                string errorNameDescription = errorName switch
+                {
+                    "UnauthorizedException" => "The provided token is not valid or access is denied.",
+                    "LogicalException" => "Please check and correct the request parameters.",
+                    "TooManyRequestException" => "The request count has exceeded the allowed limit.",
+                    "UnexpectedException" or "InvalidOperationException" => "An unexpected error occurred on the remote server.",
+                    _ => "Unable to send the request due to an unspecified error.",
+                };
+
+                var errorDescription = "There is a problem with the request." +
+                    $"\n - Error: {errorName} - {errorNameDescription} - {ex.Message}";
+
+
+                return false;
+                //await Console.Out.WriteLineAsync(errorDescription);
+            }
         }
+
+        //public async Task<bool> SendVerificationCodeAsync(string mobile)
+        //{
+        //    int code = Random.Shared.Next(111111, 999999);
+
+        //    Console.WriteLine(code);
+
+        //    VerificationModel verificationModel = new(mobile, code);
+
+        //    _verficationCodeService.AddVerification(verificationModel);
+
+        //    return true;
+        //}
     }
 }
