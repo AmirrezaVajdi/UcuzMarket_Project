@@ -35,10 +35,11 @@ namespace ServiceHost.Pages.Account
             {
                 if (_accountApplication.GetAccountBy(PhoneNumber).Mobile != null)
                 {
-                    _passwordRecoveyTokenService.Guid = Guid.NewGuid();
-                    _passwordRecoveyTokenService.PhoneNumber = PhoneNumber;
+                    PasswordRecoveryDto passwrodrecoveryDto = new(Guid.NewGuid(), PhoneNumber);
 
-                    return RedirectToPage("./PhoneNumberVerification", routeValues: new { Id = _passwordRecoveyTokenService.Guid.ToString() });
+                    _passwordRecoveyTokenService.Add(passwrodrecoveryDto);
+
+                    return RedirectToPage("./PhoneNumberVerification", routeValues: new { Id = passwrodrecoveryDto.Guid.ToString() });
                 }
                 else
                 {

@@ -2,6 +2,7 @@
 using _0_Framework.Application.Sms;
 using _0_Framework.Application.ZarinPal;
 using _01_Framework.Application;
+using _01_Framework.Application.Sms;
 using _01_Framework.Infrastructure;
 using AccountManagement.Configuration;
 using BlogManagement.Infrastructure.Configuration;
@@ -35,6 +36,7 @@ CommentManagementBootstrapper.Configure(builder.Services, connectionString);
 AccountManagementBootstrapper.Configure(builder.Services, connectionString);
 DeliveryManagementBootstrapper.Configure(builder.Services, connectionString);
 
+builder.Services.AddSingleton<VerficationCodeService>();
 builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 builder.Services.AddTransient<IAuthHelper, AuthHelper>();

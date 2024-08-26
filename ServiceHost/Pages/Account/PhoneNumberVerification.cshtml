@@ -57,6 +57,9 @@
                 <input asp-for="Code" type="text" class="form-control form-control-lg form-icon-start"
                        placeholder="کد بازیابی">
                 <span class="text-danger" asp-validation-for="Code"></span>
+
+                <input type="hidden" value="@Model.PasswordRecoveryDto.Guid" asp-for="Guid" />
+
                 <button type="submit" class="btn btn-lg btn-primary w-100 mt-3">بازیابی</button>
             </div>
         </form>

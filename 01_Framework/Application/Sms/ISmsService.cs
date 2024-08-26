@@ -2,6 +2,6 @@
 {
     public interface ISmsService
     {
-        void Send(string number, string message);
+        Task<bool> SendVerificationCodeAsync(string moblie);
     }
 }
