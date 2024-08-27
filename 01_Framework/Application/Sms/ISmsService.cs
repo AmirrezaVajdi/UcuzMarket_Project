@@ -2,6 +2,6 @@
 {
     public interface ISmsService
     {
-        Task<bool> SendVerificationCodeAsync(string moblie);
+        Task<bool> SendVerificationCodeAsync(string mobile);
     }
 }

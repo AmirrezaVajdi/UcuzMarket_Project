@@ -60,7 +60,7 @@ namespace _0_Framework.Application.Sms
             _verficationCodeService = verficationCodeService;
         }
 
-        public async Task<bool> SendVerificationCodeAsync(string moblie)
+        public async Task<bool> SendVerificationCodeAsync(string mobile)
         {
             var apiKey = _configuration.GetSection("SmsSetting")["ApiKey"];
 
@@ -72,14 +72,16 @@ namespace _0_Framework.Application.Sms
 
                 int code = Random.Shared.Next(111111, 999999);
 
-                _verficationCodeService.SetVerficationCode(code);
+                var verify = new VerificationModel(mobile, code);
+
+                _verficationCodeService.AddVerification(verify);
 
                 VerifySendParameter[] verifySendParameters = {
                 new VerifySendParameter("CODE", code.ToString()),
             };
 
                 // انجام ارسال وریفای
-                var response = await smsIr.VerifySendAsync(moblie, templateId, verifySendParameters);
+                var response = await smsIr.VerifySendAsync(mobile, templateId, verifySendParameters);
 
                 // ارسال شما در اینجا با موفقیت انجام شده‌است.
 
