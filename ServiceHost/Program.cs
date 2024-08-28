@@ -110,8 +110,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-var res = builder.Services.BuildServiceProvider();
-DataBaseCreator.Migrate(res);
+//var res = builder.Services.BuildServiceProvider();
+//DataBaseCreator.Migrate(res);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

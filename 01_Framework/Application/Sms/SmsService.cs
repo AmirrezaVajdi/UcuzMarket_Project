@@ -104,6 +104,7 @@ namespace _0_Framework.Application.Sms
             }
             catch (Exception ex) // درخواست ناموفق
             {
+                _verficationCodeService.Done(mobile);
                 // جدول توضیحات کد وضعیت
                 // https://app.sms.ir/developer/help/statusCode
 
