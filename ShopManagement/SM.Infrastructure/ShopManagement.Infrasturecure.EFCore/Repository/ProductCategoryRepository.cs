@@ -71,17 +71,25 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
 
         public List<ProductCategoryViewModel> Search(ProductCategorySearchModel serachModel)
         {
+            var count = _context
+                .ProductCategories.Count();
+
             var query = _context
                 .ProductCategories
-                .DefaultIfEmpty()
                 .Select(x => new ProductCategoryViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
                     CreationDate = x.CreationDate.ToFarsi(),
                     Picture = x.Picture,
-                    ParentName = (x.Parent == null ? "دسته بندی اصلی" : x.Parent.Name)
+                    ParentName = x.ParentId != null ? x.Parent.Name : "دسته بندی اصلی"
                 });
+
+            if (count > 0)
+            {
+                query = query.DefaultIfEmpty();
+            }
+
 
             if (!string.IsNullOrWhiteSpace(serachModel.Name))
             {
