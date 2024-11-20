@@ -32,7 +32,9 @@ namespace _01_Framework.Application
             if (file == null) return true;
             var fileExtension = Path.GetExtension(file.FileName);
             fileExtension = fileExtension.Remove(0, 1);
-            return _validExtensions.Contains(fileExtension);
+            if (_validExtensions != null)
+                return _validExtensions.Contains(fileExtension);
+            return false;
         }
 
         public void AddValidation(ClientModelValidationContext context)
